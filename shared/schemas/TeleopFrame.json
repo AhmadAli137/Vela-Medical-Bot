@@ -1,0 +1,210 @@
+{
+  "$defs": {
+    "StreamReference": {
+      "additionalProperties": false,
+      "properties": {
+        "timestamp_s": {
+          "minimum": 0,
+          "title": "Timestamp S",
+          "type": "number"
+        },
+        "uri": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Uri",
+          "type": "string"
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sha256"
+        },
+        "synthetic": {
+          "default": true,
+          "title": "Synthetic",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "timestamp_s",
+        "uri"
+      ],
+      "title": "StreamReference",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Synchronized SI-unit research contract; never a vendor control schema.",
+  "properties": {
+    "timestamp_s": {
+      "minimum": 0,
+      "title": "Timestamp S",
+      "type": "number"
+    },
+    "head_rgb": {
+      "$ref": "#/$defs/StreamReference"
+    },
+    "head_depth": {
+      "$ref": "#/$defs/StreamReference"
+    },
+    "left_wrist_rgb": {
+      "$ref": "#/$defs/StreamReference"
+    },
+    "right_wrist_rgb": {
+      "$ref": "#/$defs/StreamReference"
+    },
+    "base_pose": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "title": "Base Pose",
+      "type": "array"
+    },
+    "base_velocity": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "title": "Base Velocity",
+      "type": "array"
+    },
+    "localization_confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Localization Confidence",
+      "type": "number"
+    },
+    "left_arm_q": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 7,
+      "minItems": 7,
+      "title": "Left Arm Q",
+      "type": "array"
+    },
+    "left_arm_qd": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 7,
+      "minItems": 7,
+      "title": "Left Arm Qd",
+      "type": "array"
+    },
+    "right_arm_q": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 7,
+      "minItems": 7,
+      "title": "Right Arm Q",
+      "type": "array"
+    },
+    "right_arm_qd": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 7,
+      "minItems": 7,
+      "title": "Right Arm Qd",
+      "type": "array"
+    },
+    "vertical_stage_state": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "title": "Vertical Stage State",
+      "type": "array"
+    },
+    "gripper_state": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "title": "Gripper State",
+      "type": "array"
+    },
+    "action_schema": {
+      "const": "surrogate_delta_xyz_v1",
+      "default": "surrogate_delta_xyz_v1",
+      "title": "Action Schema",
+      "type": "string"
+    },
+    "actions": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "title": "Actions",
+      "type": "array"
+    },
+    "state_features": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "title": "State Features",
+      "type": "array"
+    },
+    "intervention": {
+      "default": false,
+      "title": "Intervention",
+      "type": "boolean"
+    },
+    "failure_category": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Failure Category"
+    },
+    "safety_events": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Safety Events",
+      "type": "array"
+    }
+  },
+  "required": [
+    "timestamp_s",
+    "head_rgb",
+    "head_depth",
+    "left_wrist_rgb",
+    "right_wrist_rgb",
+    "base_pose",
+    "base_velocity",
+    "localization_confidence",
+    "left_arm_q",
+    "left_arm_qd",
+    "right_arm_q",
+    "right_arm_qd",
+    "vertical_stage_state",
+    "gripper_state",
+    "actions",
+    "state_features"
+  ],
+  "title": "TeleopFrame",
+  "type": "object"
+}

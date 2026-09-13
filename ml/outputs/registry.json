@@ -1,0 +1,6695 @@
+{
+  "sessions": {
+    "episode_0e26de500b3b": {
+      "id": "episode_0e26de500b3b",
+      "episode_id": "episode_0e26de500b3b",
+      "task_id": null,
+      "task_class": "cluttered_retrieval",
+      "policy_version": null,
+      "robot_revision": "surrogate_v1",
+      "instruction": "Move a synthetic point toward an approved phone proxy",
+      "operator_id": "synthetic_fixture_generator",
+      "environment": "synthetic_mock_room",
+      "environment_metadata": {},
+      "status": "reviewed",
+      "created_at": "2026-09-13T02:08:06.066409+00:00",
+      "privacy_status": "cleared_synthetic",
+      "redaction_status": "reviewed",
+      "consent": true,
+      "frames": [
+        {
+          "timestamp_s": 0.0,
+          "head_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/head_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/head_depth/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.012422692540724456,
+            -0.012204968717912152,
+            0.0020788037051649166
+          ],
+          "state_features": [
+            0.06901495855958031,
+            -0.06780538176617862,
+            0.011548909473138427
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.05,
+          "head_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/head_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/head_depth/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.004749122100086236,
+            -0.010262089311776336,
+            -0.0041103346467888545
+          ],
+          "state_features": [
+            -0.026384011667145754,
+            -0.057011607287646315,
+            -0.022835192482160302
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.1,
+          "head_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/head_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/head_depth/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.0025860780326300973,
+            0.0040083519059633,
+            0.008509891338478315
+          ],
+          "state_features": [
+            -0.01436710018127832,
+            0.022268621699796112,
+            0.047277174102657304
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.15000000000000002,
+          "head_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/head_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/head_depth/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.017449572362518383,
+            -0.008854527103464986,
+            0.0037492507643014836
+          ],
+          "state_features": [
+            -0.09694206868065769,
+            -0.04919181724147215,
+            0.02082917091278602
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.2,
+          "head_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/head_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/head_depth/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.014985478991262846,
+            0.017919492513227157,
+            0.011964460482025341
+          ],
+          "state_features": [
+            -0.08325266106257137,
+            0.09955273618459531,
+            0.06646922490014079
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.25,
+          "head_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/head_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/head_depth/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.016676015123976307,
+            0.0024314332733440065,
+            0.0039362449336237245
+          ],
+          "state_features": [
+            -0.09264452846653504,
+            0.013507962629688924,
+            0.02186802740902069
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.30000000000000004,
+          "head_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/head_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/head_depth/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.01775064313748634,
+            -0.011552980539123556,
+            -0.012062800313049755
+          ],
+          "state_features": [
+            -0.09861468409714635,
+            -0.06418322521735309,
+            -0.06701555729472086
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.35000000000000003,
+          "head_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/head_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/head_depth/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.0013695152567808901,
+            0.002412130184182533,
+            -0.001731267941862539
+          ],
+          "state_features": [
+            -0.007608418093227168,
+            0.013400723245458518,
+            -0.009618155232569661
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.4,
+          "head_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/head_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/head_depth/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.015111924483897464,
+            0.01133727144728967,
+            -0.0035580220380021033
+          ],
+          "state_features": [
+            0.08395513602165258,
+            0.06298484137383151,
+            -0.019766789100011686
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.45,
+          "head_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/head_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/head_depth/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.010686183967374092,
+            -0.005100280613447037,
+            0.013033261304545216
+          ],
+          "state_features": [
+            -0.05936768870763385,
+            -0.028334892296927983,
+            0.07240700724747343
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.5,
+          "head_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/head_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/head_depth/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.005442640035014712,
+            0.017678362393490316,
+            0.0023676782222722273
+          ],
+          "state_features": [
+            -0.03023688908341507,
+            0.09821312440827953,
+            0.013153767901512375
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.55,
+          "head_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/head_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/head_depth/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.009473549283780126,
+            0.00571310298184251,
+            0.005768154392242797
+          ],
+          "state_features": [
+            -0.05263082935433403,
+            0.03173946101023617,
+            0.032045302179126656
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        }
+      ],
+      "labels": {
+        "success": true,
+        "failure_category": null,
+        "correction_notes": "Synthetic label for point-action regression only",
+        "intervention_count": 0
+      },
+      "takeover_reason": "synthetic low confidence correction",
+      "transport": "local_recording_contract; Quest transport not connected",
+      "started_at": "2026-09-13T02:08:06.066409+00:00",
+      "stopped_at": "2026-09-13T02:08:06.091055+00:00",
+      "review": {
+        "reviewer_id": "synthetic_fixture_review_not_human_signoff",
+        "at": "2026-09-13T02:08:06.095420+00:00",
+        "approved": true
+      }
+    },
+    "episode_34e91cc3872e": {
+      "id": "episode_34e91cc3872e",
+      "episode_id": "episode_34e91cc3872e",
+      "task_id": null,
+      "task_class": "cluttered_retrieval",
+      "policy_version": null,
+      "robot_revision": "surrogate_v1",
+      "instruction": "Move a synthetic point toward an approved phone proxy",
+      "operator_id": "synthetic_fixture_generator",
+      "environment": "synthetic_mock_room",
+      "environment_metadata": {},
+      "status": "reviewed",
+      "created_at": "2026-09-13T02:08:06.096837+00:00",
+      "privacy_status": "cleared_synthetic",
+      "redaction_status": "reviewed",
+      "consent": true,
+      "frames": [
+        {
+          "timestamp_s": 0.0,
+          "head_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/head_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/head_depth/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.0005258726356963724,
+            -0.007952653020270564,
+            0.004677055086042052
+          ],
+          "state_features": [
+            0.002921514642757625,
+            -0.0441814056681698,
+            0.02598363936690029
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.05,
+          "head_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/head_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/head_depth/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.0007491303477682348,
+            0.005518397335562465,
+            0.0015206499751977372
+          ],
+          "state_features": [
+            -0.0041618352653790824,
+            0.03065776297534703,
+            0.008448055417765207
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.1,
+          "head_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/head_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/head_depth/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.013636398786378021,
+            0.014714568929284794,
+            -0.017380322626047946
+          ],
+          "state_features": [
+            -0.07575777103543345,
+            0.0817476051626933,
+            -0.09655734792248859
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.15000000000000002,
+          "head_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/head_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/head_depth/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.006812617359826443,
+            -0.011830911788625258,
+            -0.005650200988533758
+          ],
+          "state_features": [
+            -0.037847874221258015,
+            -0.06572728771458478,
+            -0.03139000549185421
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.2,
+          "head_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/head_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/head_depth/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.004230530446496756,
+            0.001830143739846069,
+            0.007779430048179605
+          ],
+          "state_features": [
+            0.023502946924981977,
+            0.01016746522136705,
+            0.043219055823220026
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.25,
+          "head_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/head_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/head_depth/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.0003796655787793507,
+            0.012293927931905427,
+            -0.005473774633365421
+          ],
+          "state_features": [
+            -0.002109253215440837,
+            0.06829959962169682,
+            -0.030409859074252338
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.30000000000000004,
+          "head_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/head_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/head_depth/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.0017296208103136073,
+            0.0001598144686487543,
+            -0.01720599584299192
+          ],
+          "state_features": [
+            0.009609004501742263,
+            0.0008878581591597462,
+            -0.09558886579439957
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.35000000000000003,
+          "head_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/head_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/head_depth/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.00979275834592946,
+            -0.014988339504811961,
+            -0.009042487528962456
+          ],
+          "state_features": [
+            -0.054404213032941455,
+            -0.0832685528045109,
+            -0.0502360418275692
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.4,
+          "head_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/head_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/head_depth/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.01776283912133436,
+            -0.007444501457782569,
+            -0.004540058893353485
+          ],
+          "state_features": [
+            -0.09868243956296868,
+            -0.041358341432125384,
+            -0.025222549407519362
+          ],
+          "intervention": true,
+          "failure_category": "safe_correction",
+          "safety_events": [
+            "autonomy_stopped_before_synthetic_takeover"
+          ]
+        },
+        {
+          "timestamp_s": 0.45,
+          "head_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/head_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/head_depth/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.005285648692430472,
+            0.012373941492772541,
+            -0.0030423563619333795
+          ],
+          "state_features": [
+            0.02936471495794707,
+            0.0687441194042919,
+            -0.016901979788518776
+          ],
+          "intervention": true,
+          "failure_category": "safe_correction",
+          "safety_events": [
+            "autonomy_stopped_before_synthetic_takeover"
+          ]
+        },
+        {
+          "timestamp_s": 0.5,
+          "head_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/head_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/head_depth/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.004740065371708673,
+            0.0007115524944188092,
+            -0.009693824658258117
+          ],
+          "state_features": [
+            0.026333696509492632,
+            0.003953069413437829,
+            -0.05385458143476732
+          ],
+          "intervention": true,
+          "failure_category": "safe_correction",
+          "safety_events": [
+            "autonomy_stopped_before_synthetic_takeover"
+          ]
+        },
+        {
+          "timestamp_s": 0.55,
+          "head_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/head_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/head_depth/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.01083869811236951,
+            -0.0017176592711455778,
+            0.010597084031425532
+          ],
+          "state_features": [
+            -0.06021498951316395,
+            -0.009542551506364322,
+            0.058872689063475175
+          ],
+          "intervention": true,
+          "failure_category": "safe_correction",
+          "safety_events": [
+            "autonomy_stopped_before_synthetic_takeover"
+          ]
+        }
+      ],
+      "labels": {
+        "success": true,
+        "failure_category": null,
+        "correction_notes": "Synthetic label for point-action regression only",
+        "intervention_count": 4
+      },
+      "takeover_reason": "synthetic low confidence correction",
+      "transport": "local_recording_contract; Quest transport not connected",
+      "started_at": "2026-09-13T02:08:06.101207+00:00",
+      "stopped_at": "2026-09-13T02:08:06.141277+00:00",
+      "review": {
+        "reviewer_id": "synthetic_fixture_review_not_human_signoff",
+        "at": "2026-09-13T02:08:06.151696+00:00",
+        "approved": true
+      }
+    },
+    "episode_593e2b523228": {
+      "id": "episode_593e2b523228",
+      "episode_id": "episode_593e2b523228",
+      "task_id": null,
+      "task_class": "cluttered_retrieval",
+      "policy_version": null,
+      "robot_revision": "surrogate_v1",
+      "instruction": "Move a synthetic point toward an approved phone proxy",
+      "operator_id": "synthetic_fixture_generator",
+      "environment": "synthetic_mock_room",
+      "environment_metadata": {},
+      "status": "reviewed",
+      "created_at": "2026-09-13T02:08:06.156578+00:00",
+      "privacy_status": "cleared_synthetic",
+      "redaction_status": "reviewed",
+      "consent": true,
+      "frames": [
+        {
+          "timestamp_s": 0.0,
+          "head_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/head_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/head_depth/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.003357985733243695,
+            0.007175594071541762,
+            0.00828807301423814
+          ],
+          "state_features": [
+            0.018655476295798307,
+            0.039864411508565345,
+            0.04604485007910078
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.05,
+          "head_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/head_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/head_depth/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.004365550486220439,
+            -0.009205599185540848,
+            -0.002098672866383374
+          ],
+          "state_features": [
+            0.024253058256780216,
+            -0.05114221769744916,
+            -0.011659293702129855
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.1,
+          "head_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/head_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/head_depth/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.0004916104990188699,
+            -0.01759995703133691,
+            -0.007361835872881252
+          ],
+          "state_features": [
+            0.002731169438993722,
+            -0.09777753906298284,
+            -0.040899088182673626
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.15000000000000002,
+          "head_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/head_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/head_depth/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.005066341563987194,
+            -0.01762774678699123,
+            0.0022380265052260396
+          ],
+          "state_features": [
+            -0.028146342022151077,
+            -0.09793192659439572,
+            0.01243348058458911
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.2,
+          "head_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/head_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/head_depth/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.0017604930717383582,
+            -0.014778590854574083,
+            -0.009027666176481588
+          ],
+          "state_features": [
+            0.009780517065213101,
+            -0.08210328252541158,
+            -0.05015370098045327
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.25,
+          "head_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/head_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/head_depth/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.014554289133693565,
+            -0.0022225109155587933,
+            -0.008623655001847636
+          ],
+          "state_features": [
+            0.08085716185385314,
+            -0.01234728286421552,
+            -0.04790919445470909
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.30000000000000004,
+          "head_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/head_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/head_depth/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.013056658615118438,
+            -0.0015958236713392365,
+            0.004512547181261913
+          ],
+          "state_features": [
+            0.07253699230621355,
+            -0.008865687062995758,
+            0.025069706562566185
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.35000000000000003,
+          "head_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/head_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/head_depth/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.014538633749167562,
+            0.0016191918019222244,
+            -0.012329567147312951
+          ],
+          "state_features": [
+            0.08077018749537535,
+            0.008995510010679025,
+            -0.06849759526284974
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.4,
+          "head_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/head_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/head_depth/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.0077014012553719,
+            0.015678275334139423,
+            -0.0029402682436796643
+          ],
+          "state_features": [
+            0.04278556252984389,
+            0.08710152963410792,
+            -0.016334823575998136
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.45,
+          "head_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/head_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/head_depth/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.00582274325205324,
+            0.013473695362566077,
+            -0.0123793800278538
+          ],
+          "state_features": [
+            0.032348573622518,
+            0.0748538631253671,
+            -0.06877433348807667
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.5,
+          "head_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/head_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/head_depth/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.010168574005903704,
+            -0.0009416391658866924,
+            0.0018931848410971047
+          ],
+          "state_features": [
+            0.056492077810576136,
+            -0.005231328699370513,
+            0.010517693561650582
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.55,
+          "head_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/head_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/head_depth/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.015273047463118092,
+            0.011273543628831312,
+            -0.013178407782863694
+          ],
+          "state_features": [
+            0.0848502636839894,
+            0.06263079793795173,
+            -0.07321337657146497
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        }
+      ],
+      "labels": {
+        "success": true,
+        "failure_category": null,
+        "correction_notes": "Synthetic label for point-action regression only",
+        "intervention_count": 0
+      },
+      "takeover_reason": "synthetic low confidence correction",
+      "transport": "local_recording_contract; Quest transport not connected",
+      "started_at": "2026-09-13T02:08:06.159189+00:00",
+      "stopped_at": "2026-09-13T02:08:06.202185+00:00",
+      "review": {
+        "reviewer_id": "synthetic_fixture_review_not_human_signoff",
+        "at": "2026-09-13T02:08:06.211814+00:00",
+        "approved": true
+      }
+    },
+    "episode_fd15cbc3bdba": {
+      "id": "episode_fd15cbc3bdba",
+      "episode_id": "episode_fd15cbc3bdba",
+      "task_id": null,
+      "task_class": "cluttered_retrieval",
+      "policy_version": null,
+      "robot_revision": "surrogate_v1",
+      "instruction": "Move a synthetic point toward an approved phone proxy",
+      "operator_id": "synthetic_fixture_generator",
+      "environment": "synthetic_mock_room",
+      "environment_metadata": {},
+      "status": "reviewed",
+      "created_at": "2026-09-13T02:08:06.218520+00:00",
+      "privacy_status": "cleared_synthetic",
+      "redaction_status": "reviewed",
+      "consent": true,
+      "frames": [
+        {
+          "timestamp_s": 0.0,
+          "head_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/head_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/head_depth/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.0030684284774043272,
+            0.006328043875244472,
+            0.011221956851967734
+          ],
+          "state_features": [
+            -0.017046824874468486,
+            0.03515579930691373,
+            0.06234420473315408
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.05,
+          "head_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/head_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/head_depth/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.012214054287634188,
+            0.007245189429906542,
+            0.0006810916404176866
+          ],
+          "state_features": [
+            -0.06785585715352327,
+            0.04025105238836968,
+            0.003783842446764926
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.1,
+          "head_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/head_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/head_depth/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.015200710136045174,
+            0.0007004561067273212,
+            -0.0018431244071081512
+          ],
+          "state_features": [
+            -0.08444838964469542,
+            0.003891422815151785,
+            -0.010239580039489729
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.15000000000000002,
+          "head_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/head_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/head_depth/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.002021290063638172,
+            -0.008368235678370943,
+            -0.004852397023388961
+          ],
+          "state_features": [
+            -0.011229389242434287,
+            -0.04649019821317191,
+            -0.026957761241049788
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.2,
+          "head_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/head_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/head_depth/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.009427546235408198,
+            -0.005677733239870189,
+            0.012918251697183926
+          ],
+          "state_features": [
+            0.05237525686337888,
+            -0.031542962443723274,
+            0.07176806498435515
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.25,
+          "head_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/head_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/head_depth/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.007274257670532162,
+            0.009085751808569024,
+            -0.003504537389182487
+          ],
+          "state_features": [
+            0.04041254261406757,
+            0.05047639893649458,
+            -0.01946965216212493
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.30000000000000004,
+          "head_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/head_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/head_depth/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.011781935082712816,
+            -0.01765180670931471,
+            -0.003346437173227082
+          ],
+          "state_features": [
+            -0.0654551949039601,
+            -0.09806559282952616,
+            -0.018591317629039344
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.35000000000000003,
+          "head_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/head_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/head_depth/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.0012354697878669127,
+            -0.004137212057911839,
+            -0.01427743220397837
+          ],
+          "state_features": [
+            -0.0068637210437050705,
+            -0.022984511432843552,
+            -0.07931906779987984
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.4,
+          "head_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/head_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/head_depth/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.01643665599265651,
+            0.013594395389746822,
+            -0.003929162713452087
+          ],
+          "state_features": [
+            -0.09131475551475839,
+            0.07552441883192679,
+            -0.021828681741400485
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.45,
+          "head_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/head_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/head_depth/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.01323382635166511,
+            0.01198578386546645,
+            0.0026873569670100633
+          ],
+          "state_features": [
+            0.07352125750925062,
+            0.06658768814148028,
+            0.014929760927833685
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.5,
+          "head_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/head_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/head_depth/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.013112421236063942,
+            0.01626627699940081,
+            0.004935297989440604
+          ],
+          "state_features": [
+            0.07284678464479968,
+            0.09036820555222672,
+            0.02741832216355891
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.55,
+          "head_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/head_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/head_depth/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.017899076690419527,
+            0.005075017046472982,
+            -0.00023989663046325077
+          ],
+          "state_features": [
+            -0.09943931494677515,
+            0.028194539147072123,
+            -0.001332759058129171
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        }
+      ],
+      "labels": {
+        "success": true,
+        "failure_category": null,
+        "correction_notes": "Synthetic label for point-action regression only",
+        "intervention_count": 0
+      },
+      "takeover_reason": "synthetic low confidence correction",
+      "transport": "local_recording_contract; Quest transport not connected",
+      "started_at": "2026-09-13T02:08:06.218520+00:00",
+      "stopped_at": "2026-09-13T02:08:06.284464+00:00",
+      "review": {
+        "reviewer_id": "synthetic_fixture_review_not_human_signoff",
+        "at": "2026-09-13T02:08:06.304217+00:00",
+        "approved": true
+      }
+    },
+    "episode_980416033f65": {
+      "id": "episode_980416033f65",
+      "episode_id": "episode_980416033f65",
+      "task_id": null,
+      "task_class": "cluttered_retrieval",
+      "policy_version": null,
+      "robot_revision": "surrogate_v1",
+      "instruction": "Move a synthetic point toward an approved phone proxy",
+      "operator_id": "synthetic_fixture_generator",
+      "environment": "synthetic_mock_room",
+      "environment_metadata": {},
+      "status": "reviewed",
+      "created_at": "2026-09-13T02:08:06.312768+00:00",
+      "privacy_status": "cleared_synthetic",
+      "redaction_status": "reviewed",
+      "consent": true,
+      "frames": [
+        {
+          "timestamp_s": 0.0,
+          "head_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/head_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/head_depth/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.0,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.000",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.010465815057884667,
+            -0.005071332626363461,
+            0.006964093191015853
+          ],
+          "state_features": [
+            0.05814341698824815,
+            -0.02817407014646367,
+            0.03868940661675474
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.05,
+          "head_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/head_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/head_depth/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.05,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.050",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.004856250978927719,
+            0.003024178240704902,
+            -0.001739378230480897
+          ],
+          "state_features": [
+            -0.026979172105153992,
+            0.016800990226138346,
+            -0.009663212391560538
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.1,
+          "head_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/head_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/head_depth/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.1,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.100",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.010413045297784248,
+            -0.006468808540500299,
+            -0.015703316386444455
+          ],
+          "state_features": [
+            -0.057850251654356935,
+            -0.03593782522500166,
+            -0.08724064659135809
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.15000000000000002,
+          "head_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/head_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/head_depth/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.15000000000000002,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.150",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.004452281282259918,
+            0.014121223766387083,
+            0.003437024835389472
+          ],
+          "state_features": [
+            0.024734896012555102,
+            0.0784512431465949,
+            0.0190945824188304
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.2,
+          "head_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/head_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/head_depth/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.2,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.200",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.011877340969975864,
+            0.0013715576630371972,
+            -0.008644445278139458
+          ],
+          "state_features": [
+            -0.06598522761097703,
+            0.007619764794651096,
+            -0.04802469598966366
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.25,
+          "head_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/head_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/head_depth/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.25,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.250",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.0041931750564025245,
+            -0.017909241965159067,
+            0.01652463183210175
+          ],
+          "state_features": [
+            -0.023295416980014028,
+            -0.09949578869532814,
+            0.09180351017834307
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.30000000000000004,
+          "head_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/head_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/head_depth/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.30000000000000004,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.300",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.0008251805607750955,
+            0.0025744243922210816,
+            -0.014590420473899766
+          ],
+          "state_features": [
+            0.004584336448750531,
+            0.014302357734561566,
+            -0.08105789152166537
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.35000000000000003,
+          "head_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/head_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/head_depth/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.35000000000000003,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.350",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.013256194292177084,
+            0.013759048062616887,
+            0.01245257537205073
+          ],
+          "state_features": [
+            -0.07364552384542825,
+            0.07643915590342715,
+            0.06918097428917072
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.4,
+          "head_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/head_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/head_depth/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.4,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.400",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.006251286541556951,
+            0.0070176115257428555,
+            0.01553449683226502
+          ],
+          "state_features": [
+            0.034729369675316396,
+            0.03898673069857142,
+            0.08630276017925012
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.45,
+          "head_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/head_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/head_depth/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.45,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.450",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            0.00634801211049798,
+            0.003654329811983069,
+            -0.012656036358788867
+          ],
+          "state_features": [
+            0.035266733947211,
+            0.020301832288794827,
+            -0.0703113131043826
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.5,
+          "head_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/head_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/head_depth/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.5,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.500",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.009739180036192552,
+            -0.010112082962539593,
+            -0.016429142325698896
+          ],
+          "state_features": [
+            -0.05410655575662529,
+            -0.05617823868077552,
+            -0.09127301292054942
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        },
+        {
+          "timestamp_s": 0.55,
+          "head_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/head_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "head_depth": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/head_depth/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "left_wrist_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/left_wrist_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "right_wrist_rgb": {
+            "timestamp_s": 0.55,
+            "uri": "synthetic://no-media/right_wrist_rgb/0.550",
+            "sha256": null,
+            "synthetic": true
+          },
+          "base_pose": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "base_velocity": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "localization_confidence": 1.0,
+          "left_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "left_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_q": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "right_arm_qd": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "vertical_stage_state": [
+            0.1,
+            0.0
+          ],
+          "gripper_state": [
+            0.0,
+            0.0
+          ],
+          "action_schema": "surrogate_delta_xyz_v1",
+          "actions": [
+            -0.003104258244965488,
+            -0.016345405473359626,
+            0.014700288340273851
+          ],
+          "state_features": [
+            -0.017245879138697157,
+            -0.09080780818533125,
+            0.08166826855707696
+          ],
+          "intervention": false,
+          "failure_category": null,
+          "safety_events": []
+        }
+      ],
+      "labels": {
+        "success": true,
+        "failure_category": null,
+        "correction_notes": "Synthetic label for point-action regression only",
+        "intervention_count": 0
+      },
+      "takeover_reason": "synthetic low confidence correction",
+      "transport": "local_recording_contract; Quest transport not connected",
+      "started_at": "2026-09-13T02:08:06.319193+00:00",
+      "stopped_at": "2026-09-13T02:08:06.400077+00:00",
+      "review": {
+        "reviewer_id": "synthetic_fixture_review_not_human_signoff",
+        "at": "2026-09-13T02:08:06.412304+00:00",
+        "approved": true
+      }
+    }
+  },
+  "policies": {
+    "policy_f6ab6de432cd": {
+      "id": "policy_f6ab6de432cd",
+      "name": "Tiny synthetic behavior cloning",
+      "version": "0.1.0",
+      "task_class": "cluttered_retrieval",
+      "status": "simulator_evaluated",
+      "approval_status": "simulator_evaluated",
+      "execution_type": "SYNTHETIC_FEATURE_BC",
+      "observation_schema": "synchronized_multiview_proprioception_v1",
+      "action_schema": "surrogate_delta_xyz_v1",
+      "training_dataset": [
+        "episode_0e26de500b3b",
+        "episode_34e91cc3872e",
+        "episode_593e2b523228",
+        "episode_fd15cbc3bdba",
+        "episode_980416033f65"
+      ],
+      "training_environment": "synthetic_mock_room",
+      "object_classes": [
+        "phone",
+        "glasses_case",
+        "remote",
+        "small_bag"
+      ],
+      "environmental_constraints": {
+        "synthetic_only": true,
+        "no_patients": true
+      },
+      "patient_distance_constraints": {
+        "minimum_synthetic_clearance_m": 0.75
+      },
+      "validated_distribution": [
+        "synthetic state-feature offset [-0.1,0.1] metres",
+        "not trained on RGB or language"
+      ],
+      "success_rate": null,
+      "intervention_rate": null,
+      "collision_rate": null,
+      "unsafe_attempt_rate": 0.0,
+      "abstention_rate": 0.8888888888888888,
+      "sim_results": {
+        "finite_dynamics_rate": 1.0,
+        "ik_reachable_rate": 1.0,
+        "episodes_with_robot_contacts": 0,
+        "abstention_rate": 0.875,
+        "physics_steps": 2400,
+        "task_success_rate": null,
+        "sim_to_real_gap": null
+      },
+      "real_results": null,
+      "evaluation": {
+        "id": "eval_6391c712f882",
+        "at": "2026-09-13T02:08:06.848374+00:00",
+        "source": "computed_locally_from_artifact_and_heldout_episode",
+        "artifact_hash": "abeb43c33b124bf4929a691bd6bf398e26e27705b6855309eec9056288353c74",
+        "heldout_episode_id": "episode_980416033f65",
+        "heldout_samples": 12,
+        "action_rmse_m": 9.647996083751123e-08,
+        "unsafe_action_count": 0,
+        "abstention_gate_accuracy": 1.0,
+        "simulation": {
+          "finite_dynamics_rate": 1.0,
+          "ik_reachable_rate": 1.0,
+          "episodes_with_robot_contacts": 0,
+          "abstention_rate": 0.875,
+          "physics_steps": 2400,
+          "task_success_rate": null,
+          "sim_to_real_gap": null
+        },
+        "sim_scope": "surrogate_dynamics_ik_and_deterministic_abstention",
+        "hardware_evidence": false,
+        "task_success_rate": null,
+        "bimanual_success_rate": null,
+        "sim_real_gap": null,
+        "passed": true
+      },
+      "artifact": "policy_f6ab6de432cd.json",
+      "rollback_version": null,
+      "created_at": "2026-09-13T02:08:06.418161+00:00",
+      "hardware_approved": false,
+      "artifact_hash": "abeb43c33b124bf4929a691bd6bf398e26e27705b6855309eec9056288353c74"
+    }
+  },
+  "events": [
+    {
+      "id": "3b2be5c746944ebea375e7f3cdf8d25e",
+      "at": "2026-09-13T02:08:06.066409+00:00",
+      "action": "session_created",
+      "entity_id": "episode_0e26de500b3b"
+    },
+    {
+      "id": "1f6d2829b5594fbe81101e750615144b",
+      "at": "2026-09-13T02:08:06.066409+00:00",
+      "action": "recording_started",
+      "entity_id": "episode_0e26de500b3b",
+      "robot_stopped": true,
+      "hardware_connected": false
+    },
+    {
+      "id": "ff76ccc02e4742fdbbe16491786d3187",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.0,
+      "intervention": false
+    },
+    {
+      "id": "897ede4f959b435a9cdf5d7b41d02a97",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.05,
+      "intervention": false
+    },
+    {
+      "id": "812a1c9d3f6c4d37b68bab647f986023",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.1,
+      "intervention": false
+    },
+    {
+      "id": "2613df7496e542e5b380899ecf1e52ac",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.15000000000000002,
+      "intervention": false
+    },
+    {
+      "id": "8bfbd0db31ea43f4be4a7d7480d5dafa",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.2,
+      "intervention": false
+    },
+    {
+      "id": "c3ef90aac89b475bae8bfab68970b332",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.25,
+      "intervention": false
+    },
+    {
+      "id": "2b5bbc38d9504e8881edf9db4a42cec3",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.30000000000000004,
+      "intervention": false
+    },
+    {
+      "id": "e6e09a07af8c48a6a4959fd254ecb043",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.35000000000000003,
+      "intervention": false
+    },
+    {
+      "id": "fbcb518295354f31b538a944fe66f9e7",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.4,
+      "intervention": false
+    },
+    {
+      "id": "48c785b953de4005a0fd62e253b17451",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.45,
+      "intervention": false
+    },
+    {
+      "id": "08688f0441cc43e1974486abcd586008",
+      "at": "2026-09-13T02:08:06.072375+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.5,
+      "intervention": false
+    },
+    {
+      "id": "0f00b892e6f24691b749f8671cd2ac8f",
+      "at": "2026-09-13T02:08:06.089182+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_0e26de500b3b",
+      "timestamp_s": 0.55,
+      "intervention": false
+    },
+    {
+      "id": "acd3d60d4b7a4af896eaae241344e9ad",
+      "at": "2026-09-13T02:08:06.091055+00:00",
+      "action": "recording_stopped",
+      "entity_id": "episode_0e26de500b3b"
+    },
+    {
+      "id": "c48ac6e9c6c741acb937099425be0770",
+      "at": "2026-09-13T02:08:06.093884+00:00",
+      "action": "episode_labeled",
+      "entity_id": "episode_0e26de500b3b"
+    },
+    {
+      "id": "80638e08455749d7a6c1012d47bb6f86",
+      "at": "2026-09-13T02:08:06.095420+00:00",
+      "action": "episode_reviewed",
+      "entity_id": "episode_0e26de500b3b",
+      "approved": true
+    },
+    {
+      "id": "ac1a8a5d801e4f028f5aef56d36cf5d7",
+      "at": "2026-09-13T02:08:06.096837+00:00",
+      "action": "session_created",
+      "entity_id": "episode_34e91cc3872e"
+    },
+    {
+      "id": "84983b7dd5f14bf0a389de48d8f641da",
+      "at": "2026-09-13T02:08:06.101207+00:00",
+      "action": "recording_started",
+      "entity_id": "episode_34e91cc3872e",
+      "robot_stopped": true,
+      "hardware_connected": false
+    },
+    {
+      "id": "acb256faab984b279eb4c5822d3b4f2e",
+      "at": "2026-09-13T02:08:06.102728+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.0,
+      "intervention": false
+    },
+    {
+      "id": "0736d7f78b624b24a719397bda328cf2",
+      "at": "2026-09-13T02:08:06.102728+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.05,
+      "intervention": false
+    },
+    {
+      "id": "5289cf6acf74416cb8ad7d63da554de0",
+      "at": "2026-09-13T02:08:06.108776+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.1,
+      "intervention": false
+    },
+    {
+      "id": "51be378eb4bc42bd82f747af42654aa3",
+      "at": "2026-09-13T02:08:06.108776+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.15000000000000002,
+      "intervention": false
+    },
+    {
+      "id": "96340e0c9f08419da17fc7db478fffb2",
+      "at": "2026-09-13T02:08:06.108776+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.2,
+      "intervention": false
+    },
+    {
+      "id": "9bc4caac98ea4edcad4c577280f2407b",
+      "at": "2026-09-13T02:08:06.114864+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.25,
+      "intervention": false
+    },
+    {
+      "id": "38ca79da33394ee5a12bc13435792247",
+      "at": "2026-09-13T02:08:06.114864+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.30000000000000004,
+      "intervention": false
+    },
+    {
+      "id": "2d12c6e6c0f04c2e817484ca5edfbda7",
+      "at": "2026-09-13T02:08:06.120925+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.35000000000000003,
+      "intervention": false
+    },
+    {
+      "id": "39c1e3cf2ba0452b929ad8e80c40c0bf",
+      "at": "2026-09-13T02:08:06.126991+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.4,
+      "intervention": true
+    },
+    {
+      "id": "13c02c0dcc774a979e32d92e90b9acb1",
+      "at": "2026-09-13T02:08:06.131893+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.45,
+      "intervention": true
+    },
+    {
+      "id": "c4f5f3e87a8e4780b4dda5a6df015f00",
+      "at": "2026-09-13T02:08:06.135033+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.5,
+      "intervention": true
+    },
+    {
+      "id": "579d7a54e37b4aac8eaa6e14c1f6c395",
+      "at": "2026-09-13T02:08:06.138180+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_34e91cc3872e",
+      "timestamp_s": 0.55,
+      "intervention": true
+    },
+    {
+      "id": "deccf82010e64ef6b832ec80c433c3d1",
+      "at": "2026-09-13T02:08:06.141277+00:00",
+      "action": "recording_stopped",
+      "entity_id": "episode_34e91cc3872e"
+    },
+    {
+      "id": "f138e62aa5244080abe3ef52646eb22a",
+      "at": "2026-09-13T02:08:06.146204+00:00",
+      "action": "episode_labeled",
+      "entity_id": "episode_34e91cc3872e"
+    },
+    {
+      "id": "2783ec4f580045d0b3fee6999cfb2f94",
+      "at": "2026-09-13T02:08:06.151696+00:00",
+      "action": "episode_reviewed",
+      "entity_id": "episode_34e91cc3872e",
+      "approved": true
+    },
+    {
+      "id": "47ceef0409f140bcaf24aa33ce127b0b",
+      "at": "2026-09-13T02:08:06.156578+00:00",
+      "action": "session_created",
+      "entity_id": "episode_593e2b523228"
+    },
+    {
+      "id": "810dd90fa7d542acb03ba8368e21a00d",
+      "at": "2026-09-13T02:08:06.159189+00:00",
+      "action": "recording_started",
+      "entity_id": "episode_593e2b523228",
+      "robot_stopped": true,
+      "hardware_connected": false
+    },
+    {
+      "id": "2af143b71d8f4d84a6cf2f2ad1840ffa",
+      "at": "2026-09-13T02:08:06.162961+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.0,
+      "intervention": false
+    },
+    {
+      "id": "e72fac1b3b4b4fa6857184d4e9a5ee3c",
+      "at": "2026-09-13T02:08:06.166056+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.05,
+      "intervention": false
+    },
+    {
+      "id": "56b15d830d604043801d96fd917a4766",
+      "at": "2026-09-13T02:08:06.168758+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.1,
+      "intervention": false
+    },
+    {
+      "id": "b8e502eb1e5b4e67863956f4526905f5",
+      "at": "2026-09-13T02:08:06.169440+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.15000000000000002,
+      "intervention": false
+    },
+    {
+      "id": "ec7ab7d18bfb4fdb8ed14ac3bfb7be42",
+      "at": "2026-09-13T02:08:06.175433+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.2,
+      "intervention": false
+    },
+    {
+      "id": "9a6246ea0db04fdb809a088761c0b970",
+      "at": "2026-09-13T02:08:06.175433+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.25,
+      "intervention": false
+    },
+    {
+      "id": "8b6a342722e74d8880fa187fd6862de2",
+      "at": "2026-09-13T02:08:06.181506+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.30000000000000004,
+      "intervention": false
+    },
+    {
+      "id": "ad66f5afc8654e52af6dcbec7d673b20",
+      "at": "2026-09-13T02:08:06.181506+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.35000000000000003,
+      "intervention": false
+    },
+    {
+      "id": "1a974b203cc94052a50d9e9f9d67341f",
+      "at": "2026-09-13T02:08:06.190194+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.4,
+      "intervention": false
+    },
+    {
+      "id": "027c8a602380460f889a8914eb3752b7",
+      "at": "2026-09-13T02:08:06.193650+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.45,
+      "intervention": false
+    },
+    {
+      "id": "da67493249344bb1b714f354f2f281e0",
+      "at": "2026-09-13T02:08:06.197130+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.5,
+      "intervention": false
+    },
+    {
+      "id": "87cc57fd67304364832ef34fc60a4ed0",
+      "at": "2026-09-13T02:08:06.199648+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_593e2b523228",
+      "timestamp_s": 0.55,
+      "intervention": false
+    },
+    {
+      "id": "e970d4ba14254222a3c4bf199c77b311",
+      "at": "2026-09-13T02:08:06.202185+00:00",
+      "action": "recording_stopped",
+      "entity_id": "episode_593e2b523228"
+    },
+    {
+      "id": "c9c3580fbfa646c3ab645d795950f6f1",
+      "at": "2026-09-13T02:08:06.208316+00:00",
+      "action": "episode_labeled",
+      "entity_id": "episode_593e2b523228"
+    },
+    {
+      "id": "5df1c46a85b7497ea8b7b1a32e5a3c23",
+      "at": "2026-09-13T02:08:06.211814+00:00",
+      "action": "episode_reviewed",
+      "entity_id": "episode_593e2b523228",
+      "approved": true
+    },
+    {
+      "id": "e232272dc551467fbf0e53c61ebfc215",
+      "at": "2026-09-13T02:08:06.218520+00:00",
+      "action": "session_created",
+      "entity_id": "episode_fd15cbc3bdba"
+    },
+    {
+      "id": "833d1f6f8daa41909de616bc6040e6ac",
+      "at": "2026-09-13T02:08:06.218520+00:00",
+      "action": "recording_started",
+      "entity_id": "episode_fd15cbc3bdba",
+      "robot_stopped": true,
+      "hardware_connected": false
+    },
+    {
+      "id": "9c74e66b6b0048a18ad17bc7bf5fc43a",
+      "at": "2026-09-13T02:08:06.218520+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.0,
+      "intervention": false
+    },
+    {
+      "id": "0e88c1236e2b4d54ba69c9e4a8ef53b4",
+      "at": "2026-09-13T02:08:06.229960+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.05,
+      "intervention": false
+    },
+    {
+      "id": "ad5852926d504fdf8dee43e530f17c5b",
+      "at": "2026-09-13T02:08:06.236745+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.1,
+      "intervention": false
+    },
+    {
+      "id": "2f3582c7adf84446837e82c8c318f1ef",
+      "at": "2026-09-13T02:08:06.241534+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.15000000000000002,
+      "intervention": false
+    },
+    {
+      "id": "9568995b9cab43d7a787d88b6977cfaa",
+      "at": "2026-09-13T02:08:06.241534+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.2,
+      "intervention": false
+    },
+    {
+      "id": "ea8263220e3e43f6ab9e24d7dd3f51cf",
+      "at": "2026-09-13T02:08:06.253105+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.25,
+      "intervention": false
+    },
+    {
+      "id": "3e891357a36a49e0b297b4929459bd0c",
+      "at": "2026-09-13T02:08:06.254186+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.30000000000000004,
+      "intervention": false
+    },
+    {
+      "id": "8c35f04a95ea48c7bb90492f314a2b31",
+      "at": "2026-09-13T02:08:06.260245+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.35000000000000003,
+      "intervention": false
+    },
+    {
+      "id": "77cb8bb54f7e44c39d63395f4ba7997f",
+      "at": "2026-09-13T02:08:06.267148+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.4,
+      "intervention": false
+    },
+    {
+      "id": "e1e7becdc3cc4f4abb5eb21ded6794a8",
+      "at": "2026-09-13T02:08:06.272468+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.45,
+      "intervention": false
+    },
+    {
+      "id": "298b1be0933f43debc7f92c030ea97a2",
+      "at": "2026-09-13T02:08:06.272468+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.5,
+      "intervention": false
+    },
+    {
+      "id": "0d5ad307f4ca4f33bdfd13e66af477af",
+      "at": "2026-09-13T02:08:06.272468+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_fd15cbc3bdba",
+      "timestamp_s": 0.55,
+      "intervention": false
+    },
+    {
+      "id": "a67753b1b9f8449ba0ebdddf7bd45a7d",
+      "at": "2026-09-13T02:08:06.284464+00:00",
+      "action": "recording_stopped",
+      "entity_id": "episode_fd15cbc3bdba"
+    },
+    {
+      "id": "7ec3d8ca814d4b95a282735a4f769f13",
+      "at": "2026-09-13T02:08:06.295706+00:00",
+      "action": "episode_labeled",
+      "entity_id": "episode_fd15cbc3bdba"
+    },
+    {
+      "id": "a11f6023410f44b9b189684b9f5cbd6f",
+      "at": "2026-09-13T02:08:06.304217+00:00",
+      "action": "episode_reviewed",
+      "entity_id": "episode_fd15cbc3bdba",
+      "approved": true
+    },
+    {
+      "id": "18b54b443dda405c91c3008b2af943ef",
+      "at": "2026-09-13T02:08:06.312768+00:00",
+      "action": "session_created",
+      "entity_id": "episode_980416033f65"
+    },
+    {
+      "id": "2b5d36898be04fca837266067721d7a8",
+      "at": "2026-09-13T02:08:06.319193+00:00",
+      "action": "recording_started",
+      "entity_id": "episode_980416033f65",
+      "robot_stopped": true,
+      "hardware_connected": false
+    },
+    {
+      "id": "c125015dc345499e95e7893f41478497",
+      "at": "2026-09-13T02:08:06.326900+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.0,
+      "intervention": false
+    },
+    {
+      "id": "e4d0f40e44764319bb1d7b09a3f94be5",
+      "at": "2026-09-13T02:08:06.333484+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.05,
+      "intervention": false
+    },
+    {
+      "id": "9b2f1b070194492e93e1110999e707de",
+      "at": "2026-09-13T02:08:06.341541+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.1,
+      "intervention": false
+    },
+    {
+      "id": "e4e9314c782440c38dac6a55336e6bab",
+      "at": "2026-09-13T02:08:06.345598+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.15000000000000002,
+      "intervention": false
+    },
+    {
+      "id": "5a692a7656194a349f9a9afda8bfc654",
+      "at": "2026-09-13T02:08:06.352692+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.2,
+      "intervention": false
+    },
+    {
+      "id": "ec433690e1fb473faf79397cd5842841",
+      "at": "2026-09-13T02:08:06.359187+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.25,
+      "intervention": false
+    },
+    {
+      "id": "f1e1e1427f0f4727abbe22b750fa6ba3",
+      "at": "2026-09-13T02:08:06.363564+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.30000000000000004,
+      "intervention": false
+    },
+    {
+      "id": "2eb45f5dd774474bbc77688c14590c9c",
+      "at": "2026-09-13T02:08:06.369628+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.35000000000000003,
+      "intervention": false
+    },
+    {
+      "id": "4694534788b84877bcf8cf7a04dede57",
+      "at": "2026-09-13T02:08:06.375956+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.4,
+      "intervention": false
+    },
+    {
+      "id": "5c0f3ebb8f6c40c091fd4182c70d1d97",
+      "at": "2026-09-13T02:08:06.381850+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.45,
+      "intervention": false
+    },
+    {
+      "id": "b24976039cfc40d193c1bf93d6d0a170",
+      "at": "2026-09-13T02:08:06.387934+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.5,
+      "intervention": false
+    },
+    {
+      "id": "a2eb34e01b474c2f936b3fd03e97aaf3",
+      "at": "2026-09-13T02:08:06.395807+00:00",
+      "action": "frame_recorded",
+      "entity_id": "episode_980416033f65",
+      "timestamp_s": 0.55,
+      "intervention": false
+    },
+    {
+      "id": "6ace75222d7f4f838ab1991aed38264c",
+      "at": "2026-09-13T02:08:06.400077+00:00",
+      "action": "recording_stopped",
+      "entity_id": "episode_980416033f65"
+    },
+    {
+      "id": "9c9e16ec7a7647b9a5f15137bdec5cb8",
+      "at": "2026-09-13T02:08:06.406007+00:00",
+      "action": "episode_labeled",
+      "entity_id": "episode_980416033f65"
+    },
+    {
+      "id": "d9514cde393d46c7bacd6ff7965d38b8",
+      "at": "2026-09-13T02:08:06.412304+00:00",
+      "action": "episode_reviewed",
+      "entity_id": "episode_980416033f65",
+      "approved": true
+    },
+    {
+      "id": "ff480ca3b6454144b29f5d24fe8fb2e5",
+      "at": "2026-09-13T02:08:06.418161+00:00",
+      "action": "policy_registered",
+      "entity_id": "policy_f6ab6de432cd"
+    },
+    {
+      "id": "04f1fbe83f0f47b1ae3b344f871173bd",
+      "at": "2026-09-13T02:08:06.424213+00:00",
+      "action": "tiny_policy_trained",
+      "entity_id": "policy_f6ab6de432cd",
+      "training_samples": 48
+    },
+    {
+      "id": "fae6f07e83f24b92a62757e667624f37",
+      "at": "2026-09-13T02:08:06.848374+00:00",
+      "action": "policy_evaluated",
+      "entity_id": "policy_f6ab6de432cd",
+      "evaluation_id": "eval_6391c712f882",
+      "passed": true
+    }
+  ],
+  "active_policy": null
+}

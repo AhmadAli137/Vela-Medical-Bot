@@ -1,0 +1,24 @@
+# Upload only the sources needed for the public browser simulation build.
+*
+!vercel.json
+!apps/
+!apps/web/
+!apps/web/**
+!assets/
+!assets/simulation/
+!assets/simulation/room.glb
+!assets/simulation/robot.glb
+!sim/
+!sim/reference_body_descriptors.json
+!sim/reference_body_descriptors.xml
+apps/web/node_modules/
+apps/web/dist/
+apps/web/artifacts/
+apps/web/test-results/
+apps/web/playwright-report/
+apps/web/.npm-cache/
+apps/web/*.tsbuildinfo
+apps/web/.env*
+apps/web/.vercel/
+apps/web/public/simulation/*.glb
+apps/web/public/mujoco/

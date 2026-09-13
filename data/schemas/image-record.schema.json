@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QuarantinedHospitalImageRecord",
+  "type": "object",
+  "required": ["id", "hospital", "source_url", "image_url", "source_type", "timestamp", "hash", "rights_status", "privacy_status", "room_type", "quality", "usable_for_analysis", "usable_for_training", "annotations"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "hospital": {"type": "string", "minLength": 1},
+    "source_url": {"type": "string", "format": "uri"},
+    "image_url": {"type": "string", "format": "uri"},
+    "source_type": {"type": "string"},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "hash": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+    "rights_status": {"enum": ["unknown", "permission_verified", "open_license_verified", "prohibited"]},
+    "privacy_status": {"enum": ["quarantined", "flagged", "human_reviewed_clear"]},
+    "room_type": {"enum": ["unreviewed", "single_patient_room", "shared_patient_room", "mock_room", "ward", "interior", "irrelevant"]},
+    "quality": {"enum": ["unreviewed", "accepted", "rejected"]},
+    "usable_for_analysis": {"type": "boolean"},
+    "usable_for_training": {"type": "boolean"},
+    "annotations": {"type": "object", "required": ["people_detection", "text_detection"], "properties": {
+      "people_detection": {"$ref": "#/$defs/detection"},
+      "text_detection": {"$ref": "#/$defs/detection"}
+    }}
+  },
+  "$defs": {"detection": {"type": "object", "required": ["status"], "properties": {"status": {"enum": ["unknown", "flagged", "clear"]}}}},
+  "description": "Schema checks shape only; rights/privacy/content/human/training promotion gates are enforced independently in services.evidence.promotion_errors."
+}

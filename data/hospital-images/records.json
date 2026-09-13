@@ -1,0 +1,308 @@
+[
+  {
+    "id": "a8f882eceb5a53cfb451",
+    "hospital": "Stanford Hospital",
+    "source_url": "https://stanfordhealthcare.org/discover/new-stanford-hospital-experience.html",
+    "image_url": "https://stanfordhealthcare.org/content/dam/SHC/nsh/Final-1117/experience/new-stanford-hospital-experience-patient-care.jpg/jcr:content/renditions/original",
+    "source_type": "official_hospital_page",
+    "timestamp": "2026-09-13T01:56:24.703488+00:00",
+    "hash": null,
+    "rights_status": "unknown",
+    "rights_evidence": null,
+    "privacy_status": "quarantined",
+    "room_type": "unreviewed",
+    "quality": "unreviewed",
+    "usable_for_analysis": false,
+    "usable_for_training": false,
+    "local_path": null,
+    "training_permission": false,
+    "commercial_reuse_allowed": false,
+    "human_reviewer": null,
+    "reviewed_at": null,
+    "annotations": {
+      "alt": "patient and nurse in the new stanford hospital patient room",
+      "discovery_basis": "page metadata, not confirmed hospital-room content",
+      "people_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      },
+      "text_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      }
+    },
+    "robots_checked_at": "2026-09-13T01:56:24.703488+00:00"
+  },
+  {
+    "id": "e5a1fc81547dccda963a",
+    "hospital": "Stanford Hospital",
+    "source_url": "https://stanfordhealthcare.org/discover/new-stanford-hospital-experience.html",
+    "image_url": "https://stanfordhealthcare.org/content/dam/SHC/nsh/Final-1117/experience/new-stanford-hospital-experience-wellness.jpg/jcr:content/renditions/original",
+    "source_type": "official_hospital_page",
+    "timestamp": "2026-09-13T01:56:24.703488+00:00",
+    "hash": null,
+    "rights_status": "unknown",
+    "rights_evidence": null,
+    "privacy_status": "quarantined",
+    "room_type": "unreviewed",
+    "quality": "unreviewed",
+    "usable_for_analysis": false,
+    "usable_for_training": false,
+    "local_path": null,
+    "training_permission": false,
+    "commercial_reuse_allowed": false,
+    "human_reviewer": null,
+    "reviewed_at": null,
+    "annotations": {
+      "alt": "patient and nurse in the new stanford hospital wellness space",
+      "discovery_basis": "page metadata, not confirmed hospital-room content",
+      "people_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      },
+      "text_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      }
+    },
+    "robots_checked_at": "2026-09-13T01:56:24.703488+00:00"
+  },
+  {
+    "id": "9c684d2feeb2564013d9",
+    "hospital": "Stanford Hospital",
+    "source_url": "https://stanfordhealthcare.org/discover/new-stanford-hospital-experience.html",
+    "image_url": "https://stanfordhealthcare.org/discover/new-stanford-hospital-experience/_jcr_content/heroparsys/general_container_1340974828/parsyscontainer/columns/parsyscenter/imagewithcaption_143018948/image.img.full.high.jpg/1573870913873.jpg",
+    "source_type": "official_hospital_page",
+    "timestamp": "2026-09-13T01:56:24.703488+00:00",
+    "hash": null,
+    "rights_status": "unknown",
+    "rights_evidence": null,
+    "privacy_status": "quarantined",
+    "room_type": "unreviewed",
+    "quality": "unreviewed",
+    "usable_for_analysis": false,
+    "usable_for_training": false,
+    "local_path": null,
+    "training_permission": false,
+    "commercial_reuse_allowed": false,
+    "human_reviewer": null,
+    "reviewed_at": null,
+    "annotations": {
+      "alt": "patients checking in the waiting reception of the new stanford hospital emergency department",
+      "discovery_basis": "page metadata, not confirmed hospital-room content",
+      "people_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      },
+      "text_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      }
+    },
+    "robots_checked_at": "2026-09-13T01:56:24.703488+00:00"
+  },
+  {
+    "id": "27209215e59fd48b8752",
+    "hospital": "Stanford Hospital",
+    "source_url": "https://stanfordhealthcare.org/discover/new-stanford-hospital-experience.html",
+    "image_url": "https://stanfordhealthcare.org/discover/new-stanford-hospital-experience/_jcr_content/heroparsys/general_container_1340974828/parsyscontainer/columns/parsysright/imagewithcaption/image.img.full.high.jpg/1573870914635.jpg",
+    "source_type": "official_hospital_page",
+    "timestamp": "2026-09-13T01:56:24.703488+00:00",
+    "hash": null,
+    "rights_status": "unknown",
+    "rights_evidence": null,
+    "privacy_status": "quarantined",
+    "room_type": "unreviewed",
+    "quality": "unreviewed",
+    "usable_for_analysis": false,
+    "usable_for_training": false,
+    "local_path": null,
+    "training_permission": false,
+    "commercial_reuse_allowed": false,
+    "human_reviewer": null,
+    "reviewed_at": null,
+    "annotations": {
+      "alt": "a patient and her care team in the new stanford hospital emergency room",
+      "discovery_basis": "page metadata, not confirmed hospital-room content",
+      "people_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      },
+      "text_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      }
+    },
+    "robots_checked_at": "2026-09-13T01:56:24.703488+00:00"
+  },
+  {
+    "id": "8725793bacffefb89d7c",
+    "hospital": "Stanford Hospital",
+    "source_url": "https://stanfordhealthcare.org/discover/new-stanford-hospital-experience.html",
+    "image_url": "https://stanfordhealthcare.org/content/shc/en-tools/nsh/newsroom/_jcr_content/test-fullwidth/general_container/parsyscontainer/columns/parsyscenter/imagewithcaption/image.img.full.high.jpg/1574037821859.jpg",
+    "source_type": "official_hospital_page",
+    "timestamp": "2026-09-13T01:56:24.703488+00:00",
+    "hash": null,
+    "rights_status": "unknown",
+    "rights_evidence": null,
+    "privacy_status": "quarantined",
+    "room_type": "unreviewed",
+    "quality": "unreviewed",
+    "usable_for_analysis": false,
+    "usable_for_training": false,
+    "local_path": null,
+    "training_permission": false,
+    "commercial_reuse_allowed": false,
+    "human_reviewer": null,
+    "reviewed_at": null,
+    "annotations": {
+      "alt": "",
+      "discovery_basis": "page metadata, not confirmed hospital-room content",
+      "people_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      },
+      "text_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      }
+    },
+    "robots_checked_at": "2026-09-13T01:56:24.703488+00:00"
+  },
+  {
+    "id": "ede3745f8f1520ef92af",
+    "hospital": "Stanford Hospital",
+    "source_url": "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers.html",
+    "image_url": "https://stanfordhealthcare.org/content/dam/SHC/newsroom/othernews/2019/wellness-space-new-stanford-hospital.jpg",
+    "source_type": "official_hospital_page",
+    "timestamp": "2026-09-13T01:56:25.647953+00:00",
+    "hash": null,
+    "rights_status": "unknown",
+    "rights_evidence": null,
+    "privacy_status": "quarantined",
+    "room_type": "unreviewed",
+    "quality": "unreviewed",
+    "usable_for_analysis": false,
+    "usable_for_training": false,
+    "local_path": null,
+    "training_permission": false,
+    "commercial_reuse_allowed": false,
+    "human_reviewer": null,
+    "reviewed_at": null,
+    "annotations": {
+      "alt": "page social image; requires room relevance review",
+      "discovery_basis": "page metadata, not confirmed hospital-room content",
+      "people_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      },
+      "text_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      }
+    },
+    "robots_checked_at": "2026-09-13T01:56:25.647953+00:00"
+  },
+  {
+    "id": "c676779f8b71ab45e255",
+    "hospital": "Stanford Hospital",
+    "source_url": "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers.html",
+    "image_url": "https://stanfordhealthcare.org/content/dam/SHC/newsroom/othernews/2019/wellness-space-new-stanford-hospital.jpg.transform/original/q82/image.jpg",
+    "source_type": "official_hospital_page",
+    "timestamp": "2026-09-13T01:56:25.647953+00:00",
+    "hash": null,
+    "rights_status": "unknown",
+    "rights_evidence": null,
+    "privacy_status": "quarantined",
+    "room_type": "unreviewed",
+    "quality": "unreviewed",
+    "usable_for_analysis": false,
+    "usable_for_training": false,
+    "local_path": null,
+    "training_permission": false,
+    "commercial_reuse_allowed": false,
+    "human_reviewer": null,
+    "reviewed_at": null,
+    "annotations": {
+      "alt": "",
+      "discovery_basis": "page metadata, not confirmed hospital-room content",
+      "people_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      },
+      "text_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      }
+    },
+    "robots_checked_at": "2026-09-13T01:56:25.647953+00:00"
+  },
+  {
+    "id": "37b61673a3a58718b4ce",
+    "hospital": "Stanford Hospital",
+    "source_url": "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers.html",
+    "image_url": "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers/_jcr_content/article-parsys/imagewithcaption/image.img.full.high.jpg/1574196935862.jpg",
+    "source_type": "official_hospital_page",
+    "timestamp": "2026-09-13T01:56:25.647953+00:00",
+    "hash": null,
+    "rights_status": "unknown",
+    "rights_evidence": null,
+    "privacy_status": "quarantined",
+    "room_type": "unreviewed",
+    "quality": "unreviewed",
+    "usable_for_analysis": false,
+    "usable_for_training": false,
+    "local_path": null,
+    "training_permission": false,
+    "commercial_reuse_allowed": false,
+    "human_reviewer": null,
+    "reviewed_at": null,
+    "annotations": {
+      "alt": "",
+      "discovery_basis": "page metadata, not confirmed hospital-room content",
+      "people_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      },
+      "text_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      }
+    },
+    "robots_checked_at": "2026-09-13T01:56:25.647953+00:00"
+  },
+  {
+    "id": "3ca891b26bab33d3d863",
+    "hospital": "Stanford Hospital",
+    "source_url": "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers.html",
+    "image_url": "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers/_jcr_content/article-parsys/imagewithcaption_546918273/image.img.full.high.jpeg/1574197103541.jpeg",
+    "source_type": "official_hospital_page",
+    "timestamp": "2026-09-13T01:56:25.647953+00:00",
+    "hash": null,
+    "rights_status": "unknown",
+    "rights_evidence": null,
+    "privacy_status": "quarantined",
+    "room_type": "unreviewed",
+    "quality": "unreviewed",
+    "usable_for_analysis": false,
+    "usable_for_training": false,
+    "local_path": null,
+    "training_permission": false,
+    "commercial_reuse_allowed": false,
+    "human_reviewer": null,
+    "reviewed_at": null,
+    "annotations": {
+      "alt": "",
+      "discovery_basis": "page metadata, not confirmed hospital-room content",
+      "people_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      },
+      "text_detection": {
+        "status": "unknown",
+        "reason": "content not downloaded"
+      }
+    },
+    "robots_checked_at": "2026-09-13T01:56:25.647953+00:00"
+  }
+]

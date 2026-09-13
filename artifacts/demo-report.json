@@ -1,0 +1,1094 @@
+{
+  "mode": "synthetic",
+  "physical_robot_actions": 0,
+  "live_hospital_messages": 0,
+  "workflows": [
+    {
+      "name": "phone_retrieval",
+      "task": {
+        "approval_hash": "ffa2f1312d1b68ec585247a5e43f326f1bfa445e103961537027a63e4b1686f6",
+        "approved_by": "abbad977-7042-4381-be2b-9eaa4c46cebb",
+        "created_at": "2026-09-13T02:22:09.850600+00:00",
+        "critique": {
+          "clinical_boundary_violation": false,
+          "hidden_assumptions": [
+            "Synthetic scene geometry; no real perception or grasp validation"
+          ],
+          "human_first_alternative": "Ask staff to move permitted belongings",
+          "reasons": [
+            "Candidate uses known mock objects and semantic destinations"
+          ],
+          "solves_original_intent": true,
+          "verdict": "accept_candidate"
+        },
+        "execution_mode": "DETERMINISTIC",
+        "goal": "Can you bring my phone closer?",
+        "id": "e3cd6172-a888-4bfc-a6f3-dd4bb9ad3519",
+        "mode": "mock",
+        "owner": "01202e84-0281-4f90-8130-d45068890a5c",
+        "plan_hash": "ffa2f1312d1b68ec585247a5e43f326f1bfa445e103961537027a63e4b1686f6",
+        "planner_source": "deterministic mock planner and separate rule critic",
+        "policy_version": "mock-room-policy/1.0.0",
+        "proposal": {
+          "affected_objects": [
+            "phone"
+          ],
+          "assumptions": [
+            "Synthetic empty mock room; no patient contact",
+            "Object motion is a logical fixture transition, not a physical grasp"
+          ],
+          "candidate_steps": [
+            {
+              "action": "place_in_zone",
+              "execution_type": "DETERMINISTIC",
+              "id": "1",
+              "object_id": "phone",
+              "skill_id": "mock-semantic-place-v1",
+              "target_pose": {
+                "x": 2.35,
+                "y": 3.75,
+                "z": 0.85
+              },
+              "target_zone": "accessible_zone"
+            }
+          ],
+          "current_room_state_id": "room-417/v1",
+          "desired_room_state": "personal_item_accessible",
+          "human_approval_required": true,
+          "intent": "Can you bring my phone closer?",
+          "patient_context_allowed": false,
+          "prohibited_interactions": [
+            "patients",
+            "clinical devices",
+            "attached objects",
+            "unknown objects"
+          ],
+          "required_skills": [
+            "mock-semantic-place-v1"
+          ],
+          "success_criteria": [
+            "phone within accessible_zone"
+          ],
+          "target_outcome": "Item on an accessible side surface",
+          "uncertainties": [
+            "Real SDK, kinematics, calibration and VLA competence are unverified"
+          ]
+        },
+        "room_hash": "ad6ba6419031116d936d963305a63ff0be9866a41aaa58effb6769609f44f703",
+        "room_id": "room-417",
+        "room_version": 1,
+        "safety": {
+          "allowed": true,
+          "target": "mock",
+          "authorizes_hardware": false,
+          "policy_version": "mock-room-policy/1.0.0",
+          "checks": [
+            {
+              "name": "execution_target",
+              "passed": true,
+              "reason": "Only synthetic state transitions are implemented; vendor hardware unverified"
+            },
+            {
+              "name": "plan_snapshot",
+              "passed": true,
+              "reason": "Plan must match the exact current room snapshot"
+            },
+            {
+              "name": "observation_freshness",
+              "passed": true,
+              "reason": "Mock observation must be recent; scan and replan"
+            },
+            {
+              "name": "policy_version",
+              "passed": true,
+              "reason": "Policy changes invalidate prior approval"
+            },
+            {
+              "name": "estop",
+              "passed": true,
+              "reason": "E-stop must be released"
+            },
+            {
+              "name": "watchdog",
+              "passed": true,
+              "reason": "Watchdog health required"
+            },
+            {
+              "name": "robot_health",
+              "passed": true,
+              "reason": "Robot must be online and healthy"
+            },
+            {
+              "name": "manipulation_enabled",
+              "passed": true,
+              "reason": "Manipulation pause has veto authority"
+            },
+            {
+              "name": "person_observation",
+              "passed": true,
+              "reason": "Person safety geometry must be available"
+            },
+            {
+              "name": "human_approval",
+              "passed": true,
+              "reason": "Approval binds to plan and room snapshot"
+            },
+            {
+              "name": "independent_critique",
+              "passed": true,
+              "reason": "Critic may veto a candidate; it cannot authorize hardware"
+            },
+            {
+              "name": "phone:target_exists",
+              "passed": true,
+              "reason": "Exact object instance required"
+            },
+            {
+              "name": "phone:semantic_destination",
+              "passed": true,
+              "reason": "Candidate must satisfy its intended semantic destination"
+            },
+            {
+              "name": "phone:action_type",
+              "passed": true,
+              "reason": "Only the mock semantic placement transition exists"
+            },
+            {
+              "name": "phone:clinical_prohibition",
+              "passed": true,
+              "reason": "Synthetic envelope check: clinical_prohibition"
+            },
+            {
+              "name": "phone:object_permission",
+              "passed": true,
+              "reason": "Synthetic envelope check: object_permission"
+            },
+            {
+              "name": "phone:target_identity",
+              "passed": true,
+              "reason": "Synthetic envelope check: target_identity"
+            },
+            {
+              "name": "phone:attached_object",
+              "passed": true,
+              "reason": "Synthetic envelope check: attached_object"
+            },
+            {
+              "name": "phone:payload",
+              "passed": true,
+              "reason": "Synthetic envelope check: payload"
+            },
+            {
+              "name": "phone:grasp_confidence",
+              "passed": true,
+              "reason": "Synthetic envelope check: grasp_confidence"
+            },
+            {
+              "name": "phone:reachable",
+              "passed": true,
+              "reason": "Synthetic envelope check: reachable"
+            },
+            {
+              "name": "phone:workspace",
+              "passed": true,
+              "reason": "Synthetic envelope check: workspace"
+            },
+            {
+              "name": "phone:keepout",
+              "passed": true,
+              "reason": "Synthetic envelope check: keepout"
+            },
+            {
+              "name": "phone:patient_distance",
+              "passed": true,
+              "reason": "Synthetic envelope check: patient_distance"
+            },
+            {
+              "name": "phone:policy_distribution",
+              "passed": true,
+              "reason": "Synthetic envelope check: policy_distribution"
+            },
+            {
+              "name": "simulation",
+              "passed": true,
+              "reason": "Passing surrogate geometry/dynamics validation required for demo transition"
+            },
+            {
+              "name": "simulation_binding",
+              "passed": true,
+              "reason": "Simulation must match this plan and room"
+            }
+          ],
+          "reasons": [],
+          "limits_provenance": "synthetic research fixture only"
+        },
+        "simulation": {
+          "authorizes_hardware": false,
+          "checks": [
+            {
+              "distance_m": 2.813635136681745,
+              "object_id": "phone",
+              "step": "1",
+              "swept_samples": 40
+            }
+          ],
+          "hardware_model_verified": false,
+          "limitations": [
+            "No robot trajectory or grasp has been validated",
+            "Swept object check is not a full swept robot volume",
+            "All robot dimensions are synthetic"
+          ],
+          "metrics": {
+            "finite_dynamics": true,
+            "grasp_validated": false,
+            "minimum_person_clearance_m": null,
+            "physics_duration_s": 0.10000000000000007,
+            "physics_steps": 50,
+            "trajectory_validated": false
+          },
+          "model_hash": "4fa29ebae270b3272e720cbc39cce4e79e622087aff459999f03a52981ff8a3f",
+          "passed": true,
+          "plan_hash": "ffa2f1312d1b68ec585247a5e43f326f1bfa445e103961537027a63e4b1686f6",
+          "reasons": [],
+          "room_hash": "ad6ba6419031116d936d963305a63ff0be9866a41aaa58effb6769609f44f703",
+          "room_version": 1,
+          "scope": "semantic_object_path_and_surrogate_engine_smoke",
+          "status": "surrogate_checks_passed"
+        },
+        "skill_id": "mock-semantic-place-v1",
+        "status": "completed",
+        "template": null,
+        "updated_at": "2026-09-13T02:22:10.053557+00:00",
+        "verification": {
+          "passed": true,
+          "predicates": [
+            {
+              "object_id": "phone",
+              "target_zone": "accessible_zone",
+              "passed": true
+            }
+          ],
+          "source": "re-observed synthetic world state",
+          "physical_grasp_verified": false
+        },
+        "completed_at": "2026-09-13T02:22:10.053557+00:00"
+      }
+    },
+    {
+      "name": "physio_preparation",
+      "task": {
+        "approval_hash": "da470a3922867025a243cc1cb7f88528aa1e57e0c6916cc66ba7edf711e99d03",
+        "approved_by": "abbad977-7042-4381-be2b-9eaa4c46cebb",
+        "created_at": "2026-09-13T02:22:10.056387+00:00",
+        "critique": {
+          "clinical_boundary_violation": false,
+          "hidden_assumptions": [
+            "Synthetic scene geometry; no real perception or grasp validation"
+          ],
+          "human_first_alternative": "Ask staff to move permitted belongings",
+          "reasons": [
+            "Candidate uses known mock objects and semantic destinations"
+          ],
+          "solves_original_intent": true,
+          "verdict": "accept_candidate"
+        },
+        "execution_mode": "DETERMINISTIC",
+        "goal": "Prepare the room for physio",
+        "id": "3af4fa8e-2d40-4e77-b110-2024b11c5fc3",
+        "mode": "mock",
+        "owner": "abbad977-7042-4381-be2b-9eaa4c46cebb",
+        "plan_hash": "da470a3922867025a243cc1cb7f88528aa1e57e0c6916cc66ba7edf711e99d03",
+        "planner_source": "deterministic mock planner and separate rule critic",
+        "policy_version": "mock-room-policy/1.0.0",
+        "proposal": {
+          "affected_objects": [
+            "chair",
+            "bag",
+            "remote"
+          ],
+          "assumptions": [
+            "Synthetic empty mock room; no patient contact",
+            "Object motion is a logical fixture transition, not a physical grasp"
+          ],
+          "candidate_steps": [
+            {
+              "action": "place_in_zone",
+              "execution_type": "DETERMINISTIC",
+              "id": "1",
+              "object_id": "chair",
+              "skill_id": "mock-semantic-place-v1",
+              "target_pose": {
+                "x": 1.0,
+                "y": 3.85,
+                "z": 0.5
+              },
+              "target_zone": "visitor_zone"
+            },
+            {
+              "action": "place_in_zone",
+              "execution_type": "DETERMINISTIC",
+              "id": "2",
+              "object_id": "bag",
+              "skill_id": "mock-semantic-place-v1",
+              "target_pose": {
+                "x": 1.0,
+                "y": 0.6,
+                "z": 0.5
+              },
+              "target_zone": "storage_zone"
+            },
+            {
+              "action": "place_in_zone",
+              "execution_type": "DETERMINISTIC",
+              "id": "3",
+              "object_id": "remote",
+              "skill_id": "mock-semantic-place-v1",
+              "target_pose": {
+                "x": 2.35,
+                "y": 4.15,
+                "z": 0.85
+              },
+              "target_zone": "accessible_zone"
+            }
+          ],
+          "current_room_state_id": "room-417/v2",
+          "desired_room_state": "physio_ready",
+          "human_approval_required": true,
+          "intent": "Prepare the room for physio",
+          "patient_context_allowed": false,
+          "prohibited_interactions": [
+            "patients",
+            "clinical devices",
+            "attached objects",
+            "unknown objects"
+          ],
+          "required_skills": [
+            "mock-semantic-place-v1"
+          ],
+          "success_criteria": [
+            "chair within visitor_zone",
+            "bag within storage_zone",
+            "remote within accessible_zone"
+          ],
+          "target_outcome": "physio_ready",
+          "uncertainties": [
+            "Real SDK, kinematics, calibration and VLA competence are unverified"
+          ]
+        },
+        "room_hash": "78640f9b37ea54490e01dd14a2a696403cab973efac252d0efcb4759762e0149",
+        "room_id": "room-417",
+        "room_version": 2,
+        "safety": {
+          "allowed": true,
+          "target": "mock",
+          "authorizes_hardware": false,
+          "policy_version": "mock-room-policy/1.0.0",
+          "checks": [
+            {
+              "name": "execution_target",
+              "passed": true,
+              "reason": "Only synthetic state transitions are implemented; vendor hardware unverified"
+            },
+            {
+              "name": "plan_snapshot",
+              "passed": true,
+              "reason": "Plan must match the exact current room snapshot"
+            },
+            {
+              "name": "observation_freshness",
+              "passed": true,
+              "reason": "Mock observation must be recent; scan and replan"
+            },
+            {
+              "name": "policy_version",
+              "passed": true,
+              "reason": "Policy changes invalidate prior approval"
+            },
+            {
+              "name": "estop",
+              "passed": true,
+              "reason": "E-stop must be released"
+            },
+            {
+              "name": "watchdog",
+              "passed": true,
+              "reason": "Watchdog health required"
+            },
+            {
+              "name": "robot_health",
+              "passed": true,
+              "reason": "Robot must be online and healthy"
+            },
+            {
+              "name": "manipulation_enabled",
+              "passed": true,
+              "reason": "Manipulation pause has veto authority"
+            },
+            {
+              "name": "person_observation",
+              "passed": true,
+              "reason": "Person safety geometry must be available"
+            },
+            {
+              "name": "human_approval",
+              "passed": true,
+              "reason": "Approval binds to plan and room snapshot"
+            },
+            {
+              "name": "independent_critique",
+              "passed": true,
+              "reason": "Critic may veto a candidate; it cannot authorize hardware"
+            },
+            {
+              "name": "chair:target_exists",
+              "passed": true,
+              "reason": "Exact object instance required"
+            },
+            {
+              "name": "chair:semantic_destination",
+              "passed": true,
+              "reason": "Candidate must satisfy its intended semantic destination"
+            },
+            {
+              "name": "chair:action_type",
+              "passed": true,
+              "reason": "Only the mock semantic placement transition exists"
+            },
+            {
+              "name": "chair:clinical_prohibition",
+              "passed": true,
+              "reason": "Synthetic envelope check: clinical_prohibition"
+            },
+            {
+              "name": "chair:object_permission",
+              "passed": true,
+              "reason": "Synthetic envelope check: object_permission"
+            },
+            {
+              "name": "chair:target_identity",
+              "passed": true,
+              "reason": "Synthetic envelope check: target_identity"
+            },
+            {
+              "name": "chair:attached_object",
+              "passed": true,
+              "reason": "Synthetic envelope check: attached_object"
+            },
+            {
+              "name": "chair:payload",
+              "passed": true,
+              "reason": "Synthetic envelope check: payload"
+            },
+            {
+              "name": "chair:grasp_confidence",
+              "passed": true,
+              "reason": "Synthetic envelope check: grasp_confidence"
+            },
+            {
+              "name": "chair:reachable",
+              "passed": true,
+              "reason": "Synthetic envelope check: reachable"
+            },
+            {
+              "name": "chair:workspace",
+              "passed": true,
+              "reason": "Synthetic envelope check: workspace"
+            },
+            {
+              "name": "chair:keepout",
+              "passed": true,
+              "reason": "Synthetic envelope check: keepout"
+            },
+            {
+              "name": "chair:patient_distance",
+              "passed": true,
+              "reason": "Synthetic envelope check: patient_distance"
+            },
+            {
+              "name": "chair:policy_distribution",
+              "passed": true,
+              "reason": "Synthetic envelope check: policy_distribution"
+            },
+            {
+              "name": "bag:target_exists",
+              "passed": true,
+              "reason": "Exact object instance required"
+            },
+            {
+              "name": "bag:semantic_destination",
+              "passed": true,
+              "reason": "Candidate must satisfy its intended semantic destination"
+            },
+            {
+              "name": "bag:action_type",
+              "passed": true,
+              "reason": "Only the mock semantic placement transition exists"
+            },
+            {
+              "name": "bag:clinical_prohibition",
+              "passed": true,
+              "reason": "Synthetic envelope check: clinical_prohibition"
+            },
+            {
+              "name": "bag:object_permission",
+              "passed": true,
+              "reason": "Synthetic envelope check: object_permission"
+            },
+            {
+              "name": "bag:target_identity",
+              "passed": true,
+              "reason": "Synthetic envelope check: target_identity"
+            },
+            {
+              "name": "bag:attached_object",
+              "passed": true,
+              "reason": "Synthetic envelope check: attached_object"
+            },
+            {
+              "name": "bag:payload",
+              "passed": true,
+              "reason": "Synthetic envelope check: payload"
+            },
+            {
+              "name": "bag:grasp_confidence",
+              "passed": true,
+              "reason": "Synthetic envelope check: grasp_confidence"
+            },
+            {
+              "name": "bag:reachable",
+              "passed": true,
+              "reason": "Synthetic envelope check: reachable"
+            },
+            {
+              "name": "bag:workspace",
+              "passed": true,
+              "reason": "Synthetic envelope check: workspace"
+            },
+            {
+              "name": "bag:keepout",
+              "passed": true,
+              "reason": "Synthetic envelope check: keepout"
+            },
+            {
+              "name": "bag:patient_distance",
+              "passed": true,
+              "reason": "Synthetic envelope check: patient_distance"
+            },
+            {
+              "name": "bag:policy_distribution",
+              "passed": true,
+              "reason": "Synthetic envelope check: policy_distribution"
+            },
+            {
+              "name": "remote:target_exists",
+              "passed": true,
+              "reason": "Exact object instance required"
+            },
+            {
+              "name": "remote:semantic_destination",
+              "passed": true,
+              "reason": "Candidate must satisfy its intended semantic destination"
+            },
+            {
+              "name": "remote:action_type",
+              "passed": true,
+              "reason": "Only the mock semantic placement transition exists"
+            },
+            {
+              "name": "remote:clinical_prohibition",
+              "passed": true,
+              "reason": "Synthetic envelope check: clinical_prohibition"
+            },
+            {
+              "name": "remote:object_permission",
+              "passed": true,
+              "reason": "Synthetic envelope check: object_permission"
+            },
+            {
+              "name": "remote:target_identity",
+              "passed": true,
+              "reason": "Synthetic envelope check: target_identity"
+            },
+            {
+              "name": "remote:attached_object",
+              "passed": true,
+              "reason": "Synthetic envelope check: attached_object"
+            },
+            {
+              "name": "remote:payload",
+              "passed": true,
+              "reason": "Synthetic envelope check: payload"
+            },
+            {
+              "name": "remote:grasp_confidence",
+              "passed": true,
+              "reason": "Synthetic envelope check: grasp_confidence"
+            },
+            {
+              "name": "remote:reachable",
+              "passed": true,
+              "reason": "Synthetic envelope check: reachable"
+            },
+            {
+              "name": "remote:workspace",
+              "passed": true,
+              "reason": "Synthetic envelope check: workspace"
+            },
+            {
+              "name": "remote:keepout",
+              "passed": true,
+              "reason": "Synthetic envelope check: keepout"
+            },
+            {
+              "name": "remote:patient_distance",
+              "passed": true,
+              "reason": "Synthetic envelope check: patient_distance"
+            },
+            {
+              "name": "remote:policy_distribution",
+              "passed": true,
+              "reason": "Synthetic envelope check: policy_distribution"
+            },
+            {
+              "name": "simulation",
+              "passed": true,
+              "reason": "Passing surrogate geometry/dynamics validation required for demo transition"
+            },
+            {
+              "name": "simulation_binding",
+              "passed": true,
+              "reason": "Simulation must match this plan and room"
+            }
+          ],
+          "reasons": [],
+          "limits_provenance": "synthetic research fixture only"
+        },
+        "simulation": {
+          "authorizes_hardware": false,
+          "checks": [
+            {
+              "distance_m": 2.3921747427811373,
+              "object_id": "chair",
+              "step": "1",
+              "swept_samples": 40
+            },
+            {
+              "distance_m": 2.4879710609249455,
+              "object_id": "bag",
+              "step": "2",
+              "swept_samples": 40
+            },
+            {
+              "distance_m": 2.7581696829600606,
+              "object_id": "remote",
+              "step": "3",
+              "swept_samples": 40
+            }
+          ],
+          "hardware_model_verified": false,
+          "limitations": [
+            "No robot trajectory or grasp has been validated",
+            "Swept object check is not a full swept robot volume",
+            "All robot dimensions are synthetic"
+          ],
+          "metrics": {
+            "finite_dynamics": true,
+            "grasp_validated": false,
+            "minimum_person_clearance_m": null,
+            "physics_duration_s": 0.10000000000000007,
+            "physics_steps": 50,
+            "trajectory_validated": false
+          },
+          "model_hash": "4fa29ebae270b3272e720cbc39cce4e79e622087aff459999f03a52981ff8a3f",
+          "passed": true,
+          "plan_hash": "da470a3922867025a243cc1cb7f88528aa1e57e0c6916cc66ba7edf711e99d03",
+          "reasons": [],
+          "room_hash": "78640f9b37ea54490e01dd14a2a696403cab973efac252d0efcb4759762e0149",
+          "room_version": 2,
+          "scope": "semantic_object_path_and_surrogate_engine_smoke",
+          "status": "surrogate_checks_passed"
+        },
+        "skill_id": "mock-semantic-place-v1",
+        "status": "completed",
+        "template": "physio_ready",
+        "updated_at": "2026-09-13T02:22:10.081314+00:00",
+        "verification": {
+          "passed": true,
+          "predicates": [
+            {
+              "object_id": "chair",
+              "target_zone": "visitor_zone",
+              "passed": true
+            },
+            {
+              "object_id": "bag",
+              "target_zone": "storage_zone",
+              "passed": true
+            },
+            {
+              "object_id": "remote",
+              "target_zone": "accessible_zone",
+              "passed": true
+            }
+          ],
+          "source": "re-observed synthetic world state",
+          "physical_grasp_verified": false,
+          "desired_state": {
+            "template": "physio_ready",
+            "room_version": 3,
+            "ready": true,
+            "changes": [],
+            "blockers": [],
+            "constraints": [
+              "objects in semantic zones",
+              "egress clear",
+              "no clinical interaction"
+            ],
+            "source": "synthetic semantic check"
+          }
+        },
+        "completed_at": "2026-09-13T02:22:10.081314+00:00"
+      }
+    },
+    {
+      "name": "stop_takeover_record",
+      "blocked_task": {
+        "approval_hash": "c130648d99f82e683bc53bb2e6f35fa66d8fbeb5ea2120f04da38350af751b41",
+        "approved_by": "567af46e-e7ae-4d8a-95d3-50cc5cfafd35",
+        "created_at": "2026-09-13T02:22:10.099612+00:00",
+        "critique": {
+          "clinical_boundary_violation": false,
+          "hidden_assumptions": [
+            "Synthetic scene geometry; no real perception or grasp validation"
+          ],
+          "human_first_alternative": "Ask staff to move permitted belongings",
+          "reasons": [
+            "Candidate uses known mock objects and semantic destinations"
+          ],
+          "solves_original_intent": true,
+          "verdict": "accept_candidate"
+        },
+        "execution_mode": "DETERMINISTIC",
+        "goal": "Bring my phone closer",
+        "id": "b3e59599-05dd-4254-92ad-623fdeecb74b",
+        "mode": "mock",
+        "owner": "567af46e-e7ae-4d8a-95d3-50cc5cfafd35",
+        "plan_hash": "c130648d99f82e683bc53bb2e6f35fa66d8fbeb5ea2120f04da38350af751b41",
+        "planner_source": "deterministic mock planner and separate rule critic",
+        "policy_version": "mock-room-policy/1.0.0",
+        "proposal": {
+          "affected_objects": [
+            "phone"
+          ],
+          "assumptions": [
+            "Synthetic empty mock room; no patient contact",
+            "Object motion is a logical fixture transition, not a physical grasp"
+          ],
+          "candidate_steps": [
+            {
+              "action": "place_in_zone",
+              "execution_type": "DETERMINISTIC",
+              "id": "1",
+              "object_id": "phone",
+              "skill_id": "mock-semantic-place-v1",
+              "target_pose": {
+                "x": 2.35,
+                "y": 3.75,
+                "z": 0.85
+              },
+              "target_zone": "accessible_zone"
+            }
+          ],
+          "current_room_state_id": "room-417/v5",
+          "desired_room_state": "personal_item_accessible",
+          "human_approval_required": true,
+          "intent": "Bring my phone closer",
+          "patient_context_allowed": false,
+          "prohibited_interactions": [
+            "patients",
+            "clinical devices",
+            "attached objects",
+            "unknown objects"
+          ],
+          "required_skills": [
+            "mock-semantic-place-v1"
+          ],
+          "success_criteria": [
+            "phone within accessible_zone"
+          ],
+          "target_outcome": "Item on an accessible side surface",
+          "uncertainties": [
+            "Real SDK, kinematics, calibration and VLA competence are unverified"
+          ]
+        },
+        "room_hash": "bae8f38ec3905b2c9448a4b0a2956e230be3b06a4cfb0438e4d1e5e1f0111c5b",
+        "room_id": "room-417",
+        "room_version": 5,
+        "safety": {
+          "allowed": false,
+          "target": "mock",
+          "authorizes_hardware": false,
+          "policy_version": "mock-room-policy/1.0.0",
+          "checks": [
+            {
+              "name": "execution_target",
+              "passed": true,
+              "reason": "Only synthetic state transitions are implemented; vendor hardware unverified"
+            },
+            {
+              "name": "plan_snapshot",
+              "passed": true,
+              "reason": "Plan must match the exact current room snapshot"
+            },
+            {
+              "name": "observation_freshness",
+              "passed": true,
+              "reason": "Mock observation must be recent; scan and replan"
+            },
+            {
+              "name": "policy_version",
+              "passed": true,
+              "reason": "Policy changes invalidate prior approval"
+            },
+            {
+              "name": "estop",
+              "passed": true,
+              "reason": "E-stop must be released"
+            },
+            {
+              "name": "watchdog",
+              "passed": true,
+              "reason": "Watchdog health required"
+            },
+            {
+              "name": "robot_health",
+              "passed": true,
+              "reason": "Robot must be online and healthy"
+            },
+            {
+              "name": "manipulation_enabled",
+              "passed": true,
+              "reason": "Manipulation pause has veto authority"
+            },
+            {
+              "name": "person_observation",
+              "passed": true,
+              "reason": "Person safety geometry must be available"
+            },
+            {
+              "name": "human_approval",
+              "passed": true,
+              "reason": "Approval binds to plan and room snapshot"
+            },
+            {
+              "name": "independent_critique",
+              "passed": true,
+              "reason": "Critic may veto a candidate; it cannot authorize hardware"
+            },
+            {
+              "name": "phone:target_exists",
+              "passed": true,
+              "reason": "Exact object instance required"
+            },
+            {
+              "name": "phone:semantic_destination",
+              "passed": true,
+              "reason": "Candidate must satisfy its intended semantic destination"
+            },
+            {
+              "name": "phone:action_type",
+              "passed": true,
+              "reason": "Only the mock semantic placement transition exists"
+            },
+            {
+              "name": "phone:clinical_prohibition",
+              "passed": true,
+              "reason": "Synthetic envelope check: clinical_prohibition"
+            },
+            {
+              "name": "phone:object_permission",
+              "passed": true,
+              "reason": "Synthetic envelope check: object_permission"
+            },
+            {
+              "name": "phone:target_identity",
+              "passed": false,
+              "reason": "Synthetic envelope check: target_identity"
+            },
+            {
+              "name": "phone:attached_object",
+              "passed": true,
+              "reason": "Synthetic envelope check: attached_object"
+            },
+            {
+              "name": "phone:payload",
+              "passed": true,
+              "reason": "Synthetic envelope check: payload"
+            },
+            {
+              "name": "phone:grasp_confidence",
+              "passed": false,
+              "reason": "Synthetic envelope check: grasp_confidence"
+            },
+            {
+              "name": "phone:reachable",
+              "passed": true,
+              "reason": "Synthetic envelope check: reachable"
+            },
+            {
+              "name": "phone:workspace",
+              "passed": true,
+              "reason": "Synthetic envelope check: workspace"
+            },
+            {
+              "name": "phone:keepout",
+              "passed": true,
+              "reason": "Synthetic envelope check: keepout"
+            },
+            {
+              "name": "phone:patient_distance",
+              "passed": true,
+              "reason": "Synthetic envelope check: patient_distance"
+            },
+            {
+              "name": "phone:policy_distribution",
+              "passed": true,
+              "reason": "Synthetic envelope check: policy_distribution"
+            },
+            {
+              "name": "simulation",
+              "passed": true,
+              "reason": "Passing surrogate geometry/dynamics validation required for demo transition"
+            },
+            {
+              "name": "simulation_binding",
+              "passed": true,
+              "reason": "Simulation must match this plan and room"
+            }
+          ],
+          "reasons": [
+            "phone:target_identity: Synthetic envelope check: target_identity",
+            "phone:grasp_confidence: Synthetic envelope check: grasp_confidence"
+          ],
+          "limits_provenance": "synthetic research fixture only"
+        },
+        "simulation": {
+          "authorizes_hardware": false,
+          "checks": [
+            {
+              "distance_m": 2.882873922816002,
+              "object_id": "phone",
+              "step": "1",
+              "swept_samples": 40
+            }
+          ],
+          "hardware_model_verified": false,
+          "limitations": [
+            "No robot trajectory or grasp has been validated",
+            "Swept object check is not a full swept robot volume",
+            "All robot dimensions are synthetic"
+          ],
+          "metrics": {
+            "finite_dynamics": true,
+            "grasp_validated": false,
+            "minimum_person_clearance_m": null,
+            "physics_duration_s": 0.10000000000000007,
+            "physics_steps": 50,
+            "trajectory_validated": false
+          },
+          "model_hash": "4fa29ebae270b3272e720cbc39cce4e79e622087aff459999f03a52981ff8a3f",
+          "passed": true,
+          "plan_hash": "c130648d99f82e683bc53bb2e6f35fa66d8fbeb5ea2120f04da38350af751b41",
+          "reasons": [],
+          "room_hash": "bae8f38ec3905b2c9448a4b0a2956e230be3b06a4cfb0438e4d1e5e1f0111c5b",
+          "room_version": 5,
+          "scope": "semantic_object_path_and_surrogate_engine_smoke",
+          "status": "surrogate_checks_passed"
+        },
+        "skill_id": "mock-semantic-place-v1",
+        "status": "blocked",
+        "template": null,
+        "updated_at": "2026-09-13T02:22:10.114963+00:00",
+        "verification": null
+      },
+      "episode": {
+        "id": "episode_7ff99b752046",
+        "episode_id": "episode_7ff99b752046",
+        "task_id": "b3e59599-05dd-4254-92ad-623fdeecb74b",
+        "task_class": "cluttered_retrieval",
+        "policy_version": "none",
+        "robot_revision": "surrogate_v1",
+        "instruction": "Synthetic semantic task: phone to accessible_zone",
+        "operator_id": "a3193d81-24c2-4d14-96d7-a6104bd600ed",
+        "environment": "synthetic_mock_room",
+        "environment_metadata": {},
+        "status": "stopped",
+        "created_at": "2026-09-13T02:22:10.135421+00:00",
+        "privacy_status": "quarantined",
+        "redaction_status": "pending_review",
+        "consent": true,
+        "labels": {
+          "success": true,
+          "failure_category": null,
+          "correction_notes": "Synthetic point-action corrective fixture, no robot or camera capture",
+          "intervention_count": 12
+        },
+        "takeover_reason": "Synthetic low-confidence target",
+        "transport": "local_recording_contract; Quest transport not connected",
+        "started_at": "2026-09-13T02:22:10.136739+00:00",
+        "stopped_at": "2026-09-13T02:22:10.167003+00:00",
+        "frame_count": 12,
+        "hardware_connected": false
+      }
+    }
+  ],
+  "clinical_escalation": {
+    "id": "2f1e6725-a559-4254-89f5-822f76ffc6bd",
+    "route": "D",
+    "reason": "deterministic_clinical_trigger",
+    "trigger": "chest",
+    "locked": true,
+    "text": "My chest hurts",
+    "room_id": "room-417",
+    "owner": "a3193d81-24c2-4d14-96d7-a6104bd600ed",
+    "created_at": "2026-09-13T02:22:10.173060+00:00",
+    "mode": "mock",
+    "routing": {
+      "status": "queued_in_mock_adapter",
+      "delivered_to_staff": false,
+      "queue": "clinical staff",
+      "fhir_task": {
+        "resourceType": "Task",
+        "id": "e03dcf41-14b4-4d68-89ed-6097d11c343b",
+        "status": "requested",
+        "intent": "order",
+        "priority": "stat",
+        "code": {
+          "text": "Synthetic clinical escalation"
+        },
+        "for": {
+          "reference": "Location/room-417"
+        },
+        "authoredOn": "2026-09-13T02:22:10.176776+00:00",
+        "identifier": [
+          {
+            "system": "urn:vela:demo:request",
+            "value": "2f1e6725-a559-4254-89f5-822f76ffc6bd"
+          }
+        ],
+        "meta": {
+          "tag": [
+            {
+              "system": "urn:vela:environment",
+              "code": "synthetic"
+            }
+          ]
+        }
+      },
+      "live": false
+    },
+    "status": "queued_in_mock_adapter",
+    "message": "This demo cannot contact staff. Use your hospital call button or speak to staff directly."
+  },
+  "audit_chain_valid": true
+}

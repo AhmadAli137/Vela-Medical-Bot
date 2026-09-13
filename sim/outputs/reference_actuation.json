@@ -1,0 +1,83 @@
+{
+  "model_hash": "c1c55b7fdc256bd5b9fd76976167b4e5c2cf3ee8e622057baf0ebc1ab645609b",
+  "mujoco_version": "3.13.0",
+  "reference_source": [
+    "artifacts/references/handout-page-1.png",
+    "artifacts/references/platform-contact-sheet.jpg",
+    "artifacts/references/teleop-contact-sheet.jpg"
+  ],
+  "hardware_model_verified": false,
+  "authorizes_hardware": false,
+  "joint_demonstration": {
+    "duration_s": 16.00000000000201,
+    "physics_steps": 8000,
+    "joint_displacements": {
+      "base_x": 0.00986589428909795,
+      "base_y": 0.014088923575635532,
+      "base_yaw": 0.04109747840772456,
+      "left_wheel_joint": 0.09931567024086997,
+      "right_wheel_joint": 0.3061288102008894,
+      "left_lift": 0.03085028607409307,
+      "left_joint_1": 0.05594255598735716,
+      "left_joint_2": 0.1763504557504217,
+      "left_joint_3": 0.14916507234034823,
+      "left_joint_4": 0.1895460949714094,
+      "left_joint_5": 0.14307625244943628,
+      "left_joint_6": 0.10256715322853313,
+      "left_joint_7": 0.10629183961445518,
+      "left_gripper_-1": 0.07436586638968065,
+      "left_gripper_1": 0.0743675303882872,
+      "right_lift": 0.026561394491103386,
+      "right_joint_1": 0.04617488909054917,
+      "right_joint_2": 0.10956276302464513,
+      "right_joint_3": 0.05906253354199937,
+      "right_joint_4": 0.031082965727149414,
+      "right_joint_5": 0.015823887938124327,
+      "right_joint_6": 0.050321596802729435,
+      "right_joint_7": 0.12257123277239314,
+      "right_gripper_-1": 0.028384055312764903,
+      "right_gripper_1": 0.028383718745371933
+    },
+    "all_dofs_actuated": true,
+    "contacts": [],
+    "stopped": false,
+    "finite_dynamics": true
+  },
+  "reach_demonstration": {
+    "planned": {
+      "target": [
+        0.22,
+        -0.53,
+        0.96
+      ],
+      "ik_residual_m": 0.0007006005186852261,
+      "actual_endpoint_error_m": 0.3268117307465971,
+      "endpoint_reached": false,
+      "sampled_collision_gate_passed": true,
+      "samples": 60
+    },
+    "actual": {
+      "target": [
+        0.22,
+        -0.53,
+        0.96
+      ],
+      "ik_residual_m": 0.0007006005186852261,
+      "actual_endpoint_error_m": 0.000317791668950957,
+      "endpoint_reached": true,
+      "sampled_collision_gate_passed": true,
+      "samples": 60
+    },
+    "physics_steps": 3000,
+    "contacts": [],
+    "finite_dynamics": true,
+    "object_attached": false,
+    "grasp_success": null
+  },
+  "limitations": [
+    "Visually inferred dimensions and joint axes; not vendor verified",
+    "Constrained planar base and separately actuated wheel hinges; not balancing or odometry simulation",
+    "Position-only IK and sampled static collision configurations, followed by runtime contact checks",
+    "Endpoint reaching is not grasping or manipulating a physical object"
+  ]
+}

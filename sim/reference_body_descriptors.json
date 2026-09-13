@@ -1,0 +1,1143 @@
+{
+  "name": "reference_informed_bracketbot_surrogate_v2",
+  "reference_files": [
+    "artifacts/references/handout-page-1.png",
+    "artifacts/references/platform-contact-sheet.jpg",
+    "artifacts/references/teleop-contact-sheet.jpg"
+  ],
+  "hardware_model_verified": false,
+  "authorizes_hardware": false,
+  "dimensions_status": "visually inferred, adjustable; no vendor CAD/metric calibration",
+  "joint_axes_status": "inferred surrogate; not vendor verified",
+  "coordinate_system": {
+    "up": "+Z",
+    "forward": "+X",
+    "left": "+Y",
+    "quaternion": "wxyz"
+  },
+  "base_position": [
+    -0.6,
+    -0.7,
+    0.13
+  ],
+  "base_motion_model": "constrained planar sliders, separately actuated decorative wheel hinges; not balancing/wheel odometry validation",
+  "body_specs": [
+    {
+      "name": "robot_base",
+      "parent": "world",
+      "pos": [
+        -0.6,
+        -0.7,
+        0.13
+      ],
+      "geometry": "transverse_barrel",
+      "radius": 0.1,
+      "half_width": 0.155,
+      "mass": 12.0
+    },
+    {
+      "name": "left_wheel",
+      "parent": "robot_base",
+      "pos": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "geometry": "wheel",
+      "radius": 0.13,
+      "width": 0.055,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "joint": "left_wheel_joint",
+      "range": [
+        -20,
+        20
+      ],
+      "mass": 0.9
+    },
+    {
+      "name": "right_wheel",
+      "parent": "robot_base",
+      "pos": [
+        0.0,
+        -0.2,
+        0.0
+      ],
+      "geometry": "wheel",
+      "radius": 0.13,
+      "width": 0.055,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "joint": "right_wheel_joint",
+      "range": [
+        -20,
+        20
+      ],
+      "mass": 0.9
+    },
+    {
+      "name": "mast",
+      "parent": "robot_base",
+      "pos": [
+        -0.025,
+        0.0,
+        0.82
+      ],
+      "geometry": "slim_mast",
+      "dimensions": [
+        0.075,
+        0.085,
+        1.36
+      ],
+      "mass": 3.0
+    },
+    {
+      "name": "head",
+      "parent": "robot_base",
+      "pos": [
+        0.005,
+        0.0,
+        1.54
+      ],
+      "geometry": "stereo_head",
+      "dimensions": [
+        0.09,
+        0.15,
+        0.075
+      ],
+      "mass": 0.3
+    },
+    {
+      "name": "left_shoulder",
+      "parent": "robot_base",
+      "pos": [
+        0.0,
+        0.145,
+        1.15
+      ],
+      "geometry": "shoulder_stage",
+      "dimensions": [
+        0.083,
+        0.08,
+        0.23
+      ],
+      "joint": "left_lift",
+      "joint_type": "slide",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range": [
+        -0.25,
+        0.2
+      ],
+      "mass": 0.8
+    },
+    {
+      "name": "left_link_1",
+      "parent": "left_shoulder",
+      "pos": [
+        0.0,
+        0.0,
+        -0.125
+      ],
+      "geometry": "arm_link",
+      "length": 0.085,
+      "radius": 0.041,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "left_joint_1",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": 0.0,
+      "mass": 0.28
+    },
+    {
+      "name": "left_link_2",
+      "parent": "left_link_1",
+      "pos": [
+        0.0,
+        0.0,
+        -0.085
+      ],
+      "geometry": "arm_link",
+      "length": 0.19,
+      "radius": 0.041,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "left_joint_2",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": -0.3,
+      "mass": 0.28
+    },
+    {
+      "name": "left_link_3",
+      "parent": "left_link_2",
+      "pos": [
+        0.0,
+        0.0,
+        -0.19
+      ],
+      "geometry": "arm_link",
+      "length": 0.08,
+      "radius": 0.032,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "left_joint_3",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": 0.0,
+      "mass": 0.28
+    },
+    {
+      "name": "left_link_4",
+      "parent": "left_link_3",
+      "pos": [
+        0.0,
+        0.0,
+        -0.08
+      ],
+      "geometry": "arm_link",
+      "length": 0.18,
+      "radius": 0.036,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "left_joint_4",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": -1.5,
+      "mass": 0.28
+    },
+    {
+      "name": "left_link_5",
+      "parent": "left_link_4",
+      "pos": [
+        0.0,
+        0.0,
+        -0.18
+      ],
+      "geometry": "arm_link",
+      "length": 0.065,
+      "radius": 0.03,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "left_joint_5",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": 0.0,
+      "mass": 0.12
+    },
+    {
+      "name": "left_link_6",
+      "parent": "left_link_5",
+      "pos": [
+        0.0,
+        0.0,
+        -0.065
+      ],
+      "geometry": "arm_link",
+      "length": 0.065,
+      "radius": 0.026,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "left_joint_6",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": -0.15,
+      "mass": 0.12
+    },
+    {
+      "name": "left_link_7",
+      "parent": "left_link_6",
+      "pos": [
+        0.0,
+        0.0,
+        -0.065
+      ],
+      "geometry": "arm_link",
+      "length": 0.035,
+      "radius": 0.023,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "left_joint_7",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": 0.0,
+      "mass": 0.12
+    },
+    {
+      "name": "left_hand",
+      "parent": "left_link_7",
+      "pos": [
+        0.0,
+        0.0,
+        -0.035
+      ],
+      "geometry": "gripper_palm",
+      "dimensions": [
+        0.07,
+        0.09,
+        0.047
+      ],
+      "mass": 0.17
+    },
+    {
+      "name": "left_finger_-1",
+      "parent": "left_hand",
+      "pos": [
+        0.0,
+        -0.04,
+        -0.018
+      ],
+      "geometry": "rotary_finger",
+      "dimensions": [
+        0.026,
+        0.015,
+        0.067
+      ],
+      "joint": "left_gripper_-1",
+      "joint_type": "hinge",
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "range": [
+        -0.45,
+        0.45
+      ],
+      "initial_q": 0.15,
+      "mass": 0.035
+    },
+    {
+      "name": "left_finger_1",
+      "parent": "left_hand",
+      "pos": [
+        0.0,
+        0.04,
+        -0.018
+      ],
+      "geometry": "rotary_finger",
+      "dimensions": [
+        0.026,
+        0.015,
+        0.067
+      ],
+      "joint": "left_gripper_1",
+      "joint_type": "hinge",
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "range": [
+        -0.45,
+        0.45
+      ],
+      "initial_q": -0.15,
+      "mass": 0.035
+    },
+    {
+      "name": "right_shoulder",
+      "parent": "robot_base",
+      "pos": [
+        0.0,
+        -0.145,
+        1.15
+      ],
+      "geometry": "shoulder_stage",
+      "dimensions": [
+        0.083,
+        0.08,
+        0.23
+      ],
+      "joint": "right_lift",
+      "joint_type": "slide",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range": [
+        -0.25,
+        0.2
+      ],
+      "mass": 0.8
+    },
+    {
+      "name": "right_link_1",
+      "parent": "right_shoulder",
+      "pos": [
+        0.0,
+        0.0,
+        -0.125
+      ],
+      "geometry": "arm_link",
+      "length": 0.085,
+      "radius": 0.041,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "right_joint_1",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": 0.0,
+      "mass": 0.28
+    },
+    {
+      "name": "right_link_2",
+      "parent": "right_link_1",
+      "pos": [
+        0.0,
+        0.0,
+        -0.085
+      ],
+      "geometry": "arm_link",
+      "length": 0.19,
+      "radius": 0.041,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "right_joint_2",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": -0.3,
+      "mass": 0.28
+    },
+    {
+      "name": "right_link_3",
+      "parent": "right_link_2",
+      "pos": [
+        0.0,
+        0.0,
+        -0.19
+      ],
+      "geometry": "arm_link",
+      "length": 0.08,
+      "radius": 0.032,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "right_joint_3",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": 0.0,
+      "mass": 0.28
+    },
+    {
+      "name": "right_link_4",
+      "parent": "right_link_3",
+      "pos": [
+        0.0,
+        0.0,
+        -0.08
+      ],
+      "geometry": "arm_link",
+      "length": 0.18,
+      "radius": 0.036,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "right_joint_4",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": -1.5,
+      "mass": 0.28
+    },
+    {
+      "name": "right_link_5",
+      "parent": "right_link_4",
+      "pos": [
+        0.0,
+        0.0,
+        -0.18
+      ],
+      "geometry": "arm_link",
+      "length": 0.065,
+      "radius": 0.03,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "right_joint_5",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": 0.0,
+      "mass": 0.12
+    },
+    {
+      "name": "right_link_6",
+      "parent": "right_link_5",
+      "pos": [
+        0.0,
+        0.0,
+        -0.065
+      ],
+      "geometry": "arm_link",
+      "length": 0.065,
+      "radius": 0.026,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "right_joint_6",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": -0.15,
+      "mass": 0.12
+    },
+    {
+      "name": "right_link_7",
+      "parent": "right_link_6",
+      "pos": [
+        0.0,
+        0.0,
+        -0.065
+      ],
+      "geometry": "arm_link",
+      "length": 0.035,
+      "radius": 0.023,
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "joint": "right_joint_7",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "range": [
+        -2.7,
+        2.7
+      ],
+      "initial_q": 0.0,
+      "mass": 0.12
+    },
+    {
+      "name": "right_hand",
+      "parent": "right_link_7",
+      "pos": [
+        0.0,
+        0.0,
+        -0.035
+      ],
+      "geometry": "gripper_palm",
+      "dimensions": [
+        0.07,
+        0.09,
+        0.047
+      ],
+      "mass": 0.17
+    },
+    {
+      "name": "right_finger_-1",
+      "parent": "right_hand",
+      "pos": [
+        0.0,
+        -0.04,
+        -0.018
+      ],
+      "geometry": "rotary_finger",
+      "dimensions": [
+        0.026,
+        0.015,
+        0.067
+      ],
+      "joint": "right_gripper_-1",
+      "joint_type": "hinge",
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "range": [
+        -0.45,
+        0.45
+      ],
+      "initial_q": 0.15,
+      "mass": 0.035
+    },
+    {
+      "name": "right_finger_1",
+      "parent": "right_hand",
+      "pos": [
+        0.0,
+        0.04,
+        -0.018
+      ],
+      "geometry": "rotary_finger",
+      "dimensions": [
+        0.026,
+        0.015,
+        0.067
+      ],
+      "joint": "right_gripper_1",
+      "joint_type": "hinge",
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "range": [
+        -0.45,
+        0.45
+      ],
+      "initial_q": -0.15,
+      "mass": 0.035
+    }
+  ],
+  "room_colliders": [
+    {
+      "name": "work_table",
+      "pos": [
+        0.75,
+        -0.7,
+        0.72
+      ],
+      "size": [
+        0.48,
+        0.48,
+        0.035
+      ]
+    },
+    {
+      "name": "bed",
+      "pos": [
+        1.4,
+        1.45,
+        0.55
+      ],
+      "size": [
+        0.56,
+        1.0,
+        0.19
+      ]
+    },
+    {
+      "name": "cabinet",
+      "pos": [
+        2.85,
+        2.35,
+        0.9
+      ],
+      "size": [
+        0.4,
+        0.32,
+        0.9
+      ]
+    },
+    {
+      "name": "visitor_chair",
+      "pos": [
+        -1.8,
+        1.75,
+        0.48
+      ],
+      "size": [
+        0.28,
+        0.28,
+        0.06
+      ]
+    }
+  ],
+  "model_hash": "c1c55b7fdc256bd5b9fd76976167b4e5c2cf3ee8e622057baf0ebc1ab645609b",
+  "initial_world_poses": {
+    "robot_base": {
+      "position": [
+        -0.6,
+        -0.7,
+        0.13
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "left_wheel": {
+      "position": [
+        -0.6,
+        -0.49999999999999994,
+        0.13
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "right_wheel": {
+      "position": [
+        -0.6,
+        -0.8999999999999999,
+        0.13
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "mast": {
+      "position": [
+        -0.625,
+        -0.7,
+        0.95
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "head": {
+      "position": [
+        -0.595,
+        -0.7,
+        1.67
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "left_shoulder": {
+      "position": [
+        -0.6,
+        -0.5549999999999999,
+        1.2799999999999998
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "left_link_1": {
+      "position": [
+        -0.6,
+        -0.5549999999999999,
+        1.1549999999999998
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "left_link_2": {
+      "position": [
+        -0.6,
+        -0.5549999999999999,
+        1.0699999999999998
+      ],
+      "quaternion": [
+        0.9887710779360422,
+        0.0,
+        -0.14943813247359922,
+        0.0
+      ]
+    },
+    "left_link_3": {
+      "position": [
+        -0.5438511607343455,
+        -0.5549999999999999,
+        0.8884860670661348
+      ],
+      "quaternion": [
+        0.9887710779360422,
+        0.0,
+        -0.14943813247359922,
+        0.0
+      ]
+    },
+    "left_link_4": {
+      "position": [
+        -0.5202095442014383,
+        -0.5549999999999999,
+        0.8120591479360862
+      ],
+      "quaternion": [
+        0.6216099682706644,
+        0.0,
+        -0.7833269096274833,
+        0.0
+      ]
+    },
+    "left_link_5": {
+      "position": [
+        -0.3449169706433632,
+        -0.5549999999999999,
+        0.8529555249808419
+      ],
+      "quaternion": [
+        0.6216099682706644,
+        0.0,
+        -0.7833269096274833,
+        0.0
+      ]
+    },
+    "left_link_6": {
+      "position": [
+        -0.2816168746362805,
+        -0.5549999999999999,
+        0.8677236611358926
+      ],
+      "quaternion": [
+        0.5611680535493414,
+        0.0,
+        -0.8277018881672575,
+        0.0
+      ]
+    },
+    "left_link_7": {
+      "position": [
+        -0.221234493161029,
+        -0.5549999999999999,
+        0.8917854151737262
+      ],
+      "quaternion": [
+        0.5611680535493414,
+        0.0,
+        -0.8277018881672575,
+        0.0
+      ]
+    },
+    "left_hand": {
+      "position": [
+        -0.18872090313589357,
+        -0.5549999999999999,
+        0.9047417442710213
+      ],
+      "quaternion": [
+        0.5611680535493414,
+        0.0,
+        -0.8277018881672575,
+        0.0
+      ]
+    },
+    "left_finger_-1": {
+      "position": [
+        -0.17199962826582393,
+        -0.595,
+        0.9114049992353445
+      ],
+      "quaternion": [
+        0.5595905080811957,
+        0.04204815798326675,
+        -0.8253750676107501,
+        0.062019460189468724
+      ]
+    },
+    "left_finger_1": {
+      "position": [
+        -0.17199962826582393,
+        -0.5149999999999999,
+        0.9114049992353445
+      ],
+      "quaternion": [
+        0.5595905080811957,
+        -0.04204815798326675,
+        -0.8253750676107501,
+        -0.062019460189468724
+      ]
+    },
+    "right_shoulder": {
+      "position": [
+        -0.6,
+        -0.845,
+        1.2799999999999998
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "right_link_1": {
+      "position": [
+        -0.6,
+        -0.845,
+        1.1549999999999998
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "right_link_2": {
+      "position": [
+        -0.6,
+        -0.845,
+        1.0699999999999998
+      ],
+      "quaternion": [
+        0.9887710779360422,
+        0.0,
+        -0.14943813247359922,
+        0.0
+      ]
+    },
+    "right_link_3": {
+      "position": [
+        -0.5438511607343455,
+        -0.845,
+        0.8884860670661348
+      ],
+      "quaternion": [
+        0.9887710779360422,
+        0.0,
+        -0.14943813247359922,
+        0.0
+      ]
+    },
+    "right_link_4": {
+      "position": [
+        -0.5202095442014383,
+        -0.845,
+        0.8120591479360862
+      ],
+      "quaternion": [
+        0.6216099682706644,
+        0.0,
+        -0.7833269096274833,
+        0.0
+      ]
+    },
+    "right_link_5": {
+      "position": [
+        -0.3449169706433632,
+        -0.845,
+        0.8529555249808419
+      ],
+      "quaternion": [
+        0.6216099682706644,
+        0.0,
+        -0.7833269096274833,
+        0.0
+      ]
+    },
+    "right_link_6": {
+      "position": [
+        -0.2816168746362805,
+        -0.845,
+        0.8677236611358926
+      ],
+      "quaternion": [
+        0.5611680535493414,
+        0.0,
+        -0.8277018881672575,
+        0.0
+      ]
+    },
+    "right_link_7": {
+      "position": [
+        -0.221234493161029,
+        -0.845,
+        0.8917854151737262
+      ],
+      "quaternion": [
+        0.5611680535493414,
+        0.0,
+        -0.8277018881672575,
+        0.0
+      ]
+    },
+    "right_hand": {
+      "position": [
+        -0.18872090313589357,
+        -0.845,
+        0.9047417442710213
+      ],
+      "quaternion": [
+        0.5611680535493414,
+        0.0,
+        -0.8277018881672575,
+        0.0
+      ]
+    },
+    "right_finger_-1": {
+      "position": [
+        -0.17199962826582393,
+        -0.885,
+        0.9114049992353445
+      ],
+      "quaternion": [
+        0.5595905080811957,
+        0.04204815798326675,
+        -0.8253750676107501,
+        0.062019460189468724
+      ]
+    },
+    "right_finger_1": {
+      "position": [
+        -0.17199962826582393,
+        -0.8049999999999999,
+        0.9114049992353445
+      ],
+      "quaternion": [
+        0.5595905080811957,
+        -0.04204815798326675,
+        -0.8253750676107501,
+        -0.062019460189468724
+      ]
+    }
+  }
+}

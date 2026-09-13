@@ -1,0 +1,450 @@
+{
+  "id": "new-bracketbot",
+  "hardware_model_verified": false,
+  "execution_enabled": false,
+  "hardware_revision": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "sdk_revision": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "firmware_revision": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "base": {
+    "mobile": {
+      "value": true,
+      "verification": "reported",
+      "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+      "unit": null
+    },
+    "slam": {
+      "value": true,
+      "verification": "reported",
+      "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+      "unit": null
+    },
+    "localization": {
+      "value": true,
+      "verification": "reported",
+      "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+      "unit": null
+    },
+    "navigation": {
+      "value": true,
+      "verification": "reported",
+      "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+      "unit": null
+    },
+    "motor_type": {
+      "value": "hub BLDC",
+      "verification": "reported",
+      "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+      "unit": null
+    },
+    "stated_motor_torque": {
+      "value": 8.5,
+      "verification": "reported",
+      "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+      "unit": "N m"
+    },
+    "dimensions": {
+      "value": null,
+      "verification": "unknown",
+      "source": "vendor/runtime required",
+      "unit": null
+    },
+    "kinematics": {
+      "value": null,
+      "verification": "unknown",
+      "source": "vendor/runtime required",
+      "unit": null
+    }
+  },
+  "cameras": [
+    {
+      "id": "head",
+      "type": {
+        "value": "stereo depth",
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": null
+      },
+      "stated_fov": {
+        "value": 180,
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": "degree"
+      },
+      "video_resolution": {
+        "value": [
+          2560,
+          960
+        ],
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": null
+      },
+      "intrinsics": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      },
+      "transform": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      }
+    },
+    {
+      "id": "left_wrist",
+      "available": {
+        "value": true,
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": null
+      },
+      "intrinsics": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      },
+      "transform": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      }
+    },
+    {
+      "id": "right_wrist",
+      "available": {
+        "value": true,
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": null
+      },
+      "intrinsics": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      },
+      "transform": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      }
+    }
+  ],
+  "microphone": {
+    "value": true,
+    "verification": "reported",
+    "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+    "unit": null
+  },
+  "speaker": {
+    "available": {
+      "value": true,
+      "verification": "reported",
+      "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+      "unit": null
+    },
+    "aec": {
+      "value": true,
+      "verification": "reported",
+      "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+      "unit": null
+    }
+  },
+  "arms": [
+    {
+      "id": "left",
+      "dof": {
+        "value": 7,
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": null
+      },
+      "stated_payload": {
+        "value": 2,
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": "kg per arm"
+      },
+      "joint_names": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      },
+      "joint_axes": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      },
+      "joint_limits": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      }
+    },
+    {
+      "id": "right",
+      "dof": {
+        "value": 7,
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": null
+      },
+      "stated_payload": {
+        "value": 2,
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": "kg per arm"
+      },
+      "joint_names": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      },
+      "joint_axes": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      },
+      "joint_limits": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      }
+    }
+  ],
+  "grippers": [
+    {
+      "id": "left",
+      "type": {
+        "value": "rotary pincher",
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": null
+      },
+      "servo_stall_torque_claim": {
+        "value": 50,
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": "kg cm; not contact force"
+      },
+      "geometry": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      },
+      "force_limits": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      }
+    },
+    {
+      "id": "right",
+      "type": {
+        "value": "rotary pincher",
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": null
+      },
+      "servo_stall_torque_claim": {
+        "value": 50,
+        "verification": "reported",
+        "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+        "unit": "kg cm; not contact force"
+      },
+      "geometry": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      },
+      "force_limits": {
+        "value": null,
+        "verification": "unknown",
+        "source": "vendor/runtime required",
+        "unit": null
+      }
+    }
+  ],
+  "vertical_stage": {
+    "available": {
+      "value": true,
+      "verification": "reported",
+      "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+      "unit": null
+    },
+    "arrangement": {
+      "value": "independent shoulder vertical linear stage",
+      "verification": "reported",
+      "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+      "unit": null
+    },
+    "travel": {
+      "value": null,
+      "verification": "unknown",
+      "source": "vendor/runtime required",
+      "unit": null
+    },
+    "count": {
+      "value": null,
+      "verification": "unknown",
+      "source": "vendor/runtime required",
+      "unit": null
+    }
+  },
+  "reach": {
+    "value": "floor to 6 ft height; not radial reach",
+    "verification": "reported",
+    "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+    "unit": null
+  },
+  "payload": {
+    "value": "2 kg stated per arm; runtime envelope unknown",
+    "verification": "reported",
+    "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+    "unit": null
+  },
+  "compute": {
+    "value": "Jetson Orin Nano Super 8 GB",
+    "verification": "reported",
+    "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+    "unit": null
+  },
+  "shared_training_compute": {
+    "value": "8 x H100 at event; access unprovisioned",
+    "verification": "reported",
+    "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+    "unit": null
+  },
+  "joint_limits": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "velocity_limits": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "acceleration_limits": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "force_limits": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "transforms": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "camera_intrinsics": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "collision_meshes": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "inertial_parameters": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "emergency_stop": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "watchdog": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "vendor_safety_primitives": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "supported_control_modes": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "command_rates": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "sensor_synchronization": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "vla_action_schema": {
+    "value": null,
+    "verification": "unknown",
+    "source": "vendor/runtime required",
+    "unit": null
+  },
+  "teleoperation_available": {
+    "value": "Meta Quest + custom IK reported",
+    "verification": "reported",
+    "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+    "unit": null
+  },
+  "VLA_runtime_available": {
+    "value": "workflow reported; runtime API unknown",
+    "verification": "reported",
+    "source": "docs/sources/BRACKETBOT_INTEGRATION.md (supplied summary; original handout/video unavailable)",
+    "unit": null
+  },
+  "capability_verification_status": "planning evidence only; no runtime handshake"
+}

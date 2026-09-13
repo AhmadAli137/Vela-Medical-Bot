@@ -1,0 +1,173 @@
+{
+  "file": "assets/simulation/robot.glb",
+  "body_count": 27,
+  "expected_body_count": 27,
+  "node_count": 114,
+  "matched": true,
+  "failures": [],
+  "bodies": [
+    {
+      "body": "robot_base",
+      "position_error_m": 2.7079145173856117e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 3
+    },
+    {
+      "body": "left_wheel",
+      "position_error_m": 2.4314019767482837e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 4
+    },
+    {
+      "body": "right_wheel",
+      "position_error_m": 3.4052984327756966e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 4
+    },
+    {
+      "body": "mast",
+      "position_error_m": 1.6858739341553915e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 4
+    },
+    {
+      "body": "head",
+      "position_error_m": 5.293751547064771e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 6
+    },
+    {
+      "body": "left_shoulder",
+      "position_error_m": 3.792279641516147e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "left_link_1",
+      "position_error_m": 3.792279641516147e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 3
+    },
+    {
+      "body": "left_link_2",
+      "position_error_m": 5.805871818396737e-08,
+      "quaternion_error": 5.5094132822738265e-09,
+      "visual_children": 4
+    },
+    {
+      "body": "left_link_3",
+      "position_error_m": 3.189293463063462e-08,
+      "quaternion_error": 5.5094132822738265e-09,
+      "visual_children": 3
+    },
+    {
+      "body": "left_link_4",
+      "position_error_m": 1.8842296432178447e-08,
+      "quaternion_error": 2.259367981424842e-08,
+      "visual_children": 4
+    },
+    {
+      "body": "left_link_5",
+      "position_error_m": 8.699948760936722e-09,
+      "quaternion_error": 2.259367981424842e-08,
+      "visual_children": 3
+    },
+    {
+      "body": "left_link_6",
+      "position_error_m": 2.04244922740093e-08,
+      "quaternion_error": 3.012398818973767e-08,
+      "visual_children": 3
+    },
+    {
+      "body": "left_link_7",
+      "position_error_m": 2.9470351903134865e-08,
+      "quaternion_error": 3.012398818973767e-08,
+      "visual_children": 3
+    },
+    {
+      "body": "left_hand",
+      "position_error_m": 2.1971354384839092e-08,
+      "quaternion_error": 3.012398818973767e-08,
+      "visual_children": 4
+    },
+    {
+      "body": "left_finger_-1",
+      "position_error_m": 4.012538862947814e-08,
+      "quaternion_error": 1.6830825493401497e-08,
+      "visual_children": 2
+    },
+    {
+      "body": "left_finger_1",
+      "position_error_m": 3.156165212168176e-08,
+      "quaternion_error": 1.6830825493401497e-08,
+      "visual_children": 2
+    },
+    {
+      "body": "right_shoulder",
+      "position_error_m": 4.6963013566017746e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "right_link_1",
+      "position_error_m": 4.6963013566017746e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 3
+    },
+    {
+      "body": "right_link_2",
+      "position_error_m": 6.432884976759281e-08,
+      "quaternion_error": 5.5094132822738265e-09,
+      "visual_children": 4
+    },
+    {
+      "body": "right_link_3",
+      "position_error_m": 4.2243880439776316e-08,
+      "quaternion_error": 5.5094132822738265e-09,
+      "visual_children": 3
+    },
+    {
+      "body": "right_link_4",
+      "position_error_m": 3.3502511698293127e-08,
+      "quaternion_error": 2.259367981424842e-08,
+      "visual_children": 4
+    },
+    {
+      "body": "right_link_5",
+      "position_error_m": 2.9035758362734513e-08,
+      "quaternion_error": 2.259367981424842e-08,
+      "visual_children": 3
+    },
+    {
+      "body": "right_link_6",
+      "position_error_m": 3.4417234634805406e-08,
+      "quaternion_error": 3.012398818973767e-08,
+      "visual_children": 3
+    },
+    {
+      "body": "right_link_7",
+      "position_error_m": 4.0446109782657565e-08,
+      "quaternion_error": 3.012398818973767e-08,
+      "visual_children": 3
+    },
+    {
+      "body": "right_hand",
+      "position_error_m": 3.535712896659415e-08,
+      "quaternion_error": 3.012398818973767e-08,
+      "visual_children": 4
+    },
+    {
+      "body": "right_finger_-1",
+      "position_error_m": 2.9706077659177057e-08,
+      "quaternion_error": 1.6830825493401497e-08,
+      "visual_children": 2
+    },
+    {
+      "body": "right_finger_1",
+      "position_error_m": 2.9028617903897364e-08,
+      "quaternion_error": 1.6830825493401497e-08,
+      "visual_children": 2
+    }
+  ],
+  "hardware_model_verified": false
+}

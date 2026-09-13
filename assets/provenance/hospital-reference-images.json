@@ -1,0 +1,42 @@
+[
+  {
+    "id": "stanford-empty-room-2019",
+    "path": "assets/references/stanford-patient-room-reference.jpg",
+    "source_url": "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers.html",
+    "image_url": "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers/_jcr_content/article-parsys/imagewithcaption/image.img.full.high.jpg/1574196935862.jpg",
+    "downloaded_at": "2026-09-13T02:52:45.207832+00:00",
+    "sha256": "899522b3a6418a6c22e1a63cbe7a49545aef01edc4a455346795abc4a67b3a64",
+    "rights_status": "copyright_retained_local_viewing_reference_only",
+    "usable_for_training": false,
+    "redistribution_allowed": false,
+    "robots_checked": true,
+    "privacy_status": "visually_inspected_reference_only_not_dataset_approved",
+    "purpose": "User-requested architectural visual reference, separate from dataset and app assets",
+    "bytes": 95677,
+    "pixels": [
+      1024,
+      683
+    ],
+    "visual_inspection_notes": "Empty family seating/headwall area; no visible people or obvious patient identifiers. Small equipment labels remain. Not a privacy or training approval."
+  },
+  {
+    "id": "ucla-reagan-patient-room",
+    "path": "assets/references/ucla-patient-room-reference.jpg",
+    "source_url": "https://www.uclahealth.org/hospitals/reagan/about-medical-center/photo-gallery",
+    "image_url": "https://www.uclahealth.org/sites/default/files/images/image-E.jpg",
+    "downloaded_at": "2026-09-13T02:56:31.348533+00:00",
+    "sha256": "fea489598dc5d93001ce5604fe86f12cf938df6d1be383a71f9fc22a433a36e8",
+    "bytes": 847403,
+    "pixels": [
+      2492,
+      3329
+    ],
+    "rights_status": "copyright_retained_local_viewing_reference_only",
+    "usable_for_training": false,
+    "redistribution_allowed": false,
+    "robots_checked": true,
+    "privacy_status": "visually_inspected_reference_only_not_dataset_approved",
+    "purpose": "User-requested architectural reference only; separate from research dataset and public application assets.",
+    "visual_inspection_notes": "Empty staged patient room; no visible people or obvious patient identifiers. Equipment branding and printed reading material remain. Not a privacy or training approval."
+  }
+]

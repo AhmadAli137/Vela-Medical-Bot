@@ -1,0 +1,55 @@
+{
+  "name": "vela_dual_arm_surrogate_v1",
+  "hardware_model_verified": false,
+  "authorizes_hardware": false,
+  "source": "Topology from supplied Bracket Bot summaries; all numeric geometry, inertia, calibration and control parameters below are synthetic engineering fixtures.",
+  "confirmed_topology": [
+    "mobile base",
+    "dual seven-DOF arms",
+    "vertical stage",
+    "two grippers",
+    "head stereo and wrist views"
+  ],
+  "unsupported_claims": [
+    "hardware reachability",
+    "payload certification",
+    "patient clearance certification",
+    "cloth fidelity",
+    "vendor control compatibility"
+  ],
+  "seed": 7,
+  "clutter": 3,
+  "table_height_m": 0.72,
+  "table_x_m": 1.3056099321357406,
+  "sampled_object_masses_kg": {
+    "phone": 0.1460365826804696,
+    "clutter_1": 0.25535527432545013,
+    "clutter_2": 0.1360713092839074,
+    "clutter_3": 0.2990100623555664
+  },
+  "model_hash": "3aa93e03706e17a63a8ffc5cb058e8996083e010a1e9ec2ac0db5d1ffb3a196f",
+  "actuated_joints": [
+    "base_x",
+    "base_y",
+    "base_yaw",
+    "lift",
+    "left_joint_1",
+    "left_joint_2",
+    "left_joint_3",
+    "left_joint_4",
+    "left_joint_5",
+    "left_joint_6",
+    "left_joint_7",
+    "left_gripper_-1",
+    "left_gripper_1",
+    "right_joint_1",
+    "right_joint_2",
+    "right_joint_3",
+    "right_joint_4",
+    "right_joint_5",
+    "right_joint_6",
+    "right_joint_7",
+    "right_gripper_-1",
+    "right_gripper_1"
+  ]
+}

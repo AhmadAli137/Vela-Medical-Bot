@@ -1,0 +1,36 @@
+{
+  "source": "Chrome browser capture against http://127.0.0.1:8000/#simulation with final detailed GLB assets",
+  "viewport": {
+    "width": 1600,
+    "height": 1000
+  },
+  "errors": [],
+  "bodyCount": 27,
+  "movingJoints": 24,
+  "jointMode": "joint_demo",
+  "reachMode": "reach_demo",
+  "reachMetrics": {
+    "physics_steps": 3285,
+    "finite_dynamics": true,
+    "contacts": [],
+    "stop_reason": null,
+    "grasp_success": null,
+    "object_attached": false,
+    "reach": {
+      "target": [0.22, -0.53, 0.96],
+      "ik_residual_m": 0.0007006005186852261,
+      "actual_endpoint_error_m": 0.0005547829256179917,
+      "endpoint_reached": true,
+      "sampled_collision_gate_passed": true,
+      "samples": 60
+    }
+  },
+  "hardware": false,
+  "scope": "Measured in the unverified reference MuJoCo simulation; no physical robot execution or grasp success is claimed.",
+  "artifacts": {
+    "recording": "apps/web/artifacts/immersive-motion.webm",
+    "bedside_screenshot": "apps/web/artifacts/immersive-final-bedside.png",
+    "joint_screenshot": "apps/web/artifacts/immersive-final-joints.png",
+    "reach_screenshot": "apps/web/artifacts/immersive-final-reach.png"
+  }
+}

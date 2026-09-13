@@ -1,0 +1,50 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "verdict": {
+      "enum": [
+        "accept_candidate",
+        "revise",
+        "reject"
+      ],
+      "title": "Verdict",
+      "type": "string"
+    },
+    "reasons": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Reasons",
+      "type": "array"
+    },
+    "hidden_assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Hidden Assumptions",
+      "type": "array"
+    },
+    "clinical_boundary_violation": {
+      "title": "Clinical Boundary Violation",
+      "type": "boolean"
+    },
+    "human_first_alternative": {
+      "title": "Human First Alternative",
+      "type": "string"
+    },
+    "solves_original_intent": {
+      "title": "Solves Original Intent",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "verdict",
+    "reasons",
+    "hidden_assumptions",
+    "clinical_boundary_violation",
+    "human_first_alternative",
+    "solves_original_intent"
+  ],
+  "title": "Critique",
+  "type": "object"
+}

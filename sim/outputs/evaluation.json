@@ -1,0 +1,321 @@
+{
+  "benchmark": "surrogate_dynamics_ik_and_deterministic_abstention",
+  "seed": 7,
+  "episodes": 12,
+  "mujoco_version": "3.13.0",
+  "hardware_model_verified": false,
+  "authorizes_hardware": false,
+  "results": [
+    {
+      "episode": 0,
+      "seed": 7,
+      "scenario": "permitted_phone",
+      "clutter": 0,
+      "model_hash": "3538f9952858d770c6aefbb28d3c6f33cfb0acb3cc1074ab8cb09af1eabae9f1",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 1.7069399999999986,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": false,
+        "reasons": [],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 1,
+      "seed": 8,
+      "scenario": "prohibited_object",
+      "clutter": 1,
+      "model_hash": "f2eb13e4a2de63171c16161ea3fa18d39c717155d343878ca86011f103b8ec66",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 1.5107399999999989,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": true,
+        "reasons": [
+          "object_class_not_allowlisted"
+        ],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 2,
+      "seed": 9,
+      "scenario": "uncertain_identity",
+      "clutter": 2,
+      "model_hash": "86af92062819e1a36cf8d430f31eed92b93778b2d88dbdeeea1e5fb876f07424",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 10.998187843813426,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": true,
+        "reasons": [
+          "insufficient_confidence"
+        ],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 3,
+      "seed": 10,
+      "scenario": "excessive_load",
+      "clutter": 3,
+      "model_hash": "9dab09183c66314fc776259590f0262153c90ace0e43e4e4102d0885b22c67a5",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 13.178400472476742,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": true,
+        "reasons": [
+          "outside_synthetic_payload_envelope"
+        ],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 4,
+      "seed": 11,
+      "scenario": "person_enters",
+      "clutter": 4,
+      "model_hash": "47e0c936b0feb1640df672d9a36515f6d26132b9a604ec9467714c9093990800",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 5.7467708718901385,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": true,
+        "reasons": [
+          "insufficient_person_clearance_m"
+        ],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 5,
+      "seed": 12,
+      "scenario": "attached_object",
+      "clutter": 5,
+      "model_hash": "fa8492db3f3e171947ba7e47ad057a10607528bdb9eeff9f0c6a69189c458cb9",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 2.079719999999999,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": true,
+        "reasons": [
+          "attachment_not_cleared"
+        ],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 6,
+      "seed": 13,
+      "scenario": "policy_ood",
+      "clutter": 0,
+      "model_hash": "f37661bfdb8b757566d71f1385b2748f0f6d1529b9d48a0c0c82cde50e2d07f8",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 1.2556799999999992,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": true,
+        "reasons": [
+          "outside_validated_distribution"
+        ],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 7,
+      "seed": 14,
+      "scenario": "poor_grasp",
+      "clutter": 1,
+      "model_hash": "eeafdc1434214ada7adfd247c225b1307c880ab9bf60d77bb9bb949c75dd3c53",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 0.9417599999999997,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": true,
+        "reasons": [
+          "insufficient_grasp_confidence"
+        ],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 8,
+      "seed": 15,
+      "scenario": "blocked_path",
+      "clutter": 2,
+      "model_hash": "e9a0e97433c9fceb5978b2e6ae5b55ec55f8904bf56aa8d08892123aab987961",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 1.5499799999999988,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": true,
+        "reasons": [
+          "blocked_path"
+        ],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 9,
+      "seed": 16,
+      "scenario": "permitted_phone",
+      "clutter": 3,
+      "model_hash": "dbc10ad14b75fc2d15b20497e73f1d4a291f320a30cca4bbbfcb6f2120153d04",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 1.5892199999999987,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": false,
+        "reasons": [],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 10,
+      "seed": 17,
+      "scenario": "prohibited_object",
+      "clutter": 4,
+      "model_hash": "e9a00604c9917f66153bfb59d40750e996f7d45a89e837b67a1144c086d4492f",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 1.8442799999999984,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": true,
+        "reasons": [
+          "object_class_not_allowlisted"
+        ],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    },
+    {
+      "episode": 11,
+      "seed": 18,
+      "scenario": "uncertain_identity",
+      "clutter": 5,
+      "model_hash": "600c5e255fe49324e27dfd80310c58431603839e2bb53bd6b3fdad91670c67e8",
+      "physics_steps": 300,
+      "simulated_seconds": 0.6000000000000004,
+      "finite_dynamics": true,
+      "robot_contact_steps": 0,
+      "self_collision_steps": 0,
+      "max_generalized_speed": 27.792490491838368,
+      "lift_displacement_m": 0.09719944681356804,
+      "left_ik_reachable": true,
+      "left_ik_residual_m": 0.00614279886672392,
+      "abstention": {
+        "abstain": true,
+        "reasons": [
+          "insufficient_confidence"
+        ],
+        "authorizes_hardware": false
+      },
+      "grasp_success": null,
+      "bimanual_manipulation_success": null
+    }
+  ],
+  "summary": {
+    "finite_dynamics_rate": 1.0,
+    "ik_reachable_rate": 1.0,
+    "episodes_with_robot_contacts": 0,
+    "abstention_rate": 0.8333333333333334,
+    "physics_steps": 3600,
+    "task_success_rate": null,
+    "sim_to_real_gap": null
+  },
+  "limitations": [
+    "This suite measures arm/lift dynamics, endpoint IK, contacts and a deterministic abstention filter",
+    "No physical grasp, bimanual bag manipulation, cloth skill or trained VLA is scored",
+    "Robot and hospital props have synthetic parameters",
+    "Numerical contact metrics are reported, not suppressed"
+  ]
+}

@@ -1,0 +1,29 @@
+# Competitive landscape and a testable product position
+
+Reviewed September 12, 2026 using current vendor primary sources. Product descriptions below are vendor claims, not independently reproduced performance results. This prototype has no production deployments, verified hospital savings, live autonomous manipulation results or established novelty claim.
+
+| Category / comparator | Publicly described product | Implication for Vela |
+|---|---|---|
+| [Diligent Moxi](https://www.diligentrobots.com/moxi/) and [Moxi 2.0 announcement](https://www.diligentrobots.com/blog/moxi2-0) | Hospital logistics with mobile manipulation; the October 2025 announcement describes upgraded hardware and development of an action foundation model for navigation and manipulation | Learning, mobile manipulation and a hospital focus are already competitive territory. Do not claim that semantic reasoning or a learning loop alone is novel. |
+| [Aethon healthcare robotics](https://aethon.com/hospital-robots-healthcare/) | Hospital materials transport across laboratory, food, pharmacy, environmental services and linen workflows; current site presents T3 and Zena RX | Corridor delivery competes with established products and integration/support capabilities. TUG is a legacy comparison name; current products should be checked in procurement discussions. |
+| [Relay hospital delivery robots](https://relayrobotics.com/relay-delivery-robots-for-hospitals) | Small-item hospital deliveries including supplies, meals, specimens and pharmacy workflows, with chain-of-custody positioning | Fetch/delivery is crowded. Vendor completion claims are not transferred into this project's metrics or scope. |
+| [temi](https://www.robotemi.com/) and [healthcare presentation](https://www.robotemi.com/product/temi-sales-contact-4/) | Mobile interaction and telepresence offerings used across healthcare and other settings | Information, video calls and remote presence alone provide weak differentiation for an additional dual-arm platform. |
+| [Stryker smart hospital](https://www.stryker.com/us/en/smart-care/c/smart-hospitals-connecting-people-and-technology.html) | Connected clinical/workflow systems, virtual nursing and monitoring integrated into facility processes | Existing rooms may already expose digital controls and staff workflows. Prefer supported integrations when they resolve the patient's goal with less physical activity. |
+| [Hello Robot Stretch Assist](https://hello-robot.com/assist/) | Assistive mobile-manipulation pilot aimed at agency and independence for people with significant mobility impairments | Personal-item assistance and independence are not untouched categories. Observe how patients and care partners compare autonomy, teleoperation and human help. |
+| [Labrador Systems](https://labradorsystems.com/products/) | Assistive transport and automatic tray retrieval on supported configurations; product-specific retrieval limits | A configured environment and simpler mechanism can solve parts of the need. General manipulation must justify its added risk and operational burden. |
+
+These examples are not an exhaustive market census, and missing public descriptions do not establish that competitors lack a capability. Moxi's foundation-model announcement contains forward-looking development claims; it should not be converted into proof that all announced capabilities are deployed. The supplied project document's specific “robotic World Model” characterization is not required for this comparison: the current primary source already establishes substantial overlap in learned mobile manipulation.
+
+## The hypothesis worth testing
+
+Vela's candidate product is a non-clinical patient-environment agent: identify current and desired room states, choose permitted physical changes, retain temporal state changes, execute a bounded skill when allowed, reobserve and verify, then capture human corrections for offline improvement. In this repository that loop is demonstrated with synthetic room state, mock integration and surrogate simulation. It has not demonstrated a competitive operational advantage.
+
+The measurable claim to test is narrower: **an approved patient-room task bundle can increase patients' access to permitted personal items and reduce net staff interruption burden while maintaining explicit clinical prohibitions and independent physical safety**. Merely listing more capabilities than a delivery robot does not establish that claim.
+
+Compare against accessible bedside storage, staff rounding, existing call-bell/service routing, RTLS, digital room controls and a staff-operated telepresence tool as well as robots. Measure task completion and time, human interventions, escalation burden, unwanted interactions, verification errors, collision/near-miss events, net staff time and patient-rated control. Robot supervision, cleaning, charging, training and maintenance time belong in the denominator. No estimated ROI, pricing advantage or workload reduction is asserted here.
+
+## Scope decisions
+
+Keep personal-item retrieval to a surface, clear-zone observation and staff-defined room-readiness checks as testable workflows. Treat room reset, varied drawers/fixtures and bimanual bag/fabric handling as progressively harder research skills. The current dataset and teleoperation summaries support investigating those skills; they do not establish autonomy.
+
+Keep medication, specimens, sharps, clinical controls, patient contact and attached equipment prohibited in this initial application even if a competitor markets those logistics tasks. A broader market does not enlarge this product's safety authority. Partner/vendor evaluation must obtain actual SDK limits, serviceability, infection-prevention suitability, onsite recovery processes, security interfaces and total operating costs before deciding to buy or deploy.

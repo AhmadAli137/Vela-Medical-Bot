@@ -1,0 +1,44 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "archetype": {
+      "title": "Archetype",
+      "type": "string"
+    },
+    "object_classes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Object Classes",
+      "type": "array"
+    },
+    "relationships": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Relationships",
+      "type": "array"
+    },
+    "uncertainties": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Uncertainties",
+      "type": "array"
+    },
+    "metric_geometry_verified": {
+      "const": false,
+      "title": "Metric Geometry Verified",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "archetype",
+    "object_classes",
+    "relationships",
+    "uncertainties",
+    "metric_geometry_verified"
+  ],
+  "title": "SceneInterpretation",
+  "type": "object"
+}

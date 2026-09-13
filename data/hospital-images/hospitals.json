@@ -1,0 +1,854 @@
+[
+  {
+    "id": "toronto_general",
+    "hospital": "Toronto General Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.uhn.ca"
+    ],
+    "seed_urls": [
+      "https://www.uhn.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "toronto_western",
+    "hospital": "Toronto Western Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.uhn.ca"
+    ],
+    "seed_urls": [
+      "https://www.uhn.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "princess_margaret",
+    "hospital": "Princess Margaret Cancer Centre",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.uhn.ca"
+    ],
+    "seed_urls": [
+      "https://www.uhn.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "sunnybrook",
+    "hospital": "Sunnybrook Health Sciences Centre",
+    "geography": "Canada",
+    "allowed_domains": [
+      "sunnybrook.ca"
+    ],
+    "seed_urls": [
+      "https://sunnybrook.ca/patients-visitors/getting-admitted-to-hospital/room-options/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "official_page_located",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "mount_sinai",
+    "hospital": "Mount Sinai Hospital Toronto",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.sinaihealth.ca"
+    ],
+    "seed_urls": [
+      "https://www.sinaihealth.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "st_michaels",
+    "hospital": "St. Michael's Hospital Toronto",
+    "geography": "Canada",
+    "allowed_domains": [
+      "unityhealth.to"
+    ],
+    "seed_urls": [
+      "https://unityhealth.to/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "sickkids",
+    "hospital": "The Hospital for Sick Children",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.sickkids.ca"
+    ],
+    "seed_urls": [
+      "https://www.sickkids.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "north_york",
+    "hospital": "North York General Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.nygh.on.ca"
+    ],
+    "seed_urls": [
+      "https://www.nygh.on.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "humber_river",
+    "hospital": "Humber River Health Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.hrh.ca"
+    ],
+    "seed_urls": [
+      "https://www.hrh.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "oakville",
+    "hospital": "Oakville Trafalgar Memorial Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.haltonhealthcare.on.ca"
+    ],
+    "seed_urls": [
+      "https://www.haltonhealthcare.on.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "credit_valley",
+    "hospital": "Credit Valley Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.thp.ca"
+    ],
+    "seed_urls": [
+      "https://www.thp.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "mississauga",
+    "hospital": "Mississauga Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.thp.ca"
+    ],
+    "seed_urls": [
+      "https://www.thp.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "hamilton_general",
+    "hospital": "Hamilton General Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.hamiltonhealthsciences.ca"
+    ],
+    "seed_urls": [
+      "https://www.hamiltonhealthsciences.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "juravinski",
+    "hospital": "Juravinski Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.hamiltonhealthsciences.ca"
+    ],
+    "seed_urls": [
+      "https://www.hamiltonhealthsciences.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "mcmaster",
+    "hospital": "McMaster Children's Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.hamiltonhealthsciences.ca"
+    ],
+    "seed_urls": [
+      "https://www.hamiltonhealthsciences.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "ottawa_civic",
+    "hospital": "The Ottawa Hospital Civic Campus",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.ottawahospital.on.ca"
+    ],
+    "seed_urls": [
+      "https://www.ottawahospital.on.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "ottawa_general",
+    "hospital": "The Ottawa Hospital General Campus",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.ottawahospital.on.ca"
+    ],
+    "seed_urls": [
+      "https://www.ottawahospital.on.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "kingston",
+    "hospital": "Kingston General Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "kingstonhsc.ca"
+    ],
+    "seed_urls": [
+      "https://kingstonhsc.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "london_victoria",
+    "hospital": "Victoria Hospital London",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.lhsc.on.ca"
+    ],
+    "seed_urls": [
+      "https://www.lhsc.on.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "london_university",
+    "hospital": "University Hospital London",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.lhsc.on.ca"
+    ],
+    "seed_urls": [
+      "https://www.lhsc.on.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "vancouver_general",
+    "hospital": "Vancouver General Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.vch.ca"
+    ],
+    "seed_urls": [
+      "https://www.vch.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "st_pauls",
+    "hospital": "St. Paul's Hospital Vancouver",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.providencehealthcare.org"
+    ],
+    "seed_urls": [
+      "https://www.providencehealthcare.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "bc_children",
+    "hospital": "BC Children's Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.bcchildrens.ca"
+    ],
+    "seed_urls": [
+      "https://www.bcchildrens.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "royal_columbian",
+    "hospital": "Royal Columbian Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.fraserhealth.ca"
+    ],
+    "seed_urls": [
+      "https://www.fraserhealth.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "surrey_memorial",
+    "hospital": "Surrey Memorial Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.fraserhealth.ca"
+    ],
+    "seed_urls": [
+      "https://www.fraserhealth.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "foothills",
+    "hospital": "Foothills Medical Centre",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.albertahealthservices.ca"
+    ],
+    "seed_urls": [
+      "https://www.albertahealthservices.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "south_health",
+    "hospital": "South Health Campus",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.albertahealthservices.ca"
+    ],
+    "seed_urls": [
+      "https://www.albertahealthservices.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "ualberta",
+    "hospital": "University of Alberta Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.albertahealthservices.ca"
+    ],
+    "seed_urls": [
+      "https://www.albertahealthservices.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "royal_alexandra",
+    "hospital": "Royal Alexandra Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.albertahealthservices.ca"
+    ],
+    "seed_urls": [
+      "https://www.albertahealthservices.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "winnipeg_hsc",
+    "hospital": "Health Sciences Centre Winnipeg",
+    "geography": "Canada",
+    "allowed_domains": [
+      "hsc.mb.ca"
+    ],
+    "seed_urls": [
+      "https://hsc.mb.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "st_boniface",
+    "hospital": "St. Boniface Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "stbonifacehospital.ca"
+    ],
+    "seed_urls": [
+      "https://stbonifacehospital.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "royal_victoria",
+    "hospital": "Royal Victoria Hospital Montreal",
+    "geography": "Canada",
+    "allowed_domains": [
+      "muhc.ca"
+    ],
+    "seed_urls": [
+      "https://muhc.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "jewish_general",
+    "hospital": "Jewish General Hospital",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.jgh.ca"
+    ],
+    "seed_urls": [
+      "https://www.jgh.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "chum",
+    "hospital": "Centre hospitalier de l'Universite de Montreal",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.chumontreal.qc.ca"
+    ],
+    "seed_urls": [
+      "https://www.chumontreal.qc.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "qeii",
+    "hospital": "QEII Health Sciences Centre Halifax Infirmary",
+    "geography": "Canada",
+    "allowed_domains": [
+      "www.nshealth.ca"
+    ],
+    "seed_urls": [
+      "https://www.nshealth.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "iwk",
+    "hospital": "IWK Health Centre",
+    "geography": "Canada",
+    "allowed_domains": [
+      "iwkhealth.ca"
+    ],
+    "seed_urls": [
+      "https://iwkhealth.ca/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "stanford",
+    "hospital": "Stanford Hospital",
+    "geography": "United States",
+    "allowed_domains": [
+      "stanfordhealthcare.org"
+    ],
+    "seed_urls": [
+      "https://stanfordhealthcare.org/discover/new-stanford-hospital-experience.html",
+      "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers.html"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "official_page_located",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "hopkins",
+    "hospital": "The Johns Hopkins Hospital",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.hopkinsmedicine.org"
+    ],
+    "seed_urls": [
+      "https://www.hopkinsmedicine.org/patient-care/patients-visitors/admission-discharge/hospital-room",
+      "https://www.hopkinsmedicine.org/news/articles/2019/06/out-with-the-old-in-with-the-modern"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "official_page_located",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "mayo_st_marys",
+    "hospital": "Mayo Clinic Hospital Saint Marys Campus",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.mayoclinic.org"
+    ],
+    "seed_urls": [
+      "https://www.mayoclinic.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "cleveland",
+    "hospital": "Cleveland Clinic Main Campus Hospital",
+    "geography": "United States",
+    "allowed_domains": [
+      "my.clevelandclinic.org"
+    ],
+    "seed_urls": [
+      "https://my.clevelandclinic.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "mass_general",
+    "hospital": "Massachusetts General Hospital",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.massgeneral.org"
+    ],
+    "seed_urls": [
+      "https://www.massgeneral.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "brigham",
+    "hospital": "Brigham and Women's Hospital",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.brighamandwomens.org"
+    ],
+    "seed_urls": [
+      "https://www.brighamandwomens.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "ucla",
+    "hospital": "Ronald Reagan UCLA Medical Center",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.uclahealth.org"
+    ],
+    "seed_urls": [
+      "https://www.uclahealth.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "ucsf",
+    "hospital": "UCSF Medical Center at Mission Bay",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.ucsfhealth.org"
+    ],
+    "seed_urls": [
+      "https://www.ucsfhealth.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "penn",
+    "hospital": "Hospital of the University of Pennsylvania",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.pennmedicine.org"
+    ],
+    "seed_urls": [
+      "https://www.pennmedicine.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "nyu",
+    "hospital": "NYU Langone Tisch Hospital",
+    "geography": "United States",
+    "allowed_domains": [
+      "nyulangone.org"
+    ],
+    "seed_urls": [
+      "https://nyulangone.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "northwestern",
+    "hospital": "Northwestern Memorial Hospital",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.nm.org"
+    ],
+    "seed_urls": [
+      "https://www.nm.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "rush",
+    "hospital": "Rush University Medical Center",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.rush.edu"
+    ],
+    "seed_urls": [
+      "https://www.rush.edu/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "duke",
+    "hospital": "Duke University Hospital",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.dukehealth.org"
+    ],
+    "seed_urls": [
+      "https://www.dukehealth.org/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  },
+  {
+    "id": "vanderbilt",
+    "hospital": "Vanderbilt University Hospital",
+    "geography": "United States",
+    "allowed_domains": [
+      "www.vanderbilthealth.com"
+    ],
+    "seed_urls": [
+      "https://www.vanderbilthealth.com/"
+    ],
+    "target_candidates": 20,
+    "rights_status": "unknown",
+    "training_permission": false,
+    "seed_status": "proposed_seed_unvalidated",
+    "hospital_attribution_verified": false,
+    "note": "A named hospital seed is not acquired coverage. Shared system pages require human site attribution; never count the same system photo across hospitals."
+  }
+]

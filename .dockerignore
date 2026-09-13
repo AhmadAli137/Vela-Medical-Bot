@@ -1,0 +1,60 @@
+.venv
+.cache
+runtime
+node_modules
+apps/web/node_modules
+apps/web/dist
+data/runtime
+data/test-runs
+pytest-cache-files-*
+.git
+**/__pycache__
+**/.pytest_cache
+**/*.pyc
+**/node_modules
+**/.npm-cache
+**/test-results
+**/playwright-report
+**/*.tsbuildinfo
+**/*.log
+
+# Credentials and local provider project state.
+.env*
+**/.env*
+!.env.example
+*.env
+**/*.env
+.vercel
+**/.vercel
+.npmrc
+**/.npmrc
+.ssh
+**/.ssh
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/credentials*.json
+**/secrets*.json
+
+# Runtime task/learning history and database sidecars.
+learning
+**/*.db
+**/*.db-*
+**/*.sqlite
+**/*.sqlite-*
+**/*.sqlite3
+**/*.sqlite3-*
+artifacts/viewer-ready-*.json
+
+# Local-only copyrighted reference material; preserve authored scene artifacts.
+artifacts/references
+assets/references
+**/Bracket Bot Handout.pdf
+**/01 - Onboard Multi-Camera Views.mov
+**/02 - Bracket Bot Platform Demo.mov
+**/03 - Meta Quest Teleoperation Demo.mp4
+data/hospital-images/quarantine
+data/patient-feedback/raw
+assets/provenance/polyhaven-catalog-cache.json
+**/*.blend[0-9]*

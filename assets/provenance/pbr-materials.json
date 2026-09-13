@@ -1,0 +1,165 @@
+[
+  {
+    "id": "oak_veneer_01",
+    "publisher": "Poly Haven",
+    "source_url": "https://polyhaven.com/a/oak_veneer_01",
+    "api_url": "https://api.polyhaven.com/files/oak_veneer_01",
+    "license": "CC0-1.0",
+    "license_url": "https://polyhaven.com/license",
+    "retrieved_at": "2026-09-13T02:55:43.467930+00:00",
+    "authors": {
+      "Jenelle van Heerden": "All"
+    },
+    "usage": "Scene material texture; does not specify friction or other physical parameters.",
+    "maps": [
+      {
+        "channel": "Diffuse",
+        "path": "assets/textures/oak_veneer_01/oak_veneer_01_diff_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/oak_veneer_01/oak_veneer_01_diff_1k.jpg",
+        "bytes": 641756,
+        "sha256": "c14681f72f59f17bff568cae7a837641443b607b899f0c279cd64a5638f877a7",
+        "provider_md5": "39a99df4e328d62d74f3122722a64a95",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "color_space": "sRGB"
+      },
+      {
+        "channel": "nor_gl",
+        "path": "assets/textures/oak_veneer_01/oak_veneer_01_nor_gl_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/oak_veneer_01/oak_veneer_01_nor_gl_1k.jpg",
+        "bytes": 484844,
+        "sha256": "1297acf7b4476d5ccd83cc8b27be96aa6110f7a9c3a40be0bd767bf81b17db01",
+        "provider_md5": "d05406f5fdaf51f0d7b115b35d9af1b7",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "color_space": "linear"
+      },
+      {
+        "channel": "Rough",
+        "path": "assets/textures/oak_veneer_01/oak_veneer_01_rough_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/oak_veneer_01/oak_veneer_01_rough_1k.jpg",
+        "bytes": 865194,
+        "sha256": "ca2af5649b628ef05f196793d68cdca874c12ceb6e9ae566976546d9dd5a2604",
+        "provider_md5": "a19b44176a078b9ae93314133848c9aa",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "color_space": "linear"
+      }
+    ]
+  },
+  {
+    "id": "linoleum_brown",
+    "publisher": "Poly Haven",
+    "source_url": "https://polyhaven.com/a/linoleum_brown",
+    "api_url": "https://api.polyhaven.com/files/linoleum_brown",
+    "license": "CC0-1.0",
+    "license_url": "https://polyhaven.com/license",
+    "retrieved_at": "2026-09-13T02:55:45.766483+00:00",
+    "authors": {
+      "Rob Tuytel": "All"
+    },
+    "usage": "Scene material texture; does not specify friction or other physical parameters.",
+    "maps": [
+      {
+        "channel": "Diffuse",
+        "path": "assets/textures/linoleum_brown/linoleum_brown_diff_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/linoleum_brown/linoleum_brown_diff_1k.jpg",
+        "bytes": 684269,
+        "sha256": "8947b927043fafc668d6b90454aee18edd37e6f49dc8f87253ca3693ef94f3a4",
+        "provider_md5": "7190f0ce07f9ffe75c1ffec89651390d",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "color_space": "sRGB"
+      },
+      {
+        "channel": "nor_gl",
+        "path": "assets/textures/linoleum_brown/linoleum_brown_nor_gl_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/linoleum_brown/linoleum_brown_nor_gl_1k.jpg",
+        "bytes": 555729,
+        "sha256": "e880ac8cad3f79fe7babd61871e95c859f258deeba45aab5b53c3f18f139df2d",
+        "provider_md5": "9855e3b8389585d18684b6b290f0a0a3",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "color_space": "linear"
+      },
+      {
+        "channel": "Rough",
+        "path": "assets/textures/linoleum_brown/linoleum_brown_rough_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/linoleum_brown/linoleum_brown_rough_1k.jpg",
+        "bytes": 617859,
+        "sha256": "4f673be3b5887d0454af5583f8536b1ae35ba06e329688c27a25d92e0d553115",
+        "provider_md5": "60ba81d57ec0197aec52f994e7cb3b15",
+        "pixels": [
+          1024,
+          1024
+        ],
+        "color_space": "linear"
+      }
+    ]
+  },
+  {
+    "id": "rough_linen",
+    "publisher": "Poly Haven",
+    "source_url": "https://polyhaven.com/a/rough_linen",
+    "api_url": "https://api.polyhaven.com/files/rough_linen",
+    "license": "CC0-1.0",
+    "license_url": "https://polyhaven.com/license",
+    "retrieved_at": "2026-09-13T02:55:48.114306+00:00",
+    "authors": {
+      "colormass": "Photography",
+      "Rico Cilliers": "Processing"
+    },
+    "usage": "Scene material texture; does not specify friction or other physical parameters.",
+    "maps": [
+      {
+        "channel": "Diffuse",
+        "path": "assets/textures/rough_linen/rough_linen_diff_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rough_linen/rough_linen_diff_1k.jpg",
+        "bytes": 835801,
+        "sha256": "04897d7611d7390ddf5b2c6f7273f448dfc48341fdbd1f4f207fa30b331d7f57",
+        "provider_md5": "663db789fb075462b685c1f740e58930",
+        "pixels": [
+          1024,
+          1026
+        ],
+        "color_space": "sRGB"
+      },
+      {
+        "channel": "nor_gl",
+        "path": "assets/textures/rough_linen/rough_linen_nor_gl_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rough_linen/rough_linen_nor_gl_1k.jpg",
+        "bytes": 916843,
+        "sha256": "e2402166d1a489f7414814e69e1836ab672aa24e30bec2d41fea356f81687e53",
+        "provider_md5": "3350269a2e9c472aa406bd3cc1eaf2c8",
+        "pixels": [
+          1024,
+          1026
+        ],
+        "color_space": "linear"
+      },
+      {
+        "channel": "Rough",
+        "path": "assets/textures/rough_linen/rough_linen_rough_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rough_linen/rough_linen_rough_1k.jpg",
+        "bytes": 1083725,
+        "sha256": "734ad6718841a6e296aacaa6e9ee2e1686eed5f62bb8d71c915c5605e162bcb4",
+        "provider_md5": "a380b24cc43cff88c39510305ebf0020",
+        "pixels": [
+          1024,
+          1026
+        ],
+        "color_space": "linear"
+      }
+    ]
+  }
+]

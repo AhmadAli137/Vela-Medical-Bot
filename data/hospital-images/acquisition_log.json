@@ -1,0 +1,70 @@
+[
+  {
+    "hospital": "Sunnybrook Health Sciences Centre",
+    "url": "https://sunnybrook.ca/patients-visitors/getting-admitted-to-hospital/room-options/",
+    "status": "blocked_or_unavailable",
+    "reason": "robots.txt unavailable or disallows URL",
+    "at": "2026-09-13T01:55:49.254159+00:00"
+  },
+  {
+    "hospital": "Stanford Hospital",
+    "url": "https://stanfordhealthcare.org/discover/new-stanford-hospital-experience.html",
+    "status": "blocked_or_unavailable",
+    "reason": "robots.txt unavailable or disallows URL",
+    "at": "2026-09-13T01:55:51.369109+00:00"
+  },
+  {
+    "hospital": "Stanford Hospital",
+    "url": "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers.html",
+    "status": "blocked_or_unavailable",
+    "reason": "robots.txt unavailable or disallows URL",
+    "at": "2026-09-13T01:55:51.369109+00:00"
+  },
+  {
+    "hospital": "The Johns Hopkins Hospital",
+    "url": "https://www.hopkinsmedicine.org/patient-care/patients-visitors/admission-discharge/hospital-room",
+    "status": "blocked_or_unavailable",
+    "reason": "robots.txt unavailable or disallows URL",
+    "at": "2026-09-13T01:55:53.508395+00:00"
+  },
+  {
+    "hospital": "The Johns Hopkins Hospital",
+    "url": "https://www.hopkinsmedicine.org/news/articles/2019/06/out-with-the-old-in-with-the-modern",
+    "status": "blocked_or_unavailable",
+    "reason": "robots.txt unavailable or disallows URL",
+    "at": "2026-09-13T01:55:53.508395+00:00"
+  },
+  {
+    "hospital": "Sunnybrook Health Sciences Centre",
+    "url": "https://sunnybrook.ca/patients-visitors/getting-admitted-to-hospital/room-options/",
+    "status": "blocked_or_unavailable",
+    "reason": "robots.txt unavailable or disallows URL",
+    "at": "2026-09-13T01:56:23.301882+00:00"
+  },
+  {
+    "hospital": "Stanford Hospital",
+    "url": "https://stanfordhealthcare.org/discover/new-stanford-hospital-experience.html",
+    "status": "read",
+    "at": "2026-09-13T01:56:24.705001+00:00"
+  },
+  {
+    "hospital": "Stanford Hospital",
+    "url": "https://stanfordhealthcare.org/newsroom/news/news-updates/2019/designing-the-new-stanford-hospital-for-patients-and-caregivers.html",
+    "status": "read",
+    "at": "2026-09-13T01:56:25.647953+00:00"
+  },
+  {
+    "hospital": "The Johns Hopkins Hospital",
+    "url": "https://www.hopkinsmedicine.org/patient-care/patients-visitors/admission-discharge/hospital-room",
+    "status": "blocked_or_unavailable",
+    "reason": "HTTP Error 403: Forbidden",
+    "at": "2026-09-13T01:56:26.746741+00:00"
+  },
+  {
+    "hospital": "The Johns Hopkins Hospital",
+    "url": "https://www.hopkinsmedicine.org/news/articles/2019/06/out-with-the-old-in-with-the-modern",
+    "status": "blocked_or_unavailable",
+    "reason": "HTTP Error 403: Forbidden",
+    "at": "2026-09-13T01:56:27.749670+00:00"
+  }
+]

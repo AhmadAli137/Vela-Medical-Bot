@@ -1,0 +1,90 @@
+{
+  "synthetic_only": true,
+  "not_vla_competence": true,
+  "sessions": 5,
+  "frames": 60,
+  "policy": {
+    "id": "policy_f6ab6de432cd",
+    "name": "Tiny synthetic behavior cloning",
+    "version": "0.1.0",
+    "task_class": "cluttered_retrieval",
+    "status": "simulator_evaluated",
+    "approval_status": "simulator_evaluated",
+    "execution_type": "SYNTHETIC_FEATURE_BC",
+    "observation_schema": "synchronized_multiview_proprioception_v1",
+    "action_schema": "surrogate_delta_xyz_v1",
+    "training_dataset": [
+      "episode_0e26de500b3b",
+      "episode_34e91cc3872e",
+      "episode_593e2b523228",
+      "episode_fd15cbc3bdba",
+      "episode_980416033f65"
+    ],
+    "training_environment": "synthetic_mock_room",
+    "object_classes": [
+      "phone",
+      "glasses_case",
+      "remote",
+      "small_bag"
+    ],
+    "environmental_constraints": {
+      "synthetic_only": true,
+      "no_patients": true
+    },
+    "patient_distance_constraints": {
+      "minimum_synthetic_clearance_m": 0.75
+    },
+    "validated_distribution": [
+      "synthetic state-feature offset [-0.1,0.1] metres",
+      "not trained on RGB or language"
+    ],
+    "success_rate": null,
+    "intervention_rate": null,
+    "collision_rate": null,
+    "unsafe_attempt_rate": 0.0,
+    "abstention_rate": 0.8888888888888888,
+    "sim_results": {
+      "finite_dynamics_rate": 1.0,
+      "ik_reachable_rate": 1.0,
+      "episodes_with_robot_contacts": 0,
+      "abstention_rate": 0.875,
+      "physics_steps": 2400,
+      "task_success_rate": null,
+      "sim_to_real_gap": null
+    },
+    "real_results": null,
+    "evaluation": {
+      "id": "eval_6391c712f882",
+      "at": "2026-09-13T02:08:06.848374+00:00",
+      "source": "computed_locally_from_artifact_and_heldout_episode",
+      "artifact_hash": "abeb43c33b124bf4929a691bd6bf398e26e27705b6855309eec9056288353c74",
+      "heldout_episode_id": "episode_980416033f65",
+      "heldout_samples": 12,
+      "action_rmse_m": 9.647996083751123e-08,
+      "unsafe_action_count": 0,
+      "abstention_gate_accuracy": 1.0,
+      "simulation": {
+        "finite_dynamics_rate": 1.0,
+        "ik_reachable_rate": 1.0,
+        "episodes_with_robot_contacts": 0,
+        "abstention_rate": 0.875,
+        "physics_steps": 2400,
+        "task_success_rate": null,
+        "sim_to_real_gap": null
+      },
+      "sim_scope": "surrogate_dynamics_ik_and_deterministic_abstention",
+      "hardware_evidence": false,
+      "task_success_rate": null,
+      "bimanual_success_rate": null,
+      "sim_real_gap": null,
+      "passed": true
+    },
+    "artifact": "policy_f6ab6de432cd.json",
+    "rollback_version": null,
+    "created_at": "2026-09-13T02:08:06.418161+00:00",
+    "hardware_approved": false,
+    "artifact_hash": "abeb43c33b124bf4929a691bd6bf398e26e27705b6855309eec9056288353c74"
+  },
+  "activation": "pending_explicit_human_research_signoff",
+  "robot_actions_executed": 0
+}

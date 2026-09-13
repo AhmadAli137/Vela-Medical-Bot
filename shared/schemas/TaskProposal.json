@@ -1,0 +1,177 @@
+{
+  "$defs": {
+    "Pose": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        },
+        "z": {
+          "title": "Z",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "title": "Pose",
+      "type": "object"
+    },
+    "Step": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "action": {
+          "enum": [
+            "place_in_zone",
+            "observe",
+            "abstain"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "object_id": {
+          "title": "Object Id",
+          "type": "string"
+        },
+        "target_zone": {
+          "title": "Target Zone",
+          "type": "string"
+        },
+        "target_pose": {
+          "$ref": "#/$defs/Pose"
+        },
+        "skill_id": {
+          "title": "Skill Id",
+          "type": "string"
+        },
+        "execution_type": {
+          "enum": [
+            "DETERMINISTIC",
+            "BOUNDED_VLA",
+            "SUPERVISED_VLA",
+            "TELEOPERATION",
+            "OBSERVE_ONLY",
+            "BLOCKED"
+          ],
+          "title": "Execution Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "action",
+        "object_id",
+        "target_zone",
+        "target_pose",
+        "skill_id",
+        "execution_type"
+      ],
+      "title": "Step",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "intent": {
+      "title": "Intent",
+      "type": "string"
+    },
+    "target_outcome": {
+      "title": "Target Outcome",
+      "type": "string"
+    },
+    "patient_context_allowed": {
+      "title": "Patient Context Allowed",
+      "type": "boolean"
+    },
+    "current_room_state_id": {
+      "title": "Current Room State Id",
+      "type": "string"
+    },
+    "desired_room_state": {
+      "title": "Desired Room State",
+      "type": "string"
+    },
+    "candidate_steps": {
+      "items": {
+        "$ref": "#/$defs/Step"
+      },
+      "title": "Candidate Steps",
+      "type": "array"
+    },
+    "affected_objects": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Affected Objects",
+      "type": "array"
+    },
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Assumptions",
+      "type": "array"
+    },
+    "uncertainties": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Uncertainties",
+      "type": "array"
+    },
+    "required_skills": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Required Skills",
+      "type": "array"
+    },
+    "prohibited_interactions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Prohibited Interactions",
+      "type": "array"
+    },
+    "human_approval_required": {
+      "title": "Human Approval Required",
+      "type": "boolean"
+    },
+    "success_criteria": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Success Criteria",
+      "type": "array"
+    }
+  },
+  "required": [
+    "intent",
+    "target_outcome",
+    "patient_context_allowed",
+    "current_room_state_id",
+    "desired_room_state",
+    "candidate_steps",
+    "affected_objects",
+    "assumptions",
+    "uncertainties",
+    "required_skills",
+    "prohibited_interactions",
+    "human_approval_required",
+    "success_criteria"
+  ],
+  "title": "TaskProposal",
+  "type": "object"
+}

@@ -1,0 +1,57 @@
+# Local environments, build caches and dependency installs.
+.venv/
+.cache/
+__pycache__/
+.pytest_cache/
+*.pyc
+node_modules/
+apps/web/dist/
+runtime/
+data/runtime/
+data/test-runs/
+pytest-cache-files-*/
+*.log
+apps/web/.npm-cache/
+apps/web/test-results/
+apps/web/playwright-report/
+apps/web/artifacts/videos/
+*.tsbuildinfo
+
+# Credentials and provider-linked local project state; examples stay reviewable.
+.env*
+!.env.example
+*.env
+.vercel/
+.npmrc
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
+
+# Runtime records must not become repository fixtures.
+/learning/
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+artifacts/viewer-ready-*.json
+
+# Copyrighted/user-supplied source media and all derived inspection material.
+# Authored renders/videos elsewhere remain eligible for publication.
+artifacts/references/
+assets/references/
+Bracket Bot Handout.pdf
+01 - Onboard Multi-Camera Views.mov
+02 - Bracket Bot Platform Demo.mov
+03 - Meta Quest Teleoperation Demo.mp4
+data/hospital-images/quarantine/
+data/patient-feedback/raw/
+
+# Redundant downloaded catalog and authoring backups (keep the editable .blend).
+assets/provenance/polyhaven-catalog-cache.json
+*.blend[0-9]*
