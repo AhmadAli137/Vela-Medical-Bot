@@ -4,6 +4,8 @@
 
 Live production: **https://vela-medical-bot.vercel.app**. Source: **https://github.com/AhmadAli137/Vela-Medical-Bot** (private repository). The Vercel project is connected to GitHub; pushes to `main` trigger production builds. The initial production deployment reached `Ready` on September 12, 2026, and the public URL returned HTTP 200 without sign-in.
 
+The geometry and physical pickup correction (`ce06e0d`) deployed successfully on September 13, 2026. Anonymous Chrome verified the production joint motion, low/high travel, contact pickup, sustained hold and gravity release with zero browser or network errors. [Measured result](../artifacts/vercel-browser-check.json).
+
 The public build runs the reference robot's MuJoCo 3.13.0 physics inside the browser using the official `@mujoco/mujoco` WebAssembly package. It includes three GLBs, the estimated MJCF model, 28 synchronized bodies (27 robot plus one free phone), joint and vertical-travel demonstrations, runtime Jacobian IK and contact-driven pickup/release. The phone starts on a visible 35 mm rest; there is no weld or kinematic object attachment. Each visitor has an independent, ephemeral simulation. No Python server, shared task database, paid model API, robot connection, or recorded-pose playback is required for this view.
 
 The full staff/patient/fleet/research workspace remains the separate local Python application described below. The public build opens the 3D view and explains this boundary instead of exposing disconnected operational controls.

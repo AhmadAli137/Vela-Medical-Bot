@@ -16,6 +16,8 @@ The GLB audit validates **28 body poses**: 27 robot bodies and the separate dyna
 
 ## Browser verification
 
+The corrected **live Vercel deployment passed anonymous Chrome verification** on September 13, 2026 in **70.601 seconds**. All 25 joints moved, 28 bodies synchronized, hand heights reached 0.1325–1.7239 m, and the phone rose 22.84 cm with bilateral contact before falling on release. There were zero browser errors, failed requests or local API calls. [Production report](../artifacts/vercel-browser-check.json), [live pickup screenshot](../apps/web/artifacts/vercel-pickup.png).
+
 All **11 actual MuJoCo WebAssembly tests passed** in 11.693 seconds. The browser controller lifts the phone 22.7889 cm, sustains bilateral contact for 15.918 seconds in the measured run, and releases it under gravity. It also passes the forced collision-stop regression and native pose/reach parity checks. [WASM contact measurements](../artifacts/browser-contact-physics.json).
 
 The full Chrome check on the static build passed in **72.646 seconds**, with zero browser errors, failed requests or local API calls. It exercised all 25 joints, pause, reach, low/high travel, pickup, sustained hold and gravity release. All five scene requests used the same asset revision. [Browser report](../artifacts/public-browser-check.json), [pickup screenshot](../apps/web/artifacts/public-pickup.png), [recorded demonstration](../apps/web/artifacts/contact-pickup-demo.mp4).

@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-09-13T03:31:59.125Z",
-  "elapsed_seconds": 24.42,
+  "checked_at": "2026-09-13T04:09:32.195Z",
+  "elapsed_seconds": 70.601,
   "origin": "https://vela-medical-bot.vercel.app",
   "server": "Vercel production; anonymous Chrome context",
   "content_security_policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' blob:; worker-src 'self' blob:; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
@@ -9,18 +9,40 @@
     "width": 1600,
     "height": 1000
   },
-  "synchronized_bodies": 27,
+  "synchronized_bodies": 28,
   "joint_positions": 25,
   "moving_joints": 25,
-  "moving_simulation_time_seconds": 2.98,
-  "paused_simulation_time_seconds": 3.28,
-  "reach_endpoint_error_display": "0.1 cm",
-  "physics_steps_display": "2,487",
+  "moving_simulation_time_seconds": 4.19,
+  "paused_simulation_time_seconds": 4.32,
+  "reach_endpoint_error_display": "0.0 cm",
+  "physics_steps_display": "3,207",
+  "vertical": {
+    "complete": true,
+    "left_travel_m": 0.8414700583733725,
+    "right_travel_m": 0.8415524946468643,
+    "lowest_hand_height_m": 0.13249605872790332,
+    "highest_hand_height_m": 1.7239287018292768
+  },
+  "pickup": {
+    "success": true,
+    "height_gain_m": 0.22841696456332816,
+    "bilateral_contact": true,
+    "bilateral_hold_seconds": 4.755999999999698
+  },
+  "release": {
+    "released": true,
+    "success": false,
+    "height_gain_m": -0.000885206658504667
+  },
+  "scene_revision": "793ef1cc6d704649",
   "default_route_3d": true,
   "legacy_hash_stays_in_public_demo": true,
   "about_dialog_escape_and_focus_restoration": true,
   "errors": [],
   "failed_requests": [],
   "api_requests": [],
-  "screenshot": "apps/web/artifacts/vercel-simulation.png"
+  "screenshot": "apps/web/artifacts/vercel-simulation.png",
+  "pickup_screenshot": "apps/web/artifacts/vercel-pickup.png",
+  "vertical_low_screenshot": "apps/web/artifacts/vercel-vertical-low.png",
+  "vertical_high_screenshot": "apps/web/artifacts/vercel-vertical-high.png"
 }
