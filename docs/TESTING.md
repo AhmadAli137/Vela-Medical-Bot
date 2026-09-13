@@ -1,5 +1,15 @@
 # Actual validation results
 
+## Furnished patient room: September 13, 2026
+
+The evaluated Blender mesh audit passes **195 furniture and support parts** across all seven furniture assemblies. Required casters, legs, rail sockets and bars, handle mounts, cabinet bases, cup and planter parts are present. All included parts have surface-connected paths to the floor; pillow and patient blanket support checks also pass. The audit distinguishes cloth spanning between legs from direct support over the body. [Mesh/contact audit](../artifacts/room-visual-audit.json), [bedding regression fixtures](../artifacts/bedding-audit-regressions.json), [missing/displaced-part regressions](../artifacts/room-audit-regressions.json).
+
+The updated furniture and fixed patient collision shapes passed **15 native MuJoCo tests** in 17.62 seconds and **11 WebAssembly tests** in 13.001 seconds, including the existing phone pickup and vertical travel. Deliberately placing the robot into the patient's occupied space triggers the simulator contact stop. [Native JUnit result](../artifacts/patient-room-physics-tests.xml), [current WASM measurements](../artifacts/browser-contact-physics.json). The patient is a static fictional adult visual model; these checks do not simulate physiology or validate contact with a real person.
+
+See [scene construction and source assets](PATIENT_ROOM.md).
+
+The final static build passed the nine-view Chrome check in **31.631 seconds**, with eight loaded room assemblies and no JavaScript errors, failed requests or local API calls. Visual review confirmed continuous chair upholstery, connected bed supports and corrected patient eye transparency. The planter comparison uses containment within conservative source bounds for rotated leaves; the other assemblies use bounds agreement. [Browser report](../artifacts/room-completeness-check.json), [chair close-up](../apps/web/artifacts/room-chair.png), [patient view](../apps/web/artifacts/room-patient.png).
+
 ## Corrected geometry and physical manipulation
 
 The revised model passed **20 focused tests** (14 native physics and 6 API) in 17.46 seconds, with one dependency deprecation warning. The phone is a 0.18 kg free body: it rises 22.8 cm, sustains contact with both fingers, and drops under gravity after release. There are no equality constraints or runtime object-pose writes in the pickup. Independent shoulder stages travel 84 cm; the end-effector sites span 13.2–172.4 cm above the floor with no unexpected robot contacts in the tested 26-second sequence. Release clears current grasp success immediately; a collision fault invalidates success and requires reset. [Final focused JUnit result](../artifacts/reference-corrections-test-results.xml), [contact and lift measurements](../sim/outputs/reference_contact_manipulation.json).
@@ -18,7 +28,7 @@ The GLB audit validates **28 body poses**: 27 robot bodies and the separate dyna
 
 The corrected **live Vercel deployment passed anonymous Chrome verification** on September 13, 2026 in **70.601 seconds**. All 25 joints moved, 28 bodies synchronized, hand heights reached 0.1325–1.7239 m, and the phone rose 22.84 cm with bilateral contact before falling on release. There were zero browser errors, failed requests or local API calls. [Production report](../artifacts/vercel-browser-check.json), [live pickup screenshot](../apps/web/artifacts/vercel-pickup.png).
 
-All **11 actual MuJoCo WebAssembly tests passed** in 11.693 seconds. The browser controller lifts the phone 22.7889 cm, sustains bilateral contact for 15.918 seconds in the measured run, and releases it under gravity. It also passes the forced collision-stop regression and native pose/reach parity checks. [WASM contact measurements](../artifacts/browser-contact-physics.json).
+All **11 actual MuJoCo WebAssembly tests passed**, most recently in 13.001 seconds with the furnished patient room. The browser controller lifts the phone 22.7889 cm, sustains bilateral contact for 15.918 seconds in the measured run, and releases it under gravity. It also passes the forced collision-stop regression and native pose/reach parity checks. [WASM contact measurements](../artifacts/browser-contact-physics.json).
 
 The full Chrome check on the static build passed in **72.646 seconds**, with zero browser errors, failed requests or local API calls. It exercised all 25 joints, pause, reach, low/high travel, pickup, sustained hold and gravity release. All five scene requests used the same asset revision. [Browser report](../artifacts/public-browser-check.json), [pickup screenshot](../apps/web/artifacts/public-pickup.png), [recorded demonstration](../apps/web/artifacts/contact-pickup-demo.mp4).
 

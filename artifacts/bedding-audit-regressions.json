@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "fixture_geometry": "synthetic closed meshes in metres",
+  "cases": [
+    {
+      "case": "supported blanket bridges separate legs",
+      "expected_pass": true,
+      "actual_pass": true,
+      "anatomical_samples": 104,
+      "off_body_span_samples": 65,
+      "median_gap_m": 0.003999829292297363,
+      "min_gap_m": 0.0039997100830078125
+    },
+    {
+      "case": "blanket lifted 25 mm from its supporting legs",
+      "expected_pass": false,
+      "actual_pass": false,
+      "anatomical_samples": 104,
+      "off_body_span_samples": 65,
+      "median_gap_m": 0.028999924659729004,
+      "min_gap_m": 0.028999805450439453
+    },
+    {
+      "case": "blanket penetrates supporting legs",
+      "expected_pass": false,
+      "actual_pass": false,
+      "anatomical_samples": 104,
+      "off_body_span_samples": 65,
+      "median_gap_m": -0.030000030994415283,
+      "min_gap_m": -0.030000150203704834
+    },
+    {
+      "case": "hand above blanket is not its supporting surface",
+      "expected_pass": true,
+      "actual_pass": true,
+      "anatomical_samples": 104,
+      "off_body_span_samples": 65,
+      "median_gap_m": 0.003999829292297363,
+      "min_gap_m": 0.0039997100830078125
+    },
+    {
+      "case": "no anatomical support cannot pass",
+      "expected_pass": false,
+      "actual_pass": false,
+      "anatomical_samples": 0,
+      "off_body_span_samples": 169,
+      "median_gap_m": null,
+      "min_gap_m": null
+    }
+  ]
+}

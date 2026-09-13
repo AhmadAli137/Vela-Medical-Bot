@@ -2,7 +2,7 @@
 
 **[Open the live 3D simulation](https://vela-medical-bot.vercel.app)** — the public demo runs real MuJoCo physics in your browser, including arm and shoulder-lift motion and a contact-driven phone pickup from a raised rest. The complete local Python workspace is included in this repository. See [deployment details](docs/DEPLOYMENT.md).
 
-A runnable research prototype for non-clinical patient requests and hospital room operations. Open **http://127.0.0.1:8000/#simulation** for the reference-based hospital-room demo: a detailed Blender-authored room with a Bracket Bot visual approximation, actual MuJoCo dynamics, and streamed body poses rendered in Three.js.
+A runnable research prototype for non-clinical patient requests and hospital room operations. Open **http://127.0.0.1:8000/#simulation** for the reference-based hospital-room demo: an authored furnished room, a clothed adult patient resting in bed, a Bracket Bot visual approximation, and actual MuJoCo dynamics rendered in Three.js. **Patient bedside** and the furniture inspection cameras show the room details.
 
 The room uses architectural observations from inspected official Stanford/UCLA photographs and nine CC0 material maps. The robot uses the supplied handout and three inspected videos: **27 robot bodies, 25 estimated actuators, and one freely moving phone**. MuJoCo computes dynamics and contacts; Three.js displays the authored meshes at those body poses. Geometry, inertias, gains and friction are estimates. The pickup is a fixed simulated fixture, not a vendor-verified robot skill or learned VLA policy. See [reference sources and asset provenance](docs/REFERENCE_UPGRADE.md) and [validation evidence](docs/TESTING.md).
 

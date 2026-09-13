@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowUpRight, Box, Check, ChevronDown, ChevronRight, CircleHelp, Expand, Focus, Layers3, LoaderCircle, Move3D, MoveVertical, Orbit, Pause, Play, RotateCcw, ShieldCheck, SlidersHorizontal, Smartphone, Sun, X } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Box, Check, ChevronDown, ChevronRight, CircleHelp, Expand, Focus, Layers3, LoaderCircle, Move3D, MoveVertical, Orbit, Pause, Play, RotateCcw, ShieldCheck, SlidersHorizontal, Smartphone, Sun, UserRound, X } from 'lucide-react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -13,14 +13,23 @@ import { PUBLIC_DEMO, REPOSITORY_URL, simulationAsset } from './deployment';
 import { createSimulationTransport, type ReferenceState, type SimulationCommand, type SimulationTransport } from './simulationTransport';
 import './immersive.css';
 
-type ViewName='overview'|'bedside'|'robot'|'pickup';
+type ViewName='overview'|'bedside'|'robot'|'pickup'|'patient'|'patient_face'|'bed_foot'|'bed_rear'|'chair'|'storage'|'wardrobe';
 type ViewerApi={setView:(name:ViewName)=>void;setQuality:(value:boolean)=>void;resetCamera:()=>void};
 const PRESETS:Record<ViewName,{position:[number,number,number];target:[number,number,number];label:string}>={
   overview:{position:[6.8,-8.8,6.4],target:[0,.25,.95],label:'Room overview'},
   bedside:{position:[4.2,-4.7,2.75],target:[.85,.9,1.02],label:'At the bedside'},
   robot:{position:[1.2,-3.45,1.92],target:[-.55,-.62,1.05],label:'Robot detail'},
   pickup:{position:[1.75,-2.65,1.62],target:[.4,-.62,.91],label:'Phone close-up'},
+  patient:{position:[3.15,.55,2.0],target:[1.40,1.88,1.03],label:'Patient bedside'},
+  patient_face:{position:[2.1,1.15,2.3],target:[1.40,2.10,1.17],label:'Patient close-up'},
+  bed_foot:{position:[3.2,-1.20,1.35],target:[1.40,1.40,.65],label:'Bed foot and chassis'},
+  bed_rear:{position:[-.75,2.70,1.75],target:[1.35,1.42,.65],label:'Bed rear corner'},
+  chair:{position:[.50,2.60,1.20],target:[-1.60,1.30,.58],label:'Chair construction'},
+  storage:{position:[3.2,.75,1.08],target:[2.62,2.28,.48],label:'Bedside storage'},
+  wardrobe:{position:[1,-1.6,1.65],target:[-2.3,2.1,1],label:'Wardrobe and visitor table'},
 };
+const ROOM_ASSEMBLIES=['patient','hospital_bed','visitor_chair','bedside_table','bedside_storage','wardrobe','visitor_table','room_plant'];
+const INSPECTION_VIEWS:ViewName[]=['patient_face','bed_foot','bed_rear','chair','storage','wardrobe'];
 
 export default function ImmersiveSimulation(){
   const mount=useRef<HTMLDivElement>(null);
@@ -41,6 +50,7 @@ export default function ImmersiveSimulation(){
   const [fps,setFps]=useState<number>();
   const [bodyCount,setBodyCount]=useState(0);
   const [ready,setReady]=useState(false);
+  const [hasPatient,setHasPatient]=useState(false);
   const transport=useRef<SimulationTransport|undefined>(undefined);
   const command=useCallback(async(value:SimulationCommand)=>{
     setBusy(true);setError('');
@@ -78,7 +88,7 @@ export default function ImmersiveSimulation(){
     renderer.toneMappingExposure=.98;
     renderer.shadowMap.enabled=true;
     renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-    renderer.domElement.setAttribute('aria-label','Interactive 3D hospital room and reference robot. Drag to orbit, scroll to zoom, or use the camera view controls.');
+    renderer.domElement.setAttribute('aria-label','Interactive 3D hospital room, synthetic patient and reference robot. Drag to orbit, scroll to zoom, or use the camera view controls.');
     renderer.domElement.setAttribute('role','img');
     renderer.domElement.tabIndex=0;
     element.appendChild(renderer.domElement);
@@ -102,7 +112,7 @@ export default function ImmersiveSimulation(){
     const hemi=new THREE.HemisphereLight('#e9f3ff','#c8bcaa',1.35);hemi.position.set(0,0,8);scene.add(hemi);
     const sunlight=new THREE.DirectionalLight('#fff4dd',3.0);
     sunlight.position.set(-3.9,1.5,9.0);sunlight.target.position.set(.5,-1.8,0);scene.add(sunlight.target);
-    sunlight.castShadow=true;sunlight.shadow.mapSize.set(2048,2048);sunlight.shadow.camera.left=-7;sunlight.shadow.camera.right=7;sunlight.shadow.camera.top=7;sunlight.shadow.camera.bottom=-7;sunlight.shadow.camera.near=.1;sunlight.shadow.camera.far=30;sunlight.shadow.bias=-.0012;sunlight.shadow.normalBias=.025;sunlight.shadow.radius=3;scene.add(sunlight);
+    sunlight.castShadow=true;sunlight.shadow.mapSize.set(2048,2048);sunlight.shadow.camera.left=-7;sunlight.shadow.camera.right=7;sunlight.shadow.camera.top=7;sunlight.shadow.camera.bottom=-7;sunlight.shadow.camera.near=.1;sunlight.shadow.camera.far=30;sunlight.shadow.bias=-.0003;sunlight.shadow.normalBias=.006;sunlight.shadow.radius=3;scene.add(sunlight);
     const fill=new THREE.DirectionalLight('#dcebf2',.75);fill.position.set(4,-6,5);scene.add(fill);
     const ground=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:'#e5e8df',roughness:.94}));ground.position.z=-.095;ground.receiveShadow=true;scene.add(ground);
     const temporaryFloor=new THREE.Mesh(new THREE.BoxGeometry(7,6,.12),new THREE.MeshStandardMaterial({color:'#e6e3da',roughness:.84}));temporaryFloor.position.z=-.055;temporaryFloor.receiveShadow=true;scene.add(temporaryFloor);
@@ -122,7 +132,8 @@ export default function ImmersiveSimulation(){
     const desiredTarget=new THREE.Vector3().fromArray(PRESETS.overview.target);
     let cameraMoving=false;
     const stopCamera=()=>{cameraMoving=false};controls.addEventListener('start',stopCamera);
-    const selectView=(name:ViewName)=>{desiredCamera.fromArray(PRESETS[name].position);desiredTarget.fromArray(PRESETS[name].target);cameraMoving=true};
+    const selectView=(name:ViewName)=>{desiredCamera.fromArray(PRESETS[name].position);desiredTarget.fromArray(PRESETS[name].target);cameraMoving=true;renderer.domElement.dataset.cameraView=name;renderer.domElement.dataset.cameraSettled='false'};
+    renderer.domElement.dataset.cameraView='bedside';renderer.domElement.dataset.cameraSettled='true';
     viewer.current={setView:selectView,setQuality:value=>{ssao.enabled=value;renderer.setPixelRatio(value?Math.min(window.devicePixelRatio,1.5):1);renderer.setSize(element.clientWidth,element.clientHeight);composer.setPixelRatio(renderer.getPixelRatio());composer.setSize(element.clientWidth,element.clientHeight)},resetCamera:()=>selectView('overview')};
     const loader=new GLTFLoader();
     const load=async(kind:'room'|'robot'|'phone')=>{
@@ -143,7 +154,20 @@ export default function ImmersiveSimulation(){
           }
         });
         scene.add(gltf.scene);
-        if(kind==='room'){scene.remove(temporaryFloor);temporaryFloor.geometry.dispose();(temporaryFloor.material as THREE.Material).dispose()}
+        if(kind==='room'){
+          scene.remove(temporaryFloor);temporaryFloor.geometry.dispose();(temporaryFloor.material as THREE.Material).dispose();
+          const assemblies:Record<string,{mesh_count:number;triangle_count:number;bounds:{min:number[];max:number[]}}>= {};
+          for(const name of ROOM_ASSEMBLIES){
+            const group=gltf.scene.getObjectByName(name);if(!group)continue;
+            let meshCount=0,triangleCount=0;
+            group.traverse(node=>{if(node instanceof THREE.Mesh){meshCount++;triangleCount+=(node.geometry.index?.count??node.geometry.getAttribute('position')?.count??0)/3}});
+            const bounds=new THREE.Box3().setFromObject(group,true);
+            assemblies[name]={mesh_count:meshCount,triangle_count:triangleCount,bounds:{min:bounds.min.toArray(),max:bounds.max.toArray()}};
+          }
+          // Read-only evidence from the loaded GLB, useful for scene diagnostics.
+          renderer.domElement.dataset.roomAssemblies=JSON.stringify(assemblies);
+          setHasPatient(!!assemblies.patient?.mesh_count);
+        }
         setAssets(current=>({...current,[kind]:true}));
       }catch(error){
         if(!disposed){setError(`The ${kind} model could not load: ${(error as Error).message}`);retryTimers.push(window.setTimeout(()=>load(kind),4000))}
@@ -162,7 +186,7 @@ export default function ImmersiveSimulation(){
       frame=requestAnimationFrame(animate);
       if(document.hidden)return;
       const now=performance.now();
-      if(cameraMoving){camera.position.lerp(desiredCamera,.075);controls.target.lerp(desiredTarget,.075);if(camera.position.distanceTo(desiredCamera)<.003)cameraMoving=false}
+      if(cameraMoving){camera.position.lerp(desiredCamera,.075);controls.target.lerp(desiredTarget,.075);if(camera.position.distanceTo(desiredCamera)<.003){cameraMoving=false;renderer.domElement.dataset.cameraSettled='true'}}
       scene.updateMatrixWorld(true);
       targetMarker.visible=latest.current?.mode==='reach_demo'&&!!latest.current.target?.position;
       if(latest.current?.target?.position)targetMarker.position.fromArray(latest.current.target.position);
@@ -216,7 +240,7 @@ export default function ImmersiveSimulation(){
     <header className="immersive-header">{PUBLIC_DEMO?<button className="immersive-back" aria-label="About this demo" onClick={()=>setShowAbout(true)}><CircleHelp size={17}/></button>:<a href="#research" className="immersive-back" aria-label="Back to workspace"><ArrowLeft size={17}/></a>}<a href={PUBLIC_DEMO?"#simulation":"#staff"} className="immersive-brand">vela<span>.</span></a><span className="immersive-header-divider"/><div className="immersive-page-title"><strong>Simulation studio</strong><span>Hospital room · Reference environment</span></div><div className="immersive-header-right"><span className={`physics-status ${connected?'connected':''}`}><i/>{connected?(PUBLIC_DEMO?'MuJoCo · in browser':'MuJoCo connected'):'Loading MuJoCo'}</span><button className="immersive-icon-button" title="Viewer controls" aria-label="Viewer controls" onClick={()=>setShowHelp(!showHelp)}><CircleHelp size={19}/></button><button className="immersive-icon-button" aria-label="Toggle full screen" onClick={()=>document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}><Expand size={18}/></button></div></header>
     <div className="immersive-stage"><div ref={mount} className="immersive-canvas"/>
       <div className="scene-topline"><span><i/>INTERACTIVE 3D ENVIRONMENT</span><span>REAL-TIME PHYSICS · REFERENCE GEOMETRY</span></div>
-      <aside className="immersive-scene-card"><div className="immersive-kicker"><Layers3 size={13}/> SCENE 01</div><h1>Patient room<br/>417.</h1><p>Explore the room, move the carriages, and try a contact-based pickup.</p><div className="immersive-room-meta"><span><Box size={14}/>Hospital room</span><span>7 × 6 m<span className="estimated-label">scene estimate</span></span></div>
+      <aside className="immersive-scene-card"><div className="immersive-kicker"><Layers3 size={13}/> SCENE 01</div><h1>Patient room<br/>417.</h1><p>Explore the room, move the carriages, and try a contact-based pickup.</p><div className="immersive-room-meta"><span><Box size={14}/>Hospital room</span>{hasPatient&&<span className="immersive-synthetic-patient"><UserRound size={14}/>Synthetic patient model</span>}<span>7 × 6 m<span className="estimated-label">scene estimate</span></span></div>
       {pickup&&<div className="immersive-action-metrics" data-testid="pickup-metrics" data-success={pickup.success} data-released={pickup.released} data-height-gain={pickup.height_gain_m} data-bilateral-contact={pickup.bilateral_contact} data-hold-seconds={pickup.bilateral_hold_s}>
         <strong>{pickup.success?'Pickup confirmed':pickup.released?'Phone released':pickup.status==='failed'?'Pickup stopped':'Contact pickup'}</strong>
         <dl><div><dt>Stage</dt><dd>{human(pickup.stage)}</dd></div><div><dt>Phone lifted</dt><dd>{(pickup.height_gain_m*100).toFixed(1)} cm</dd></div><div><dt>Finger contacts</dt><dd>{pickup.finger_contacts.length} / 2</dd></div><div><dt>Verified hold</dt><dd>{pickup.bilateral_hold_s.toFixed(1)} s</dd></div></dl>
@@ -229,9 +253,9 @@ export default function ImmersiveSimulation(){
         <p>Carriage positions are relative to their starting height. Motion follows the estimated rail limits and checks collisions at each physics step.</p>
       </div>}
 <button onClick={()=>setShowDetails(!showDetails)} className="immersive-detail-button"><span><SlidersHorizontal size={14}/>Model & physics</span>{showDetails?<ChevronDown size={15}/>:<ChevronRight size={15}/>}</button>
-      {showDetails&&<div className="immersive-detail-content"><dl><div><dt>Physics engine</dt><dd>{PUBLIC_DEMO?'MuJoCo / WebAssembly':'MuJoCo / Python'}</dd></div><div><dt>Geometry</dt><dd>Detailed reference model</dd></div><div><dt>Physics bodies</dt><dd>{bodyCount} synchronized</dd></div><div><dt>Render performance</dt><dd>{fps===undefined?'Measuring':`${fps} fps`}</dd></div><div><dt>Hardware verification</dt><dd>Unverified</dd></div><div><dt>Physics steps</dt><dd>{state?.metrics?.physics_steps?.toLocaleString()??"Waiting"}</dd></div>{state?.metrics?.reach?.actual_endpoint_error_m!==undefined&&<div><dt>Reach endpoint error</dt><dd>{(state.metrics.reach.actual_endpoint_error_m*100).toFixed(1)} cm</dd></div>}{state?.metrics?.stop_reason&&<div><dt>Stop reason</dt><dd>{state.metrics.stop_reason}</dd></div>}</dl><p>Visual reconstruction and estimated mechanics. Vendor CAD, calibrated dimensions, inertia, and joint limits are required for hardware-accurate validation.</p>{joints.length>0&&<details><summary>{joints.length} joint positions</summary><div className="immersive-joints">{joints.map(([name,value])=><div key={name}><span>{human(name)}</span><code>{typeof value==='number'?value.toFixed(3):String(value)} {/base_[xy]$|lift|stage/i.test(name)?'m':'rad'}</code></div>)}</div></details>}</div>}
+      {showDetails&&<div className="immersive-detail-content"><dl><div><dt>Physics engine</dt><dd>{PUBLIC_DEMO?'MuJoCo / WebAssembly':'MuJoCo / Python'}</dd></div><div><dt>Geometry</dt><dd>Detailed reference model</dd></div><div><dt>Physics bodies</dt><dd>{bodyCount} synchronized</dd></div><div><dt>Render performance</dt><dd>{fps===undefined?'Measuring':`${fps} fps`}</dd></div><div><dt>Hardware verification</dt><dd>Unverified</dd></div><div><dt>Physics steps</dt><dd>{state?.metrics?.physics_steps?.toLocaleString()??"Waiting"}</dd></div>{state?.metrics?.reach?.actual_endpoint_error_m!==undefined&&<div><dt>Reach endpoint error</dt><dd>{(state.metrics.reach.actual_endpoint_error_m*100).toFixed(1)} cm</dd></div>}{state?.metrics?.stop_reason&&<div><dt>Stop reason</dt><dd>{state.metrics.stop_reason}</dd></div>}</dl><p>Visual reconstruction and estimated mechanics. Vendor CAD, calibrated dimensions, inertia, and joint limits are required for hardware-accurate validation.</p>{joints.length>0&&<details><summary>{joints.length} joint positions</summary><div className="immersive-joints">{joints.map(([name,value])=><div key={name}><span>{human(name)}</span><code>{typeof value==='number'?value.toFixed(3):String(value)} {/base_[xy]$|lift|stage/i.test(name)?'m':'rad'}</code></div>)}</div></details>}<label className="immersive-inspection-selector">Inspect the room<select aria-label="Inspect room furnishings" value={INSPECTION_VIEWS.includes(view)?view:''} onChange={event=>{if(event.target.value)chooseView(event.target.value as ViewName)}}><option value="">Choose a detail view</option>{INSPECTION_VIEWS.map(name=><option key={name} value={name}>{PRESETS[name].label}</option>)}</select></label></div>}
       </aside>
-      <div className="immersive-camera-switch" role="group" aria-label="Camera view">{(['overview','bedside','robot','pickup'] as ViewName[]).map((name,index)=><button key={name} aria-pressed={view===name} onClick={()=>chooseView(name)}>{index===0?<Orbit size={15}/>:index===1?<Focus size={15}/>:index===2?<Move3D size={15}/>:<Smartphone size={15}/>}<span>{PRESETS[name].label}</span></button>)}</div>
+      <div className="immersive-camera-switch" role="group" aria-label="Camera view">{(['overview','bedside','patient','robot','pickup'] as ViewName[]).map((name,index)=><button key={name} aria-pressed={view===name} onClick={()=>chooseView(name)}>{index===0?<Orbit size={15}/>:index===1?<Focus size={15}/>:index===2?<UserRound size={15}/>:index===3?<Move3D size={15}/>:<Smartphone size={15}/>}<span>{PRESETS[name].label}</span></button>)}</div>
       <div className="immersive-lighting"><Sun size={14}/><span>Daylight</span><i/><button aria-pressed={quality} onClick={()=>{setQuality(!quality);viewer.current?.setQuality(!quality)}}>{quality?'High quality':'Performance'}</button></div>
       {(!loaded||!connected)&&<div className="immersive-loading"><div><LoaderCircle size={22} className="spin"/><h2>{ready?(loaded?'Starting the physics engine':'Loading the detailed environment'):'Preparing the 3D viewer'}</h2><p>{assets.room?'Room ready':'Hospital room'} · {assets.robot?'Robot ready':'Reference robot'} · {assets.phone?'Phone ready':'Dynamic phone'}</p></div></div>}
       {showHelp&&<div className="immersive-help"><div><strong>Make yourself at home.</strong><button className="immersive-icon-button" aria-label="Close controls help" onClick={()=>setShowHelp(false)}><X size={16}/></button></div><p><span>Orbit</span>Drag with the left mouse button</p><p><span>Pan</span>Drag with the right mouse button</p><p><span>Zoom</span>Scroll, or pinch on a trackpad</p><p><span>Touch</span>One finger to orbit; two to pan</p><button onClick={()=>chooseView('overview')}><RotateCcw size={13}/>Reset camera</button></div>}

@@ -1,0 +1,84 @@
+{
+  "source": "MakeHuman hm08 CC0 mesh and official core textures/hair/eyes",
+  "fictional_adult": true,
+  "clinical_data": false,
+  "anatomical_base_faces": 13378,
+  "skin_faces_after_subdivision": 53512,
+  "pose": "supine, supported head and tucked arms",
+  "head_center": [
+    1.399999976158142,
+    2.1050000190734863,
+    1.159999966621399
+  ],
+  "face_direction": [
+    0,
+    0,
+    1
+  ],
+  "body_bounds": {
+    "min": [
+      1.1302210092544556,
+      0.5343227386474609,
+      0.8806827664375305
+    ],
+    "max": [
+      1.6697793006896973,
+      2.197380542755127,
+      1.2977278232574463
+    ]
+  },
+  "named_anatomy": {
+    "patient_head": [
+      1.399999976158142,
+      2.1050000190734863,
+      1.159999966621399
+    ],
+    "patient_torso": [
+      1.399999976158142,
+      1.7300000190734863,
+      1.0499999523162842
+    ],
+    "patient_left_arm": [
+      1.5875345468521118,
+      1.6496988534927368,
+      1.0236563682556152
+    ],
+    "patient_right_arm": [
+      1.212465524673462,
+      1.6496988534927368,
+      1.0236563682556152
+    ],
+    "patient_left_leg": [
+      1.5,
+      0.9200000166893005,
+      1.0
+    ],
+    "patient_right_leg": [
+      1.2999999523162842,
+      0.9200000166893005,
+      1.0
+    ]
+  },
+  "blanket_bounds": {
+    "x": [
+      0.83,
+      1.97
+    ],
+    "y": [
+      0.4,
+      1.54
+    ]
+  },
+  "mesh_objects": [
+    "patient_anatomical_skin",
+    "patient_contoured_blanket",
+    "patient_eyes",
+    "patient_hospital_gown",
+    "patient_short_hair"
+  ],
+  "limitations": [
+    "Static visual patient only; no human dynamics, physiology or clinical simulation",
+    "Generic artist-authored adult anatomy, not a scan of an identified patient",
+    "Bed fit and cloth drape are visual approximations"
+  ]
+}

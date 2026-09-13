@@ -1,6 +1,6 @@
 {
   "engine": "MuJoCo 3.13.0 WebAssembly",
-  "model_hash": "59e7fcdc866ae25325074e841b8011040d770f8709d47cff806079a59314bec8",
+  "model_hash": "d047a8c2c035da2879f8a7c89626534fca81f8737685d23519cc44f9f864eb60",
   "reach": {
     "target": [
       0.22,

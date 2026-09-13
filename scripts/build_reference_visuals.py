@@ -21,6 +21,17 @@ room_objects=[]
 robot_objects=[]
 phone_objects=[]
 current_objects=room_objects
+current_assembly=None
+
+
+def assembly(name):
+    """Keep furniture assemblies identifiable after material batching."""
+    global current_assembly
+    current_assembly=bpy.data.objects.new(name,None)
+    bpy.context.collection.objects.link(current_assembly)
+    current_assembly["assembly"]=name
+    room_objects.append(current_assembly)
+    return current_assembly
 
 
 def color(hex_value):
@@ -99,6 +110,10 @@ def finish(obj,name,mat,parent=None,smooth=False):
     obj.name=name
     if mat:obj.data.materials.append(mat)
     if parent:obj.parent=parent
+    elif current_objects is room_objects and current_assembly:
+        obj.parent=current_assembly
+    if current_objects is room_objects and current_assembly:
+        obj["assembly"]=current_assembly.name
     if smooth and obj.type=="MESH":
         for p in obj.data.polygons:p.use_smooth=True
     current_objects.append(obj)
@@ -192,6 +207,7 @@ def cloth(name,xrange,yrange,z,mat,drop=.14):
 
 
 def room():
+    assembly("room_architecture")
     box("Floor slab",(0,0,-.08),(7,6,.16),M["floor"],.008)
     # One continuous floor surface: no overlapping plank/slab faces or seam shadows.
     box("Back wall",(0,3.04,1.5),(7,.10,3),M["wall"],.006)
@@ -242,11 +258,17 @@ def room():
             box("Outlet slot",(x+.024,2.75,z),(.009,.005,.022),M["darkmetal"],.002)
     box("Wall task light",(1.4,2.78,2.18),(1.6,.10,.055),M["white"],.018)
     label("Room plaque","417",(-2.7,2.90,2.35),.19,M["darkmetal"])
+    assembly("wardrobe")
+    box("Wardrobe recessed plinth",(-2.435,2.60,.055),(1.18,.64,.11),M["wooddark"],.01)
     for x in (-2.75,-2.12):
         box("Wardrobe carcass",(x,2.6,1.12),(.60,.72,2.24),M["wood"],.012)
         box("Wardrobe door",(x,2.223,1.12),(.57,.035,2.20),M["wood"],.008)
         cylinder("Brushed handle",(x+.18,2.18,1.17),.009,.30,M["steel"])
+        for z in (1.045,1.295):
+            cylinder("Wardrobe handle mounting post",(x+.18,2.197,z),.009,.047,M["steel"],axis=(0,1,0))
+    box("Wardrobe continuous top cap",(-2.435,2.60,2.245),(1.255,.755,.045),M["wood"],.012)
     # Bed base and actual furniture details.
+    assembly("hospital_bed")
     for x in (.98,1.82):
         box("Bed lower longitudinal beam",(x,1.43,.26),(.085,1.8,.085),M["bedframe"],.018)
         for y in (.60,2.25):
@@ -266,22 +288,31 @@ def room():
             box("Caster brake pedal",(x,y-.05,.115),(.07,.065,.02),M["darkmetal"],.009)
     box("Bed support deck",(1.4,1.43,.67),(1.05,2.16,.15),M["bedframe"],.065)
     box("Mattress core",(1.4,1.43,.81),(.99,2.08,.15),M["white"],.070)
-    cloth("Fitted cotton sheet",(.88,1.92),(.38,2.48),.89,M["linen"],.09)
-    pillow=box("Pillow loft",(1.4,2.12,.99),(.71,.43,.16),M["linen"],.077)
+    cloth("Fitted cotton sheet",(.88,1.92),(.38,2.48),.887,M["linen"],.09)
+    pillow=box("Pillow loft",(1.4,2.12,.976),(.71,.43,.19),M["linen"],.077)
     pillow.rotation_euler[2]=-.04
     cloth("Sage patient blanket",(.85,1.95),(.42,1.90),.909,M["blanket"],.17)
     cloth("Turned blanket hem",(.85,1.95),(1.75,1.93),.923,M["blanket"],.12)
     for y in (.32,2.54):
+        for x in (1.05,1.75):
+            box("Bed end board mounting upright",(x,y+.025,.72),(.05,.12,.25),M["steel"],.014)
         box("Bed end board",(1.4,y,.85),(1.04,.09,.48),M["bedframe"],.07)
         box("Bed end board recessed panel",(1.4,y-.051,.86),(.8,.018,.27),M["panel"],.035)
     for x in (.82,1.98):
         for y in (.75,2.0):
-            box("Rail deck mounting bracket",(x+(.04 if x<1.4 else -.04),y,.735),(.13,.18,.12),M["bedframe"],.02)
-            tube("Safety rail",[(x,y-.25,.81),(x,y-.25,1.08),(x,y+.25,1.08),(x,y+.25,.81)],.022,M["bedframe"])
-            for dy in (-.16,0,.16):cylinder("Rail crossbar",(x,y+dy,.955),.012,.22,M["bedframe"])
+            for dy in (-.25,.25):
+                box("Rail deck mounting bracket",(x+(.04 if x<1.4 else -.04),y+dy,.735),(.13,.11,.12),M["bedframe"],.015)
+                cylinder("Rail support socket",(x,y+dy,.79),.032,.15,M["steel"])
+                cylinder("Safety rail upright",(x,y+dy,.9675),.022,.275,M["bedframe"])
+                for z in (.90,1.105):sphere("Rounded rail corner",(x,y+dy,z),(.022,.022,.022),M["bedframe"])
+            for z in (.90,1.105):cylinder("Safety rail horizontal",(x,y,z),.022,.50,M["bedframe"],axis=(0,1,0))
+            for dy in (-.16,0,.16):cylinder("Rail crossbar",(x,y+dy,1.0025),.012,.205,M["bedframe"])
+            box("Rail latch housing",(x,y-.25,.78),(.083,.10,.085),M["bedframe"],.019)
+            box("Rail latch release",(x+(-.046 if x<1.4 else .046),y-.25,.79),(.015,.058,.025),M["panel"],.007)
     box("Rail interface",(2.003,1.98,.985),(.035,.19,.11),M["white"],.015)
     for y in (1.935,1.98,2.025):sphere("Rail soft button",(2.025,y,.985),(.004,.011,.011),M["panel"])
     # Bedside work table, cupboard and visitor chair.
+    assembly("bedside_table")
     box("Bedside tabletop",(.75,-.70,.75),(.80,.80,.045),M["wood"],.025)
     for x in (.43,1.07):
         for y in (-1.02,-.38):
@@ -291,30 +322,58 @@ def room():
     for y in (-1.02,-.38):box("Table transverse apron",(.75,y,.706),(.67,.035,.065),M["steel"],.008)
     box("Raised phone pickup rest",(.63,-.72,.790),(.050,.120,.035),M["panel"],.008)
     box("Soft glasses case",(.91,-.53,.79),(.16,.067,.04),M["upholstery"],.02)
+    assembly("bedside_storage")
+    box("Bedside cabinet recessed plinth",(2.62,2.30,.045),(.47,.47,.09),M["wooddark"],.01)
     box("Bedside storage",(2.62,2.30,.39),(.52,.52,.75),M["wood"],.018)
     box("Bedside storage top",(2.62,2.30,.79),(.58,.58,.05),M["white"],.02)
     for z in (.3,.57):
         box("Drawer face",(2.62,2.025,z),(.46,.028,.21),M["wood"],.012)
         cylinder("Drawer pull",(2.62,2.001,z+.04),.008,.16,M["steel"],axis=(1,0,0))
+        for x in (2.558,2.682):cylinder("Drawer pull mounting post",(x,2.019,z+.04),.008,.045,M["steel"],axis=(0,1,0))
+    assembly("visitor_chair")
     for x in (-1.93,-1.27):
         for y in (1.00,1.60):cylinder("Visitor chair leg",(x,y,.22),.022,.44,M["wooddark"])
         box("Visitor chair seat rail",(x,1.30,.39),(.065,.70,.075),M["wooddark"],.015)
-        box("Visitor chair arm front post",(x+(-.065 if x< -1.6 else .065),1.02,.59),(.060,.060,.29),M["wooddark"],.017)
+        box("Visitor chair arm front post",(x+(-.07 if x< -1.6 else .07),1.02,.565),(.060,.065,.35),M["wooddark"],.017)
+        # Rake the support into the back cushion from inside the seat footprint.
+        # A vertical post at the rear edge cuts through the rounded upholstery.
+        post=box("Visitor chair back upright",(x+(.08 if x< -1.6 else -.08),1.60,.73),(.045,.045,math.hypot(.10,.62)),M["wooddark"],.009)
+        post.rotation_euler[0]=-math.atan2(.10,.62)
+    for y in (1.02,1.60):box("Visitor chair transverse seat rail",(-1.6,y,.40),(.88,.075,.085),M["wooddark"],.014)
     box("Visitor chair seat",(-1.60,1.30,.49),(.77,.73,.18),M["upholstery"],.08)
     back=box("Visitor chair upholstered back",(-1.60,1.64,.84),(.77,.18,.66),M["upholstery"],.075);back.rotation_euler[0]=-.10
     for x in (-2.0,-1.2):box("Visitor chair padded arm",(x,1.30,.71),(.13,.70,.16),M["upholstery"],.055)
     # A small table, plant and personal props add scale and lived-in detail.
+    assembly("visitor_table")
     cylinder("Round visitor table top",(-2.55,1.55,.62),.28,.035,M["wood"])
     cylinder("Visitor table stem",(-2.55,1.55,.32),.03,.60,M["steel"])
-    cylinder("Visitor table foot",(-2.55,1.55,.025),.20,.025,M["steel"])
-    cylinder("Water cup",(-2.55,1.55,.72),.038,.16,M["white"])
-    cylinder("Plant pot",(-2.88,-1.18,.16),.14,.32,M["white"])
-    cylinder("Plant soil",(-2.88,-1.18,.31),.126,.008,M["soil"])
+    cylinder("Visitor table foot",(-2.55,1.55,.0125),.20,.025,M["steel"])
+    cylinder("Visitor table foot collar",(-2.55,1.55,.045),.054,.06,M["steel"])
+    # Open drinking cup: rolled rim, inner wall and a water surface.
+    cup_z=.6375
+    cylinder("Water cup base",(-2.55,1.55,cup_z+.006),.038,.012,M["white"])
+    bpy.ops.mesh.primitive_cylinder_add(vertices=48,radius=.038,depth=.148,end_fill_type="NOTHING",location=(-2.55,1.55,cup_z+.080))
+    cup=bpy.context.object
+    wall=cup.modifiers.new("Cup wall thickness","SOLIDIFY");wall.thickness=.0025
+    finish(cup,"Open cup wall",M["white"],smooth=True)
+    bpy.ops.mesh.primitive_torus_add(major_radius=.03675,minor_radius=.0016,major_segments=48,minor_segments=12,location=(-2.55,1.55,cup_z+.154))
+    finish(bpy.context.object,"Rolled cup rim",M["white"],smooth=True)
+    cylinder("Drinking water surface",(-2.55,1.55,cup_z+.115),.035,.002,M["window"])
+    assembly("room_plant")
+    cylinder("Plant pot base",(-2.88,-1.18,.008),.14,.016,M["white"])
+    bpy.ops.mesh.primitive_cylinder_add(vertices=64,radius=.14,depth=.32,end_fill_type="NOTHING",location=(-2.88,-1.18,.16))
+    pot=bpy.context.object
+    pot_wall=pot.modifiers.new("Ceramic planter wall","SOLIDIFY");pot_wall.thickness=.010
+    finish(pot,"Plant pot open wall",M["white"],smooth=True)
+    bpy.ops.mesh.primitive_torus_add(major_radius=.135,minor_radius=.005,major_segments=64,minor_segments=12,location=(-2.88,-1.18,.317))
+    finish(bpy.context.object,"Plant pot rounded rim",M["white"],smooth=True)
+    cylinder("Plant soil",(-2.88,-1.18,.1635),.1305,.295,M["soil"])
     for i in range(12):
         angle=i*2.4;tip=(-2.88+math.cos(angle)*.22,-1.18+math.sin(angle)*.22,.53+random.random()*.23)
         tube("Plant stem",[(-2.88,-1.18,.31),(-2.88,-1.18,.46),tip],.0025,M["leaf"])
         leaf=sphere("Long plant leaf",tip,(.038,.12,.016),M["leaf"] if i%2 else M["leaf2"]);leaf.rotation_euler=(.6,angle,angle)
     # Framed artwork and room controls: generic artwork, no patient information.
+    assembly("wall_art")
     box("Artwork oak frame",(-.75,2.94,1.94),(.85,.06,.62),M["wooddark"],.008)
     box("Artwork canvas",(-.75,2.901,1.94),(.78,.012,.55),M["white"],.001)
     for i,(x,z,r) in enumerate(((-.92,1.96,.12),(-.70,1.90,.14),(-.58,2.04,.07))):
@@ -454,6 +513,20 @@ def export_selected(objects,name):
     bpy.ops.export_scene.gltf(filepath=str(OUT/name),export_format="GLB",use_selection=True,export_yup=False,export_apply=True,export_cameras=False,export_lights=False)
 
 
+def write_room_manifest():
+    """Record actual evaluated geometry before material batching hides parts."""
+    bpy.context.view_layer.update()
+    graph=bpy.context.evaluated_depsgraph_get()
+    entries=[]
+    for obj in room_objects:
+        if obj.type!="MESH":continue
+        evaluated=obj.evaluated_get(graph)
+        corners=[list(evaluated.matrix_world@Vector(corner)) for corner in evaluated.bound_box]
+        entries.append({"name":obj.name,"assembly":obj.get("assembly",obj.parent.name if obj.parent else "world"),"material":obj.active_material.name if obj.active_material else None,"corners":corners,"min":[min(v[i] for v in corners) for i in range(3)],"max":[max(v[i] for v in corners) for i in range(3)],"vertices":len(evaluated.data.vertices),"polygons":len(evaluated.data.polygons)})
+    path=OUT/"room-geometry-manifest.json"
+    path.write_text(json.dumps({"units":"metres","objects":entries},indent=2)+"\n",encoding="utf-8")
+
+
 def setup_render():
     scene=bpy.context.scene
     scene.render.engine="CYCLES"
@@ -487,6 +560,17 @@ add_texture(M["wood"],"oak_veneer_01")
 add_texture(M["floor"],"linoleum_brown")
 add_texture(M["blanket"],"rough_linen")
 add_texture(M["curtain"],"rough_linen")
+sys.path.insert(0,str(ROOT/"scripts"))
+from build_patient_visual import build_patient
+build_patient(globals())
+write_room_manifest()
+from audit_room_visuals import audit_scene
+room_audit=audit_scene(room_objects,output=ROOT/"artifacts"/"room-visual-audit.json")
+if not room_audit["passed"]:
+    raise RuntimeError("Furniture surface audit failed: "+json.dumps(room_audit["issues"]))
+if "--audit-only" in sys.argv:
+    print("Wrote pre-merge room geometry manifest")
+    sys.exit(0)
 export_selected(room_objects,"room.glb")
 descriptor_path=ROOT/"sim"/"reference_body_descriptors.json"
 if descriptor_path.exists():

@@ -1,6 +1,6 @@
 {
   "file": "assets\\simulation\\robot.glb",
-  "model_hash": "59e7fcdc866ae25325074e841b8011040d770f8709d47cff806079a59314bec8",
+  "model_hash": "d047a8c2c035da2879f8a7c89626534fca81f8737685d23519cc44f9f864eb60",
   "body_count": 28,
   "expected_body_count": 28,
   "robot_body_count": 27,
@@ -347,7 +347,7 @@
         }
       ],
       "failures": [],
-      "sha256": "ee10caac058fc38e9584c65c611b22ae75bc2f3aa46b6c046c4c958488e1de19",
+      "sha256": "9a93aa4b29a47baebaf334ab423b38a92b09119a802e3f143f1238ffb3009488",
       "node_count": 119,
       "matched": true
     },
@@ -364,7 +364,7 @@
         }
       ],
       "failures": [],
-      "sha256": "642fb200c75011214ead0146f2eaf9e1f7ee40397157ccf52f829a8300379f31",
+      "sha256": "7160f406d81200d5bac249b9e7912d70020cb26d51647e3ab69dcf8ac35a060c",
       "node_count": 6,
       "matched": true
     }
@@ -373,13 +373,13 @@
     "file": "assets\\simulation\\room.glb",
     "textured_primitives": [
       {
-        "mesh": 0,
+        "mesh": 1,
         "primitive": 0,
         "material": "Continuous resilient floor",
         "coordinates": [
           {
             "semantic": "TEXCOORD_0",
-            "accessor": 2,
+            "accessor": 6,
             "count": 300,
             "min": [
               -6.292790412902832,
@@ -394,13 +394,34 @@
         ]
       },
       {
-        "mesh": 8,
+        "mesh": 7,
+        "primitive": 0,
+        "material": "Light natural oak",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 30,
+            "count": 278,
+            "min": [
+              0.3185117244720459,
+              -6.450648307800293
+            ],
+            "max": [
+              6.681488037109375,
+              0.3064883351325989
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 11,
         "primitive": 0,
         "material": "Sheer window curtain",
         "coordinates": [
           {
             "semantic": "TEXCOORD_0",
-            "accessor": 34,
+            "accessor": 46,
             "count": 3782,
             "min": [
               -4.769999980926514,
@@ -415,42 +436,168 @@
         ]
       },
       {
-        "mesh": 10,
+        "mesh": 14,
         "primitive": 0,
         "material": "Light natural oak",
         "coordinates": [
           {
             "semantic": "TEXCOORD_0",
-            "accessor": 42,
-            "count": 3097,
+            "accessor": 58,
+            "count": 1403,
             "min": [
-              -7.60998010635376,
-              -6.450648307800293
+              -7.652242183685303,
+              -6.439742088317871
             ],
             "max": [
-              7.1774702072143555,
-              8.609979629516602
+              5.660848617553711,
+              8.648348808288574
             ],
             "finite": true
           }
         ]
       },
       {
-        "mesh": 16,
+        "mesh": 25,
+        "primitive": 0,
+        "material": "Light natural oak",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 103,
+            "count": 304,
+            "min": [
+              0.8825147747993469,
+              -1.8601856231689453
+            ],
+            "max": [
+              2.867485284805298,
+              3.7424850463867188
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 29,
+        "primitive": 0,
+        "material": "Light natural oak",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 117,
+            "count": 821,
+            "min": [
+              0.043511763215065,
+              -6.1774702072143555
+            ],
+            "max": [
+              7.1774702072143555,
+              -4.031508445739746
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 35,
+        "primitive": 0,
+        "material": "Light natural oak",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 141,
+            "count": 484,
+            "min": [
+              3.762543201446533e-07,
+              0.0
+            ],
+            "max": [
+              1.0,
+              0.9899960160255432
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 46,
+        "primitive": 0,
+        "material": "Patient eyes \u00b7 CC0 brown texture",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 182,
+            "count": 1076,
+            "min": [
+              0.03620000183582306,
+              0.02369999885559082
+            ],
+            "max": [
+              0.991100013256073,
+              0.9890000224113464
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 48,
+        "primitive": 0,
+        "material": "Patient short hair \u00b7 CC0 alpha texture",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 190,
+            "count": 3050,
+            "min": [
+              0.007400000002235174,
+              0.008400022983551025
+            ],
+            "max": [
+              0.9926000237464905,
+              0.9926000237464905
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 49,
+        "primitive": 0,
+        "material": "Patient skin \u00b7 CC0 adult texture",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 194,
+            "count": 55784,
+            "min": [
+              0.00920800119638443,
+              0.026143908500671387
+            ],
+            "max": [
+              0.9935150146484375,
+              0.9903929829597473
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 50,
         "primitive": 0,
         "material": "Sage knitted blanket",
         "coordinates": [
           {
             "semantic": "TEXCOORD_0",
-            "accessor": 67,
-            "count": 56260,
+            "accessor": 198,
+            "count": 25026,
             "min": [
-              2.5500001907348633,
-              -4.7900004386901855
+              0.0,
+              -2.0
             ],
             "max": [
-              5.850001335144043,
-              -0.25999999046325684
+              2.0,
+              1.0
             ],
             "finite": true
           }
@@ -458,9 +605,9 @@
       }
     ],
     "failures": [],
-    "sha256": "b3c7650d45f966b43b7b3ea8b6963a4073140ccffa5e58ddc3cf3f2d6aac9e30",
+    "sha256": "06012dbdc6d09017b62524dd1aed6ad22c4be3ed9a45b5b7ebfbc1da2fd15cd8",
     "dynamic_object_nodes_or_meshes": [],
-    "textured_primitive_count": 4,
+    "textured_primitive_count": 11,
     "matched": true
   },
   "hardware_model_verified": false,

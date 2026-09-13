@@ -25,9 +25,17 @@ LIFT_RANGE = [-.72, .20]
 ROOM_COLLIDERS = [
     {"name": "work_table", "pos": [.75, -.7, .75], "size": [.40, .40, .0225]},
     {"name": "phone_riser", "pos": [.63, -.72, .790], "size": [.025, .060, .0175]},
-    {"name": "bed", "pos": [1.4, 1.45, .55], "size": [.56, 1., .19]},
-    {"name": "cabinet", "pos": [2.85, 2.35, .9], "size": [.40, .32, .9]},
-    {"name": "visitor_chair", "pos": [-1.8, 1.75, .48], "size": [.28, .28, .06]},
+    {"name": "bed", "pos": [1.4, 1.43, .67], "size": [.525, 1.08, .075]},
+    {"name": "bed_mattress", "pos": [1.4, 1.43, .81], "size": [.495, 1.04, .075]},
+    {"name": "cabinet", "pos": [2.62, 2.30, .39], "size": [.26, .26, .375]},
+    {"name": "wardrobe", "pos": [-2.435, 2.60, 1.12], "size": [.625, .36, 1.12]},
+    {"name": "visitor_chair", "pos": [-1.60, 1.30, .49], "size": [.385, .365, .09]},
+    {"name": "visitor_chair_back", "pos": [-1.60, 1.64, .84], "size": [.385, .10, .33]},
+    # Fixed conservative occupancy shapes for the resting visual patient.
+    # No physiological simulation or clinical interaction is represented.
+    {"name": "patient_head", "type": "ellipsoid", "pos": [1.4, 2.11, 1.15], "size": [.115, .14, .14]},
+    {"name": "patient_torso", "type": "ellipsoid", "pos": [1.4, 1.70, 1.035], "size": [.24, .35, .17]},
+    {"name": "patient_covered_legs", "pos": [1.4, 1.025, .99], "size": [.24, .465, .13]},
 ]
 
 
@@ -74,7 +82,7 @@ def build_reference_model():
     _add(world, "light", pos="0 0 3.5", dir="0 0 -1", diffuse=".9 .9 .9")
     _add(world, "geom", name="floor", type="plane", size="3.5 3 .05", rgba=".83 .86 .84 1")
     for collider in ROOM_COLLIDERS:
-        _add(world, "geom", name=collider["name"], type="box", pos=_vec(collider["pos"]), size=_vec(collider["size"]), rgba=".65 .69 .7 1")
+        _add(world, "geom", name=collider["name"], type=collider.get("type", "box"), pos=_vec(collider["pos"]), size=_vec(collider["size"]), rgba=".65 .69 .7 1")
     _add(world, "geom", name="wall_back", type="box", pos="0 3.05 1.5", size="3.55 .05 1.5", rgba=".88 .9 .88 1")
     _add(world, "camera", name="overview", pos="3 -4 2.5", xyaxes=".75 .66 0 -.27 .31 .91")
     target = _add(world, "body", name="reach_target", mocap="true", pos=".0 -.53 1.07")

@@ -1,0 +1,18 @@
+{
+  "baseline_passed": true,
+  "regressions": [
+    {
+      "case": "remove_one_caster",
+      "rejected": true
+    },
+    {
+      "case": "move_handle_off_mounts",
+      "rejected": true
+    },
+    {
+      "case": "nonfinite_geometry_bounds",
+      "rejected": true
+    }
+  ],
+  "limitations": "Bounds-mode regressions; actual surface and bedding witness is recorded separately."
+}

@@ -102,6 +102,19 @@ def test_collision_gate_detects_robot_environment_overlap_and_stops():
     assert result["metrics"]["contacts"]
 
 
+def test_resting_patient_occupancy_participates_in_robot_contact_stop():
+    sim = ReferenceSimulation()
+    # Deliberate invalid placement, solely to exercise patient collision masks.
+    sim.data.qpos[sim.model.joint("base_x").qposadr[0]] = 2.0
+    sim.data.qpos[sim.model.joint("base_y").qposadr[0]] = 2.81
+    mujoco.mj_forward(sim.model, sim.data)
+    assert any(any(name.startswith("patient_") for name in contact["geoms"]) for contact in sim._contacts())
+    result = sim.advance(.002)
+    assert result["paused"]
+    assert result["metrics"]["stop_reason"] == "Synthetic contact stop"
+    assert result["authorizes_hardware"] is False
+
+
 def test_pause_toggle_reset_and_bounded_input():
     sim = ReferenceSimulation()
     sim.command({"command": "joint_demo"})

@@ -51,7 +51,7 @@ The detailed visual reconstruction still has estimated geometry and mechanics. T
 
 The public transport loads the pinned official MuJoCo WebAssembly engine from the built site, with the same reference MJCF and body descriptors as the local simulator. Joint controls and the reach controller run actual physics on the visitor's device. The public UI identifies the engine as **MuJoCo / WebAssembly**, while the normal local build continues to identify **MuJoCo / Python**. Neither authorizes physical hardware.
 
-The build copies the two detailed GLBs from `assets/simulation` into the output directory. Physics XML and descriptors are tracked in `apps/web/public/simulation`; WASM and fonts are bundled from npm dependencies. Runtime assets are served from the same origin. Root `vercel.json` applies the required WebAssembly CSP allowance and disables camera, microphone and location access for this public surface.
+The build copies the three detailed GLBs from `assets/simulation` into the output directory. Physics XML and descriptors are tracked in `apps/web/public/simulation`; WASM and fonts are bundled from npm dependencies. Runtime assets are served from the same origin. Root `vercel.json` applies the required WebAssembly CSP allowance and disables camera, microphone and location access for this public surface.
 
 `npm run test:public` checks the production build using a standalone static server with the exact Vercel security headers and no API proxy. It verifies geometry synchronization, joint motion, pause, reach, public routing, About dialog keyboard behavior, and absence of local API requests. Measured output is written to `artifacts/public-browser-check.json` and a screenshot to `apps/web/artifacts/public-simulation.png`.
 
@@ -64,3 +64,13 @@ The updated reference model contains 25 actuated robot coordinates and an indepe
 Other demonstrations are disabled during an active demonstration, and the reset control displays **Reset to switch**. Contact faults clear the current success indication and require reset. Pickup history records that a grasp previously succeeded separately from whether it remains held now.
 
 The public browser checker also verifies low/high travel, sustained pickup and gravity-driven release, and captures each view. `VELA_PUBLIC_URL` selects an anonymous deployed-site check; `VELA_RECORD_VIDEO=1` records the actual run. All three GLBs and both physics fixtures carry one build-content revision query, preventing cached older geometry from being paired with a new physics model.
+
+## Furnished room and patient views
+
+**Patient bedside** frames the modeled patient and hospital bed. The **Model & physics** panel also offers a patient close-up and inspection views of the bed foot/chassis, rear bed corner, visitor chair, bedside storage, wardrobe and visitor table. These controls move only the camera and remain available during robot demonstrations.
+
+The visible patient is labeled **Synthetic patient model**. The scene provides an anatomical visual model with a gown and blanket; it does not display patient identity, medical measurements or clinical status. Fixed occupancy colliders approximate the space occupied by the patient.
+
+`scripts/check-room-completeness.mjs` loads the actual production assets, checks that all eight named room assemblies (including the planter) contain geometry, compares world bounds to the optional source manifest, and captures nine camera views in Chrome. It also checks patient placement, model labeling, physics-control availability, asset revision consistency and browser/network errors. Geometry diagnostics are read from the loaded GLB rather than inferred from UI text.
+
+Bounds use actual transformed mesh vertices. The seven furniture/patient assemblies must agree with source bounds within 2.5 cm. The planter must fit its conservative source envelope and retain comparable extents; rotated leaf bounding boxes enclose more space than their actual surfaces. The evidence records the comparison method and measurements for each assembly.

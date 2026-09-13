@@ -1,0 +1,1609 @@
+{
+  "checked_at": "2026-09-13T05:18:16.684630+00:00",
+  "passed": true,
+  "method": "bounds_only",
+  "surface_contacts_verified": false,
+  "tolerance_m": 0.0015,
+  "soft_layer_contact_tolerance_m": 0.006,
+  "part_count": 195,
+  "assemblies": {
+    "bedside_storage": {
+      "part_count": 11,
+      "grounded_parts": 11,
+      "floor_contacts": [
+        "Bedside cabinet recessed plinth"
+      ],
+      "connection_edges": [
+        [
+          "Bedside cabinet recessed plinth",
+          "Floor slab"
+        ],
+        [
+          "Bedside storage",
+          "Bedside cabinet recessed plinth"
+        ],
+        [
+          "Bedside storage top",
+          "Bedside storage"
+        ],
+        [
+          "Drawer face",
+          "Bedside storage"
+        ],
+        [
+          "Drawer pull mounting post",
+          "Bedside storage"
+        ],
+        [
+          "Drawer pull mounting post",
+          "Drawer face"
+        ],
+        [
+          "Drawer pull mounting post",
+          "Drawer pull"
+        ],
+        [
+          "Drawer pull mounting post.001",
+          "Bedside storage"
+        ],
+        [
+          "Drawer pull mounting post.001",
+          "Drawer face"
+        ],
+        [
+          "Drawer pull mounting post.001",
+          "Drawer pull"
+        ],
+        [
+          "Drawer face.001",
+          "Bedside storage"
+        ],
+        [
+          "Drawer pull mounting post.002",
+          "Bedside storage"
+        ],
+        [
+          "Drawer pull mounting post.002",
+          "Drawer face.001"
+        ],
+        [
+          "Drawer pull mounting post.002",
+          "Drawer pull.001"
+        ],
+        [
+          "Drawer pull mounting post.003",
+          "Bedside storage"
+        ],
+        [
+          "Drawer pull mounting post.003",
+          "Drawer face.001"
+        ],
+        [
+          "Drawer pull mounting post.003",
+          "Drawer pull.001"
+        ]
+      ],
+      "unsupported_components": 0
+    },
+    "bedside_table": {
+      "part_count": 15,
+      "grounded_parts": 15,
+      "floor_contacts": [
+        "Table rubber foot",
+        "Table rubber foot.001",
+        "Table rubber foot.002",
+        "Table rubber foot.003"
+      ],
+      "connection_edges": [
+        [
+          "Table aluminium leg",
+          "Bedside tabletop"
+        ],
+        [
+          "Table rubber foot",
+          "Floor slab"
+        ],
+        [
+          "Table rubber foot",
+          "Table aluminium leg"
+        ],
+        [
+          "Table aluminium leg.001",
+          "Bedside tabletop"
+        ],
+        [
+          "Table rubber foot.001",
+          "Floor slab"
+        ],
+        [
+          "Table rubber foot.001",
+          "Table aluminium leg.001"
+        ],
+        [
+          "Table support apron",
+          "Bedside tabletop"
+        ],
+        [
+          "Table support apron",
+          "Table aluminium leg"
+        ],
+        [
+          "Table support apron",
+          "Table aluminium leg.001"
+        ],
+        [
+          "Table aluminium leg.002",
+          "Bedside tabletop"
+        ],
+        [
+          "Table rubber foot.002",
+          "Floor slab"
+        ],
+        [
+          "Table rubber foot.002",
+          "Table aluminium leg.002"
+        ],
+        [
+          "Table aluminium leg.003",
+          "Bedside tabletop"
+        ],
+        [
+          "Table rubber foot.003",
+          "Floor slab"
+        ],
+        [
+          "Table rubber foot.003",
+          "Table aluminium leg.003"
+        ],
+        [
+          "Table support apron.001",
+          "Bedside tabletop"
+        ],
+        [
+          "Table support apron.001",
+          "Table aluminium leg.002"
+        ],
+        [
+          "Table support apron.001",
+          "Table aluminium leg.003"
+        ],
+        [
+          "Table transverse apron",
+          "Bedside tabletop"
+        ],
+        [
+          "Table transverse apron",
+          "Table aluminium leg"
+        ],
+        [
+          "Table transverse apron",
+          "Table support apron"
+        ],
+        [
+          "Table transverse apron",
+          "Table aluminium leg.002"
+        ],
+        [
+          "Table transverse apron",
+          "Table support apron.001"
+        ],
+        [
+          "Table transverse apron.001",
+          "Bedside tabletop"
+        ],
+        [
+          "Table transverse apron.001",
+          "Table aluminium leg.001"
+        ],
+        [
+          "Table transverse apron.001",
+          "Table support apron"
+        ],
+        [
+          "Table transverse apron.001",
+          "Table aluminium leg.003"
+        ],
+        [
+          "Table transverse apron.001",
+          "Table support apron.001"
+        ],
+        [
+          "Raised phone pickup rest",
+          "Bedside tabletop"
+        ],
+        [
+          "Soft glasses case",
+          "Bedside tabletop"
+        ]
+      ],
+      "unsupported_components": 0
+    },
+    "hospital_bed": {
+      "part_count": 129,
+      "grounded_parts": 129,
+      "floor_contacts": [
+        "Bed caster tire",
+        "Bed caster tire.001",
+        "Bed caster tire.002",
+        "Bed caster tire.003"
+      ],
+      "connection_edges": [
+        [
+          "Caster swivel stem",
+          "Bed lower longitudinal beam"
+        ],
+        [
+          "Caster fork crosshead",
+          "Caster swivel stem"
+        ],
+        [
+          "Caster fork cheek",
+          "Caster fork crosshead"
+        ],
+        [
+          "Caster fork cheek.001",
+          "Caster fork crosshead"
+        ],
+        [
+          "Bed caster tire",
+          "Floor slab"
+        ],
+        [
+          "Bed caster axle",
+          "Caster fork cheek"
+        ],
+        [
+          "Bed caster axle",
+          "Caster fork cheek.001"
+        ],
+        [
+          "Bed caster axle",
+          "Bed caster tire"
+        ],
+        [
+          "Bed caster hub",
+          "Bed caster tire"
+        ],
+        [
+          "Bed caster hub",
+          "Bed caster axle"
+        ],
+        [
+          "Caster swivel stem.001",
+          "Bed lower longitudinal beam"
+        ],
+        [
+          "Caster fork crosshead.001",
+          "Caster swivel stem.001"
+        ],
+        [
+          "Caster fork cheek.002",
+          "Caster fork crosshead.001"
+        ],
+        [
+          "Caster fork cheek.003",
+          "Caster fork crosshead.001"
+        ],
+        [
+          "Bed caster tire.001",
+          "Floor slab"
+        ],
+        [
+          "Bed caster axle.001",
+          "Caster fork cheek.002"
+        ],
+        [
+          "Bed caster axle.001",
+          "Caster fork cheek.003"
+        ],
+        [
+          "Bed caster axle.001",
+          "Bed caster tire.001"
+        ],
+        [
+          "Bed caster hub.001",
+          "Bed caster tire.001"
+        ],
+        [
+          "Bed caster hub.001",
+          "Bed caster axle.001"
+        ],
+        [
+          "Caster swivel stem.002",
+          "Bed lower longitudinal beam.001"
+        ],
+        [
+          "Caster fork crosshead.002",
+          "Caster swivel stem.002"
+        ],
+        [
+          "Caster fork cheek.004",
+          "Caster fork crosshead.002"
+        ],
+        [
+          "Caster fork cheek.005",
+          "Caster fork crosshead.002"
+        ],
+        [
+          "Bed caster tire.002",
+          "Floor slab"
+        ],
+        [
+          "Bed caster axle.002",
+          "Caster fork cheek.004"
+        ],
+        [
+          "Bed caster axle.002",
+          "Caster fork cheek.005"
+        ],
+        [
+          "Bed caster axle.002",
+          "Bed caster tire.002"
+        ],
+        [
+          "Bed caster hub.002",
+          "Bed caster tire.002"
+        ],
+        [
+          "Bed caster hub.002",
+          "Bed caster axle.002"
+        ],
+        [
+          "Caster swivel stem.003",
+          "Bed lower longitudinal beam.001"
+        ],
+        [
+          "Caster fork crosshead.003",
+          "Caster swivel stem.003"
+        ],
+        [
+          "Caster fork cheek.006",
+          "Caster fork crosshead.003"
+        ],
+        [
+          "Caster fork cheek.007",
+          "Caster fork crosshead.003"
+        ],
+        [
+          "Bed caster tire.003",
+          "Floor slab"
+        ],
+        [
+          "Bed caster axle.003",
+          "Caster fork cheek.006"
+        ],
+        [
+          "Bed caster axle.003",
+          "Caster fork cheek.007"
+        ],
+        [
+          "Bed caster axle.003",
+          "Bed caster tire.003"
+        ],
+        [
+          "Bed caster hub.003",
+          "Bed caster tire.003"
+        ],
+        [
+          "Bed caster hub.003",
+          "Bed caster axle.003"
+        ],
+        [
+          "Bed chassis transverse crossmember",
+          "Bed lower longitudinal beam"
+        ],
+        [
+          "Bed chassis transverse crossmember",
+          "Bed lower longitudinal beam.001"
+        ],
+        [
+          "Bed lift base shoe",
+          "Bed chassis transverse crossmember"
+        ],
+        [
+          "Bed lift support",
+          "Bed chassis transverse crossmember"
+        ],
+        [
+          "Bed lift support",
+          "Bed lift base shoe"
+        ],
+        [
+          "Bed lift telescoping inner",
+          "Bed lift support"
+        ],
+        [
+          "Bed chassis transverse crossmember.001",
+          "Bed lower longitudinal beam"
+        ],
+        [
+          "Bed chassis transverse crossmember.001",
+          "Bed lower longitudinal beam.001"
+        ],
+        [
+          "Bed lift base shoe.001",
+          "Bed chassis transverse crossmember.001"
+        ],
+        [
+          "Bed lift support.001",
+          "Bed chassis transverse crossmember.001"
+        ],
+        [
+          "Bed lift support.001",
+          "Bed lift base shoe.001"
+        ],
+        [
+          "Bed lift telescoping inner.001",
+          "Bed lift support.001"
+        ],
+        [
+          "Caster brake pedal",
+          "Bed caster tire"
+        ],
+        [
+          "Caster brake pedal",
+          "Bed caster hub"
+        ],
+        [
+          "Caster brake pedal.001",
+          "Bed caster tire.001"
+        ],
+        [
+          "Caster brake pedal.001",
+          "Bed caster hub.001"
+        ],
+        [
+          "Caster brake pedal.002",
+          "Bed caster tire.002"
+        ],
+        [
+          "Caster brake pedal.002",
+          "Bed caster hub.002"
+        ],
+        [
+          "Caster brake pedal.003",
+          "Bed caster tire.003"
+        ],
+        [
+          "Caster brake pedal.003",
+          "Bed caster hub.003"
+        ],
+        [
+          "Bed support deck",
+          "Bed lift support"
+        ],
+        [
+          "Bed support deck",
+          "Bed lift telescoping inner"
+        ],
+        [
+          "Bed support deck",
+          "Bed lift support.001"
+        ],
+        [
+          "Bed support deck",
+          "Bed lift telescoping inner.001"
+        ],
+        [
+          "Mattress core",
+          "Bed support deck"
+        ],
+        [
+          "Fitted cotton sheet",
+          "Mattress core"
+        ],
+        [
+          "Pillow loft",
+          "Mattress core"
+        ],
+        [
+          "Pillow loft",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Bed end board mounting upright",
+          "Bed support deck"
+        ],
+        [
+          "Bed end board mounting upright",
+          "Mattress core"
+        ],
+        [
+          "Bed end board mounting upright",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Bed end board mounting upright.001",
+          "Bed support deck"
+        ],
+        [
+          "Bed end board mounting upright.001",
+          "Mattress core"
+        ],
+        [
+          "Bed end board mounting upright.001",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Bed end board",
+          "Bed support deck"
+        ],
+        [
+          "Bed end board",
+          "Bed end board mounting upright"
+        ],
+        [
+          "Bed end board",
+          "Bed end board mounting upright.001"
+        ],
+        [
+          "Bed end board recessed panel",
+          "Bed end board"
+        ],
+        [
+          "Bed end board mounting upright.002",
+          "Bed support deck"
+        ],
+        [
+          "Bed end board mounting upright.003",
+          "Bed support deck"
+        ],
+        [
+          "Bed end board.001",
+          "Bed support deck"
+        ],
+        [
+          "Bed end board.001",
+          "Bed end board mounting upright.002"
+        ],
+        [
+          "Bed end board.001",
+          "Bed end board mounting upright.003"
+        ],
+        [
+          "Bed end board recessed panel.001",
+          "Bed support deck"
+        ],
+        [
+          "Bed end board recessed panel.001",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Bed end board recessed panel.001",
+          "Bed end board.001"
+        ],
+        [
+          "Rail deck mounting bracket",
+          "Bed support deck"
+        ],
+        [
+          "Rail deck mounting bracket",
+          "Mattress core"
+        ],
+        [
+          "Rail deck mounting bracket",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Rail support socket",
+          "Rail deck mounting bracket"
+        ],
+        [
+          "Safety rail upright",
+          "Rail support socket"
+        ],
+        [
+          "Rounded rail corner",
+          "Safety rail upright"
+        ],
+        [
+          "Rounded rail corner.001",
+          "Safety rail upright"
+        ],
+        [
+          "Rail deck mounting bracket.001",
+          "Bed support deck"
+        ],
+        [
+          "Rail deck mounting bracket.001",
+          "Mattress core"
+        ],
+        [
+          "Rail deck mounting bracket.001",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Rail support socket.001",
+          "Rail deck mounting bracket.001"
+        ],
+        [
+          "Safety rail upright.001",
+          "Rail support socket.001"
+        ],
+        [
+          "Rounded rail corner.002",
+          "Safety rail upright.001"
+        ],
+        [
+          "Rounded rail corner.003",
+          "Safety rail upright.001"
+        ],
+        [
+          "Safety rail horizontal",
+          "Safety rail upright"
+        ],
+        [
+          "Safety rail horizontal",
+          "Rounded rail corner"
+        ],
+        [
+          "Safety rail horizontal",
+          "Safety rail upright.001"
+        ],
+        [
+          "Safety rail horizontal",
+          "Rounded rail corner.002"
+        ],
+        [
+          "Safety rail horizontal.001",
+          "Safety rail upright"
+        ],
+        [
+          "Safety rail horizontal.001",
+          "Rounded rail corner.001"
+        ],
+        [
+          "Safety rail horizontal.001",
+          "Safety rail upright.001"
+        ],
+        [
+          "Safety rail horizontal.001",
+          "Rounded rail corner.003"
+        ],
+        [
+          "Rail crossbar",
+          "Safety rail horizontal"
+        ],
+        [
+          "Rail crossbar",
+          "Safety rail horizontal.001"
+        ],
+        [
+          "Rail crossbar.001",
+          "Safety rail horizontal"
+        ],
+        [
+          "Rail crossbar.001",
+          "Safety rail horizontal.001"
+        ],
+        [
+          "Rail crossbar.002",
+          "Safety rail horizontal"
+        ],
+        [
+          "Rail crossbar.002",
+          "Safety rail horizontal.001"
+        ],
+        [
+          "Rail latch housing",
+          "Rail deck mounting bracket"
+        ],
+        [
+          "Rail latch housing",
+          "Rail support socket"
+        ],
+        [
+          "Rail latch release",
+          "Rail latch housing"
+        ],
+        [
+          "Rail deck mounting bracket.002",
+          "Bed support deck"
+        ],
+        [
+          "Rail deck mounting bracket.002",
+          "Mattress core"
+        ],
+        [
+          "Rail deck mounting bracket.002",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Rail support socket.002",
+          "Rail deck mounting bracket.002"
+        ],
+        [
+          "Safety rail upright.002",
+          "Rail support socket.002"
+        ],
+        [
+          "Rounded rail corner.004",
+          "Safety rail upright.002"
+        ],
+        [
+          "Rounded rail corner.005",
+          "Safety rail upright.002"
+        ],
+        [
+          "Rail deck mounting bracket.003",
+          "Bed support deck"
+        ],
+        [
+          "Rail deck mounting bracket.003",
+          "Mattress core"
+        ],
+        [
+          "Rail deck mounting bracket.003",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Rail support socket.003",
+          "Rail deck mounting bracket.003"
+        ],
+        [
+          "Safety rail upright.003",
+          "Rail support socket.003"
+        ],
+        [
+          "Rounded rail corner.006",
+          "Safety rail upright.003"
+        ],
+        [
+          "Rounded rail corner.007",
+          "Safety rail upright.003"
+        ],
+        [
+          "Safety rail horizontal.002",
+          "Safety rail upright.002"
+        ],
+        [
+          "Safety rail horizontal.002",
+          "Rounded rail corner.004"
+        ],
+        [
+          "Safety rail horizontal.002",
+          "Safety rail upright.003"
+        ],
+        [
+          "Safety rail horizontal.002",
+          "Rounded rail corner.006"
+        ],
+        [
+          "Safety rail horizontal.003",
+          "Safety rail upright.002"
+        ],
+        [
+          "Safety rail horizontal.003",
+          "Rounded rail corner.005"
+        ],
+        [
+          "Safety rail horizontal.003",
+          "Safety rail upright.003"
+        ],
+        [
+          "Safety rail horizontal.003",
+          "Rounded rail corner.007"
+        ],
+        [
+          "Rail crossbar.003",
+          "Safety rail horizontal.002"
+        ],
+        [
+          "Rail crossbar.003",
+          "Safety rail horizontal.003"
+        ],
+        [
+          "Rail crossbar.004",
+          "Safety rail horizontal.002"
+        ],
+        [
+          "Rail crossbar.004",
+          "Safety rail horizontal.003"
+        ],
+        [
+          "Rail crossbar.005",
+          "Safety rail horizontal.002"
+        ],
+        [
+          "Rail crossbar.005",
+          "Safety rail horizontal.003"
+        ],
+        [
+          "Rail latch housing.001",
+          "Rail deck mounting bracket.002"
+        ],
+        [
+          "Rail latch housing.001",
+          "Rail support socket.002"
+        ],
+        [
+          "Rail latch release.001",
+          "Rail latch housing.001"
+        ],
+        [
+          "Rail deck mounting bracket.004",
+          "Bed support deck"
+        ],
+        [
+          "Rail deck mounting bracket.004",
+          "Mattress core"
+        ],
+        [
+          "Rail deck mounting bracket.004",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Rail support socket.004",
+          "Rail deck mounting bracket.004"
+        ],
+        [
+          "Safety rail upright.004",
+          "Rail support socket.004"
+        ],
+        [
+          "Rounded rail corner.008",
+          "Safety rail upright.004"
+        ],
+        [
+          "Rounded rail corner.009",
+          "Safety rail upright.004"
+        ],
+        [
+          "Rail deck mounting bracket.005",
+          "Bed support deck"
+        ],
+        [
+          "Rail deck mounting bracket.005",
+          "Mattress core"
+        ],
+        [
+          "Rail deck mounting bracket.005",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Rail support socket.005",
+          "Rail deck mounting bracket.005"
+        ],
+        [
+          "Safety rail upright.005",
+          "Rail support socket.005"
+        ],
+        [
+          "Rounded rail corner.010",
+          "Safety rail upright.005"
+        ],
+        [
+          "Rounded rail corner.011",
+          "Safety rail upright.005"
+        ],
+        [
+          "Safety rail horizontal.004",
+          "Safety rail upright.004"
+        ],
+        [
+          "Safety rail horizontal.004",
+          "Rounded rail corner.008"
+        ],
+        [
+          "Safety rail horizontal.004",
+          "Safety rail upright.005"
+        ],
+        [
+          "Safety rail horizontal.004",
+          "Rounded rail corner.010"
+        ],
+        [
+          "Safety rail horizontal.005",
+          "Safety rail upright.004"
+        ],
+        [
+          "Safety rail horizontal.005",
+          "Rounded rail corner.009"
+        ],
+        [
+          "Safety rail horizontal.005",
+          "Safety rail upright.005"
+        ],
+        [
+          "Safety rail horizontal.005",
+          "Rounded rail corner.011"
+        ],
+        [
+          "Rail crossbar.006",
+          "Safety rail horizontal.004"
+        ],
+        [
+          "Rail crossbar.006",
+          "Safety rail horizontal.005"
+        ],
+        [
+          "Rail crossbar.007",
+          "Safety rail horizontal.004"
+        ],
+        [
+          "Rail crossbar.007",
+          "Safety rail horizontal.005"
+        ],
+        [
+          "Rail crossbar.008",
+          "Safety rail horizontal.004"
+        ],
+        [
+          "Rail crossbar.008",
+          "Safety rail horizontal.005"
+        ],
+        [
+          "Rail latch housing.002",
+          "Rail deck mounting bracket.004"
+        ],
+        [
+          "Rail latch housing.002",
+          "Rail support socket.004"
+        ],
+        [
+          "Rail latch release.002",
+          "Rail latch housing.002"
+        ],
+        [
+          "Rail deck mounting bracket.006",
+          "Bed support deck"
+        ],
+        [
+          "Rail deck mounting bracket.006",
+          "Mattress core"
+        ],
+        [
+          "Rail deck mounting bracket.006",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Rail support socket.006",
+          "Rail deck mounting bracket.006"
+        ],
+        [
+          "Safety rail upright.006",
+          "Rail support socket.006"
+        ],
+        [
+          "Rounded rail corner.012",
+          "Safety rail upright.006"
+        ],
+        [
+          "Rounded rail corner.013",
+          "Safety rail upright.006"
+        ],
+        [
+          "Rail deck mounting bracket.007",
+          "Bed support deck"
+        ],
+        [
+          "Rail deck mounting bracket.007",
+          "Mattress core"
+        ],
+        [
+          "Rail deck mounting bracket.007",
+          "Fitted cotton sheet"
+        ],
+        [
+          "Rail support socket.007",
+          "Rail deck mounting bracket.007"
+        ],
+        [
+          "Safety rail upright.007",
+          "Rail support socket.007"
+        ],
+        [
+          "Rounded rail corner.014",
+          "Safety rail upright.007"
+        ],
+        [
+          "Rounded rail corner.015",
+          "Safety rail upright.007"
+        ],
+        [
+          "Safety rail horizontal.006",
+          "Safety rail upright.006"
+        ],
+        [
+          "Safety rail horizontal.006",
+          "Rounded rail corner.012"
+        ],
+        [
+          "Safety rail horizontal.006",
+          "Safety rail upright.007"
+        ],
+        [
+          "Safety rail horizontal.006",
+          "Rounded rail corner.014"
+        ],
+        [
+          "Safety rail horizontal.007",
+          "Safety rail upright.006"
+        ],
+        [
+          "Safety rail horizontal.007",
+          "Rounded rail corner.013"
+        ],
+        [
+          "Safety rail horizontal.007",
+          "Safety rail upright.007"
+        ],
+        [
+          "Safety rail horizontal.007",
+          "Rounded rail corner.015"
+        ],
+        [
+          "Rail crossbar.009",
+          "Safety rail horizontal.006"
+        ],
+        [
+          "Rail crossbar.009",
+          "Safety rail horizontal.007"
+        ],
+        [
+          "Rail crossbar.010",
+          "Safety rail horizontal.006"
+        ],
+        [
+          "Rail crossbar.010",
+          "Safety rail horizontal.007"
+        ],
+        [
+          "Rail crossbar.011",
+          "Safety rail horizontal.006"
+        ],
+        [
+          "Rail crossbar.011",
+          "Safety rail horizontal.007"
+        ],
+        [
+          "Rail latch housing.003",
+          "Rail deck mounting bracket.006"
+        ],
+        [
+          "Rail latch housing.003",
+          "Rail support socket.006"
+        ],
+        [
+          "Rail latch release.003",
+          "Rail latch housing.003"
+        ],
+        [
+          "Rail interface",
+          "Rail crossbar.010"
+        ],
+        [
+          "Rail soft button",
+          "Rail interface"
+        ],
+        [
+          "Rail soft button.001",
+          "Rail interface"
+        ],
+        [
+          "Rail soft button.002",
+          "Rail interface"
+        ],
+        [
+          "patient_anatomical_skin",
+          "Mattress core"
+        ],
+        [
+          "patient_anatomical_skin",
+          "Fitted cotton sheet"
+        ],
+        [
+          "patient_anatomical_skin",
+          "Pillow loft"
+        ],
+        [
+          "patient_hospital_gown",
+          "Pillow loft"
+        ],
+        [
+          "patient_hospital_gown",
+          "patient_anatomical_skin"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Bed support deck"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Mattress core"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Fitted cotton sheet"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Bed end board mounting upright"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Bed end board mounting upright.001"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail deck mounting bracket"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail support socket"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Safety rail upright"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rounded rail corner"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rounded rail corner.001"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail deck mounting bracket.001"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail support socket.001"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Safety rail upright.001"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rounded rail corner.002"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rounded rail corner.003"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Safety rail horizontal"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Safety rail horizontal.001"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail crossbar"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail crossbar.001"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail crossbar.002"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail latch housing"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail deck mounting bracket.004"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail support socket.004"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Safety rail upright.004"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rounded rail corner.008"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rounded rail corner.009"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail deck mounting bracket.005"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail support socket.005"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Safety rail upright.005"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rounded rail corner.010"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rounded rail corner.011"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Safety rail horizontal.004"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Safety rail horizontal.005"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail crossbar.006"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail crossbar.007"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail crossbar.008"
+        ],
+        [
+          "patient_contoured_blanket",
+          "Rail latch housing.002"
+        ],
+        [
+          "patient_contoured_blanket",
+          "patient_anatomical_skin"
+        ],
+        [
+          "patient_contoured_blanket",
+          "patient_hospital_gown"
+        ]
+      ],
+      "unsupported_components": 0
+    },
+    "room_plant": {
+      "part_count": 4,
+      "grounded_parts": 4,
+      "floor_contacts": [
+        "Plant pot base",
+        "Plant pot open wall"
+      ],
+      "connection_edges": [
+        [
+          "Plant pot base",
+          "Floor slab"
+        ],
+        [
+          "Plant pot open wall",
+          "Floor slab"
+        ],
+        [
+          "Plant pot open wall",
+          "Plant pot base"
+        ],
+        [
+          "Plant pot rounded rim",
+          "Plant pot open wall"
+        ],
+        [
+          "Plant soil",
+          "Plant pot base"
+        ],
+        [
+          "Plant soil",
+          "Plant pot open wall"
+        ],
+        [
+          "Plant soil",
+          "Plant pot rounded rim"
+        ]
+      ],
+      "unsupported_components": 0
+    },
+    "visitor_chair": {
+      "part_count": 16,
+      "grounded_parts": 16,
+      "floor_contacts": [
+        "Visitor chair leg",
+        "Visitor chair leg.001",
+        "Visitor chair leg.002",
+        "Visitor chair leg.003"
+      ],
+      "connection_edges": [
+        [
+          "Visitor chair leg",
+          "Floor slab"
+        ],
+        [
+          "Visitor chair leg.001",
+          "Floor slab"
+        ],
+        [
+          "Visitor chair seat rail",
+          "Visitor chair leg"
+        ],
+        [
+          "Visitor chair seat rail",
+          "Visitor chair leg.001"
+        ],
+        [
+          "Visitor chair leg.002",
+          "Floor slab"
+        ],
+        [
+          "Visitor chair leg.003",
+          "Floor slab"
+        ],
+        [
+          "Visitor chair seat rail.001",
+          "Visitor chair leg.002"
+        ],
+        [
+          "Visitor chair seat rail.001",
+          "Visitor chair leg.003"
+        ],
+        [
+          "Visitor chair transverse seat rail",
+          "Visitor chair leg"
+        ],
+        [
+          "Visitor chair transverse seat rail",
+          "Visitor chair seat rail"
+        ],
+        [
+          "Visitor chair transverse seat rail",
+          "Visitor chair arm front post"
+        ],
+        [
+          "Visitor chair transverse seat rail",
+          "Visitor chair leg.002"
+        ],
+        [
+          "Visitor chair transverse seat rail",
+          "Visitor chair seat rail.001"
+        ],
+        [
+          "Visitor chair transverse seat rail",
+          "Visitor chair arm front post.001"
+        ],
+        [
+          "Visitor chair transverse seat rail.001",
+          "Visitor chair leg.001"
+        ],
+        [
+          "Visitor chair transverse seat rail.001",
+          "Visitor chair seat rail"
+        ],
+        [
+          "Visitor chair transverse seat rail.001",
+          "Visitor chair back upright"
+        ],
+        [
+          "Visitor chair transverse seat rail.001",
+          "Visitor chair leg.003"
+        ],
+        [
+          "Visitor chair transverse seat rail.001",
+          "Visitor chair seat rail.001"
+        ],
+        [
+          "Visitor chair transverse seat rail.001",
+          "Visitor chair back upright.001"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair leg"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair leg.001"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair seat rail"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair arm front post"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair back upright"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair leg.002"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair leg.003"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair seat rail.001"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair arm front post.001"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair back upright.001"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair transverse seat rail"
+        ],
+        [
+          "Visitor chair seat",
+          "Visitor chair transverse seat rail.001"
+        ],
+        [
+          "Visitor chair upholstered back",
+          "Visitor chair back upright"
+        ],
+        [
+          "Visitor chair upholstered back",
+          "Visitor chair back upright.001"
+        ],
+        [
+          "Visitor chair upholstered back",
+          "Visitor chair seat"
+        ],
+        [
+          "Visitor chair padded arm",
+          "Visitor chair arm front post"
+        ],
+        [
+          "Visitor chair padded arm",
+          "Visitor chair upholstered back"
+        ],
+        [
+          "Visitor chair padded arm.001",
+          "Visitor chair arm front post.001"
+        ],
+        [
+          "Visitor chair padded arm.001",
+          "Visitor chair upholstered back"
+        ]
+      ],
+      "unsupported_components": 0
+    },
+    "visitor_table": {
+      "part_count": 8,
+      "grounded_parts": 8,
+      "floor_contacts": [
+        "Visitor table foot"
+      ],
+      "connection_edges": [
+        [
+          "Visitor table stem",
+          "Round visitor table top"
+        ],
+        [
+          "Visitor table foot",
+          "Floor slab"
+        ],
+        [
+          "Visitor table foot",
+          "Visitor table stem"
+        ],
+        [
+          "Visitor table foot collar",
+          "Visitor table stem"
+        ],
+        [
+          "Visitor table foot collar",
+          "Visitor table foot"
+        ],
+        [
+          "Water cup base",
+          "Round visitor table top"
+        ],
+        [
+          "Open cup wall",
+          "Water cup base"
+        ],
+        [
+          "Rolled cup rim",
+          "Open cup wall"
+        ],
+        [
+          "Drinking water surface",
+          "Open cup wall"
+        ]
+      ],
+      "unsupported_components": 0
+    },
+    "wardrobe": {
+      "part_count": 12,
+      "grounded_parts": 12,
+      "floor_contacts": [
+        "Wardrobe recessed plinth",
+        "Wardrobe carcass",
+        "Wardrobe carcass.001"
+      ],
+      "connection_edges": [
+        [
+          "Wardrobe recessed plinth",
+          "Floor slab"
+        ],
+        [
+          "Wardrobe carcass",
+          "Floor slab"
+        ],
+        [
+          "Wardrobe carcass",
+          "Wardrobe recessed plinth"
+        ],
+        [
+          "Wardrobe door",
+          "Wardrobe carcass"
+        ],
+        [
+          "Wardrobe handle mounting post",
+          "Wardrobe door"
+        ],
+        [
+          "Wardrobe handle mounting post",
+          "Brushed handle"
+        ],
+        [
+          "Wardrobe handle mounting post.001",
+          "Wardrobe door"
+        ],
+        [
+          "Wardrobe handle mounting post.001",
+          "Brushed handle"
+        ],
+        [
+          "Wardrobe carcass.001",
+          "Floor slab"
+        ],
+        [
+          "Wardrobe carcass.001",
+          "Wardrobe recessed plinth"
+        ],
+        [
+          "Wardrobe door.001",
+          "Wardrobe carcass.001"
+        ],
+        [
+          "Wardrobe handle mounting post.002",
+          "Wardrobe door.001"
+        ],
+        [
+          "Wardrobe handle mounting post.002",
+          "Brushed handle.001"
+        ],
+        [
+          "Wardrobe handle mounting post.003",
+          "Wardrobe door.001"
+        ],
+        [
+          "Wardrobe handle mounting post.003",
+          "Brushed handle.001"
+        ],
+        [
+          "Wardrobe continuous top cap",
+          "Wardrobe carcass"
+        ],
+        [
+          "Wardrobe continuous top cap",
+          "Wardrobe carcass.001"
+        ]
+      ],
+      "unsupported_components": 0
+    }
+  },
+  "bedding": [],
+  "issues": [],
+  "limitations": [
+    "Connectivity does not prove load capacity or furniture safety",
+    "Bounds overlap alone cannot prove actual surface contact",
+    "Walls, external plants and decorative foliage are outside this furniture audit"
+  ],
+  "source": "assets/simulation/room-geometry-manifest.json"
+}

@@ -55,3 +55,7 @@ data/patient-feedback/raw/
 # Redundant downloaded catalog and authoring backups (keep the editable .blend).
 assets/provenance/polyhaven-catalog-cache.json
 *.blend[0-9]*
+
+# Intermediate human fitting previews; the integrated scene remains editable.
+assets/patient/patient-inspection.*
+assets/patient/patient-eye-inspection.*
