@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-09-13T03:25:39.723Z",
+  "elapsed_seconds": 20.583,
+  "origin": "http://127.0.0.1:4173",
+  "server": "Static files with Vercel response headers; no API proxy",
+  "engine": "MuJoCo WebAssembly",
+  "viewport": {
+    "width": 1600,
+    "height": 1000
+  },
+  "synchronized_bodies": 27,
+  "joint_positions": 25,
+  "moving_joints": 25,
+  "moving_simulation_time_seconds": 3.38,
+  "paused_simulation_time_seconds": 3.63,
+  "reach_endpoint_error_display": "0.1 cm",
+  "physics_steps_display": "2,761",
+  "default_route_3d": true,
+  "legacy_hash_stays_in_public_demo": true,
+  "about_dialog_escape_and_focus_restoration": true,
+  "errors": [],
+  "failed_requests": [],
+  "api_requests": [],
+  "screenshot": "apps/web/artifacts/public-simulation.png"
+}

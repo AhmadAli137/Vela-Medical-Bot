@@ -26,17 +26,21 @@ const server=createServer(async(request,response)=>{
 await new Promise(resolveReady=>server.listen(4173,'127.0.0.1',resolveReady));
 const started=Date.now();
 const errors=[],failedRequests=[],apiRequests=[];
-let browser;
+let browser,page;
 try{
   browser=await chromium.launch({channel:'chrome',headless:true});
   const context=await browser.newContext({viewport:{width:1600,height:1000}});
-  const page=await context.newPage();
+  page=await context.newPage();
   page.on('pageerror',error=>errors.push(String(error)));
   page.on('console',message=>{if(message.type()==='error')errors.push(message.text())});
   page.on('requestfailed',request=>failedRequests.push({url:request.url(),error:request.failure()?.errorText}));
   page.on('request',request=>{if(new URL(request.url()).pathname.startsWith('/api/'))apiRequests.push(request.url())});
   await page.goto('http://127.0.0.1:4173/',{waitUntil:'networkidle'});
-  await expect(page.getByRole('button',{name:'Joint movement',exact:true})).toBeEnabled({timeout:60000});
+  await expect.poll(async()=>{
+    const alerts=await page.getByRole('alert').allTextContents();
+    if(alerts.length)throw new Error(alerts.join('; '));
+    return page.getByRole('button',{name:'Joint movement',exact:true}).isEnabled();
+  },{timeout:60000}).toBe(true);
   await expect(page.getByText('MuJoCo · in browser',{exact:true})).toBeVisible();
   await page.getByRole('button',{name:'Model & physics',exact:true}).click();
   await expect(page.getByText('27 synchronized',{exact:true})).toBeVisible();
@@ -77,6 +81,9 @@ try{
   const result={checked_at:new Date().toISOString(),elapsed_seconds:(Date.now()-started)/1000,origin:'http://127.0.0.1:4173',server:'Static files with Vercel response headers; no API proxy',engine:'MuJoCo WebAssembly',viewport:{width:1600,height:1000},synchronized_bodies:27,joint_positions:initial.length,moving_joints:movingJoints,moving_simulation_time_seconds:movingTime,paused_simulation_time_seconds:pausedTime,reach_endpoint_error_display:reachErrorText,physics_steps_display:physicsSteps,default_route_3d:true,legacy_hash_stays_in_public_demo:true,about_dialog_escape_and_focus_restoration:true,errors,failed_requests:failedRequests,api_requests:apiRequests,screenshot:'apps/web/artifacts/public-simulation.png'};
   await writeFile(resolve(repository,'artifacts/public-browser-check.json'),JSON.stringify(result,null,2)+'\n');
   console.log(JSON.stringify(result,null,2));
+}catch(error){
+  console.error(JSON.stringify({errors,failedRequests,apiRequests,alerts:await page?.getByRole('alert').allTextContents()},null,2));
+  throw error;
 }finally{
   await browser?.close();
   await new Promise(resolveClosed=>server.close(resolveClosed));

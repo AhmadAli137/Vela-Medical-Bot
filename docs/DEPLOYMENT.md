@@ -6,7 +6,7 @@ The public build runs the reference robot's MuJoCo 3.13.0 physics inside the bro
 
 The full staff/patient/fleet/research workspace remains the separate local Python application described below. The public build opens the 3D view and explains this boundary instead of exposing disconnected operational controls.
 
-Import this repository into Vercel with its repository root as the project root. The checked-in `vercel.json` selects Vite, installs with `npm --prefix apps/web ci`, builds with `npm --prefix apps/web run build:public`, and publishes `apps/web/dist`. Build assets are copied from `assets/simulation/`; the WASM engine is bundled from the pinned npm dependency. The public CSP permits WebAssembly compilation without permitting arbitrary JavaScript evaluation.
+Import this repository into Vercel with its repository root as the project root. The checked-in `vercel.json` selects Vite, installs with `npm --prefix apps/web ci`, builds with `npm --prefix apps/web run build:public`, and publishes `apps/web/dist`. Build assets are copied from `assets/simulation/`; the WASM engine is bundled from the pinned npm dependency. The official engine's embind JavaScript bindings generate functions at startup, so this public demo's CSP permits `unsafe-eval` as well as WebAssembly compilation. Scripts and connections remain restricted to same-origin assets. The separate Python workspace retains its original, stricter script policy.
 
 ```powershell
 npm --prefix apps/web ci
