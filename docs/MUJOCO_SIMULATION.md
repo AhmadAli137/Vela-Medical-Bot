@@ -1,10 +1,12 @@
 # MuJoCo simulation: what runs and what it proves
 
+Current entrypoints and synchronization are described in the [app guide](APP_GUIDE.md). The native viewer now uses the reference scene and shared local session when opened from the app; the original primitive model remains an explicitly labeled benchmark.
+
 The repository loads and steps a real MuJoCo MJCF model. It is an explicitly **unverified synthetic robot**, with topology motivated by the supplied Bracket Bot summaries. No CAD, URDF, vendor inertias, calibrated camera transforms or production control limits were supplied. Every numeric link size, axis orientation, mass, joint range, gain, force bound and camera calibration is a synthetic test fixture, not a Bracket Bot specification.
 
-The model contains a planar mobile base, shoulder lift, two seven-joint serial arms, two rotary two-finger grippers, head stereo viewpoints, wrist cameras, collision bodies and position actuators. Planar X/Y/yaw sliders are a convenient laboratory base surrogate; they are not an asserted differential-drive controller. Synthetic gravity compensation is enabled on the moving upper body. A software test cannot certify its equivalent on hardware.
+The current model contains two wheel velocity motors, independent shoulder lifts, two seven-joint serial arms, rotary grippers, stereo head and wrist cameras. There are 22 physical actuators. Wheel-ground contact produces translation and yaw; there are no base X/Y/yaw driving actuators. Passive guides preserve an upright chassis and allow a small vertical displacement to load the tires. Upper-body gravity compensation and estimated dynamics remain research approximations. This is not active two-wheel balancing or verified hardware dynamics.
 
-Room proxies include a protected bed, bedside table, overbed tray, visitor chair, wheelchair, cart, cabinet with sliding drawer/handle, hinged door, phone, rigid bag proxy and randomized clutter. These are primitives with simplified contacts. The bag is rigid; cloth physics and deformable manipulation are not implemented.
+The current reference room contains the complete visual furniture, a static clothed patient, a free phone and meal container, and a passive blind mechanism. Simplified collision geometry drives contact; visual meshes add no mass or collision. The robot has independent shoulder lifts and a fixed mast/head. See [assistance and camera results](ASSISTANCE_AND_VISION.md).
 
 ## Run
 
@@ -20,11 +22,13 @@ From the repository root after dependency installation:
 .\.venv\Scripts\python.exe -m sim render --camera right_wrist --output sim/outputs
 ```
 
-`viewer` opens a native interactive **3D MuJoCo window** with continuous physics and a small, repeatable dual-arm/shoulder-lift motion. Drag to orbit, scroll to zoom, Space to pause, M to toggle demonstration motion, R to reset, and C to cycle overview/head/wrist cameras. Its overlay labels the model unverified. Contacts or nonfinite dynamics pause the demo. This is not a phone-grasp or VLA demonstration. The Research Studio's Open 3D simulator button launches this same local window; it is not an embedded browser physics viewer.
+`viewer` opens the current detailed scene in a standalone native window. Use `--connect http://127.0.0.1:8000` to display the same running session as the local browser; the app and command-file launcher select this shared mode automatically. Drag to orbit, scroll to zoom, Space to pause, R to reset, C to cycle cameras, and V to inspect collision shapes. The overlay lists number keys for the same manipulation and movement demos as the browser.
 
-`render_scene(path, depth=True, camera="head_rgb")` exports actual MuJoCo depth to NumPy `.npy`; RGB rendering uses MuJoCo's OpenGL renderer and Pillow PNG output. Graphics-driver availability is required for rendering; physics stepping does not depend on a browser or a renderer.
+`render` renders the current reference scene. `generate` exports a self-contained native model. Graphics-driver availability is required for rendering; physics stepping does not depend on a browser or renderer. Legacy `render` and `generate` remain available with `--legacy`.
 
-## Validation scope
+## Legacy benchmark and mock workflow validation
+
+The following diagnostics retain the **older primitive surrogate**, not the current patient-room demonstration. Its proxies include wheelchair, cart, sliding drawer, hinged door, rigid bag and randomized clutter. Retaining the fixture preserves historical benchmark comparisons.
 
 `sim.engine.run_benchmark(episodes, seed)` commands both shoulder yaw joints and the vertical stage, executes 300 physics steps per episode, measures finite state, self/environment contacts, lift displacement and maximum generalized speed, then tests position-only damped IK near the left wrist. Mass, friction, clutter and table geometry vary with seed. The report records actual contact counts rather than removing unexpected contacts from the score. IK is an endpoint calculation, not collision-free motion planning.
 
@@ -44,9 +48,9 @@ The benchmark also evaluates a **deterministic** abstention envelope on permitte
 
 The application may use this diagnostic for its software world-state demo only. Hardware authorization remains blocked by the independent safety service.
 
-## Measured and unmeasured results
+## Legacy benchmark results
 
-`sim/outputs/evaluation.json` is generated by the command above, and contains the seed, model hash, MuJoCo version, per-episode records and limitations. Task success, grasp success, bimanual manipulation success and sim-to-real gap remain JSON null because these have not been demonstrated. The simulator tests additionally force a robot/furniture overlap to prove contacts are detected, exercise unreachable IK, and check a person entering a candidate object path.
+`sim/outputs/evaluation.json` is generated by the command above, and contains the seed, model hash, MuJoCo version, per-episode records and limitations. Task success, grasp success, bimanual manipulation success and sim-to-real gap remain JSON null in this older benchmark; the current reference demo has separate measured contact-manipulation reports. The simulator tests additionally force a robot/furniture overlap to prove contacts are detected, exercise unreachable IK, and check a person entering a candidate object path.
 
 ## Replacing the surrogate
 

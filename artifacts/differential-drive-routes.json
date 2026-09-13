@@ -1,0 +1,902 @@
+{
+  "passed": true,
+  "trials": {
+    "bedside_demo": {
+      "passed": true,
+      "command": "bedside_demo",
+      "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+      "checks": {
+        "measured_demo_completed": true,
+        "no_unexpected_contacts": true,
+        "collision_masks_unchanged": true,
+        "no_direct_base_drive_force": true,
+        "small_lateral_speed": true,
+        "small_cumulative_lateral_slip": true,
+        "rolling_forward_agreement": true,
+        "rolling_yaw_agreement": true,
+        "both_tires_loaded": true
+      },
+      "summary": {
+        "samples": 1715,
+        "duration_s": 34.27999999999595,
+        "world_displacement_m": [
+          -1.2713068231251512e-05,
+          3.993064806939728e-05,
+          -7.95001290914421e-05
+        ],
+        "yaw_change_rad": 2.955517188527311e-10,
+        "body_lateral_absolute_travel_m": 0.00011110894275773072,
+        "lateral_speed_abs_m_s": {
+          "median": 3.775919237003489e-09,
+          "p95": 1.5408815252426198e-05,
+          "maximum": 0.00015002118741099202
+        },
+        "steady_forward_error_m_s": {
+          "median": 4.016377340846918e-06,
+          "p95": 0.001122718467628013,
+          "maximum": 0.006095840990299667
+        },
+        "steady_yaw_error_rad_s": {
+          "median": 1.1418370799770993e-07,
+          "p95": 0.003819274347853384,
+          "maximum": 0.032518124755741895
+        },
+        "steady_forward_speed_m_s": {
+          "median": 5.991360648835819e-07,
+          "p95": 0.24887736379034112,
+          "maximum": 0.24889003041015972
+        },
+        "wheel_speed_abs_rad_s": [
+          {
+            "median": 0.015044335087981347,
+            "p95": 1.9164978595728597,
+            "maximum": 1.9166200795433312
+          },
+          {
+            "median": 0.015044334074598657,
+            "p95": 1.916459783208676,
+            "maximum": 1.916911519537873
+          }
+        ],
+        "ground_contact_fraction": {
+          "left": 1.0,
+          "right": 1.0
+        },
+        "normal_force_n": {
+          "left": {
+            "median": 67.68899999997315,
+            "p95": 67.75224149585598,
+            "maximum": 70.14970240226208
+          },
+          "right": {
+            "median": 67.68899999997316,
+            "p95": 67.75224149586177,
+            "maximum": 70.14970240226208
+          }
+        },
+        "forward_contact_impulse_n_s": -0.2255185640125121,
+        "maximum_tire_penetration_m": 0.0002742234990707193,
+        "maximum_base_actuator_force": 0.0,
+        "maximum_base_applied_force": 0.0,
+        "maximum_external_body_wrench": 0.0,
+        "maximum_wheel_torque_nm": 1.6511297226329855,
+        "geometry": {
+          "radius_m": 0.13,
+          "track_m": 0.39999999999999997,
+          "axis_body": [
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "sign_derivation": "+Y hinge spin gives -X contact-surface velocity at the bottom; forward rolling requires base +X velocity. Left wheel lies at +Y.",
+          "rolling_relation": "v = r*(w_left+w_right)/2; yaw_rate = r*(w_right-w_left)/track"
+        }
+      },
+      "final_demo": {
+        "command": "bedside_demo",
+        "name": "Bedside approach",
+        "stage": "settle",
+        "stage_index": 11,
+        "stage_count": 12,
+        "elapsed_s": 34.299999999995954,
+        "duration_s": 34.29700190456798,
+        "status": "complete",
+        "complete": true,
+        "progress": 1.0,
+        "measurements": {
+          "settle_dwell_s": 0.9720000000000008,
+          "collision_samples": 720,
+          "rest_qpos_error": 5.436040653172824e-07,
+          "robot_speed": 0.00021829787901383413,
+          "base_home_error_m": 4.2052662717924114e-05,
+          "base_home_yaw_error_rad": 2.9555171884982117e-10,
+          "base_position_qpos": [
+            -1.318976066585194e-05,
+            3.993064806943446e-05,
+            2.9555171884982117e-10
+          ],
+          "base_goal_error_m": 0.7911998239707168,
+          "base_yaw_error_rad": 0.24999999970444828,
+          "max_base_excursion_m": 0.7912172491147456,
+          "visited_bedside": true
+        },
+        "checks": {
+          "returned_to_rest": true,
+          "robot_settled": true,
+          "base_returned_home": true,
+          "visited_bedside": true,
+          "base_travel_observed": true
+        }
+      },
+      "stop_reason": null,
+      "unexpected_contacts": []
+    },
+    "blinds_demo": {
+      "passed": true,
+      "command": "blinds_demo",
+      "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+      "checks": {
+        "measured_demo_completed": true,
+        "no_unexpected_contacts": true,
+        "collision_masks_unchanged": true,
+        "no_direct_base_drive_force": true,
+        "small_lateral_speed": true,
+        "small_cumulative_lateral_slip": true,
+        "rolling_forward_agreement": true,
+        "rolling_yaw_agreement": true,
+        "both_tires_loaded": true
+      },
+      "summary": {
+        "samples": 5574,
+        "duration_s": 111.45999999992159,
+        "world_displacement_m": [
+          -2.1216224204145817e-06,
+          -3.5299224243612315e-07,
+          -7.950536246245643e-05
+        ],
+        "yaw_change_rad": -6.283185307178307,
+        "body_lateral_absolute_travel_m": 0.000765512084293366,
+        "lateral_speed_abs_m_s": {
+          "median": 5.877689864324771e-07,
+          "p95": 4.504879639640478e-05,
+          "maximum": 0.00019757036724185435
+        },
+        "steady_forward_error_m_s": {
+          "median": 1.507836585530717e-05,
+          "p95": 0.0004889437108861091,
+          "maximum": 0.00612822586273315
+        },
+        "steady_yaw_error_rad_s": {
+          "median": 1.9278653401997182e-05,
+          "p95": 0.0018361376783313477,
+          "maximum": 0.032238736564015325
+        },
+        "steady_forward_speed_m_s": {
+          "median": 6.7947879188765226e-06,
+          "p95": 0.24887736298410643,
+          "maximum": 0.24891211676764569
+        },
+        "wheel_speed_abs_rad_s": [
+          {
+            "median": 0.021009209381308812,
+            "p95": 1.9164621231635988,
+            "maximum": 1.9300634217227348
+          },
+          {
+            "median": 0.012789257260324868,
+            "p95": 1.9168164188374024,
+            "maximum": 1.9168456838356907
+          }
+        ],
+        "ground_contact_fraction": {
+          "left": 1.0,
+          "right": 1.0
+        },
+        "normal_force_n": {
+          "left": {
+            "median": 67.68900000000217,
+            "p95": 67.7195376471232,
+            "maximum": 70.14599528059937
+          },
+          "right": {
+            "median": 67.68900000000357,
+            "p95": 67.71953764712858,
+            "maximum": 70.1459952805994
+          }
+        },
+        "forward_contact_impulse_n_s": -3.057990032998094,
+        "maximum_tire_penetration_m": 0.0002740450779851189,
+        "maximum_base_actuator_force": 0.0,
+        "maximum_base_applied_force": 0.0,
+        "maximum_external_body_wrench": 0.0,
+        "maximum_wheel_torque_nm": 1.738429148164915,
+        "geometry": {
+          "radius_m": 0.13,
+          "track_m": 0.39999999999999997,
+          "axis_body": [
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "sign_derivation": "+Y hinge spin gives -X contact-surface velocity at the bottom; forward rolling requires base +X velocity. Left wheel lies at +Y.",
+          "rolling_relation": "v = r*(w_left+w_right)/2; yaw_rate = r*(w_right-w_left)/track"
+        }
+      },
+      "final_demo": {
+        "command": "blinds_demo",
+        "name": "Open window blinds",
+        "stage": "settle",
+        "stage_index": 22,
+        "stage_count": 23,
+        "elapsed_s": 111.47999999992159,
+        "duration_s": 111.47072257736382,
+        "status": "complete",
+        "complete": true,
+        "progress": 1.0,
+        "measurements": {
+          "settle_dwell_s": 1.8720000000000014,
+          "collision_samples": 600,
+          "rest_qpos_error": 3.0311880727662555e-08,
+          "robot_speed": 4.496862228197382e-05,
+          "base_home_error_m": 2.7371775730424475e-06,
+          "base_home_yaw_error_rad": 1.2792218537280099e-12,
+          "handle_travel_m": 0.1801709353838011,
+          "minimum_slat_angle_rad": 1.4011693268871237,
+          "maximum_slat_angle_rad": 1.4011693268871237,
+          "control_contact_force_n": 0.0,
+          "maximum_control_contact_force_n": 3.291796272819891,
+          "gate_blinds_open_passed": true
+        },
+        "checks": {
+          "returned_to_rest": true,
+          "robot_settled": true,
+          "base_returned_home": true,
+          "handle_moved": true,
+          "slats_open": true,
+          "physical_control_contact": true
+        }
+      },
+      "stop_reason": null,
+      "unexpected_contacts": []
+    },
+    "deliver_meal_demo": {
+      "passed": true,
+      "command": "deliver_meal_demo",
+      "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+      "checks": {
+        "measured_demo_completed": true,
+        "no_unexpected_contacts": true,
+        "collision_masks_unchanged": true,
+        "no_direct_base_drive_force": true,
+        "small_lateral_speed": true,
+        "small_cumulative_lateral_slip": true,
+        "rolling_forward_agreement": true,
+        "rolling_yaw_agreement": true,
+        "both_tires_loaded": true
+      },
+      "summary": {
+        "samples": 6973,
+        "duration_s": 139.43999999993778,
+        "world_displacement_m": [
+          -7.030292148435535e-07,
+          0.00023503511288724965,
+          -7.950047107235791e-05
+        ],
+        "yaw_change_rad": -1.816180992010293e-07,
+        "body_lateral_absolute_travel_m": 0.0021386151830367966,
+        "lateral_speed_abs_m_s": {
+          "median": 6.505217081694036e-06,
+          "p95": 3.687483019941142e-05,
+          "maximum": 0.00023056241354618852
+        },
+        "steady_forward_error_m_s": {
+          "median": 3.136334956872964e-05,
+          "p95": 0.000903485273627627,
+          "maximum": 0.006095636101674046
+        },
+        "steady_yaw_error_rad_s": {
+          "median": 0.00018214428663799423,
+          "p95": 0.00294671419123021,
+          "maximum": 0.0327226437953142
+        },
+        "steady_forward_speed_m_s": {
+          "median": 1.441046068135328e-05,
+          "p95": 0.2488387772724698,
+          "maximum": 0.24889435840730856
+        },
+        "wheel_speed_abs_rad_s": [
+          {
+            "median": 0.011665041850501535,
+            "p95": 1.9166255721858787,
+            "maximum": 1.9447892063244416
+          },
+          {
+            "median": 0.011398125489399294,
+            "p95": 1.9163887698813333,
+            "maximum": 1.9251597816849513
+          }
+        ],
+        "ground_contact_fraction": {
+          "left": 1.0,
+          "right": 1.0
+        },
+        "normal_force_n": {
+          "left": {
+            "median": 67.69014128375981,
+            "p95": 68.27786720262726,
+            "maximum": 70.15723517941632
+          },
+          "right": {
+            "median": 67.69014128376797,
+            "p95": 68.27786720263225,
+            "maximum": 70.15723517940883
+          }
+        },
+        "forward_contact_impulse_n_s": -2.025377169402332,
+        "maximum_tire_penetration_m": 0.0002764118276076255,
+        "maximum_base_actuator_force": 0.0,
+        "maximum_base_applied_force": 0.0,
+        "maximum_external_body_wrench": 0.0,
+        "maximum_wheel_torque_nm": 1.727737138406921,
+        "geometry": {
+          "radius_m": 0.13,
+          "track_m": 0.39999999999999997,
+          "axis_body": [
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "sign_derivation": "+Y hinge spin gives -X contact-surface velocity at the bottom; forward rolling requires base +X velocity. Left wheel lies at +Y.",
+          "rolling_relation": "v = r*(w_left+w_right)/2; yaw_rate = r*(w_right-w_left)/track"
+        }
+      },
+      "final_demo": {
+        "command": "deliver_meal_demo",
+        "name": "Deliver meal container",
+        "stage": "settle",
+        "stage_index": 37,
+        "stage_count": 38,
+        "elapsed_s": 139.4599999999378,
+        "duration_s": 139.45542238775872,
+        "status": "complete",
+        "complete": true,
+        "progress": 1.0,
+        "measurements": {
+          "settle_dwell_s": 1.9400000000000015,
+          "collision_samples": 2280,
+          "rest_qpos_error": 1.9882048635387327e-08,
+          "robot_speed": 2.1347607357821436e-05,
+          "base_home_error_m": 0.0002350385852055664,
+          "base_home_yaw_error_rad": 4.3027612776794674e-07,
+          "object_name": "meal_box",
+          "object_position": [
+            0.849074821446523,
+            1.21844286082425,
+            1.0674776488942614
+          ],
+          "object_height_gain_m": 0.23947764889426149,
+          "object_xy_error_m": 0.001811253093432641,
+          "object_z_error_m": 2.235110573844956e-05,
+          "object_speed_m_s": 3.00462916524099e-14,
+          "object_angular_speed_rad_s": 1.6476790183458014e-16,
+          "support_force_n": 1.1771999880244703,
+          "bilateral_contact": false,
+          "fingers_clear": true,
+          "hand_clearance_m": 2.0376018313226827,
+          "patient_hand_distance_m": 0.46086995801411285,
+          "grasp_hold_s": 0.0,
+          "ever_grasped": true,
+          "supported_on_tray": true,
+          "gate_assist_bilateral_passed": true,
+          "gate_assist_grasped_passed": true,
+          "confirmed_grasp_height_m": 0.34104127650233884,
+          "confirmed_grasp_hold_s": 4.005999999999781,
+          "gate_assist_supported_passed": true,
+          "supported_release_force_n": 1.8727104679954802,
+          "supported_release_position": [
+            0.8497955908019248,
+            1.2191475084029584,
+            1.068233110350569
+          ],
+          "supported_release_bilateral": true,
+          "gate_assist_released_passed": true
+        },
+        "checks": {
+          "returned_to_rest": true,
+          "robot_settled": true,
+          "base_returned_home": true,
+          "verified_grasp": true,
+          "placed_on_tray": true,
+          "fingers_clear": true,
+          "hand_retracted": true,
+          "within_modeled_patient_reach": true
+        }
+      },
+      "stop_reason": null,
+      "unexpected_contacts": []
+    },
+    "greeting_demo": {
+      "passed": true,
+      "command": "greeting_demo",
+      "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+      "checks": {
+        "measured_demo_completed": true,
+        "no_unexpected_contacts": true,
+        "collision_masks_unchanged": true,
+        "no_direct_base_drive_force": true,
+        "small_lateral_speed": true,
+        "small_cumulative_lateral_slip": true,
+        "rolling_forward_agreement": true,
+        "rolling_yaw_agreement": true,
+        "both_tires_loaded": true
+      },
+      "summary": {
+        "samples": 800,
+        "duration_s": 15.980000000002011,
+        "world_displacement_m": [
+          -1.0301760270503557e-05,
+          1.6840656682282074e-05,
+          -7.950493763775324e-05
+        ],
+        "yaw_change_rad": -2.510183847015405e-05,
+        "body_lateral_absolute_travel_m": 7.690091150674351e-05,
+        "lateral_speed_abs_m_s": {
+          "median": 3.36737057579164e-06,
+          "p95": 1.731022786987625e-05,
+          "maximum": 2.7708870888374467e-05
+        },
+        "steady_forward_error_m_s": {
+          "median": 8.636893584878201e-06,
+          "p95": 4.521219852027165e-05,
+          "maximum": 7.148619755777729e-05
+        },
+        "steady_yaw_error_rad_s": {
+          "median": 8.132424167198763e-05,
+          "p95": 0.00025879322078735357,
+          "maximum": 0.0005485189160114769
+        },
+        "steady_forward_speed_m_s": {
+          "median": 2.3745657304623217e-05,
+          "p95": 0.00016151033231598508,
+          "maximum": 0.00018644030034668094
+        },
+        "wheel_speed_abs_rad_s": [
+          {
+            "median": 0.0011933349330559703,
+            "p95": 0.0027068589033143187,
+            "maximum": 0.0029747900462370226
+          },
+          {
+            "median": 0.000421380841872211,
+            "p95": 0.0020184379435291195,
+            "maximum": 0.002789423330051505
+          }
+        ],
+        "ground_contact_fraction": {
+          "left": 1.0,
+          "right": 1.0
+        },
+        "normal_force_n": {
+          "left": {
+            "median": 67.68855173178811,
+            "p95": 67.90824838924752,
+            "maximum": 70.14665239757623
+          },
+          "right": {
+            "median": 67.68855173178812,
+            "p95": 67.90824838924755,
+            "maximum": 70.14665239757628
+          }
+        },
+        "forward_contact_impulse_n_s": -0.021105268940728596,
+        "maximum_tire_penetration_m": 0.0002743593205649375,
+        "maximum_base_actuator_force": 0.0,
+        "maximum_base_applied_force": 0.0,
+        "maximum_external_body_wrench": 0.0,
+        "maximum_wheel_torque_nm": 0.027973272800125293,
+        "geometry": {
+          "radius_m": 0.13,
+          "track_m": 0.39999999999999997,
+          "axis_body": [
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "sign_derivation": "+Y hinge spin gives -X contact-surface velocity at the bottom; forward rolling requires base +X velocity. Left wheel lies at +Y.",
+          "rolling_relation": "v = r*(w_left+w_right)/2; yaw_rate = r*(w_right-w_left)/track"
+        }
+      },
+      "final_demo": {
+        "command": "greeting_demo",
+        "name": "Arm greeting",
+        "stage": "settle",
+        "stage_index": 9,
+        "stage_count": 10,
+        "elapsed_s": 16.00000000000201,
+        "duration_s": 16.0,
+        "status": "complete",
+        "complete": true,
+        "progress": 1.0,
+        "measurements": {
+          "settle_dwell_s": 0.8720000000000007,
+          "collision_samples": 600,
+          "rest_qpos_error": 2.7381321721087204e-06,
+          "robot_speed": 0.0003019183532976476,
+          "base_home_error_m": 2.0014421776938227e-05,
+          "base_home_yaw_error_rad": 2.5070369220599863e-05,
+          "hand_height_m": 0.9377841029011923,
+          "max_hand_height_m": 1.6928688955161242,
+          "wave_range_rad": 0.7105729006222612,
+          "wave_min_rad": -0.5349621480831249,
+          "wave_max_rad": 0.17561075253913627
+        },
+        "checks": {
+          "returned_to_rest": true,
+          "robot_settled": true,
+          "base_returned_home": true,
+          "hand_raised": true,
+          "wrist_waved": true
+        }
+      },
+      "stop_reason": null,
+      "unexpected_contacts": []
+    },
+    "phone_return_demo": {
+      "passed": true,
+      "command": "phone_return_demo",
+      "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+      "checks": {
+        "measured_demo_completed": true,
+        "no_unexpected_contacts": true,
+        "collision_masks_unchanged": true,
+        "no_direct_base_drive_force": true,
+        "small_lateral_speed": true,
+        "small_cumulative_lateral_slip": true,
+        "rolling_forward_agreement": true,
+        "rolling_yaw_agreement": true,
+        "both_tires_loaded": true
+      },
+      "summary": {
+        "samples": 2355,
+        "duration_s": 47.080000000011594,
+        "world_displacement_m": [
+          8.495623744497749e-07,
+          1.1264573392844035e-05,
+          -7.950406733864268e-05
+        ],
+        "yaw_change_rad": 1.4260214865987098e-06,
+        "body_lateral_absolute_travel_m": 0.0002144725354057465,
+        "lateral_speed_abs_m_s": {
+          "median": 1.2693244032089778e-06,
+          "p95": 1.9429012332011524e-05,
+          "maximum": 4.966709207635108e-05
+        },
+        "steady_forward_error_m_s": {
+          "median": 8.278449613761204e-06,
+          "p95": 0.0006847799975204656,
+          "maximum": 0.006102787375862367
+        },
+        "steady_yaw_error_rad_s": {
+          "median": 2.5457063543703685e-05,
+          "p95": 0.00039689783185173957,
+          "maximum": 0.0010795208004554992
+        },
+        "steady_forward_speed_m_s": {
+          "median": 2.0020929944350637e-06,
+          "p95": 0.2480290903228873,
+          "maximum": 0.24890701760255765
+        },
+        "wheel_speed_abs_rad_s": [
+          {
+            "median": 0.0011023111123435471,
+            "p95": 1.9163410620144532,
+            "maximum": 1.9172555278464791
+          },
+          {
+            "median": 0.0013873648383063196,
+            "p95": 1.9165542958402704,
+            "maximum": 1.924995207436258
+          }
+        ],
+        "ground_contact_fraction": {
+          "left": 1.0,
+          "right": 1.0
+        },
+        "normal_force_n": {
+          "left": {
+            "median": 67.6890072647204,
+            "p95": 68.58081163330526,
+            "maximum": 70.14731046637104
+          },
+          "right": {
+            "median": 67.68900726472864,
+            "p95": 68.58081163330857,
+            "maximum": 70.14731046637857
+          }
+        },
+        "forward_contact_impulse_n_s": 0.4575336778310272,
+        "maximum_tire_penetration_m": 0.0002770881367301081,
+        "maximum_base_actuator_force": 0.0,
+        "maximum_base_applied_force": 0.0,
+        "maximum_external_body_wrench": 0.0,
+        "maximum_wheel_torque_nm": 1.7249774636966766,
+        "geometry": {
+          "radius_m": 0.13,
+          "track_m": 0.39999999999999997,
+          "axis_body": [
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "sign_derivation": "+Y hinge spin gives -X contact-surface velocity at the bottom; forward rolling requires base +X velocity. Left wheel lies at +Y.",
+          "rolling_relation": "v = r*(w_left+w_right)/2; yaw_rate = r*(w_right-w_left)/track"
+        }
+      },
+      "final_demo": {
+        "command": "phone_return_demo",
+        "name": "Pick up and put back",
+        "stage": "settle",
+        "stage_index": 15,
+        "stage_count": 16,
+        "elapsed_s": 47.1000000000116,
+        "duration_s": 47.09090909090909,
+        "status": "complete",
+        "complete": true,
+        "progress": 1.0,
+        "measurements": {
+          "settle_dwell_s": 1.9220000000000015,
+          "collision_samples": 300,
+          "rest_qpos_error": 2.4388808361310982e-08,
+          "robot_speed": 1.8454917127025182e-05,
+          "base_home_error_m": 1.1258183352379867e-05,
+          "base_home_yaw_error_rad": 2.285669154818279e-06,
+          "phone_position": [
+            0.6298927729239371,
+            -0.7214274103263075,
+            0.813477703955264
+          ],
+          "phone_xy_error_m": 0.0014314321099830206,
+          "phone_z_error_m": 2.2296044736025422e-05,
+          "phone_speed_m_s": 1.9165748217012777e-14,
+          "phone_angular_speed_rad_s": 2.1053721535454177e-16,
+          "riser_support_force_n": 1.7657999722854065,
+          "hand_clearance_m": 0.7991514990780516,
+          "gate_bilateral_contact_passed": true,
+          "gate_grasp_confirmed_passed": true,
+          "confirmed_grasp_height_m": 0.2279095420517795,
+          "confirmed_grasp_hold_s": 3.417999999999845,
+          "gate_phone_supported_passed": true,
+          "supported_release_height_m": 0.8135161498563324,
+          "supported_release_force_n": 2.4912578729247716,
+          "supported_release_bilateral": true,
+          "gate_phone_settled_passed": true
+        },
+        "checks": {
+          "returned_to_rest": true,
+          "robot_settled": true,
+          "base_returned_home": true,
+          "confirmed_grasp": true,
+          "phone_on_riser": true,
+          "fingers_clear": true,
+          "hand_retracted": true
+        }
+      },
+      "stop_reason": null,
+      "unexpected_contacts": []
+    },
+    "deliver_phone_demo": {
+      "passed": true,
+      "command": "deliver_phone_demo",
+      "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+      "checks": {
+        "measured_demo_completed": true,
+        "no_unexpected_contacts": true,
+        "collision_masks_unchanged": true,
+        "no_direct_base_drive_force": true,
+        "small_lateral_speed": true,
+        "small_cumulative_lateral_slip": true,
+        "rolling_forward_agreement": true,
+        "rolling_yaw_agreement": true,
+        "both_tires_loaded": true
+      },
+      "summary": {
+        "samples": 6868,
+        "duration_s": 137.33999999992776,
+        "world_displacement_m": [
+          -6.932322031971694e-07,
+          0.00023503580461681217,
+          -7.950047088223222e-05
+        ],
+        "yaw_change_rad": -1.762883493358951e-07,
+        "body_lateral_absolute_travel_m": 0.0006709663379346538,
+        "lateral_speed_abs_m_s": {
+          "median": 8.714257096526476e-07,
+          "p95": 1.7316950638219045e-05,
+          "maximum": 0.00020510917056301204
+        },
+        "steady_forward_error_m_s": {
+          "median": 1.0579897792878269e-05,
+          "p95": 0.0009308001446327607,
+          "maximum": 0.006096199502264921
+        },
+        "steady_yaw_error_rad_s": {
+          "median": 6.645445729461306e-05,
+          "p95": 0.001879857369915914,
+          "maximum": 0.03274197348458158
+        },
+        "steady_forward_speed_m_s": {
+          "median": 1.911692227593814e-05,
+          "p95": 0.2488685007826905,
+          "maximum": 0.24889600178691
+        },
+        "wheel_speed_abs_rad_s": [
+          {
+            "median": 0.012188377944255598,
+            "p95": 1.916709913649042,
+            "maximum": 1.9391202881518423
+          },
+          {
+            "median": 0.012139176184914457,
+            "p95": 1.9164718080324639,
+            "maximum": 1.9284004740985647
+          }
+        ],
+        "ground_contact_fraction": {
+          "left": 1.0,
+          "right": 1.0
+        },
+        "normal_force_n": {
+          "left": {
+            "median": 67.70005859921238,
+            "p95": 68.5722572845211,
+            "maximum": 70.15723517941632
+          },
+          "right": {
+            "median": 67.70005859921653,
+            "p95": 68.57225728452113,
+            "maximum": 70.15723517940883
+          }
+        },
+        "forward_contact_impulse_n_s": -5.18039389043827,
+        "maximum_tire_penetration_m": 0.000277308989156122,
+        "maximum_base_actuator_force": 0.0,
+        "maximum_base_applied_force": 0.0,
+        "maximum_external_body_wrench": 0.0,
+        "maximum_wheel_torque_nm": 1.7331366236617267,
+        "geometry": {
+          "radius_m": 0.13,
+          "track_m": 0.39999999999999997,
+          "axis_body": [
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ]
+          ],
+          "sign_derivation": "+Y hinge spin gives -X contact-surface velocity at the bottom; forward rolling requires base +X velocity. Left wheel lies at +Y.",
+          "rolling_relation": "v = r*(w_left+w_right)/2; yaw_rate = r*(w_right-w_left)/track"
+        }
+      },
+      "final_demo": {
+        "command": "deliver_phone_demo",
+        "name": "Deliver phone to bedside",
+        "stage": "settle",
+        "stage_index": 35,
+        "stage_count": 36,
+        "elapsed_s": 137.35999999992777,
+        "duration_s": 137.3588411980772,
+        "status": "complete",
+        "complete": true,
+        "progress": 1.0,
+        "measurements": {
+          "settle_dwell_s": 1.9440000000000015,
+          "collision_samples": 2160,
+          "rest_qpos_error": 2.0530175740908727e-08,
+          "robot_speed": 2.1159061192769532e-05,
+          "base_home_error_m": 0.0002350392287353949,
+          "base_home_yaw_error_rad": 4.249463779028125e-07,
+          "object_name": "phone",
+          "object_position": [
+            0.8498827762078048,
+            1.4786243811705446,
+            1.0534708866111349
+          ],
+          "object_height_gain_m": 0.23947088661113491,
+          "object_xy_error_m": 0.0013806044261151513,
+          "object_z_error_m": 2.911338886524284e-05,
+          "object_speed_m_s": 8.509569628324254e-05,
+          "object_angular_speed_rad_s": 1.112217895227326e-16,
+          "support_force_n": 1.744360413676032,
+          "bilateral_contact": false,
+          "fingers_clear": true,
+          "hand_clearance_m": 2.2671481207607203,
+          "patient_hand_distance_m": 0.30523564353857857,
+          "grasp_hold_s": 0.0,
+          "ever_grasped": true,
+          "supported_on_tray": true,
+          "gate_assist_bilateral_passed": true,
+          "gate_assist_grasped_passed": true,
+          "confirmed_grasp_height_m": 0.35791979736571233,
+          "confirmed_grasp_hold_s": 4.073999999999773,
+          "gate_assist_supported_passed": true,
+          "supported_release_force_n": 1.13358651480269,
+          "supported_release_position": [
+            0.8497908151611605,
+            1.4787909738017153,
+            1.0541117027226223
+          ],
+          "supported_release_bilateral": true,
+          "gate_assist_released_passed": true
+        },
+        "checks": {
+          "returned_to_rest": true,
+          "robot_settled": true,
+          "base_returned_home": true,
+          "verified_grasp": true,
+          "placed_on_tray": true,
+          "fingers_clear": true,
+          "hand_retracted": true,
+          "within_modeled_patient_reach": true
+        }
+      },
+      "stop_reason": null,
+      "unexpected_contacts": []
+    }
+  },
+  "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+  "mujoco_version": "3.13.0",
+  "sample_interval_s": 0.02,
+  "hardware_model_verified": false,
+  "authorizes_hardware": false,
+  "limitations": [
+    "Contacts are checked against collision proxies, not every rendered mesh triangle.",
+    "Independent measurements sample every 20 ms; the runtime also checks contact stops each physics step.",
+    "Roll/pitch are ideally constrained; wheel propulsion does not validate balancing.",
+    "Scripted fixture routes do not establish autonomous navigation or hardware performance."
+  ],
+  "raw_trace": {
+    "file": "differential-drive-routes.trace.json.gz",
+    "sha256": "2d4ae91f551fe233024c012f528d7a812ec47fe0c22ef11c7b27a7beb2f83ee2",
+    "contains": "Every independently measured 20 ms sample; JSON compressed with gzip"
+  }
+}

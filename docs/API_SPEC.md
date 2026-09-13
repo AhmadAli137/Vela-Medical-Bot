@@ -1,5 +1,7 @@
 # Implemented API
 
+Current reference simulation: `GET /api/sim/reference/state` and `POST /api/sim/reference/control` serve the local 3D session. `GET /api/sim/reference/frame` returns one coherent read-only state plus qpos/qvel/ctrl/mocap arrays for the attached native viewer. It has the same demo-mode/session/role boundary; there is no frame-write endpoint. `POST /api/sim/viewer` opens that attached desktop view, and `GET /api/sim/scene.png` renders the current detailed reference fixture with asset-sensitive cache invalidation. `POST /api/sim/benchmarks` retains the explicitly labeled legacy benchmark. See [the app guide](APP_GUIDE.md).
+
 Interactive specification: `/docs`; machine-readable specification: `/openapi.json`. A generated copy is checked in at [openapi.json](openapi.json). All application routes use `/api`. The supplied reference described aspirational routes; only endpoints in the generated contract are implemented.
 
 The interactive documentation loads standard Swagger UI assets from jsDelivr and needs network access. The operational application, bundled fonts and raw OpenAPI JSON work locally. Only documentation pages have this CDN content-policy exception.

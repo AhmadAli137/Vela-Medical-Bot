@@ -6,11 +6,13 @@ A runnable research prototype for non-clinical patient requests and hospital roo
 
 Open **More demos** to deliver a phone or small meal container to the bedside tray, physically open the blinds, or try the earlier approach, greeting and phone-return demonstrations. **Robot vision** shows four live simulated camera views and an image-derived stereo landmark map, with an optional pause on lost visual tracking. Each task reports measured outcomes. See [assistance, camera views and limits](docs/ASSISTANCE_AND_VISION.md).
 
-The room uses architectural observations from inspected official Stanford/UCLA photographs and nine CC0 material maps. The robot uses the supplied handout and three inspected videos: **27 robot bodies, 25 estimated actuators, two free objects, and 17 passive blind bodies**. MuJoCo computes dynamics and contacts; Three.js displays the authored meshes at those body poses. Geometry, inertias, gains and friction are estimates. The pickup is a fixed simulated fixture, not a vendor-verified robot skill or learned VLA policy. See [reference sources and asset provenance](docs/REFERENCE_UPGRADE.md) and [validation evidence](docs/TESTING.md).
+The room uses architectural observations from inspected official Stanford/UCLA photographs and nine CC0 material maps. The robot uses the supplied handout and three inspected videos: **27 robot bodies, 22 physical actuators, two free objects, and 17 passive blind bodies**. MuJoCo computes dynamics and contacts; Three.js displays the authored meshes at those body poses. Geometry, inertias, gains and friction are estimates. The pickup is a fixed simulated fixture, not a vendor-verified robot skill or learned VLA policy. See [reference sources and asset provenance](docs/REFERENCE_UPGRADE.md) and [validation evidence](docs/TESTING.md).
 
 Vela also remembers room snapshots, compares semantic desired states, plans permitted changes, applies deterministic safety checks, changes a **synthetic** room, and verifies the result. It includes a correction-data learning workflow.
 
 **No real robot, Quest headset, hospital system or patient data is connected.** The simulator is not hardware accurate. The learned baseline is a small synthetic state-feature regression model, not a trained vision-language-action model.
+
+Read the **[app guide](docs/APP_GUIDE.md)** for the public demo, local workspace, native MuJoCo window and four workflow screens. The in-app **App guide** also links between views.
 
 ## Run locally
 
@@ -46,9 +48,9 @@ npm --prefix apps/web run build
 
 The demo script runs phone placement, physio preparation, low-confidence refusal followed by synthetic correction recording, and clinical escalation. It writes `artifacts/demo-report.json`. It reports zero real robot actions and zero live hospital messages.
 
-In the browser, **Vertical travel** moves the two shoulder carriages independently and extends the hands from approximately 0.13 m to 1.72 m above the floor. **Pick up phone** approaches the 35 mm raised rest, closes the fingers, lifts the free body about 23 cm and holds it through frictional contact. **Release phone** opens the fingers so gravity drops it. The head stays fixed to the mast. Reset between demonstrations. The constrained planar base does not simulate or validate two-wheel balancing.
+In the browser, **Vertical travel** moves the two shoulder carriages independently and extends the hands from approximately 0.13 m to 1.72 m above the floor. **Pick up phone** approaches the 35 mm raised rest, closes the fingers, lifts the free body about 23 cm and holds it through frictional contact. **Release phone** opens the fingers so gravity drops it. The head stays fixed to the mast. Reset between demonstrations. The two wheel motors propel the base through tire-floor contact. Passive guides keep it upright; two-wheel balancing is not simulated or validated.
 
-The original surrogate remains available through `python -m sim viewer`, which opens the native MuJoCo window: drag to orbit, wheel to zoom, Space to pause, R to reset, C to cycle cameras. The detailed browser scene is separate from that original primitive viewer.
+Double-click **Open Native Simulation.cmd** to open the current room in the native MuJoCo renderer, attached to the same local physics session as the browser. Both views use the same furnished room, patient, robot and contact demos. Lighting differs between renderers. `python -m sim viewer` opens an independent standalone session; add `--connect http://127.0.0.1:8000` to share the local session. The older primitive room remains only an explicitly labeled research benchmark.
 
 To reproduce the authored visual assets and render, install Blender 5.1 and put its executable on `PATH`:
 
@@ -61,7 +63,7 @@ Optional PDF inspection uses PyMuPDF, installed separately with `uv pip install 
 ## Repository
 
 ```text
-apps/web/          React + TypeScript: four application surfaces
+apps/web/          React + TypeScript: simulation studio and four workflow surfaces
 services/         FastAPI gateway, routing, planning, critique, world model, safety, audit
 robot/            Reported capability manifest, fail-closed vendor boundary, mock adapter
 sim/              Reference MuJoCo runtime/metrics and original surrogate/IK diagnostics
@@ -82,7 +84,7 @@ assets/textures/  Nine reusable CC0 PBR maps; provenance in assets/provenance/
 - Persistent SQLite snapshots, task records and a hash-chained append-only API audit log.
 - Clinical-first deterministic routing; model classification cannot downgrade a clinical trigger.
 - Approval and simulation bound to a room snapshot and plan hash; stale state, E-stop and object prohibitions veto execution.
-- Actual MuJoCo dynamics streamed to a detailed Three.js room, plus endpoint IK/contact diagnostics on synthetic robot geometry. Task validation checks semantic object paths and engine health; it does **not** validate a grasp or full robot trajectory. The planar base/wheel actuation is a surrogate rather than verified balancing or odometry.
+- Actual MuJoCo dynamics streamed to a detailed Three.js room, plus endpoint IK/contact diagnostics on synthetic robot geometry. Task validation checks semantic object paths and engine health; it does **not** validate a grasp or full robot trajectory. Wheel traction and turning are simulated, while upright guidance and estimated tire/motor parameters limit hardware fidelity.
 - Synthetic teleoperation contracts and offline learning lifecycle with artifact hashes, held-out episodes, abstention and research-only promotion. Vendor VLA/Quest transport remains unconfigured.
 - Optional Astra/Fable provider clients are disabled by default, accept synthetic input only, and were not tested against paid live APIs. Environment variables are documented in `.env.example`; the application does not automatically load that file.
 - Research image corpus: **9 real URL metadata candidates, 1 hospital represented, 0 corpus image files, 0 training-approved images**. There are 50 distinct hospital seed targets; 1,000/50 coverage is not achieved. The **2 separately cached Stanford/UCLA photographs** are local architectural references only and do not increase that corpus count. The scene's **9 Poly Haven texture maps** are CC0 assets.

@@ -1,5 +1,5 @@
 {
-  "name": "reference_informed_bracketbot_surrogate_v2",
+  "name": "reference_informed_bracketbot_surrogate_v3",
   "reference_files": [
     "artifacts/references/handout-page-1.png",
     "artifacts/references/platform-contact-sheet.jpg",
@@ -20,7 +20,15 @@
     -0.7,
     0.13
   ],
-  "base_motion_model": "constrained planar sliders, separately actuated decorative wheel hinges; not balancing/wheel odometry validation",
+  "base_motion_model": "differential wheel velocity motors drive through tire-floor contacts; passive planar/vertical guides keep the chassis upright; balance and tire parameters are unverified",
+  "drive": {
+    "wheel_radius_m": 0.13,
+    "track_width_m": 0.4,
+    "actuator_count": 22,
+    "wheel_control": "velocity_rad_s",
+    "upright_constraint": true,
+    "balance_validated": false
+  },
   "body_specs": [
     {
       "name": "robot_base",
@@ -54,8 +62,8 @@
       ],
       "joint": "left_wheel_joint",
       "range": [
-        -40,
-        40
+        -1000,
+        1000
       ],
       "mass": 0.9,
       "robot_body": true
@@ -78,8 +86,8 @@
       ],
       "joint": "right_wheel_joint",
       "range": [
-        -40,
-        40
+        -1000,
+        1000
       ],
       "mass": 0.9,
       "robot_body": true
@@ -1582,7 +1590,7 @@
       ]
     }
   ],
-  "model_hash": "d22407cbce4f082eb3cd1b594c8337060707bad2f58835ad8ff8c92dd1eab58b",
+  "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
   "initial_world_poses": {
     "robot_base": {
       "position": [

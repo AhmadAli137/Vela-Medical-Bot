@@ -66,8 +66,6 @@ def pickup_stages(model, initial_qpos):
     phases.append({"name": "park", "target_qpos": park, "duration_s": 2.})
     drive = park.copy()
     setq(drive, "base_x", .78)
-    for side in ("left", "right"):
-        setq(drive, f"{side}_wheel_joint", .78/.13)
     phases.append({"name": "approach_base", "target_qpos": drive, "duration_s": 4.})
     hover, hover_error = solve_pose(model, drive, [.63, -.72, .96])
     phases.append({"name": "hover", "target_qpos": hover, "duration_s": 3.})

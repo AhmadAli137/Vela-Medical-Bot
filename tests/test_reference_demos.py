@@ -1,5 +1,6 @@
 """Measured new-demo behavior in actual MuJoCo, including failure cases."""
 import json
+import math
 
 import mujoco
 import numpy as np
@@ -71,7 +72,7 @@ def test_displaced_phone_cannot_count_as_grasp_or_be_teleported_back():
     address=sim.model.joint("phone_free").qposadr[0]
     sim.data.qpos[address]+=.12
     mujoco.mj_forward(sim.model,sim.data)
-    for _ in range(8):
+    for _ in range(math.ceil(sim.demo["duration_s"]/2)):
         state=sim.advance(2.)
         if state["paused"]:
             break

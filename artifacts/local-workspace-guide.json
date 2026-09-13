@@ -1,0 +1,31 @@
+{
+  "url": "http://127.0.0.1:8000/#simulation",
+  "publicDemo": false,
+  "started": "2026-09-13T17:15:43.468Z",
+  "errors": [],
+  "failedResponses": [],
+  "passed": true,
+  "localRoles": [
+    {
+      "label": "Patient experience",
+      "role": "patient",
+      "passed": true
+    },
+    {
+      "label": "Robot & fleet",
+      "role": "operator",
+      "passed": true
+    },
+    {
+      "label": "Research studio",
+      "role": "researcher",
+      "passed": true
+    },
+    {
+      "label": "Room operations",
+      "role": "staff",
+      "passed": true
+    }
+  ],
+  "finished": "2026-09-13T17:15:51.319Z"
+}

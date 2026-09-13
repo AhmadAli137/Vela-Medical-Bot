@@ -69,8 +69,8 @@ def body_descriptors():
     """Body-local geometry contract for Blender/Three.js world-pose playback."""
     specs = [
         {"name": "robot_base", "parent": "world", "pos": BASE_POSITION, "geometry": "transverse_barrel", "radius": .10, "half_width": .155, "mass": 12.},
-        {"name": "left_wheel", "parent": "robot_base", "pos": [0., .20, 0.], "geometry": "wheel", "radius": .13, "width": .055, "axis": [0, 1, 0], "joint": "left_wheel_joint", "range": [-40, 40], "mass": .9},
-        {"name": "right_wheel", "parent": "robot_base", "pos": [0., -.20, 0.], "geometry": "wheel", "radius": .13, "width": .055, "axis": [0, 1, 0], "joint": "right_wheel_joint", "range": [-40, 40], "mass": .9},
+        {"name": "left_wheel", "parent": "robot_base", "pos": [0., .20, 0.], "geometry": "wheel", "radius": .13, "width": .055, "axis": [0, 1, 0], "joint": "left_wheel_joint", "range": [-1000, 1000], "mass": .9},
+        {"name": "right_wheel", "parent": "robot_base", "pos": [0., -.20, 0.], "geometry": "wheel", "radius": .13, "width": .055, "axis": [0, 1, 0], "joint": "right_wheel_joint", "range": [-1000, 1000], "mass": .9},
         {"name": "mast", "parent": "robot_base", "pos": [-.025, 0., .82], "geometry": "slim_mast", "dimensions": [.075, .085, 1.36], "mass": 3.0},
         {"name": "head", "parent": "robot_base", "pos": [.005, 0., 1.54], "geometry": "stereo_head", "dimensions": [.09, .15, .075], "mass": .3},
     ]
@@ -114,17 +114,19 @@ def build_reference_model():
     bodies = {"world": world}
     actuators = []
     for spec in specs:
-        node = _add(bodies[spec["parent"]], "body", name=spec["name"], pos=_vec(spec["pos"]), gravcomp="0" if spec.get("dynamic_object") else "1")
+        node = _add(bodies[spec["parent"]], "body", name=spec["name"], pos=_vec(spec["pos"]), gravcomp="0" if spec.get("dynamic_object") or spec["name"] in {"robot_base","left_wheel","right_wheel"} else "1")
         bodies[spec["name"]] = node
         shape = spec["geometry"]
         if spec["name"] == "robot_base":
-            for name, axis, limits in (("base_x", "1 0 0", "-2.35 1.1"), ("base_y", "0 1 0", "-.5 2.3"), ("base_yaw", "0 0 1", "-3.2 3.2")):
-                _add(node, "joint", name=name, type="hinge" if name.endswith("yaw") else "slide", axis=axis, range=limits, damping="20")
-                actuators.append((name, limits, 300, 35, 150))
+            for name, axis, limits in (("base_x", "1 0 0", "-2.35 1.1"), ("base_y", "0 1 0", "-.5 2.3"), ("base_yaw", "0 0 1", "-1000 1000")):
+                _add(node, "joint", name=name, type="hinge" if name.endswith("yaw") else "slide", axis=axis, range=limits, damping=".05", armature=".001")
+            _add(node,"joint",name="base_z",type="slide",axis="0 0 1",range="-.015 .005",damping="2",armature=".001")
         if spec.get("joint_type") == "free":
             _add(node, "freejoint", name=spec["joint"])
         elif "joint" in spec:
             joint_attrs = {"damping": ".04", "armature": ".0001"} if "gripper" in spec["joint"] else {}
+            if shape == "wheel":
+                joint_attrs = {"damping": ".02", "armature": ".01"}
             if spec.get("passive_joint"):
                 joint_attrs = {"damping": ".05", "armature": ".00001", "frictionloss": ".3" if spec["joint"] == "blinds_slide" else ".0001"}
             _add(node, "joint", name=spec["joint"], type=spec.get("joint_type", "hinge"), axis=_vec(spec["axis"]), range=_vec(spec["range"]), **joint_attrs)
@@ -135,8 +137,12 @@ def build_reference_model():
         attrs = {"name": f"{spec['name']}_geom", "mass": spec["mass"], "rgba": ".86 .88 .87 1"}
         if shape in {"phone", "meal_container", "rotary_finger"}:
             attrs.update(friction="1.4 .02 .01", condim="6", solref=".006 1", solimp=".95 .99 .001")
-        if shape in {"transverse_barrel", "wheel"}:
-            _add(node, "geom", type="cylinder", euler=f"{math.pi/2} 0 0", size=_vec([spec["radius"], spec.get("half_width", spec.get("width", .055)/2)]), **{**attrs, **({"contype": "0", "conaffinity": "0", "rgba": ".09 .10 .11 1"} if shape == "wheel" else {})})
+        if shape == "wheel":
+            # Rounded tire tread gives one stable floor patch instead of the
+            # alternating sharp cylinder-edge contacts during in-place turns.
+            _add(node,"geom",type="ellipsoid",size=_vec([spec["radius"],spec["width"]/2,spec["radius"]]),**{**attrs,"condim":"6","friction":"1.2 .002 .0002","solref":".02 1","priority":"1","rgba":".09 .10 .11 1"})
+        elif shape == "transverse_barrel":
+            _add(node, "geom", type="cylinder", euler=f"{math.pi/2} 0 0", size=_vec([spec["radius"], spec["half_width"]]), **attrs)
         elif shape == "arm_link":
             _add(node, "geom", type="capsule", fromto=f"0 0 0 0 0 {-spec['length']}", size=spec["radius"], **attrs)
         else:
@@ -155,9 +161,12 @@ def build_reference_model():
         _add(equality, "joint", name=f"blinds_linkage_{index:02}", joint1=f"blinds_tilt_{index:02}", joint2="blinds_slide", polycoef=f"0 {1.4/BLINDS_TRAVEL} 0 0 0", solref=".004 1")
     actuator = _add(root, "actuator")
     for name, limits, kp, kv, force in actuators:
-        _add(actuator, "position", name=f"ctrl_{name}", joint=name, ctrlrange=limits, kp=kp, kv=kv, forcerange=f"{-force} {force}")
+        if name.endswith("wheel_joint"):
+            _add(actuator,"velocity",name=f"ctrl_{name}",joint=name,ctrlrange="-6 6",kv="6",forcerange="-5 5")
+        else:
+            _add(actuator, "position", name=f"ctrl_{name}", joint=name, ctrlrange=limits, kp=kp, kv=kv, forcerange=f"{-force} {force}")
     xml = ET.tostring(root, encoding="unicode")
-    metadata = {"name": "reference_informed_bracketbot_surrogate_v2", "reference_files": ["artifacts/references/handout-page-1.png", "artifacts/references/platform-contact-sheet.jpg", "artifacts/references/teleop-contact-sheet.jpg"], "hardware_model_verified": False, "authorizes_hardware": False, "dimensions_status": "visually inferred, adjustable; no vendor CAD/metric calibration", "joint_axes_status": "inferred surrogate; not vendor verified", "coordinate_system": {"up": "+Z", "forward": "+X", "left": "+Y", "quaternion": "wxyz"}, "base_position": BASE_POSITION, "base_motion_model": "constrained planar sliders, separately actuated decorative wheel hinges; not balancing/wheel odometry validation", "body_specs": specs, "room_colliders": ROOM_COLLIDERS, "model_hash": hashlib.sha256(xml.encode()).hexdigest()}
+    metadata = {"name": "reference_informed_bracketbot_surrogate_v3", "reference_files": ["artifacts/references/handout-page-1.png", "artifacts/references/platform-contact-sheet.jpg", "artifacts/references/teleop-contact-sheet.jpg"], "hardware_model_verified": False, "authorizes_hardware": False, "dimensions_status": "visually inferred, adjustable; no vendor CAD/metric calibration", "joint_axes_status": "inferred surrogate; not vendor verified", "coordinate_system": {"up": "+Z", "forward": "+X", "left": "+Y", "quaternion": "wxyz"}, "base_position": BASE_POSITION, "base_motion_model": "differential wheel velocity motors drive through tire-floor contacts; passive planar/vertical guides keep the chassis upright; balance and tire parameters are unverified", "drive": {"wheel_radius_m":.13,"track_width_m":.40,"actuator_count":22,"wheel_control":"velocity_rad_s","upright_constraint":True,"balance_validated":False}, "body_specs": specs, "room_colliders": ROOM_COLLIDERS, "model_hash": hashlib.sha256(xml.encode()).hexdigest()}
     return xml, metadata
 
 
@@ -169,7 +178,7 @@ def load_reference_model():
         if "joint" in spec and spec.get("joint_type") != "free":
             data.qpos[model.joint(spec["joint"]).qposadr[0]] = spec.get("initial_q", 0.)
     for index in range(model.nu):
-        data.ctrl[index] = data.qpos[model.jnt_qposadr[model.actuator_trnid[index, 0]]]
+        data.ctrl[index] = 0. if model.actuator(index).name.endswith("wheel_joint") else data.qpos[model.jnt_qposadr[model.actuator_trnid[index, 0]]]
     mujoco.mj_forward(model, data)
     return model, data, metadata
 

@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+  "visual_hash": "012f78825c132fde95f833d9769640ea4e2875a1a556c580300b0c7a1637e12e",
+  "suites": [
+    {
+      "junit": "artifacts/native-wheel-reference-tests.xml",
+      "tests": "61",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "135.134"
+    },
+    {
+      "junit": "artifacts/native-wheel-api-drive-tests.xml",
+      "tests": "37",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "4.808"
+    }
+  ],
+  "tests": 98,
+  "detailed_dynamics_report": "artifacts/native-detailed-dynamics-parity.json",
+  "render_report": "artifacts/native-wheel-visuals/native-detailed-render.json",
+  "independent_drive_report": "artifacts/differential-drive-routes.json",
+  "hardware_model_verified": false,
+  "authorizes_hardware": false
+}

@@ -1,5 +1,49 @@
 # Actual validation results
 
+
+## Current wheel-driven scene: September 13, 2026
+
+The current physics model is `e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658`; its native visual conversion is `012f78825c132fde95f833d9769640ea4e2875a1a556c580300b0c7a1637e12e`. **98 native/API/drive checks passed** across the 61-test reference suite and 37-test API/drive suite, with no failures, errors or skipped cases. [Final native receipt](../artifacts/native-wheel-regression-summary.json).
+
+Two wheel velocity motors now propel the base through tire-floor contacts; there are no X/Y/yaw base actuators. The independent raw-wheel experiments measured **0.3813 m forward travel in 2 s**, **1.9147 rad turning** with opposite wheel speeds, and a maximum sideways speed of **0.681 mm/s** across forward, turning and curved trials. Removing tire/floor friction reduced displacement to **15 micrometres** while the wheels still spun; disabling wheel torque reduced it to **22 nanometres**. Measured base actuator forces, externally applied generalized forces and external body wrenches were zero. Both tires remained loaded in all sampled frames. [Raw contact/force report](../artifacts/differential-drive-physics.json).
+
+All six full native routes passed independent measurements at **20 ms intervals**, including the final task outcomes, wheel rolling relationships, unchanged collision masks and absence of unexpected contacts. Across these routes, the largest sideways speed was **0.231 mm/s** and the largest accumulated absolute sideways travel was **2.139 mm**. Both tires were loaded in every sampled frame; direct base/applied/external forces remained zero. Intended finger/object and object/support contacts were classified explicitly. The two delivery routes were rerun after adding their correctly named delivery risers to the independent classifier. [Six-route summary](../artifacts/differential-drive-routes.json), [complete compressed measurement trace](../artifacts/differential-drive-routes.trace.json.gz).
+
+| Demo | Native completion observed (s) | Browser completion observed (s) | Native accumulated sideways travel (mm) |
+| --- | ---: | ---: | ---: |
+| Bedside approach | 34.30 | 34.50 | 0.111 |
+| Arm greeting | 16.00 | 16.00 | 0.077 |
+| Pick up and put back | 47.10 | 47.50 | 0.214 |
+| Deliver phone | 137.36 | 137.50 | 0.671 |
+| Deliver meal | 139.46 | 139.50 | 2.139 |
+| Open blinds | 111.48 | 111.50 | 0.766 |
+
+These are simulation times, observed with different sampling intervals. **32 actual MuJoCo 3.13.0 WebAssembly tests passed** across a 31-test dynamics/traction run (96.243 s wall time) and one navigation-fault test (1.158 s). All six browser task outcomes passed, including measured base return, grasp/support/release and physical blind contact. TypeScript compilation also passed. [Browser receipt](../artifacts/browser-differential-drive-tests.json), [browser wheel measurements](../artifacts/browser-wheel-traction.json), [navigation-fault JUnit](../artifacts/browser-drive-fault-tests.xml).
+
+The native viewer imports the exact four shipped GLBs; its visual meshes add no contacts or mass. Final wheel-driven phone-return, meal-delivery and blinds comparisons ran through **48, 140 and 112 simulated seconds**, respectively. Detailed and reference models had **zero qpos/qvel differences at every 0.5 s sample**, and every measured task outcome passed. These comparison windows include settling after completion. [Current dynamics comparison](../artifacts/native-detailed-dynamics-parity.json), [current native visual evidence](../artifacts/native-wheel-visuals/native-detailed-render.json).
+
+The independent checks cover collision proxies, not every rendered mesh triangle. Roll and pitch remain ideally constrained, with a passive vertical guide loading the tires; these results do not validate two-wheel balancing. Tire friction, mass and motor parameters remain estimates, and the routes are scripted fixtures rather than autonomous navigation.
+
+A fresh localhost shared-session check on the current `e43c21c3` physics and `012f7882` visual conversion compared **all 46 body poses and four camera poses** across 20 moving samples. Native forward kinematics matched the API exactly, and pause froze both consumers; the native display integrated zero separate physics steps. [Shared-session report](../artifacts/native-shared-session.json). Viewer/API tests cover model/frame rejection before mutation, read-only transport, session boundaries, camera initialization, shared controls and current CLI routing.
+
+Synchronization checks regenerate expected physics and trajectories in memory, validate source/public exports and GLB body bindings, verify native conversion cache integrity, and compare local/public build receipts. Mutation tests exercise stale hashes, moved body roots, altered cache files, changed bundles and wrong build modes. [Current audit](../artifacts/scene-sync.json). The Blender source-to-GLB generation receipt remains unavailable and is explicitly reported as unverified.
+
+A separate focused run passed **17 Python checks** (six drive/contact and 11 synchronization checks), and **nine Node build-guard checks** passed. The Python run required sandbox elevation after Windows denied access to its temporary directories. These suites overlap the native totals above and should not be added as unique tests. [Focused JUnit](../artifacts/differential-drive-sync-tests.xml).
+
+```powershell
+.\.venv\Scripts\python.exe -m sim.reference_drive_report
+.\.venv\Scripts\python.exe -m sim.reference_drive_report --routes --output artifacts/differential-drive-routes.json
+.\.venv\Scripts\python.exe -m sim.sync_check --native-cache --build-mode local --output artifacts/scene-sync.json
+.\.venv\Scripts\python.exe -m scripts.check_native_shared_session
+node --test apps/web/tests/scene-sync.mjs
+```
+
+Actual Chrome completed the current wheel-driven phone delivery under the public security policy, with all measured grasp, tray support, release and return checks passing and four nonblank camera feeds. There were no JavaScript, HTTP or failed-request errors. [Browser delivery report](../artifacts/wheel-public-check.json). Desktop/mobile App guide checks covered Escape/focus restoration, navigation between Simulation studio and all four workflow screens, and the correct session role for each screen, without JavaScript or HTTP errors. [Local browser result](../artifacts/local-workspace-guide.json), [public guide result](../artifacts/public-workspace-guide.json). The native launcher recognized the current backend and opened its shared session. [Actual native window](../artifacts/native-shared-overview.png). The [app guide](APP_GUIDE.md) explains shared local state, independent public sessions and the separate mock task database.
+
+## Historical implementation milestones
+
+The sections below retain earlier validation records. Their actuator counts, route times, screenshots and visual-localization results do not establish the current wheel-driven model's behavior. Some report filenames are reused by later runs; the current wheel-model receipts are listed above.
+
 ## Camera views and contact assistance: September 13, 2026
 
 The expanded model passes **41 native/API checks**, including phone and meal delivery, all 16 mechanically linked blind slats, blocked/missing-object cases, four optical camera poses, and idempotent visual-tracking pause. Phone and meal placement errors are 0.81 and 1.95 mm respectively. The blinds handle travels 18.02 cm under measured hand contact. [Native summary](../artifacts/assistance-native-summary.json), [assistance rollouts](../sim/outputs/reference_assistance.json).

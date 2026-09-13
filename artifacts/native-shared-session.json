@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+  "visual_hash": "012f78825c132fde95f833d9769640ea4e2875a1a556c580300b0c7a1637e12e",
+  "bodies": 46,
+  "cameras": 4,
+  "samples": [
+    {
+      "time": 0.030000000000000013,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.08000000000000006,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.1300000000000001,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.18000000000000013,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.23000000000000018,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.2800000000000002,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.33000000000000024,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.3800000000000003,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.4300000000000003,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.48000000000000037,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.5300000000000004,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.5800000000000004,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.6300000000000004,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.6800000000000005,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.7300000000000005,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.7800000000000006,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.8300000000000006,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.8800000000000007,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.9300000000000007,
+      "max_body_position_error_m": 0.0
+    },
+    {
+      "time": 0.9800000000000008,
+      "max_body_position_error_m": 0.0
+    }
+  ],
+  "pause_froze_shared_state": true,
+  "native_integration_steps": 0
+}

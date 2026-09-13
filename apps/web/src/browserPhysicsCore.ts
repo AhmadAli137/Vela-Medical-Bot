@@ -3,6 +3,8 @@
  * No robot, hospital API, uploaded media, or replayed pose animation is involved.
  */
 import type {MainModule, MjData, MjModel} from '@mujoco/mujoco';
+import {DifferentialDrive,wrapAngle} from './browserDrive';
+import type {DriveMetrics,NavigationStage} from './browserDrive';
 
 export type Vec3=[number,number,number];
 export type Quat=[number,number,number,number];
@@ -17,9 +19,9 @@ type Contact={geoms:[string,string];distance_m:number;self_collision:boolean;car
 type ReachPlan={target:Vec3;side:'left'|'right';residual_m:number;reachable:boolean;collision_free_samples:boolean;sample_count:number;contacts:Contact[];target_qpos:number[];start_qpos?:number[];duration_s?:number};
 type PosePlan={target_qpos:number[];position_error_m:number;orientation_error_rad:number};
 type StageGate='bilateral_contact'|'grasp_confirmed'|'phone_supported'|'phone_settled'|'assist_bilateral'|'assist_grasped'|'assist_supported'|'assist_released'|'blinds_open';
-type Stage={name:string;target_qpos:number[];duration_s:number;gate_after?:StageGate};
+type Stage=NavigationStage&{gate_after?:StageGate};
 export type DemoDefinition={name:string;description:string;stages:Stage[];outcomes:Record<string,number|number[]>;ik_errors?:PickupMetrics['ik_errors'];object_name?:'phone'|'meal_box';source_position?:number[];support_geom?:string;intentional_contacts?:[string,string][]};
-export type DemoTrajectories={schema_version:1;model_hash:string;nq:number;nu:number;actuated_q_indices:number[];commands:Partial<Record<SharedDemoCommand,DemoDefinition>>};
+export type DemoTrajectories={schema_version:1;model_hash:string;nq:number;nu:number;actuated_q_indices:number[];position_actuator_indices:number[];base_q_indices:number[];commands:Partial<Record<SharedDemoCommand,DemoDefinition>>};
 export type DemoMetrics={command:SharedDemoCommand;name:string;stage:string;stage_index:number;stage_count:number;progress:number;elapsed_s:number;duration_s:number;status:'running'|'complete'|'stopped';complete:boolean;measurements:Record<string,number|string|boolean|number[]|null>;checks:Record<string,boolean>};
 type PhoneObservation={phone_position:Vec3;phone_xy_error_m:number;phone_z_error_m:number;phone_speed_m_s:number;phone_angular_speed_rad_s:number;riser_support_force_n:number;hand_clearance_m:number};
 export type PickupMetrics={stage:string;status:string;success:boolean;ever_succeeded:boolean;released:boolean;initial_phone_height_m:number;phone_height_m:number;height_gain_m:number;bilateral_contact:boolean;finger_contacts:string[];normal_forces_n:Record<string,number>;bilateral_hold_s:number;ik_errors:Record<string,{position_error_m:number;orientation_error_rad:number}>;collision_samples:number;sampled_collision_gate_passed:boolean;attachment_constraints:0};
@@ -31,7 +33,7 @@ export type BrowserPhysicsState={
   cameras:Record<string,CameraPose>;
   mode:'idle'|'joint_demo'|'reach_demo'|'pickup_demo'|'release_phone'|'lift_demo'|SharedDemoCommand;paused:boolean;simulation_time:number;
   target:{position:Vec3};end_effectors:Record<string,Vec3>;
-  metrics:{physics_steps:number;finite_dynamics:boolean;contacts:Contact[];stop_reason:string|null;visual_tracking_pause_reason?:string|null;grasp_success:null|boolean;object_attached:false;pickup?:PickupMetrics;lift?:LiftMetrics;demo?:DemoMetrics;reach?:{target:Vec3;ik_residual_m:number;actual_endpoint_error_m:number;endpoint_reached:boolean;sampled_collision_gate_passed:boolean;samples:number}};
+  metrics:{drive:DriveMetrics;physics_steps:number;finite_dynamics:boolean;contacts:Contact[];stop_reason:string|null;visual_tracking_pause_reason?:string|null;grasp_success:null|boolean;object_attached:false;pickup?:PickupMetrics;lift?:LiftMetrics;demo?:DemoMetrics;reach?:{target:Vec3;ik_residual_m:number;actual_endpoint_error_m:number;endpoint_reached:boolean;sampled_collision_gate_passed:boolean;samples:number}};
   model_hash:string;hardware_model_verified:false;authorizes_hardware:false;source:string;engine:'mujoco-wasm';engine_version:string;
 };
 
@@ -84,7 +86,9 @@ export class BrowserPhysics {
   private accumulator=0;
   private disposed=false;
   private readonly actuatedQ:number[];
-  private readonly actuatedDofs:number[];
+  private readonly robotDofs:number[];
+  private readonly drive:DifferentialDrive;
+  private readonly controlledQ:number[];
   private stages:Stage[]=[];
   private stageIndex=0;
   private stageStarted=0;
@@ -101,14 +105,16 @@ export class BrowserPhysics {
     this.model=engine.MjModel.from_xml_string(xml);
     try{this.data=new engine.MjData(this.model)}catch(error){this.model.delete();throw error}
     const option=this.model.opt;this.timestep=option.timestep;option.delete();
-    if(this.model.nq<32||this.model.nu!==25){this.data.delete();this.model.delete();throw new Error('Expected 25 robot actuators and the reference object dynamics')}
+    if(this.model.nq!==57||this.model.nu!==22){this.data.delete();this.model.delete();throw new Error('Expected 22 robot actuators, wheel-driven base and reference object dynamics')}
+    this.drive=new DifferentialDrive(engine,this.model,this.data);
+    this.controlledQ=[...this.drive.positionQ,...this.drive.baseQ];
     this.actuatedQ=Array.from({length:this.model.nu},(_,i)=>this.model.jnt_qposadr[this.model.actuator_trnid[i*2]]);
-    this.actuatedDofs=Array.from({length:this.model.nu},(_,i)=>this.model.jnt_dofadr[this.model.actuator_trnid[i*2]]);
+    this.robotDofs=[...Array.from({length:this.model.nu},(_,i)=>this.model.jnt_dofadr[this.model.actuator_trnid[i*2]]),...['base_x','base_y','base_yaw','base_z'].map(name=>this.model.jnt_dofadr[engine.mj_name2id(this.model,engine.mjtObj.mjOBJ_JOINT.value,name)])];
     const actuatedJoints=new Set(Array.from({length:this.model.nu},(_,i)=>this.model.actuator_trnid[i*2]));
     for(let i=0;i<this.model.njnt;i++){
       if(this.model.jnt_type[i]===engine.mjtJoint.mjJNT_FREE.value)continue;
       const name=engine.mj_id2name(this.model,engine.mjtObj.mjOBJ_JOINT.value,i);
-      (actuatedJoints.has(i)?this.jointNames:this.objectJointNames).push(name);this.jointIds.set(name,i);
+      (actuatedJoints.has(i)||['base_x','base_y','base_yaw','base_z'].includes(name)?this.jointNames:this.objectJointNames).push(name);this.jointIds.set(name,i);
     }
     for(let i=0;i<this.model.nu;i++)this.actuatorIds.set(engine.mj_id2name(this.model,engine.mjtObj.mjOBJ_ACTUATOR.value,i),i);
     for(const body of descriptors.body_specs){
@@ -119,7 +125,7 @@ export class BrowserPhysics {
     }
     for(const side of ['left','right'])this.siteIds.set(side,engine.mj_name2id(this.model,engine.mjtObj.mjOBJ_SITE.value,`${side}_ee`));
     for(const name of ['head_rgb','head_stereo_right','left_wrist','right_wrist']){const id=engine.mj_name2id(this.model,engine.mjtObj.mjOBJ_CAMERA.value,name);if(id>=0)this.cameraIds.set(name,id)}
-    for(let i=0;i<this.model.nu;i++)this.data.ctrl[i]=this.data.qpos[this.model.jnt_qposadr[this.model.actuator_trnid[i*2]]];
+    for(const i of this.drive.positionActuators)this.data.ctrl[i]=this.data.qpos[this.actuatedQ[i]];
     engine.mj_forward(this.model,this.data);
     this.initialQ=Array.from(this.data.qpos);this.initialCtrl=Array.from(this.data.ctrl);
     this.lastClock=performance.now();
@@ -138,6 +144,7 @@ export class BrowserPhysics {
         try{
           const a=contact.geom1,b=contact.geom2;
           const names:[string,string]=[this.engine.mj_id2name(this.model,this.engine.mjtObj.mjOBJ_GEOM.value,a),this.engine.mj_id2name(this.model,this.engine.mjtObj.mjOBJ_GEOM.value,b)];
+          if(names.includes('floor')&&names.some(name=>name==='left_wheel_geom'||name==='right_wheel_geom'))continue;
           if(intentionalContacts.has(contactKey(names)))continue;
           if(allowPhoneGrasp&&names.includes('phone_geom')&&names.some(name=>name==='left_finger_-1_geom'||name==='left_finger_1_geom'))continue;
           if(ASSISTANCE_DEMOS.includes(this.mode as SharedDemoCommand)&&this.demoDefinition?.object_name){
@@ -151,7 +158,7 @@ export class BrowserPhysics {
     }finally{contacts.delete()}
     return found;
   }
-  private hold(){for(let i=0;i<this.model.nu;i++)this.data.ctrl[i]=this.data.qpos[this.actuatedQ[i]];for(const dof of this.actuatedDofs)this.data.qvel[dof]=0}
+  private hold(){for(const i of this.drive.wheelActuators)this.data.ctrl[i]=0;for(const i of this.drive.positionActuators)this.data.ctrl[i]=this.data.qpos[this.actuatedQ[i]]}
   private stop(reason:string,contacts:Contact[]=[]){
     this.stopReason=reason;this.lastContacts=contacts;this.paused=true;
     if(this.pickup){this.pickup.success=false;this.pickup.status='stopped';this.pickup.bilateral_hold_s=0}
@@ -162,9 +169,7 @@ export class BrowserPhysics {
 
   private jointDemo(elapsed:number){
     const cycle=elapsed*.65;
-    this.setTarget('base_x',.025*Math.sin(cycle*.65));this.setTarget('base_y',.014*Math.sin(cycle*.45));this.setTarget('base_yaw',.07*Math.sin(cycle*.55));
-    const travel=.025*Math.sin(cycle*.65),yaw=.07*Math.sin(cycle*.55);
-    this.setTarget('left_wheel_joint',(travel-.20*yaw)/.13);this.setTarget('right_wheel_joint',(travel+.20*yaw)/.13);
+    const goal=[...this.initialQ];goal[this.drive.baseQ[0]]=.025*Math.sin(cycle*.65);goal[this.drive.baseQ[2]]=.07*Math.sin(cycle*.55);this.drive.apply(goal);
     for(const [side,sign,phase]of [['left',1,0],['right',-1,1.1]] as const){
       this.setTarget(`${side}_lift`,.055*Math.sin(cycle*.55+phase));
       INITIAL_ARM_Q.forEach((initial,index)=>{
@@ -265,7 +270,7 @@ export class BrowserPhysics {
 
   private requireFixtureStart(){
     const phone=read3(this.data.xpos,this.bodyIds.get('phone')!*3);
-    if(Math.max(...this.actuatedQ.map(q=>Math.abs(this.data.qpos[q]-this.initialQ[q])))>.025||Math.hypot(phone[0]-.63,phone[1]+.72)>.01||Math.abs(phone[2]-.8135)>.015)throw new Error('Reset the scene before starting this fixture demonstration');
+    if(Math.max(...this.controlledQ.map(q=>Math.abs(this.data.qpos[q]-this.initialQ[q])))>.025||Math.hypot(phone[0]-.63,phone[1]+.72)>.01||Math.abs(phone[2]-.8135)>.015)throw new Error('Reset the scene before starting this fixture demonstration');
     for(const spec of this.descriptors.body_specs){
       if(!spec.dynamic_object)continue;
       const body=this.bodyIds.get(spec.name)!,joint=this.model.body_jntadr[body];
@@ -279,6 +284,7 @@ export class BrowserPhysics {
   private sharedDefinition(command:SharedDemoCommand):DemoDefinition{
     const library=this.demoTrajectories;
     if(!library||library.schema_version!==1||library.model_hash!==this.descriptors.model_hash||library.nq!==this.model.nq||library.nu!==this.model.nu||!Array.isArray(library.actuated_q_indices)||library.actuated_q_indices.length!==this.actuatedQ.length||!library.actuated_q_indices.every((value,i)=>value===this.actuatedQ[i]))throw new Error('Demo trajectories do not match this reference physics model');
+    for(const [supplied,expected]of [[library.position_actuator_indices,this.drive.positionActuators],[library.base_q_indices,this.drive.baseQ]])if(!Array.isArray(supplied)||supplied.length!==expected.length||!supplied.every((value,i)=>value===expected[i]))throw new Error('Demo trajectories do not match wheel-driven actuator mappings');
     const definition=library.commands?.[command];
     if(!definition||typeof definition.name!=='string'||!definition.name||!Array.isArray(definition.stages)||!definition.stages.length||definition.stages.length>100||!definition.outcomes)throw new Error('Invalid reference demo definition');
     if(command==='deliver_phone_demo'||command==='deliver_meal_demo'){
@@ -287,10 +293,12 @@ export class BrowserPhysics {
     }
     for(const stage of definition.stages){
       if(typeof stage.name!=='string'||!stage.name||!Number.isFinite(stage.duration_s)||stage.duration_s<=0||stage.duration_s>60||!Array.isArray(stage.target_qpos)||stage.target_qpos.length!==this.model.nq||!stage.target_qpos.every(Number.isFinite)||(stage.gate_after!==undefined&&!['bilateral_contact','grasp_confirmed','phone_supported','phone_settled','assist_bilateral','assist_grasped','assist_supported','assist_released','blinds_open'].includes(stage.gate_after)))throw new Error('Invalid bounded reference demo stage');
-      for(let actuator=0;actuator<this.model.nu;actuator++){
+      for(const actuator of this.drive.positionActuators){
         const value=stage.target_qpos[this.actuatedQ[actuator]],minimum=this.model.actuator_ctrlrange[actuator*2],maximum=this.model.actuator_ctrlrange[actuator*2+1];
         if(minimum<maximum&&(value<minimum||value>maximum))throw new Error('Reference demo target exceeds actuator limits');
       }
+      for(const name of ['base_x','base_y','base_yaw']){const joint=this.jointIds.get(name)!,value=stage.target_qpos[this.model.jnt_qposadr[joint]];if(value<this.model.jnt_range[joint*2]||value>this.model.jnt_range[joint*2+1])throw new Error('Reference demo target exceeds base limits')}
+      if(stage.navigation){const nav=stage.navigation;if(!['turn','drive','face'].includes(nav.kind)||typeof nav.reverse!=='boolean'||!Array.isArray(nav.goal)||nav.goal.length!==3||!nav.goal.every((value,i)=>Number.isFinite(value)&&Math.abs(value-stage.target_qpos[this.drive.baseQ[i]])<1e-9))throw new Error('Invalid wheel-driven navigation stage')}
     }
     if(Object.values(definition.ik_errors??{}).some(error=>!Number.isFinite(error.position_error_m)||!Number.isFinite(error.orientation_error_rad)||error.position_error_m>.003||error.orientation_error_rad>.01))throw new Error('Demo rejected by pose IK gate');
     return structuredClone(definition);
@@ -317,7 +325,7 @@ export class BrowserPhysics {
         if(loadedContactStages&&['close','lift','hold','press_blinds_control'].includes(stage.name))break;
         for(let sample=0;sample<60;sample++){
           const ratio=sample/59;sampled.qpos.set(this.data.qpos);
-          for(const q of this.actuatedQ)sampled.qpos[q]=(1-ratio)*previous[q]+ratio*stage.target_qpos[q];
+          for(const q of this.controlledQ)sampled.qpos[q]=(1-ratio)*previous[q]+ratio*stage.target_qpos[q];
           if([...intentionalContacts].some(pair=>pair.includes('phone_geom')||pair.includes('meal_box_geom'))){
             // Loaded servo targets press through the object. Only the sampled
             // route uses open pads; actual contact dynamics remain authoritative.
@@ -357,6 +365,7 @@ export class BrowserPhysics {
     if(!this.stages.length)return;
     let stage=this.stages[this.stageIndex],elapsed=this.data.time-this.stageStarted;
     if(elapsed+1e-9>=stage.duration_s&&this.stageIndex+1<this.stages.length){
+      if(stage.navigation){const error=this.drive.error(stage.target_qpos);if(error.position_m>.012||error.heading_rad>.025){this.stop(`Navigation stopped: wheel-driven goal not reached after ${stage.name} (${error.position_m.toFixed(4)}m, ${error.heading_rad.toFixed(4)}rad)`);return}}
       if(this.demo&&stage.gate_after){
         const passed=this.demoGate(stage.gate_after);this.demo.measurements[`gate_${stage.gate_after}_passed`]=passed;
         if(!passed){this.stop(`Demo stopped: ${stage.gate_after} gate failed after ${stage.name}`);return}
@@ -372,7 +381,8 @@ export class BrowserPhysics {
       this.stageStartCtrl=Array.from(this.data.ctrl);stage=this.stages[this.stageIndex];elapsed=0;
     }
     let ratio=clamp((elapsed+this.timestep)/stage.duration_s,0,1);ratio=ratio*ratio*(3-2*ratio);
-    for(let i=0;i<this.model.nu;i++)this.data.ctrl[i]=(1-ratio)*this.stageStartCtrl[i]+ratio*stage.target_qpos[this.actuatedQ[i]];
+    for(const i of this.drive.positionActuators)this.data.ctrl[i]=(1-ratio)*this.stageStartCtrl[i]+ratio*stage.target_qpos[this.actuatedQ[i]];
+    this.drive.apply(stage.target_qpos,stage.navigation);
   }
 
   private measureFixture(){
@@ -433,7 +443,7 @@ export class BrowserPhysics {
     measured.ever_grasped=!!measured.ever_grasped||measured.grasp_hold_s>=(thresholds.minimum_bilateral_hold_s as number);
     const supported=previous('object_xy_error_m')<=(thresholds.object_xy_tolerance_m as number)&&previous('object_z_error_m')<=(thresholds.object_z_tolerance_m as number)&&previous('object_speed_m_s')<=(thresholds.object_speed_tolerance_m_s as number)&&previous('object_angular_speed_rad_s')<=(thresholds.object_angular_speed_tolerance_rad_s as number)&&support>(thresholds.support_force_minimum_n as number);
     measured.supported_on_tray=supported;
-    if(['raise_object','confirm_grasp','clear_work_table','navigate_bedside','tray_hover','lower_to_tray'].includes(demo.stage)&&height>.02&&!bilateral)this.stop('Assistance stopped: bilateral object contact lost during transport');
+    if(['raise_object','confirm_grasp','clear_work_table','navigate_bedside','tray_hover','lower_to_tray'].includes(this.stages[this.stageIndex].action_phase??demo.stage)&&height>.02&&!bilateral)this.stop('Assistance stopped: bilateral object contact lost during transport');
     return{verified_grasp:!!measured.ever_grasped,placed_on_tray:supported,fingers_clear:fingersClear,hand_retracted:previous('hand_clearance_m')>=(thresholds.hand_clearance_m as number),within_modeled_patient_reach:previous('patient_hand_distance_m')<=(thresholds.maximum_patient_reach_m as number)};
   }
 
@@ -486,13 +496,14 @@ export class BrowserPhysics {
     const previousNumber=(key:string,fallback=0):number=>typeof measured[key]==='number'?measured[key] as number:fallback;
     const elapsed=Math.max(0,this.data.time-this.modeStarted);
     Object.assign(demo,{stage:this.stages[this.stageIndex].name,stage_index:this.stageIndex,elapsed_s:elapsed,progress:Math.min(1,elapsed/demo.duration_s)});
-    measured.rest_qpos_error=Math.max(...this.actuatedQ.map(q=>Math.abs(this.data.qpos[q]-this.initialQ[q])));
-    measured.robot_speed=Math.max(...this.actuatedDofs.map(dof=>Math.abs(this.data.qvel[dof])));
-    const checks:Record<string,boolean>={returned_to_rest:measured.rest_qpos_error<=(thresholds.rest_qpos_tolerance as number),robot_settled:measured.robot_speed<=(thresholds.robot_speed_tolerance as number)};
+    measured.rest_qpos_error=Math.max(...this.drive.positionQ.map(q=>Math.abs(this.data.qpos[q]-this.initialQ[q])));
+    measured.robot_speed=Math.max(...this.robotDofs.map(dof=>Math.abs(this.data.qvel[dof])));
+    const home=this.drive.error(this.initialQ);measured.base_home_error_m=home.position_m;measured.base_home_yaw_error_rad=home.heading_rad;
+    const checks:Record<string,boolean>={returned_to_rest:measured.rest_qpos_error<=(thresholds.rest_qpos_tolerance as number),robot_settled:measured.robot_speed<=(thresholds.robot_speed_tolerance as number),base_returned_home:home.position_m<=.012&&home.heading_rad<=.025};
     if(ASSISTANCE_DEMOS.includes(this.mode as SharedDemoCommand))Object.assign(checks,this.observeAssistance());
     else if(this.mode==='bedside_demo'){
       const base=['base_x','base_y','base_yaw'].map(name=>this.data.qpos[this.qindex(name)]),target=thresholds.base_goal_qpos as number[];
-      Object.assign(measured,{base_position_qpos:base,base_goal_error_m:Math.hypot(base[0]-target[0],base[1]-target[1]),base_yaw_error_rad:Math.abs(base[2]-target[2]),base_home_error_m:Math.hypot(base[0],base[1])});
+      Object.assign(measured,{base_position_qpos:base,base_goal_error_m:Math.hypot(base[0]-target[0],base[1]-target[1]),base_yaw_error_rad:Math.abs(wrapAngle(base[2]-target[2])),base_home_error_m:Math.hypot(base[0],base[1])});
       measured.max_base_excursion_m=Math.max(previousNumber('max_base_excursion_m'),previousNumber('base_home_error_m'));
       measured.visited_bedside=!!measured.visited_bedside||(previousNumber('base_goal_error_m')<=(thresholds.base_goal_tolerance_m as number)&&previousNumber('base_yaw_error_rad')<=(thresholds.yaw_tolerance_rad as number));
       checks.visited_bedside=measured.visited_bedside;checks.base_travel_observed=measured.max_base_excursion_m>=(thresholds.minimum_base_excursion_m as number);
@@ -533,7 +544,7 @@ export class BrowserPhysics {
       this.requireFixtureStart();
       if(action==='pickup_demo'){
         const {stages,errors}=this.pickupStages();if(Object.values(errors).some(error=>error.position_error_m>.002||error.orientation_error_rad>.01))throw new Error('Pickup rejected by six-dimensional pose IK gate');
-        const count=this.startStages(stages,true),height=this.data.xpos[this.bodyIds.get('phone')!*3+2];
+        const count=this.startStages(this.drive.expandStages(this.initialQ,stages),true),height=this.data.xpos[this.bodyIds.get('phone')!*3+2];
         this.pickup={stage:'park',status:'running',success:false,ever_succeeded:false,released:false,initial_phone_height_m:height,phone_height_m:height,height_gain_m:0,bilateral_contact:false,finger_contacts:[],normal_forces_n:{},bilateral_hold_s:0,ik_errors:errors,collision_samples:count,sampled_collision_gate_passed:true,attachment_constraints:0};
         this.liftDemo=null;this.data.mocap_pos.set([.63,-.72,1.05]);
       }else{
@@ -549,7 +560,7 @@ export class BrowserPhysics {
       this.mode=action;this.paused=false;this.modeStarted=this.data.time;this.reachPlan=null;this.stopReason=null;
     }else if(action==='release_phone'){
       if(this.mode!=='pickup_demo'||!this.pickup?.success)throw new Error('Release is available after a confirmed bilateral pickup');
-      const released=Array.from(this.data.qpos as Float64Array);for(let i=0;i<this.model.nu;i++)released[this.actuatedQ[i]]=this.data.ctrl[i];
+      const released=Array.from(this.data.qpos as Float64Array);for(const i of this.drive.positionActuators)released[this.actuatedQ[i]]=this.data.ctrl[i];
       for(const finger of [-1,1])released[this.qindex(`left_gripper_${finger}`)]=finger*.60;
       this.stages=[{name:'release',target_qpos:released,duration_s:1.5}];this.stageIndex=0;this.stageStarted=this.data.time;this.stageStartCtrl=Array.from(this.data.ctrl);this.mode='release_phone';this.paused=false;this.pickup.status='releasing';this.pickup.success=false;this.pickup.bilateral_hold_s=0;
     }
@@ -585,7 +596,8 @@ export class BrowserPhysics {
       else if(this.mode==='pickup_demo'||this.mode==='release_phone'||this.mode==='lift_demo'||SHARED_DEMOS.includes(this.mode as SharedDemoCommand)){this.stagedControl();if(this.paused)break}
       else if(this.mode==='reach_demo'&&this.reachPlan?.start_qpos){
         let ratio=clamp(elapsed/this.reachPlan.duration_s!,0,1);ratio=ratio*ratio*(3-2*ratio);
-        for(let i=0;i<this.model.nu;i++){const q=this.model.jnt_qposadr[this.model.actuator_trnid[i*2]];this.data.ctrl[i]=(1-ratio)*this.reachPlan.start_qpos[q]+ratio*this.reachPlan.target_qpos[q]}
+        for(const i of this.drive.positionActuators){const q=this.actuatedQ[i];this.data.ctrl[i]=(1-ratio)*this.reachPlan.start_qpos[q]+ratio*this.reachPlan.target_qpos[q]}
+        this.drive.apply(this.reachPlan.target_qpos,{kind:'drive',reverse:false,goal:this.drive.baseQ.map(q=>this.reachPlan!.target_qpos[q]) as Vec3});
       }
       this.engine.mj_step(this.model,this.data);this.stepCount++;
       this.measureFixture();
@@ -606,7 +618,7 @@ export class BrowserPhysics {
     const objectJoints:Record<string,number>={};for(const name of this.objectJointNames)objectJoints[name]=this.data.qpos[this.qindex(name)];
     const cameras:Record<string,CameraPose>={};for(const [name,id]of this.cameraIds)cameras[name]={position:read3(this.data.cam_xpos,id*3),rotation:Array.from({length:9},(_,i)=>this.data.cam_xmat[id*9+i]),fovy_deg:this.model.cam_fovy[id],fovy:this.model.cam_fovy[id],convention:'mujoco_opengl'};
     const endEffectors:Record<string,Vec3>={};for(const [side,id]of this.siteIds)endEffectors[side]=read3(this.data.site_xpos,id*3);
-    const metrics:BrowserPhysicsState['metrics']={physics_steps:this.stepCount,finite_dynamics:this.finite(),contacts:this.lastContacts,stop_reason:this.stopReason,grasp_success:null,object_attached:false};
+    const metrics:BrowserPhysicsState['metrics']={drive:this.drive.observe(),physics_steps:this.stepCount,finite_dynamics:this.finite(),contacts:this.lastContacts,stop_reason:this.stopReason,grasp_success:null,object_attached:false};
     metrics.visual_tracking_pause_reason=this.visualTrackingPauseReason;
     if(this.pickup){metrics.pickup=structuredClone(this.pickup);metrics.grasp_success=this.pickup.success}
     if(this.liftDemo)metrics.lift=structuredClone(this.liftDemo);

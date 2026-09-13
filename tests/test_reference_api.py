@@ -17,6 +17,7 @@ def test_reference_requires_session_and_excludes_patient(tmp_path):
     assert client.get("/api/sim/reference/state").status_code == 401
     client.post("/api/session",json={"role":"patient"})
     assert client.get("/api/sim/reference/state").status_code == 403
+    assert client.get("/api/sim/reference/frame").status_code == 403
     assert client.get("/api/sim/assets/robot.glb").status_code == 403
     assert client.post("/api/sim/reference/control",json={"command":"reset"}).status_code == 403
 
@@ -36,6 +37,26 @@ def test_reference_state_and_pause_use_actual_mujoco(tmp_path):
     reset = client.post("/api/sim/reference/control",json={"command":"reset"}).json()
     assert reset["mode"] == "idle"
     assert reset["authorizes_hardware"] is False
+
+
+def test_native_frame_shares_browser_session_and_is_read_only(tmp_path):
+    import numpy as np
+    client = client_for(tmp_path)
+    client.post("/api/sim/reference/control", json={"command": "joint_demo"})
+    simulation = client.app.state.reference_simulation
+    simulation.advance(.04)
+    paused = client.post("/api/sim/reference/control", json={"command": "pause"}).json()
+    frame = client.get("/api/sim/reference/frame").json()
+    assert frame["state"]["simulation_time"] == paused["simulation_time"]
+    assert frame["state"]["bodies"] == paused["bodies"]
+    assert frame["state"]["model_hash"] == simulation.metadata["model_hash"]
+    for name in ("qpos", "qvel", "ctrl", "mocap_pos", "mocap_quat"):
+        np.testing.assert_array_equal(frame[name], getattr(simulation.data, name))
+    assert client.post("/api/sim/reference/frame", json={"qpos": [0]}).status_code == 405
+    client.post("/api/sim/reference/control", json={"command": "reset"})
+    assert client.get("/api/sim/reference/frame").json()["state"]["mode"] == "idle"
+    client.post("/api/session", json={"role": "patient"})
+    assert client.get("/api/sim/reference/frame").status_code == 403
 
 
 def test_reference_control_rejects_arbitrary_commands_and_fields(tmp_path):
@@ -84,6 +105,8 @@ def test_reference_local_demo_boundary_applies_with_valid_production_role(tmp_pa
     app_module = import_module("services.app")
     client = TestClient(app_module.create_app(tmp_path/"locked.sqlite3",demo=False),base_url="https://testserver")
     assert client.post("/api/session",json={"role":"researcher","token":"test-token"}).status_code == 200
+    assert client.get("/api/health").json()["demo_mode"] is False
     assert client.get("/api/sim/reference/state").status_code == 403
+    assert client.get("/api/sim/reference/frame").status_code == 403
     assert client.get("/api/sim/assets/robot.glb").status_code == 403
     assert client.post("/api/sim/reference/control",json={"command":"joint_demo"}).status_code == 403

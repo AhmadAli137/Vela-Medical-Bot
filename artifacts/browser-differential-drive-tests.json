@@ -1,0 +1,116 @@
+{
+  "engine": "MuJoCo 3.13.0 WebAssembly",
+  "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+  "test_runs": [
+    {
+      "command": "node --test --test-isolation=none --test-reporter=spec tests/browser-physics-wasm.mjs tests/browser-wheel-traction.mjs",
+      "tests": 31,
+      "passed": 31,
+      "failed": 0,
+      "duration_ms": 96243.3212
+    },
+    {
+      "command": "node --test --test-isolation=none --test-reporter=junit --test-reporter-destination=../../artifacts/browser-drive-fault-tests.xml tests/browser-drive-fault.mjs",
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "duration_ms": 1157.9221
+    }
+  ],
+  "typescript_build_exit_code": 0,
+  "artifacts": [
+    "artifacts/browser-contact-physics.json",
+    "artifacts/browser-wheel-traction.json",
+    "artifacts/browser-drive-fault.json",
+    "artifacts/browser-drive-fault-tests.xml"
+  ],
+  "shared_demos": {
+    "bedside_demo": {
+      "complete": true,
+      "simulation_time_s": 34.4999999999962,
+      "checks": {
+        "returned_to_rest": true,
+        "robot_settled": true,
+        "base_returned_home": true,
+        "visited_bedside": true,
+        "base_travel_observed": true
+      },
+      "base_home_error_m": 4.085300984435424e-05,
+      "base_home_yaw_error_rad": 1.5836797416077708e-10
+    },
+    "greeting_demo": {
+      "complete": true,
+      "simulation_time_s": 16.00000000000201,
+      "checks": {
+        "returned_to_rest": true,
+        "robot_settled": true,
+        "base_returned_home": true,
+        "hand_raised": true,
+        "wrist_waved": true
+      },
+      "base_home_error_m": 2.0014421776938223e-05,
+      "base_home_yaw_error_rad": 2.5070369220599883e-05
+    },
+    "phone_return_demo": {
+      "complete": true,
+      "simulation_time_s": 47.500000000012086,
+      "checks": {
+        "returned_to_rest": true,
+        "robot_settled": true,
+        "base_returned_home": true,
+        "confirmed_grasp": true,
+        "phone_on_riser": true,
+        "fingers_clear": true,
+        "hand_retracted": true
+      },
+      "base_home_error_m": 1.125031165903401e-05,
+      "base_home_yaw_error_rad": 6.412337217558606e-07
+    },
+    "deliver_phone_demo": {
+      "complete": true,
+      "simulation_time_s": 137.49999999992843,
+      "checks": {
+        "returned_to_rest": true,
+        "robot_settled": true,
+        "base_returned_home": true,
+        "verified_grasp": true,
+        "placed_on_tray": true,
+        "fingers_clear": true,
+        "hand_retracted": true,
+        "within_modeled_patient_reach": true
+      },
+      "base_home_error_m": 0.00023503797946936283,
+      "base_home_yaw_error_rad": 2.7467817286067304e-07
+    },
+    "deliver_meal_demo": {
+      "complete": true,
+      "simulation_time_s": 139.49999999993798,
+      "checks": {
+        "returned_to_rest": true,
+        "robot_settled": true,
+        "base_returned_home": true,
+        "verified_grasp": true,
+        "placed_on_tray": true,
+        "fingers_clear": true,
+        "hand_retracted": true,
+        "within_modeled_patient_reach": true
+      },
+      "base_home_error_m": 0.0002350381422716721,
+      "base_home_yaw_error_rad": 3.7985285811486036e-07
+    },
+    "blinds_demo": {
+      "complete": true,
+      "simulation_time_s": 111.49999999992154,
+      "checks": {
+        "returned_to_rest": true,
+        "robot_settled": true,
+        "base_returned_home": true,
+        "handle_moved": true,
+        "slats_open": true,
+        "physical_control_contact": true
+      },
+      "base_home_error_m": 2.6255362643071773e-06,
+      "base_home_yaw_error_rad": 1.201702232274684e-12
+    }
+  }
+}

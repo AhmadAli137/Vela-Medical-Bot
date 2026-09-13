@@ -1,5 +1,7 @@
 # Deployment
 
+Current entrypoints and synchronization are described in the [app guide](APP_GUIDE.md). The native viewer now uses the reference scene and shared local session when opened from the app; the original primitive model remains an explicitly labeled benchmark.
+
 ## Public 3D demo on Vercel
 
 Live production: **https://vela-medical-bot.vercel.app**. Source: **https://github.com/AhmadAli137/Vela-Medical-Bot** (private repository). The Vercel project is connected to GitHub; pushes to `main` trigger production builds. The initial production deployment reached `Ready` on September 12, 2026, and the public URL returned HTTP 200 without sign-in.
@@ -47,3 +49,9 @@ Local demo mode rejects non-loopback clients and permits role switching. For acc
 `infra/Dockerfile` provides a nonroot, single-worker Linux build recipe. It has not been built/tested here. Offscreen MuJoCo graphics require EGL/OpenGL support appropriate to the deployment host. Do not claim container portability from the verified Windows run.
 
 Production prerequisites: SSO and scoped identities; managed device certificates; hardware-backed robot identity and vendor watchdog; encrypted storage and backups; segregated network/egress; retention/deletion jobs; centralized immutable audit; incident response; institution-approved integrations and monitoring. Moving to a hospital is not a matter of changing an environment flag.
+
+## Preventing stale builds
+
+Both npm build modes now check matching native/public XML, descriptors, body bindings and trajectory model hashes before compilation. A build receipt records the inputs and output hashes; inputs changing during a build invalidate the receipt. Local launchers check that receipt and rebuild a stale or public-mode bundle as a local bundle. They also reject an already-running backend with an older source revision, so it must be restarted before opening the updated app.
+
+The native visual cache is keyed by source GLBs, physics XML, importer code and MuJoCo version, with integrity hashes for its generated files. Both Python and browser physics are pinned to MuJoCo 3.13.0. Run `python -m sim.sync_check --build-mode local --output artifacts/scene-sync.json` to verify the checked-out source, generated physics, shared trajectories, visual body bindings and local build. The checker reports the absence of an original Blender source-build receipt rather than claiming that provenance was verified.

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="loss of tire traction stops an unmet navigation waypoint without claiming the task completed" time="0.721775" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-drive-fault.mjs"/>
+	<!-- tests 1 -->
+	<!-- suites 0 -->
+	<!-- pass 1 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 1157.9221 -->
+</testsuites>

@@ -3,7 +3,7 @@ name = "vela-room-agent"
 version = "0.1.0"
 description = "Non-clinical room operations research platform"
 requires-python = ">=3.12,<3.15"
-dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.34,<1", "pydantic>=2.10,<3", "httpx>=0.28,<1", "numpy>=2,<3", "mujoco>=3.3,<4", "pillow>=11,<13", "openai>=3,<4", "anthropic>=1,<2"]
+dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.34,<1", "pydantic>=2.10,<3", "httpx>=0.28,<1", "numpy>=2,<3", "mujoco==3.13.0", "pillow>=11,<13", "openai>=3,<4", "anthropic>=1,<2"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10"]

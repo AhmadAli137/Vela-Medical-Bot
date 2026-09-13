@@ -56,8 +56,8 @@ try{
   },{timeout:60000}).toBe(true);
   await expect(page.getByText('MuJoCo · in browser',{exact:true})).toBeVisible();
   await page.getByRole('button',{name:'Model & physics',exact:true}).click();
-  await expect(page.getByText('28 synchronized',{exact:true})).toBeVisible();
-  await page.getByText('25 joint positions',{exact:true}).click();
+  await expect(page.getByText('46 synchronized',{exact:true})).toBeVisible();
+  await page.getByText('26 joint positions',{exact:true}).click();
   const jointPositions=()=>page.locator('.immersive-joints code').allTextContents();
   const clock=async()=>parseFloat(await page.locator('.immersive-clock strong').innerText());
   const initial=await jointPositions();
@@ -120,11 +120,11 @@ try{
   assert.deepEqual(errors,[],'Browser errors');
   assert.deepEqual(failedRequests,[],'Failed network requests');
   assert.deepEqual(apiRequests,[],'Public demo called the local API');
-  assert.equal(sceneAssetRequests.size,5,'Expected three GLBs and two physics fixtures');
+  assert.equal(sceneAssetRequests.size,6,'Expected four GLBs and two physics fixtures');
   const revisions=new Set(sceneAssetRequests.values());assert.equal(revisions.size,1,'Scene assets have mismatched revisions');assert.match([...revisions][0],/^[a-f0-9]{16}$/);
   let videoPath;
   if(recordVideo){const video=page.video();await context.close();videoPath=`apps/web/artifacts/${capture}-motion.webm`;await video.saveAs(resolve(repository,videoPath));await video.delete()}
-  const result={checked_at:new Date().toISOString(),elapsed_seconds:(Date.now()-started)/1000,origin:new URL(target).origin,server:remote?'Vercel production; anonymous Chrome context':'Static files with Vercel response headers; no API proxy',content_security_policy:contentSecurityPolicy,engine:'MuJoCo WebAssembly',viewport:{width:1600,height:1000},synchronized_bodies:28,joint_positions:initial.length,moving_joints:movingJoints,moving_simulation_time_seconds:movingTime,paused_simulation_time_seconds:pausedTime,reach_endpoint_error_display:reachErrorText,physics_steps_display:physicsSteps,vertical,pickup,release,scene_revision:[...revisions][0],default_route_3d:true,legacy_hash_stays_in_public_demo:true,about_dialog_escape_and_focus_restoration:true,errors,failed_requests:failedRequests,api_requests:apiRequests,screenshot,pickup_screenshot:`apps/web/artifacts/${capture}-pickup.png`,vertical_low_screenshot:`apps/web/artifacts/${capture}-vertical-low.png`,vertical_high_screenshot:`apps/web/artifacts/${capture}-vertical-high.png`,...(videoPath?{video:videoPath}:{})};
+  const result={checked_at:new Date().toISOString(),elapsed_seconds:(Date.now()-started)/1000,origin:new URL(target).origin,server:remote?'Vercel production; anonymous Chrome context':'Static files with Vercel response headers; no API proxy',content_security_policy:contentSecurityPolicy,engine:'MuJoCo WebAssembly',viewport:{width:1600,height:1000},synchronized_bodies:46,joint_positions:initial.length,moving_joints:movingJoints,moving_simulation_time_seconds:movingTime,paused_simulation_time_seconds:pausedTime,reach_endpoint_error_display:reachErrorText,physics_steps_display:physicsSteps,vertical,pickup,release,scene_revision:[...revisions][0],default_route_3d:true,legacy_hash_stays_in_public_demo:true,about_dialog_escape_and_focus_restoration:true,errors,failed_requests:failedRequests,api_requests:apiRequests,screenshot,pickup_screenshot:`apps/web/artifacts/${capture}-pickup.png`,vertical_low_screenshot:`apps/web/artifacts/${capture}-vertical-low.png`,vertical_high_screenshot:`apps/web/artifacts/${capture}-vertical-high.png`,...(videoPath?{video:videoPath}:{})};
   await writeFile(resolve(repository,report),JSON.stringify(result,null,2)+'\n');
   console.log(JSON.stringify(result,null,2));
 }catch(error){

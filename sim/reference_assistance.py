@@ -1,7 +1,7 @@
 """Contact-driven assistance fixtures; no robot/object pose attachment.
 
 These model an accessible tray and a passive mechanical blinds linkage.
-They do not model patient handoffs, feeding, perception, or wheel traction.
+They do not model patient handoffs, feeding, perception, or balancing.
 """
 from __future__ import annotations
 
@@ -24,10 +24,6 @@ def build_assistance_commands(model, initial):
         return q
 
     def wheels(q):
-        x = q[model.joint("base_x").qposadr[0]]
-        yaw = q[model.joint("base_yaw").qposadr[0]]
-        for side, sign in (("left", -1), ("right", 1)):
-            q[model.joint(f"{side}_wheel_joint").qposadr[0]] = (x+sign*.20*yaw)/.13
         return q
 
     def stage(name, q, seconds, gate=None):
@@ -42,7 +38,7 @@ def build_assistance_commands(model, initial):
         target = DELIVERY_TARGETS[body]
         pickup_y = source[1]+.72
         destination_y = target[1]+.72
-        park = pose(right_joint_1=-.70)
+        park = pose(right_joint_1=0.,right_joint_2=-.8,right_lift=.20)
         for finger in (-1, 1):
             park[model.joint(f"left_gripper_{finger}").qposadr[0]] = finger*.60
         drive = wheels(pose(park, base_x=.78, base_y=pickup_y))
@@ -55,8 +51,15 @@ def build_assistance_commands(model, initial):
         carry, errors["carry"] = solve_pose(model, closed, [source[0], source[1], 1.18], base_y=pickup_y, lift=.15)
         clear_table = wheels(pose(carry, base_y=1.10))
         bedside = wheels(pose(carry, base_x=1., base_y=destination_y))
+        corridor = pose(carry,base_x=.78,base_y=destination_y)
         at_tray, errors["tray_hover"] = solve_pose(model, bedside, [target[0],target[1],1.18], base_x=1., base_y=destination_y, lift=.15)
-        place, errors["place"] = solve_pose(model, at_tray, target, base_x=1., base_y=destination_y, lift=.15)
+        placement_goal=list(target)
+        if body == "phone":
+            # The thin phone can sit slightly high between compliant pads
+            # after turning. A small physical press loads its support before
+            # fingers open; the force/outcome gates remain unchanged.
+            placement_goal[2]-=.0015
+        place, errors["place"] = solve_pose(model, at_tray, placement_goal, base_x=1., base_y=destination_y, lift=.15)
         opened = place.copy()
         for finger in (-1, 1):
             opened[model.joint(f"left_gripper_{finger}").qposadr[0]] = finger*.60
@@ -66,7 +69,8 @@ def build_assistance_commands(model, initial):
         release_clear, errors["release_clear"] = solve_pose(model,opened,[target[0],target[1],target[2]+.06],base_x=1.,base_y=destination_y,lift=.15)
         withdrawn = wheels(pose(retreat, base_x=.78, base_y=1.10))
         return_lane = wheels(pose(park, base_x=.78, base_y=1.10))
-        stages = [stage("park",park,2),stage("approach_source",drive,4),stage("object_hover",hover,3),stage("object_descend",grasp,3),stage("grip_object",closed,1.5,"assist_bilateral"),stage("raise_object",carry,4),stage("confirm_grasp",carry,2,"assist_grasped"),stage("clear_work_table",clear_table,5),stage("navigate_bedside",bedside,5),stage("tray_hover",at_tray,2),stage("lower_to_tray",place,4,"assist_supported"),stage("release_on_tray",opened,2),stage("clear_open_fingers",release_clear,1.5,"assist_released"),stage("retract_from_tray",retreat,2.5),stage("leave_bedside",withdrawn,5),stage("fold_empty_arm",return_lane,3),stage("return_start",park,5),stage("rest_arms",initial,2),stage("settle",initial,2)]
+        back_from_tray=pose(retreat,base_x=.78,base_y=destination_y)
+        stages = [stage("park",park,2),stage("approach_source",drive,4),stage("object_hover",hover,3),stage("object_descend",grasp,3),stage("grip_object",closed,1.5,"assist_bilateral"),stage("raise_object",carry,4),stage("confirm_grasp",carry,2,"assist_grasped"),stage("clear_work_table",clear_table,5),stage("navigate_bedside",corridor,5),stage("navigate_bedside",bedside,3),stage("tray_hover",at_tray,2),stage("lower_to_tray",place,4,"assist_supported"),stage("release_on_tray",opened,2),stage("clear_open_fingers",release_clear,1.5,"assist_released"),stage("retract_from_tray",retreat,2.5),stage("leave_bedside",back_from_tray,3),stage("leave_bedside",withdrawn,5),stage("fold_empty_arm",return_lane,3),stage("return_start",park,5),stage("rest_arms",initial,2),stage("settle",initial,2)]
         commands[command] = {"name": "Deliver phone to bedside" if body=="phone" else "Deliver meal container", "description": "Carry a real free body to the accessible bedside tray, confirm support, release, and return.", "object_name":body, "source_position":source, "support_geom":"phone_delivery_riser" if body=="phone" else "meal_delivery_riser", "intentional_contacts":[[f"{body}_geom",f"left_finger_{finger}_geom"]for finger in (-1,1)], "stages":stages, "ik_errors":errors, "outcomes":{**common,"object_target":target,"object_xy_tolerance_m":.025,"object_z_tolerance_m":.008,"object_speed_tolerance_m_s":.04,"object_angular_speed_tolerance_rad_s":.4,"support_force_minimum_n":.05,"minimum_grasp_height_m":.15,"minimum_bilateral_hold_s":2.,"hand_clearance_m":.12,"patient_hand_reference":PATIENT_HAND_REFERENCE,"maximum_patient_reach_m":.55}}
 
     # A downward press operates the passive slide; equality constraints model
@@ -133,7 +137,7 @@ def observe_assistance(sim):
     measured["ever_grasped"] = bool(measured.get("ever_grasped",False) or measured["grasp_hold_s"]>=thresholds["minimum_bilateral_hold_s"])
     supported = measured["object_xy_error_m"]<=thresholds["object_xy_tolerance_m"] and measured["object_z_error_m"]<=thresholds["object_z_tolerance_m"] and measured["object_speed_m_s"]<=thresholds["object_speed_tolerance_m_s"] and measured["object_angular_speed_rad_s"]<=thresholds["object_angular_speed_tolerance_rad_s"] and support>thresholds["support_force_minimum_n"]
     measured["supported_on_tray"] = supported
-    stage = sim.demo["stage"]
+    stage = sim.stages[sim.stage_index].get("action_phase",sim.demo["stage"])
     if stage in {"raise_object","confirm_grasp","clear_work_table","navigate_bedside","tray_hover","lower_to_tray"} and height_gain>.02 and not bilateral:
         sim._stop_demo("Assistance stopped: bilateral object contact lost during transport")
     return {"verified_grasp":measured["ever_grasped"],"placed_on_tray":supported,"fingers_clear":measured["fingers_clear"],"hand_retracted":measured["hand_clearance_m"]>=thresholds["hand_clearance_m"],"within_modeled_patient_reach":measured["patient_hand_distance_m"]<=thresholds["maximum_patient_reach_m"]}

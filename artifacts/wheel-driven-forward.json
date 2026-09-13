@@ -1,0 +1,859 @@
+{
+  "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+  "visual_hash": "012f78825c132fde95f833d9769640ea4e2875a1a556c580300b0c7a1637e12e",
+  "renderer": "native MuJoCo",
+  "physics_steps": 1250,
+  "simulation_seconds": 2.5,
+  "playback": "half speed, 10 fps",
+  "displacement_m": [
+    0.3751812958279087,
+    0.0,
+    -4.7646738776663256e-09
+  ],
+  "samples": [
+    {
+      "forward_velocity_m_s": 3.6970787767566454e-07,
+      "lateral_velocity_m_s": 3.0019153907749773e-22,
+      "yaw_rate_rad_s": -1.5466520900367765e-19,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68485159601602,
+        "right": 67.68485159601603
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.6000000459735996,
+        "y": -0.7,
+        "z": 0.12972647862276948,
+        "yaw": -2.028286703926201e-21
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.021339519001339693,
+      "lateral_velocity_m_s": 3.1531672941790042e-21,
+      "yaw_rate_rad_s": -1.6950904530935944e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68303467931719,
+        "right": 67.68303467931719
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5993575061397876,
+        "y": -0.7,
+        "z": 0.1297265028786393,
+        "yaw": -1.4823291993045755e-18
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.04662829763200684,
+      "lateral_velocity_m_s": -8.764760113218555e-21,
+      "yaw_rate_rad_s": 1.8780991676077194e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.6935621307916,
+        "right": 67.69356213079163
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5975239314134054,
+        "y": -0.7,
+        "z": 0.12972647843625268,
+        "yaw": -1.9208799021990003e-18
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.07245691645970888,
+      "lateral_velocity_m_s": 1.6311918478337282e-20,
+      "yaw_rate_rad_s": -1.9285590057594655e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.7024703088441,
+        "right": 67.70247030884413
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5944084931347943,
+        "y": -0.7,
+        "z": 0.12972645252153356,
+        "yaw": -2.487922322135042e-18
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.09834190718123846,
+      "lateral_velocity_m_s": 2.3291718489646677e-21,
+      "yaw_rate_rad_s": 2.6208475176543254e-19,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.70712732176922,
+        "right": 67.70712732176924
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5899997374150043,
+        "y": -0.7,
+        "z": 0.1297264356977029,
+        "yaw": -3.222725521592406e-18
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.12422950973784005,
+      "lateral_velocity_m_s": -3.47393154880133e-20,
+      "yaw_rate_rad_s": 4.3662428184489764e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.70801792189204,
+        "right": 67.70801792189206
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.584296622129113,
+        "y": -0.7,
+        "z": 0.12972642866283732,
+        "yaw": -3.3289629319501564e-18
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.15011578141669765,
+      "lateral_velocity_m_s": 1.2463487717265873e-20,
+      "yaw_rate_rad_s": -1.3002147650978305e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.70648681481475,
+        "right": 67.7064868148148
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5772991580312956,
+        "y": -0.7,
+        "z": 0.1297264293140419,
+        "yaw": -4.474674074743583e-18
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.1760010425690621,
+      "lateral_velocity_m_s": 9.488258942310039e-20,
+      "yaw_rate_rad_s": -6.130335140204423e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.7039143764714,
+        "right": 67.70391437647143
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5690074062513131,
+        "y": -0.7,
+        "z": 0.12972643450544377,
+        "yaw": -7.442259862981249e-18
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.20188564928695307,
+      "lateral_velocity_m_s": 1.252915136538406e-19,
+      "yaw_rate_rad_s": -5.746872567730051e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.70134636447368,
+        "right": 67.7013463644737
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5594214081395205,
+        "y": -0.7,
+        "z": 0.1297264412496843,
+        "yaw": -1.0499758597321532e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.22776981222117484,
+      "lateral_velocity_m_s": 8.290390842065076e-20,
+      "yaw_rate_rad_s": -2.8554078955596376e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.69938143072534,
+        "right": 67.69938143072534
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5485411909585951,
+        "y": -0.7,
+        "z": 0.12972644740077613,
+        "yaw": -1.1992392814599438e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.253653662092489,
+      "lateral_velocity_m_s": 6.668126400209012e-20,
+      "yaw_rate_rad_s": -2.0338031936435712e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.69821854493323,
+        "right": 67.69821854493324
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5363667735616593,
+        "y": -0.7,
+        "z": 0.12972645183398712,
+        "yaw": -1.4428526532965138e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.25819806474275653,
+      "lateral_velocity_m_s": 1.5480291461232302e-20,
+      "yaw_rate_rad_s": -4.538598732641778e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.70185484702755,
+        "right": 67.70185484702756
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5235406978266678,
+        "y": -0.7,
+        "z": 0.12972642455636435,
+        "yaw": -1.5525955630465408e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2587926539973056,
+      "lateral_velocity_m_s": -2.471985943314937e-20,
+      "yaw_rate_rad_s": 8.812818096965233e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.69311693054433,
+        "right": 67.69311693054433
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.5106114817103115,
+        "y": -0.7,
+        "z": 0.12972644466640637,
+        "yaw": -1.470363210039947e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.258847283905186,
+      "lateral_velocity_m_s": 1.3712625057832799e-19,
+      "yaw_rate_rad_s": -4.299057433203551e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68555789145604,
+        "right": 67.68555789145606
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.497669963023194,
+        "y": -0.7,
+        "z": 0.12972646655121933,
+        "yaw": -1.5021973689176834e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588455236930852,
+      "lateral_velocity_m_s": 9.775448589493151e-20,
+      "yaw_rate_rad_s": -3.5235020159926866e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68167875071804,
+        "right": 67.68167875071805
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.48472759915334973,
+        "y": -0.7,
+        "z": 0.12972648049058044,
+        "yaw": -1.7094300332074742e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588411599720384,
+      "lateral_velocity_m_s": 4.94318694021224e-20,
+      "yaw_rate_rad_s": -1.758873306996844e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68105661532861,
+        "right": 67.68105661532864
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.47178543262476047,
+        "y": -0.7,
+        "z": 0.12972648598632186,
+        "yaw": -1.8243634299775223e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588381390035491,
+      "lateral_velocity_m_s": 4.227598574384393e-20,
+      "yaw_rate_rad_s": -1.3665315562676005e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68250388235586,
+        "right": 67.68250388235587
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.45884345234614804,
+        "y": -0.7,
+        "z": 0.12972648492839478,
+        "yaw": -1.9037137983712594e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.25883613798230853,
+      "lateral_velocity_m_s": 3.228635430849635e-20,
+      "yaw_rate_rad_s": -1.1264987095948066e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68481346757714,
+        "right": 67.68481346757716
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.44590159677761276,
+        "y": -0.7,
+        "z": 0.12972648006953472,
+        "yaw": -1.9660262387335358e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.25883479640406315,
+      "lateral_velocity_m_s": 4.912946948281673e-20,
+      "yaw_rate_rad_s": -9.001335247750702e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68708043756085,
+        "right": 67.68708043756087
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.43295982428858365,
+        "y": -0.7,
+        "z": 0.12972647399719592,
+        "yaw": -2.0041092349851733e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588338991072596,
+      "lateral_velocity_m_s": 4.0907632395442955e-20,
+      "yaw_rate_rad_s": -1.7950474874541196e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68879482511458,
+        "right": 67.6887948251146
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.42001810753020996,
+        "y": -0.7,
+        "z": 0.12972646854970885,
+        "yaw": -2.143965397163434e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588333119406961,
+      "lateral_velocity_m_s": 2.895830622464928e-20,
+      "yaw_rate_rad_s": -1.0538112069001307e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68979562789079,
+        "right": 67.68979562789082
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.4070764277423904,
+        "y": -0.7,
+        "z": 0.1297264646701258,
+        "yaw": -2.189353642971275e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.25883294276285235,
+      "lateral_velocity_m_s": 2.1346650745772753e-20,
+      "yaw_rate_rad_s": -7.198969262571797e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.6901596126815,
+        "right": 67.69015961268151
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.3941347717564672,
+        "y": -0.7,
+        "z": 0.12972646254907527,
+        "yaw": -2.2241729968198267e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588327235184826,
+      "lateral_velocity_m_s": 1.3801715190124914e-19,
+      "yaw_rate_rad_s": -6.758306285090363e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.69008065746222,
+        "right": 67.69008065746225
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.38119313038566055,
+        "y": -0.7,
+        "z": 0.1297264618937357,
+        "yaw": -2.4834956372654382e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.25883260261992386,
+      "lateral_velocity_m_s": 3.47404149747957e-20,
+      "yaw_rate_rad_s": -1.5382163605278124e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68977304334987,
+        "right": 67.6897730433499
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.3682514974313337,
+        "y": -0.7,
+        "z": 0.1297264622005978,
+        "yaw": -2.512101102967749e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588325417156553,
+      "lateral_velocity_m_s": 2.5392828717929828e-20,
+      "yaw_rate_rad_s": -4.678646006523536e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68941166952719,
+        "right": 67.68941166952722
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.3553098689474674,
+        "y": -0.7,
+        "z": 0.1297264629630225,
+        "yaw": -2.4923412697372717e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588325138180165,
+      "lateral_velocity_m_s": -1.9118850362511132e-20,
+      "yaw_rate_rad_s": 1.1297560247392407e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68910757234262,
+        "right": 67.68910757234264
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.3423682426257295,
+        "y": -0.7,
+        "z": 0.129726463791025,
+        "yaw": -2.4286126694375613e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588325014841644,
+      "lateral_velocity_m_s": -3.177632691230559e-20,
+      "yaw_rate_rad_s": 1.1916380469629298e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68890931492096,
+        "right": 67.68890931492098
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.32942661726997696,
+        "y": -0.7,
+        "z": 0.12972646445206096,
+        "yaw": -2.3706529315824743e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.25883249473559056,
+      "lateral_velocity_m_s": -6.749656569207526e-20,
+      "yaw_rate_rad_s": 1.5628126454674454e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.6888186866886,
+        "right": 67.68881868668863
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.316484992367982,
+        "y": -0.7,
+        "z": 0.1297264648569998,
+        "yaw": -2.3068346178530573e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588324888717094,
+      "lateral_velocity_m_s": 2.5811490085237977e-20,
+      "yaw_rate_rad_s": -3.550835843698243e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68881073798362,
+        "right": 67.68881073798363
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.30354336777083313,
+        "y": -0.7,
+        "z": 0.12972646501825583,
+        "yaw": -2.2638806504766104e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.2588324824603164,
+      "lateral_velocity_m_s": -8.796377520402447e-21,
+      "yaw_rate_rad_s": 2.033016438073964e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68885147046224,
+        "right": 67.68885147046227
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.29060174347855433,
+        "y": -0.7,
+        "z": 0.12972646500208357,
+        "yaw": -2.255638063969369e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.23749318004797507,
+      "lateral_velocity_m_s": 2.6788142681554854e-20,
+      "yaw_rate_rad_s": -5.148332388897253e-18,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.6929719062478,
+        "right": 67.6929719062478
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.27830264316986847,
+        "y": -0.7,
+        "z": 0.1297264351906668,
+        "yaw": -2.224878829752456e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.212204190243301,
+      "lateral_velocity_m_s": 7.526216291518202e-20,
+      "yaw_rate_rad_s": -3.9438422494826034e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.68421741748843,
+        "right": 67.68421741748844
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.26719458442676003,
+        "y": -0.7,
+        "z": 0.12972645437426378,
+        "yaw": -2.489642765866387e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.18637541321212886,
+      "lateral_velocity_m_s": 5.748096097450397e-20,
+      "yaw_rate_rad_s": -2.3809445910573145e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.67636444948978,
+        "right": 67.67636444948982
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.2573683963661993,
+        "y": -0.7,
+        "z": 0.12972647643873672,
+        "yaw": -2.6746970819341203e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.16049033503298318,
+      "lateral_velocity_m_s": 6.0721041839577484e-21,
+      "yaw_rate_rad_s": -3.3550337430127517e-19,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.67210593794921,
+        "right": 67.67210593794923
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.2488355302324728,
+        "y": -0.7,
+        "z": 0.12972649112637202,
+        "yaw": -2.72153141833736e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.13460269427781943,
+      "lateral_velocity_m_s": 9.309974307977976e-21,
+      "yaw_rate_rad_s": 1.4365824110811795e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.67114760599868,
+        "right": 67.6711476059987
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.24159702569569236,
+        "y": -0.7,
+        "z": 0.12972649750384896,
+        "yaw": -2.513419139952884e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.10871641456164013,
+      "lateral_velocity_m_s": -3.585671510310839e-20,
+      "yaw_rate_rad_s": 1.0426850306225694e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.67236391221715,
+        "right": 67.6723639122172
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.2356528704320805,
+        "y": -0.7,
+        "z": 0.1297264971867974,
+        "yaw": -2.4991412316779673e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.08283116216576206,
+      "lateral_velocity_m_s": -7.637831386586926e-21,
+      "yaw_rate_rad_s": -3.328544920072051e-19,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.67455742595271,
+        "right": 67.67455742595274
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.23100300241633703,
+        "y": -0.7,
+        "z": 0.12972649280897586,
+        "yaw": -2.4744859165138467e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.05694657151254864,
+      "lateral_velocity_m_s": 2.85090489280437e-20,
+      "yaw_rate_rad_s": -2.0115770312971383e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.67680101962361,
+        "right": 67.67680101962364
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.22764737987425293,
+        "y": -0.7,
+        "z": 0.12972648695425532,
+        "yaw": -2.5370706281547588e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.03106242541811864,
+      "lateral_velocity_m_s": 6.059124158249238e-22,
+      "yaw_rate_rad_s": 1.3832460392550232e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.67854991989672,
+        "right": 67.67854991989672
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.22558597545162168,
+        "y": -0.7,
+        "z": 0.12972648152285132,
+        "yaw": -2.415443593192144e-17
+      },
+      "constraint": "upright_unvalidated"
+    },
+    {
+      "forward_velocity_m_s": 0.00517858921490329,
+      "lateral_velocity_m_s": 2.844096977482455e-20,
+      "yaw_rate_rad_s": 1.2371421672167815e-17,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 67.67960957754455,
+        "right": 67.67960957754458
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": -0.22481877042025122,
+        "y": -0.7,
+        "z": 0.12972647754148045,
+        "yaw": -2.2645533683330113e-17
+      },
+      "constraint": "upright_unvalidated"
+    }
+  ],
+  "actuator_controls": "two wheel velocity motors only after initial arm holds",
+  "pose_teleports": 0,
+  "upright_constraint": true,
+  "balance_validated": false
+}

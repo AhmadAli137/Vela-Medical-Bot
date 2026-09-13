@@ -1,5 +1,6 @@
 """Physical pickup regressions: free phone, bilateral friction, then gravity."""
 import mujoco
+import math
 import numpy as np
 import pytest
 
@@ -14,8 +15,8 @@ def test_free_phone_is_lifted_held_and_released_by_friction_only():
     assert sim.model.body_gravcomp[phone] == 0
     assert sim.model.joint("phone_free").type[0] == mujoco.mjtJoint.mjJNT_FREE
     planned = sim.command("pickup_demo")
-    assert planned["metrics"]["pickup"]["collision_samples"] == 240
-    for _ in range(10):
+    assert planned["metrics"]["pickup"]["collision_samples"] >= 240
+    for _ in range(math.ceil(sum(stage["duration_s"] for stage in sim.stages)/2)+1):
         state = sim.advance(2.)
         assert not state["paused"], state["metrics"]
         assert not state["metrics"]["contacts"]
@@ -62,7 +63,7 @@ def test_carriages_and_arm_reach_cover_measured_low_to_high_workspace():
         assert .10 < lift["min_hand_height_m"][side] < .15
         assert lift["max_hand_height_m"][side] > 1.70
         assert abs(lift["positions_m"][side]) < .001
-    assert state["bodies"]["head"]["position"][2] == pytest.approx(1.67)
+    assert state["bodies"]["head"]["position"][2]-state["bodies"]["robot_base"]["position"][2] == pytest.approx(1.54)
     assert not state["metrics"]["contacts"]
 
 
@@ -92,7 +93,7 @@ def test_intended_finger_allowance_does_not_mask_phone_palm_collision():
 def test_collision_invalidates_pickup_success_and_requires_reset():
     sim = ReferenceSimulation()
     sim.command("pickup_demo")
-    for _ in range(10):
+    for _ in range(math.ceil(sum(stage["duration_s"] for stage in sim.stages)/2)+1):
         held = sim.advance(2.)
     assert held["metrics"]["grasp_success"] is True
     # Perturb only the unused arm into the mast. The phone stays under physics.

@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+  "authoritative_python_root": "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot",
+  "checked_export_root": "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot",
+  "checks": [
+    {
+      "name": "engine_versions",
+      "passed": true,
+      "native_installed": "3.13.0",
+      "browser_pinned": "3.13.0"
+    },
+    {
+      "name": "sim/reference_body_descriptors.xml",
+      "passed": true,
+      "sha256": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658"
+    },
+    {
+      "name": "apps/web/public/simulation/reference.xml",
+      "passed": true,
+      "sha256": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658"
+    },
+    {
+      "name": "sim/reference_body_descriptors.json",
+      "passed": true,
+      "sha256": "6aa53b141140b48136ebf93d9a2b81e24c7baa028430ad490dfe90f0e0689111"
+    },
+    {
+      "name": "apps/web/public/simulation/reference-descriptors.json",
+      "passed": true,
+      "sha256": "6aa53b141140b48136ebf93d9a2b81e24c7baa028430ad490dfe90f0e0689111"
+    },
+    {
+      "name": "shared_trajectories",
+      "passed": true,
+      "sha256": "c3209976eed222d1080597e887ff896ce95cd1e59b73da3701efd498ae8cf333"
+    },
+    {
+      "name": "asset:room.glb",
+      "passed": true,
+      "sha256": "9755e1825c282fd6ecf2d1e538c52cace343444a6c11116cb779ef2c1b363bc7"
+    },
+    {
+      "name": "asset:robot.glb",
+      "passed": true,
+      "sha256": "73a21810cd3555931691972cd8a6c03bd923bc7b579ec2b67d50209de688b27a"
+    },
+    {
+      "name": "asset:phone.glb",
+      "passed": true,
+      "sha256": "14cf62268ba700ef002b698fdcf327d1422325b8c99b23968dedadd3b0651e09"
+    },
+    {
+      "name": "asset:meal_box.glb",
+      "passed": true,
+      "sha256": "b9c6e055ce8c5dc61c43c43c7a4813764e7c11bac17846f569eb28fcaf7c00dc"
+    },
+    {
+      "name": "visual_body_poses_and_room_uv",
+      "passed": true,
+      "body_count": 46,
+      "expected_body_count": 46,
+      "textured_room_primitives": 12
+    },
+    {
+      "name": "native_visual_cache",
+      "passed": true,
+      "visual_hash": "012f78825c132fde95f833d9769640ea4e2875a1a556c580300b0c7a1637e12e",
+      "physics_model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+      "cache_directory": "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\.cache\\reference-visual\\012f78825c132fde95f833d9769640ea4e2875a1a556c580300b0c7a1637e12e",
+      "source_glbs": {
+        "room.glb": "9755e1825c282fd6ecf2d1e538c52cace343444a6c11116cb779ef2c1b363bc7",
+        "robot.glb": "73a21810cd3555931691972cd8a6c03bd923bc7b579ec2b67d50209de688b27a",
+        "phone.glb": "14cf62268ba700ef002b698fdcf327d1422325b8c99b23968dedadd3b0651e09",
+        "meal_box.glb": "b9c6e055ce8c5dc61c43c43c7a4813764e7c11bac17846f569eb28fcaf7c00dc"
+      },
+      "initial_body_pose_count": 46,
+      "visual_meshes": 205,
+      "visual_source_regeneration_verified": false
+    },
+    {
+      "name": "frontend_build",
+      "passed": true,
+      "mode": "public",
+      "scene_revision": "98fa83ea432af9fe"
+    }
+  ],
+  "input_hashes": {
+    "apps/web/package.json": "d1a42f153d243cb21a5d07220604dcff67f7a779a1d764dcb4a21a504973a284",
+    "pyproject.toml": "5282ea9b111b382348c3e8c2d61c860e636a9350832cd902de9fad5339923359",
+    "sim/reference_body_descriptors.xml": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+    "apps/web/public/simulation/reference.xml": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+    "sim/reference_body_descriptors.json": "6aa53b141140b48136ebf93d9a2b81e24c7baa028430ad490dfe90f0e0689111",
+    "apps/web/public/simulation/reference-descriptors.json": "6aa53b141140b48136ebf93d9a2b81e24c7baa028430ad490dfe90f0e0689111",
+    "sim/reference_demo_trajectories.json": "c3209976eed222d1080597e887ff896ce95cd1e59b73da3701efd498ae8cf333",
+    "assets/simulation/room.glb": "9755e1825c282fd6ecf2d1e538c52cace343444a6c11116cb779ef2c1b363bc7",
+    "assets/simulation/robot.glb": "73a21810cd3555931691972cd8a6c03bd923bc7b579ec2b67d50209de688b27a",
+    "assets/simulation/phone.glb": "14cf62268ba700ef002b698fdcf327d1422325b8c99b23968dedadd3b0651e09",
+    "assets/simulation/meal_box.glb": "b9c6e055ce8c5dc61c43c43c7a4813764e7c11bac17846f569eb28fcaf7c00dc",
+    "sim/reference_model.py": "e2576ab10867c50c62a137d58223786b90fa0f4cd36469b98315c511897a2403",
+    "sim/reference_demos.py": "e3a605960535b8f3b367783c6e5a989cdc41d2be4510a5abbad7e494cef07b2f",
+    "sim/reference_assistance.py": "58390a68cdb96bf08e72164e78a34c1abe25999a8d67e1239b4cedf12530ead0",
+    "sim/reference_pickup.py": "7296217bd9db5ca6d28a8261ea26673df575a6905b77a1c2066d264cf98455eb",
+    "sim/reference_drive.py": "ff15b305064a87aa84a2bed4626d0c03abe3779c0d1a0b09960124d6d59843a4",
+    "sim/reference_runtime.py": "4ecbc18f84fdf99006bf35c8dbd8696d104d17d4c4870c74111ffb9d706d24dd",
+    "scripts/build_reference_visuals.py": "980bc27b050444c3a22312937cc27098c00c41aaf4eccb29d9bd7085fc565156",
+    "scripts/build_patient_visual.py": "c81e991342ea9ffc87e7e0c526d0304a5175b43ff8e3b466139f1d7b0894adf9",
+    "scripts/audit_room_visuals.py": "b894a06f4f853dd400ae3dcf443c9a1d8d6ee374df7e69805c0c1745e68255b1",
+    "assets/simulation/room-geometry-manifest.json": "06a95689bdd535fdc51d5f2b3abaa842856eccef4c94f918446ee8091e59f611",
+    "assets/patient/patient-build-manifest.json": "3a0111ace6944aee9fb462489029e91103f3e6b21ea40574c62bd2f4662ae3f3"
+  },
+  "visual_source_regeneration_verified": false,
+  "visual_kinematics_checked": true,
+  "frontend_build": {
+    "passed": true,
+    "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+    "scene_revision": "98fa83ea432af9fe",
+    "input_hashes": {
+      "apps/web/package.json": "d1a42f153d243cb21a5d07220604dcff67f7a779a1d764dcb4a21a504973a284",
+      "apps/web/package-lock.json": "94c9aa52640763a48f6b108860f7f9e50087b224821cb0806b9ddd8919dbe621",
+      "apps/web/node_modules/@mujoco/mujoco/package.json": "bc5acc881327baf47a4a283f3c3fe18cd8a799f24fbb9aec6d13c1ca24e183a2",
+      "sim/reference_body_descriptors.xml": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+      "sim/reference_body_descriptors.json": "6aa53b141140b48136ebf93d9a2b81e24c7baa028430ad490dfe90f0e0689111",
+      "apps/web/public/simulation/reference.xml": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+      "apps/web/public/simulation/reference-descriptors.json": "6aa53b141140b48136ebf93d9a2b81e24c7baa028430ad490dfe90f0e0689111",
+      "sim/reference_demo_trajectories.json": "c3209976eed222d1080597e887ff896ce95cd1e59b73da3701efd498ae8cf333",
+      "assets/simulation/room.glb": "9755e1825c282fd6ecf2d1e538c52cace343444a6c11116cb779ef2c1b363bc7",
+      "assets/simulation/robot.glb": "73a21810cd3555931691972cd8a6c03bd923bc7b579ec2b67d50209de688b27a",
+      "assets/simulation/phone.glb": "14cf62268ba700ef002b698fdcf327d1422325b8c99b23968dedadd3b0651e09",
+      "assets/simulation/meal_box.glb": "b9c6e055ce8c5dc61c43c43c7a4813764e7c11bac17846f569eb28fcaf7c00dc"
+    },
+    "checks": [
+      {
+        "name": "browser_engine_version",
+        "passed": true
+      },
+      {
+        "name": "native_export_hash",
+        "passed": true
+      },
+      {
+        "name": "public_reference.xml",
+        "passed": true
+      },
+      {
+        "name": "public_reference-descriptors.json",
+        "passed": true
+      },
+      {
+        "name": "trajectory_model_hash",
+        "passed": true
+      },
+      {
+        "name": "room.glb",
+        "passed": true
+      },
+      {
+        "name": "robot.glb",
+        "passed": true
+      },
+      {
+        "name": "phone.glb",
+        "passed": true
+      },
+      {
+        "name": "meal_box.glb",
+        "passed": true
+      },
+      {
+        "name": "frontend_build_receipt",
+        "passed": true
+      }
+    ],
+    "limitations": [
+      "Node compares cached native/public exports; python -m sim.sync_check independently regenerates model and trajectories.",
+      "Matching GLB bindings does not prove Blender source-script regeneration."
+    ],
+    "build_mode": "public"
+  },
+  "native_visual_cache": {
+    "visual_hash": "012f78825c132fde95f833d9769640ea4e2875a1a556c580300b0c7a1637e12e",
+    "physics_model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+    "cache_directory": "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\.cache\\reference-visual\\012f78825c132fde95f833d9769640ea4e2875a1a556c580300b0c7a1637e12e",
+    "source_glbs": {
+      "room.glb": "9755e1825c282fd6ecf2d1e538c52cace343444a6c11116cb779ef2c1b363bc7",
+      "robot.glb": "73a21810cd3555931691972cd8a6c03bd923bc7b579ec2b67d50209de688b27a",
+      "phone.glb": "14cf62268ba700ef002b698fdcf327d1422325b8c99b23968dedadd3b0651e09",
+      "meal_box.glb": "b9c6e055ce8c5dc61c43c43c7a4813764e7c11bac17846f569eb28fcaf7c00dc"
+    },
+    "initial_body_pose_count": 46,
+    "visual_meshes": 205,
+    "visual_source_regeneration_verified": false
+  },
+  "limitations": [
+    "Existing GLBs have no source-script build receipt; current script hashes do not prove those scripts generated the shipped geometry.",
+    "Visual body bindings and finite UVs do not prove furniture-source regeneration, collision fidelity, grasp success or hardware correctness.",
+    "This audit compares artifacts and contracts, not shared live state across independent browser/native processes."
+  ]
+}

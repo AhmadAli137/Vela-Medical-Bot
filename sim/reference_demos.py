@@ -12,6 +12,7 @@ from pathlib import Path
 from sim.reference_model import load_reference_model
 from sim.reference_pickup import pickup_stages, solve_pose
 from sim.reference_assistance import ASSISTANCE_COMMANDS, build_assistance_commands
+from sim.reference_drive import expand_navigation, base_indices, position_actuators
 
 LIBRARY_PATH = Path(__file__).with_name("reference_demo_trajectories.json")
 DEMO_COMMANDS = {"bedside_demo", "greeting_demo", "phone_return_demo"} | ASSISTANCE_COMMANDS
@@ -31,10 +32,6 @@ def build_trajectories():
             result["gate_after"]=gate
         return result
     def wheels(q):
-        travel=q[model.joint("base_x").qposadr[0]]
-        yaw=q[model.joint("base_yaw").qposadr[0]]
-        q[model.joint("left_wheel_joint").qposadr[0]]=(travel-.20*yaw)/.13
-        q[model.joint("right_wheel_joint").qposadr[0]]=(travel+.20*yaw)/.13
         return q
     common={"rest_qpos_tolerance":.05,"robot_speed_tolerance":.05,"settle_dwell_s":.5}
     tucked=pose(left_joint_1=.20,right_joint_1=-.20,left_joint_2=-.70,right_joint_2=-.70,left_joint_4=-1.65,right_joint_4=-1.65)
@@ -68,8 +65,11 @@ def build_trajectories():
     }
     commands.update(build_assistance_commands(model,initial))
     for command in commands.values():
+        command["stages"]=expand_navigation(model,initial,command["stages"])
+        for item in command["stages"]:
+            item["target_qpos"]=item["target_qpos"].tolist()
         command["duration_s"]=sum(item["duration_s"]for item in command["stages"])
-    return {"schema_version":1,"model_hash":metadata["model_hash"],"nq":model.nq,"nu":model.nu,"actuated_q_indices":model.jnt_qposadr[model.actuator_trnid[:,0]].tolist(),"commands":commands,"hardware_model_verified":False,"authorizes_hardware":False,"notes":["Targets are position-actuator controls, not body pose playback","The base uses existing constrained planar sliders; wheel targets follow forward/yaw travel, without traction or balance validation","Free-space paths receive sampled collision checks; loaded finger targets are checked through actual contact dynamics","Completion requires measured outcomes and is revoked on fault"]}
+    return {"schema_version":1,"model_hash":metadata["model_hash"],"nq":model.nq,"nu":model.nu,"actuated_q_indices":model.jnt_qposadr[model.actuator_trnid[:,0]].tolist(),"position_actuator_indices":position_actuators(model).tolist(),"base_q_indices":base_indices(model).tolist(),"commands":commands,"hardware_model_verified":False,"authorizes_hardware":False,"notes":["Full configuration arrays are route and arm goals, never body pose playback","Twenty position actuators move arms/lifts/grippers; two wheel velocity motors provide propulsion through tire-floor contacts","Base X/Y/yaw are passive coordinates; a passive vertical guide loads the tires while roll/pitch remain ideally constrained, without balancing validation","Wheel angles accumulate from physics and are excluded from rest-pose matching","Free-space paths receive sampled collision checks; loaded finger targets are checked through actual contact dynamics","Completion requires measured outcomes and is revoked on fault"]}
 
 
 def load_trajectories(model_hash):

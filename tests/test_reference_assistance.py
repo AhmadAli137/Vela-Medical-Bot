@@ -1,5 +1,6 @@
 """Actual forward-dynamics delivery/control outcomes and failure gates."""
 import copy
+import math
 
 import mujoco
 import numpy as np
@@ -8,6 +9,20 @@ import pytest
 from sim.reference_assistance import ASSISTANCE_COMMANDS
 from sim.reference_demos import load_trajectories, verify_demos
 from sim.reference_runtime import ReferenceSimulation
+
+
+def advance_to_confirmed_grasp(sim):
+    bound=0.
+    for stage in sim.stages:
+        bound+=stage["duration_s"]
+        if stage["name"]=="confirm_grasp":
+            break
+    for _ in range(math.ceil((bound+1)/.5)):
+        state=sim.advance(.5)
+        assert not state["paused"],state["metrics"]
+        if state["metrics"]["demo"]["measurements"].get("ever_grasped"):
+            return state
+    pytest.fail("Physical grasp did not become confirmed within its planned phases")
 
 
 @pytest.fixture(scope="module")
@@ -52,7 +67,8 @@ def test_passive_blinds_have_no_actuator_or_motion_without_contact():
     state=sim.advance(2.)
     assert all(sim.model.joint(int(j)).name.startswith(("base_","left_","right_")) for j in sim.model.actuator_trnid[:,0])
     assert max(abs(value)for value in state["object_joints"].values())<1e-8
-    assert len(state["joints"])==25
+    assert len(state["joints"])==26
+    assert state["metrics"]["drive"]["actuator_count"]==22
     assert len(state["object_joints"])==17
 
 
@@ -60,8 +76,7 @@ def test_passive_blinds_have_no_actuator_or_motion_without_contact():
 def test_lost_grasp_stops_delivery_and_never_teleports_object(command,body):
     sim=ReferenceSimulation()
     sim.command(command)
-    for _ in range(10):
-        state=sim.advance(2.)
+    state=advance_to_confirmed_grasp(sim)
     assert state["metrics"]["demo"]["measurements"]["ever_grasped"]
     address=sim.model.joint(f"{body}_free").qposadr[0]
     sim.data.qpos[address]+=.20  # External perturbation, never controller code.
@@ -116,8 +131,7 @@ def test_fixture_start_checks_meal_and_passive_blinds():
 def test_visual_tracking_pause_is_idempotent_and_preserves_grasp_control():
     sim=ReferenceSimulation()
     sim.command("deliver_phone_demo")
-    for _ in range(10):
-        state=sim.advance(2.)
+    state=advance_to_confirmed_grasp(sim)
     assert state["metrics"]["demo"]["measurements"]["bilateral_contact"]
     controls=sim.data.ctrl.copy()
     positions=sim.data.qpos.copy()

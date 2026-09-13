@@ -20,11 +20,11 @@ The tray has a connected wheeled base, telescoping support and tabletop. Both pi
 
 The optional **Pause motion if tracking is lost** control connects perception to motion. It requests an idempotent pause after 1.5 seconds without a valid fresh visual pose; frames older than 750 ms are stale. Camera streaming continues while physics is paused. Tracking recovery does not resume motion automatically; the user presses Resume. This is a simulation watchdog, not a certified safety system.
 
-Assistance routes and grasp targets are planned from the known fixture. The visual map can gate motion, but it does not discover objects, plan paths, avoid newly observed obstacles or steer the base. The base uses bounded planar simulation joints, with no wheel traction or balancing model. This is a bounded visual SLAM prototype with scripted, contact-driven assistance, not autonomous room understanding or a learned VLA policy.
+Assistance routes and grasp targets are planned from the known fixture. The visual map can gate motion, but it does not discover objects, plan paths, avoid newly observed obstacles or steer the base. The base is propelled by two wheel velocity motors through tire-floor contact. Its passive translation/yaw/vertical guides keep it upright; this does not model or validate active two-wheel balancing. This is a bounded visual SLAM prototype with scripted, contact-driven assistance, not autonomous room understanding or a learned VLA policy.
 
 ## Physics and verification
 
-The model contains 27 robot bodies, 25 robot actuators, two free objects and 17 passive blind bodies: **46 synchronized body poses**. Sixteen joint equalities model the blind linkage; no equality attaches a phone or meal to the robot. Only robot actuators receive controls. Sampled route checks precede execution, and contact monitoring continues at every physics step. A missing grasp, lost carried-object contact, blocked route, unsupported release or failed measured outcome stops the demonstration.
+The model contains 27 robot bodies, 22 robot actuators, two free objects and 17 passive blind bodies: **46 synchronized body poses**. Sixteen joint equalities model the blind linkage; no equality attaches a phone or meal to the robot. Only robot actuators receive controls. Sampled route checks precede execution, and contact monitoring continues at every physics step. A missing grasp, lost carried-object contact, blocked route, unsupported release or failed measured outcome stops the demonstration.
 
 The model, initial optical poses, visual assets and trajectory library share a revision contract. Changes to dimensions or dynamics require regeneration before either runtime accepts the library.
 

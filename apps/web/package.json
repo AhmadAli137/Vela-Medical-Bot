@@ -5,10 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
+    "prebuild": "node scripts/check-scene-sync.mjs --prebuild local",
     "build": "tsc -b && vite build",
+    "postbuild": "node scripts/check-scene-sync.mjs --record-build local",
     "preview": "vite preview --host 127.0.0.1",
     "test:e2e": "playwright test",
+    "prebuild:public": "node scripts/check-scene-sync.mjs --prebuild public",
     "build:public": "tsc -b && vite build --mode public && node scripts/copy-public-assets.mjs",
+    "postbuild:public": "node scripts/check-scene-sync.mjs --record-build public",
     "test:public": "node scripts/check-public-demo.mjs"
   },
   "dependencies": {

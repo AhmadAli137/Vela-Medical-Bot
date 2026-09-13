@@ -1,0 +1,21 @@
+{
+  "status": "opened",
+  "mode": "native_mujoco",
+  "session": "attached",
+  "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+  "visual_hash": "012f78825c132fde95f833d9769640ea4e2875a1a556c580300b0c7a1637e12e",
+  "camera": {
+    "lookat": [
+      -0.37145937691271325,
+      -0.16879616259918961,
+      0.19454151498825878
+    ],
+    "distance": 5.6,
+    "azimuth": 131.34777721969368,
+    "elevation": -24.310980339809685
+  },
+  "hardware_model_verified": false,
+  "pid": 10248,
+  "title": "MuJoCo : REFERENCE_INFORMED_UNVERIFIED_BRACKETBOT",
+  "image": "artifacts/native-shared-overview.png"
+}

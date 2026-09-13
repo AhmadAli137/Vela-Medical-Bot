@@ -11,8 +11,9 @@ from sim.reference_runtime import ReferenceSimulation
 
 def test_reference_topology_geometry_and_artifact_provenance():
     model, data, metadata = load_reference_model()
-    assert model.njnt == 44 and model.nu == 25
-    assert model.nq == 56 and model.nv == 54
+    assert model.njnt == 45 and model.nu == 22
+    assert model.nq == 57 and model.nv == 55
+    assert all(not model.joint(int(j)).name.startswith("base_") for j in model.actuator_trnid[:,0])
     assert len(body_descriptors()) == 46
     assert model.joint("phone_free").type[0] == mujoco.mjtJoint.mjJNT_FREE
     assert model.neq == 16

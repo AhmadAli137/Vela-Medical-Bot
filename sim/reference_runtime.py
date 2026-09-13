@@ -17,18 +17,29 @@ from sim.reference_model import INITIAL_ARM_Q, load_reference_model
 from sim.reference_pickup import lift_stages, pickup_stages
 from sim.reference_demos import DEMO_COMMANDS, load_trajectories
 from sim.reference_assistance import ASSISTANCE_COMMANDS, assistance_gate, observe_assistance
+from sim.reference_drive import base_indices, position_actuators, drive_control, expand_navigation, navigation_error, observe_drive, wrap
 
 
 class ReferenceSimulation:
-    def __init__(self):
+    def __init__(self, loader=None):
+        """Use shared physics, optionally augmented with native visual assets.
+
+        The default stays unchanged for the API and numerical evaluations.
+        Injected loaders must preserve the authoritative physics/hash contract.
+        """
         self.lock = threading.RLock()
-        self.model, self.data, self.metadata = load_reference_model()
+        self.model, self.data, self.metadata = (load_reference_model if loader is None else loader)()
         self.initial_q = self.data.qpos.copy()
         self.initial_ctrl = self.data.ctrl.copy()
         self.body_names = [spec["name"] for spec in self.metadata["body_specs"]]
         self.body_ids = {self.model.body(spec["name"]).id for spec in self.metadata["body_specs"] if spec.get("robot_body", not spec.get("dynamic_object"))}
         self.actuated_q = self.model.jnt_qposadr[self.model.actuator_trnid[:, 0]].copy()
         self.actuated_dofs = self.model.jnt_dofadr[self.model.actuator_trnid[:, 0]].copy()
+        self.position_actuators = position_actuators(self.model)
+        self.position_q = self.actuated_q[self.position_actuators]
+        self.base_q = base_indices(self.model)
+        self.controlled_q = np.concatenate([self.position_q, self.base_q])
+        self.robot_dofs = np.concatenate([self.actuated_dofs, np.array([self.model.joint(name).dofadr[0] for name in ("base_x","base_y","base_yaw","base_z")])])
         self.mode = "idle"
         self.paused = False
         self.last_clock = time.monotonic()
@@ -59,6 +70,8 @@ class ReferenceSimulation:
             robot_a = int(self.model.geom_bodyid[a]) in self.body_ids
             robot_b = int(self.model.geom_bodyid[b]) in self.body_ids
             names = [self.model.geom(a).name, self.model.geom(b).name]
+            if "floor" in names and any(name in {"left_wheel_geom","right_wheel_geom"} for name in names):
+                continue
             if frozenset(names) in self.intentional_contacts:
                 continue
             if allow_phone_grasp and "phone_geom" in names and any(name in {"left_finger_-1_geom", "left_finger_1_geom"} for name in names):
@@ -80,20 +93,14 @@ class ReferenceSimulation:
 
     def _hold(self):
         for index in range(self.model.nu):
-            self.data.ctrl[index] = self.data.qpos[self.model.jnt_qposadr[self.model.actuator_trnid[index, 0]]]
-        self.data.qvel[self.actuated_dofs] = 0.
+            self.data.ctrl[index] = 0. if self.model.actuator(index).name.endswith("wheel_joint") else self.data.qpos[self.model.jnt_qposadr[self.model.actuator_trnid[index, 0]]]
 
     def _joint_demo(self, elapsed):
         cycle = elapsed*.65
-        # Both wheel hinge DOFs and planar base actuators move. This does not
-        # claim wheel-driven balancing dynamics or a vendor mobile controller.
-        self._set_joint_target("base_x", .025*math.sin(cycle*.65))
-        self._set_joint_target("base_y", .014*math.sin(cycle*.45))
-        self._set_joint_target("base_yaw", .07*math.sin(cycle*.55))
-        travel = .025*math.sin(cycle*.65)
-        yaw = .07*math.sin(cycle*.55)
-        self._set_joint_target("left_wheel_joint", (travel-.20*yaw)/.13)
-        self._set_joint_target("right_wheel_joint", (travel+.20*yaw)/.13)
+        goal = self.initial_q.copy()
+        goal[self.base_q[0]] = .025*math.sin(cycle*.65)
+        goal[self.base_q[2]] = .07*math.sin(cycle*.55)
+        drive_control(self.model,self.data,goal)
         for side, sign, phase in (("left", 1, 0.), ("right", -1, 1.1)):
             self._set_joint_target(f"{side}_lift", .055*math.sin(cycle*.55+phase))
             for index, initial in enumerate(INITIAL_ARM_Q, 1):
@@ -147,7 +154,7 @@ class ReferenceSimulation:
 
     def _require_fixture_start(self):
         phone = self.data.xpos[self.model.body("phone").id]
-        if np.max(np.abs(self.data.qpos[self.actuated_q]-self.initial_q[self.actuated_q])) > .025 or np.linalg.norm(phone[:2]-[.63, -.72]) > .01 or abs(phone[2]-.8135) > .015:
+        if np.max(np.abs(self.data.qpos[self.controlled_q]-self.initial_q[self.controlled_q])) > .025 or np.linalg.norm(phone[:2]-[.63, -.72]) > .01 or abs(phone[2]-.8135) > .015:
             raise ValueError("Reset the scene before starting this fixture demonstration")
         for spec in self.metadata["body_specs"]:
             if spec.get("dynamic_object"):
@@ -171,7 +178,7 @@ class ReferenceSimulation:
                 break
             for ratio in np.linspace(0., 1., 60):
                 sampled.qpos[:] = self.data.qpos
-                sampled.qpos[self.actuated_q] = (1-ratio)*previous[self.actuated_q]+ratio*stage["target_qpos"][self.actuated_q]
+                sampled.qpos[self.controlled_q] = (1-ratio)*previous[self.controlled_q]+ratio*stage["target_qpos"][self.controlled_q]
                 if any("meal_box_geom" in pair or "phone_geom" in pair for pair in self.intentional_contacts):
                     # A loaded servo target lies inside the grasped object.
                     # Use an open pad pose for route checks;
@@ -213,6 +220,11 @@ class ReferenceSimulation:
         stage = self.stages[self.stage_index]
         elapsed = float(self.data.time)-self.stage_started
         if elapsed+1e-9 >= stage["duration_s"] and self.stage_index+1 < len(self.stages):
+            if stage.get("navigation"):
+                distance, angle = navigation_error(self.model,self.data,stage["target_qpos"])
+                if distance>.012 or angle>.025:
+                    self._stop_demo(f"Navigation stopped: wheel-driven goal not reached after {stage['name']} ({distance:.4f}m, {angle:.4f}rad)")
+                    return
             if self.demo and stage.get("gate_after"):
                 gate=stage["gate_after"]
                 if not self._demo_gate(gate):
@@ -250,7 +262,8 @@ class ReferenceSimulation:
             elapsed = 0.
         ratio = float(np.clip((elapsed+self.model.opt.timestep)/stage["duration_s"], 0., 1.))
         ratio = ratio*ratio*(3-2*ratio)
-        self.data.ctrl[:] = (1-ratio)*self.stage_start_ctrl+ratio*stage["target_qpos"][self.actuated_q]
+        self.data.ctrl[self.position_actuators] = (1-ratio)*self.stage_start_ctrl[self.position_actuators]+ratio*stage["target_qpos"][self.position_q]
+        drive_control(self.model,self.data,stage["target_qpos"],stage.get("navigation"))
 
     def _measure_fixture(self):
         if self.pickup:
@@ -342,15 +355,16 @@ class ReferenceSimulation:
         measured = demo["measurements"]
         elapsed = max(0., float(self.data.time)-self.mode_started)
         demo.update(stage=self.stages[self.stage_index]["name"], stage_index=self.stage_index, elapsed_s=elapsed, progress=min(1., elapsed/demo["duration_s"]))
-        measured["rest_qpos_error"] = float(np.max(np.abs(self.data.qpos[self.actuated_q]-self.initial_q[self.actuated_q])))
-        measured["robot_speed"] = float(np.max(np.abs(self.data.qvel[self.actuated_dofs])))
-        checks = {"returned_to_rest": measured["rest_qpos_error"] <= thresholds["rest_qpos_tolerance"], "robot_settled": measured["robot_speed"] <= thresholds["robot_speed_tolerance"]}
+        measured["rest_qpos_error"] = float(np.max(np.abs(self.data.qpos[self.position_q]-self.initial_q[self.position_q])))
+        measured["robot_speed"] = float(np.max(np.abs(self.data.qvel[self.robot_dofs])))
+        measured["base_home_error_m"], measured["base_home_yaw_error_rad"] = navigation_error(self.model,self.data,self.initial_q)
+        checks = {"returned_to_rest": measured["rest_qpos_error"] <= thresholds["rest_qpos_tolerance"], "robot_settled": measured["robot_speed"] <= thresholds["robot_speed_tolerance"], "base_returned_home": measured["base_home_error_m"]<=.012 and measured["base_home_yaw_error_rad"]<=.025}
         if self.mode in ASSISTANCE_COMMANDS:
             checks.update(observe_assistance(self))
         elif self.mode == "bedside_demo":
             base = np.array([float(self.data.qpos[self.model.joint(name).qposadr[0]]) for name in ("base_x", "base_y", "base_yaw")])
             target = np.array(thresholds["base_goal_qpos"])
-            measured.update(base_position_qpos=base.tolist(), base_goal_error_m=float(np.linalg.norm(base[:2]-target[:2])), base_yaw_error_rad=abs(float(base[2]-target[2])), base_home_error_m=float(np.linalg.norm(base[:2])))
+            measured.update(base_position_qpos=base.tolist(), base_goal_error_m=float(np.linalg.norm(base[:2]-target[:2])), base_yaw_error_rad=abs(wrap(float(base[2]-target[2]))), base_home_error_m=float(np.linalg.norm(base[:2])))
             measured["max_base_excursion_m"] = max(measured.get("max_base_excursion_m",0.), measured["base_home_error_m"])
             measured["visited_bedside"] = bool(measured.get("visited_bedside", False) or measured["base_goal_error_m"] <= thresholds["base_goal_tolerance_m"] and measured["base_yaw_error_rad"] <= thresholds["yaw_tolerance_rad"])
             checks.update(visited_bedside=measured["visited_bedside"], base_travel_observed=measured["max_base_excursion_m"] >= thresholds["minimum_base_excursion_m"])
@@ -445,8 +459,12 @@ class ReferenceSimulation:
                     target=stage["target_qpos"]
                     if target.shape!=(self.model.nq,) or not np.isfinite(target).all() or not math.isfinite(stage["duration_s"]) or stage["duration_s"]<=0:
                         raise ValueError("Invalid demo stage target or duration")
-                    if np.any(target[self.actuated_q]<self.model.actuator_ctrlrange[:,0]) or np.any(target[self.actuated_q]>self.model.actuator_ctrlrange[:,1]):
+                    if np.any(target[self.position_q]<self.model.actuator_ctrlrange[self.position_actuators,0]) or np.any(target[self.position_q]>self.model.actuator_ctrlrange[self.position_actuators,1]):
                         raise ValueError("Demo stage exceeds actuator control limits")
+                    for name in ("base_x","base_y","base_yaw"):
+                        joint=self.model.joint(name)
+                        if not joint.range[0]<=target[joint.qposadr[0]]<=joint.range[1]:
+                            raise ValueError("Demo stage exceeds passive base workspace")
                 if any(error["position_error_m"]>.003 or error["orientation_error_rad"]>.01 for error in definition.get("ik_errors",{}).values()):
                     raise ValueError("Demo rejected by pose IK gate")
                 previous_contacts=self.intentional_contacts
@@ -471,6 +489,7 @@ class ReferenceSimulation:
                 self.demo, self.demo_definition = None, None
                 if action == "pickup_demo":
                     stages, errors = pickup_stages(self.model, self.initial_q)
+                    stages = expand_navigation(self.model,self.initial_q,stages)
                     if any(error["position_error_m"] > .002 or error["orientation_error_rad"] > .01 for error in errors.values()):
                         raise ValueError("Pickup rejected by six-dimensional pose IK gate")
                     count = self._start_stages(stages, allow_phone_grasp=True)
@@ -488,7 +507,7 @@ class ReferenceSimulation:
                 if self.mode != "pickup_demo" or not self.pickup or not self.pickup["success"]:
                     raise ValueError("Release is available after a confirmed bilateral pickup")
                 released = self.data.qpos.copy()
-                released[self.actuated_q] = self.data.ctrl
+                released[self.position_q] = self.data.ctrl[self.position_actuators]
                 for finger in (-1, 1):
                     released[self.model.joint(f"left_gripper_{finger}").qposadr[0]] = finger*.60
                 # Releasing from the measured dynamic object pose is governed
@@ -544,8 +563,11 @@ class ReferenceSimulation:
                     ratio = float(ratio*ratio*(3.-2.*ratio))
                     desired = (1-ratio)*np.asarray(self.reach_plan["start_qpos"])+ratio*np.asarray(self.reach_plan["target_qpos"])
                     for index in range(self.model.nu):
+                        if index not in self.position_actuators:
+                            continue
                         qindex = self.model.jnt_qposadr[self.model.actuator_trnid[index, 0]]
                         self.data.ctrl[index] = desired[qindex]
+                    drive_control(self.model,self.data,np.asarray(self.reach_plan["target_qpos"]),{"kind":"drive","reverse":False})
                 mujoco.mj_step(self.model, self.data)
                 self.step_count += 1
                 self._measure_fixture()
@@ -568,12 +590,12 @@ class ReferenceSimulation:
 
     def _state(self):
         bodies = {name: {"position": self.data.xpos[self.model.body(name).id].tolist(), "quaternion": self.data.xquat[self.model.body(name).id].tolist()} for name in self.body_names}
-        actuated_joint_ids = set(self.model.actuator_trnid[:, 0].tolist())
+        actuated_joint_ids = set(self.model.actuator_trnid[:, 0].tolist()) | {self.model.joint(name).id for name in ("base_x","base_y","base_yaw","base_z")}
         joints = {self.model.joint(i).name: float(self.data.qpos[self.model.jnt_qposadr[i]]) for i in actuated_joint_ids}
         object_joints = {self.model.joint(i).name: float(self.data.qpos[self.model.jnt_qposadr[i]]) for i in range(self.model.njnt) if i not in actuated_joint_ids and self.model.jnt_type[i] != mujoco.mjtJoint.mjJNT_FREE}
         cameras = {self.model.camera(i).name: {"position": self.data.cam_xpos[i].tolist(), "rotation": self.data.cam_xmat[i].tolist(), "fovy": float(self.model.cam_fovy[i]), "fovy_deg": float(self.model.cam_fovy[i]), "convention": "mujoco_opengl"} for i in range(self.model.ncam) if self.model.camera(i).name != "overview"}
         end_effectors = {side: self.data.site_xpos[self.model.site(f"{side}_ee").id].tolist() for side in ("left", "right")}
-        metrics = {"physics_steps": self.step_count, "finite_dynamics": bool(np.isfinite(self.data.qpos).all()), "contacts": self.last_contacts, "stop_reason": self.stop_reason, "visual_tracking_pause_reason": self.visual_tracking_pause_reason, "grasp_success": None, "object_attached": False}
+        metrics = {"physics_steps": self.step_count, "finite_dynamics": bool(np.isfinite(self.data.qpos).all()), "contacts": self.last_contacts, "stop_reason": self.stop_reason, "visual_tracking_pause_reason": self.visual_tracking_pause_reason, "grasp_success": None, "object_attached": False, "drive":observe_drive(self.model,self.data)}
         if self.pickup:
             metrics["pickup"] = copy.deepcopy(self.pickup)
             metrics["grasp_success"] = self.pickup["success"]

@@ -1491,6 +1491,111 @@
         }
       }
     },
+    "/api/sim/assets/{filename}": {
+      "get": {
+        "summary": "Reference Asset",
+        "operationId": "reference_asset_api_sim_assets__filename__get",
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Filename"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sim/reference/state": {
+      "get": {
+        "summary": "Reference State",
+        "operationId": "reference_state_api_sim_reference_state_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sim/reference/frame": {
+      "get": {
+        "summary": "Reference Frame",
+        "operationId": "reference_frame_api_sim_reference_frame_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sim/reference/control": {
+      "post": {
+        "summary": "Reference Control",
+        "operationId": "reference_control_api_sim_reference_control_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReferenceControlInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/sim/viewer": {
       "post": {
         "summary": "Open Viewer",
@@ -1743,6 +1848,36 @@
         "additionalProperties": false,
         "type": "object",
         "title": "PrivacyInput"
+      },
+      "ReferenceControlInput": {
+        "properties": {
+          "command": {
+            "type": "string",
+            "enum": [
+              "joint_demo",
+              "reach_demo",
+              "pickup_demo",
+              "release_phone",
+              "lift_demo",
+              "bedside_demo",
+              "greeting_demo",
+              "phone_return_demo",
+              "deliver_phone_demo",
+              "deliver_meal_demo",
+              "blinds_demo",
+              "pause",
+              "pause_for_tracking",
+              "reset"
+            ],
+            "title": "Command"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "command"
+        ],
+        "title": "ReferenceControlInput"
       },
       "RequestInput": {
         "properties": {

@@ -1,3 +1,4 @@
+import type {DriveMetrics} from './browserDrive';
 import { api } from './api';
 import { PUBLIC_DEMO } from './deployment';
 import { serializeSimulationTransport } from './serializeSimulationTransport';
@@ -17,7 +18,7 @@ export type ReferenceState = {
   simulation_time?: number;
   hardware_verified?: boolean;
   target?: {position: [number, number, number]};
-  metrics?: {physics_steps?: number; stop_reason?: string | null; visual_tracking_pause_reason?:string|null; pickup?:PickupMetrics;lift?:LiftMetrics;demo?:DemoMetrics; reach?: {actual_endpoint_error_m?: number; endpoint_reached?: boolean}};
+  metrics?: {drive?:DriveMetrics;physics_steps?: number; stop_reason?: string | null; visual_tracking_pause_reason?:string|null; pickup?:PickupMetrics;lift?:LiftMetrics;demo?:DemoMetrics; reach?: {actual_endpoint_error_m?: number; endpoint_reached?: boolean}};
   [key: string]: unknown;
 };
 

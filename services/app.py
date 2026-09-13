@@ -85,6 +85,8 @@ def create_app(db_path=None, demo=None):
     store = Store(db_path or os.getenv("VELA_DB", str(ROOT/"runtime"/"vela.sqlite3")))
     app.state.store = store
     app.state.execution_lock = threading.RLock()
+    from services.workspace_revision import backend_revision
+    app.state.backend_revision = backend_revision()
     app.state.sessions = {}
     hospital = MockHospitalAdapter()
     mock = MockBracketBot()
@@ -204,7 +206,7 @@ def create_app(db_path=None, demo=None):
 
     @api.get("/health")
     def health():
-        return {"status":"ok","mode":"mock","hardware_execution":False,"cloud_models_enabled":os.getenv("VELA_ENABLE_CLOUD_MODELS") == "1"}
+        return {"status":"ok","mode":"mock","demo_mode":demo,"hardware_execution":False,"cloud_models_enabled":os.getenv("VELA_ENABLE_CLOUD_MODELS") == "1","backend_revision":app.state.backend_revision}
 
     @api.post("/session")
     def session(payload: SessionInput,response: Response):
@@ -564,11 +566,20 @@ def create_app(db_path=None, demo=None):
 
     @api.get("/sim/scene.png")
     def scene_image(user=Depends(role("staff","operator","researcher","admin"))):
-        from sim.engine import render_scene
-        path = ROOT/"artifacts"/"surrogate-room.png"
-        if not path.exists():
-            path.parent.mkdir(parents=True,exist_ok=True)
-            render_scene(path)
+        import hashlib
+        from sim.reference_cli import render_reference_scene
+        # Invalidate the preview when the physics, supplied visuals or native
+        # importer changes. Historical benchmark renders are never reused.
+        signature = hashlib.sha256()
+        inputs = [ROOT/"sim"/name for name in ("reference_model.py", "reference_visual_model.py", "reference_cli.py")]
+        inputs += [ROOT/"assets"/"simulation"/name for name in ("room.glb", "robot.glb", "phone.glb", "meal_box.glb")]
+        for source in inputs:
+            signature.update(source.read_bytes())
+        path = ROOT/"artifacts"/f"native-reference-preview-{signature.hexdigest()[:16]}.png"
+        with app.state.execution_lock:
+            if not path.exists():
+                path.parent.mkdir(parents=True,exist_ok=True)
+                render_reference_scene(path)
         return FileResponse(path,media_type="image/png")
 
     def reference_simulation():
@@ -596,6 +607,16 @@ def create_app(db_path=None, demo=None):
     def reference_state(user=Depends(role("staff","operator","researcher","admin"))):
         return reference_simulation().state()
 
+    @api.get("/sim/reference/frame")
+    def reference_frame(user=Depends(role("staff","operator","researcher","admin"))):
+        # One physics sample for the native display: this is read-only state
+        # transport, not an endpoint for setting robot/object coordinates.
+        simulation = reference_simulation()
+        with simulation.lock:
+            state = simulation.state()
+            return {"state": state, **{name: getattr(simulation.data, name).tolist()
+                    for name in ("qpos", "qvel", "ctrl", "mocap_pos", "mocap_quat")}}
+
     @api.post("/sim/reference/control")
     def reference_control(payload:ReferenceControlInput,user=Depends(role("staff","operator","researcher","admin"))):
         result = reference_simulation().command(payload.command)
@@ -603,7 +624,7 @@ def create_app(db_path=None, demo=None):
         return result
 
     @api.post("/sim/viewer")
-    def open_viewer(user=Depends(role("staff","operator","researcher","admin"))):
+    def open_viewer(request: Request,user=Depends(role("staff","operator","researcher","admin"))):
         if not demo:
             raise HTTPException(403,"Native desktop viewer is available in local demo mode only")
         with app.state.execution_lock:
@@ -614,7 +635,9 @@ def create_app(db_path=None, demo=None):
             # Fixed local command; no model or user-supplied shell/path parameters.
             log = (ROOT/"artifacts"/"viewer.log").open("a",encoding="utf-8")
             try:
-                process = subprocess.Popen([sys.executable,"-m","sim","viewer","--ready-file",str(ready)],cwd=ROOT,stdout=log,stderr=log,creationflags=getattr(subprocess,"CREATE_NO_WINDOW",0))
+                # Use the ASGI listening port, never the client-controlled Host.
+                port = int(request.scope.get("server", ("127.0.0.1", 8000))[1] or 8000)
+                process = subprocess.Popen([sys.executable,"-m","sim","viewer","--connect",f"http://127.0.0.1:{port}","--ready-file",str(ready)],cwd=ROOT,stdout=log,stderr=log,creationflags=getattr(subprocess,"CREATE_NO_WINDOW",0))
             finally:
                 log.close()
             app.state.viewer_process = process
@@ -622,7 +645,7 @@ def create_app(db_path=None, demo=None):
         while time.monotonic() < deadline:
             if ready.exists():
                 store.event("native_mujoco_viewer_opened",user["id"],{"hardware_verified":False})
-                return {"status":"opened","mode":"native_mujoco","hardware_model_verified":False,"controls":"Mouse orbit; wheel zoom; Space pause; M motion; R reset; C cameras"}
+                return {"status":"opened","mode":"native_mujoco","session":"shared_local_reference","hardware_model_verified":False,"controls":"Mouse orbit; wheel zoom; Space pause; R reset; C cameras; V collision view; number keys run demos"}
             if process.poll() is not None:
                 raise HTTPException(503,"Native viewer could not start; inspect artifacts/viewer.log")
             time.sleep(.1)

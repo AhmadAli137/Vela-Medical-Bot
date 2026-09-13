@@ -1,6 +1,6 @@
 {
   "engine": "MuJoCo 3.13.0 WebAssembly",
-  "model_hash": "d22407cbce4f082eb3cd1b594c8337060707bad2f58835ad8ff8c92dd1eab58b",
+  "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
   "cameras": {
     "initial": {
       "head_rgb": {
@@ -91,19 +91,19 @@
     "after_motion": {
       "head_rgb": {
         "position": [
-          -0.5261184669773273,
-          -0.6717104798887996,
-          1.678
+          -0.5264504328042178,
+          -0.6725616320637505,
+          1.6777259202175603
         ],
         "rotation": [
-          0.008250892217797734,
+          0.006057225544117362,
           0,
-          -0.9999659608094716,
-          -0.9999659608094716,
+          -0.9999816548410815,
+          -0.9999816548410815,
           0,
-          -0.008250892217797734,
+          -0.006057225544117362,
           0,
-          0.9999999999999998,
+          1,
           0
         ],
         "fovy_deg": 90,
@@ -112,19 +112,19 @@
       },
       "head_stereo_right": {
         "position": [
-          -0.5256729187975663,
-          -0.725708641772511,
-          1.678
+          -0.5261233426248354,
+          -0.726560641425169,
+          1.6777259202175603
         ],
         "rotation": [
-          0.008250892217797734,
+          0.006057225544117362,
           0,
-          -0.9999659608094716,
-          -0.9999659608094716,
+          -0.9999816548410815,
+          -0.9999816548410815,
           0,
-          -0.008250892217797734,
+          -0.006057225544117362,
           0,
-          0.9999999999999998,
+          1,
           0
         ],
         "fovy_deg": 90,
@@ -133,20 +133,20 @@
       },
       "left_wrist": {
         "position": [
-          -0.21254089240045299,
-          -0.4413227987329142,
-          0.8253536398334157
+          -0.2123757406875043,
+          -0.44284489822743367,
+          0.825079193225937
         ],
         "rotation": [
-          -0.026089316110591072,
-          -0.2630698729378036,
-          -0.9644239677327444,
-          0.3820559638427835,
-          0.88888960608683,
-          -0.2528013225498666,
-          0.923770852580359,
-          -0.37505934216239417,
-          0.07731689194263303
+          -0.02526222171685054,
+          -0.26116541469271526,
+          -0.9649634429978741,
+          0.3821155042308393,
+          0.8894500984836002,
+          -0.2507314574079721,
+          0.9237692144579946,
+          -0.37506152625388856,
+          0.07732586852899591
         ],
         "fovy_deg": 75,
         "fovy": 75,
@@ -154,20 +154,20 @@
       },
       "right_wrist": {
         "position": [
-          -0.21158977769575962,
-          -0.8588884180058913,
-          0.8818461083305784
+          -0.2123362870100587,
+          -0.8604117986680999,
+          0.8815695962322159
         ],
         "rotation": [
-          -0.020438186772053137,
-          0.03431040682882396,
-          -0.9992022200259122,
-          0.11075218325811265,
-          0.9933377751945589,
-          0.03184365360767222,
-          0.9936378789201991,
-          -0.11001300084428464,
-          -0.024101975441928467
+          -0.02018294096087122,
+          0.03644296668881226,
+          -0.9991319027401177,
+          0.11079606117118335,
+          0.9932617297135299,
+          0.03399072101968574,
+          0.9936382046414688,
+          -0.11001384669851712,
+          -0.024084680016014083
         ],
         "fovy_deg": 75,
         "fovy": 75,
@@ -184,7 +184,7 @@
       0.96
     ],
     "ik_residual_m": 0.000700600518685042,
-    "actual_endpoint_error_m": 0.00031753621456212544,
+    "actual_endpoint_error_m": 0.0007396155764189727,
     "endpoint_reached": true,
     "sampled_collision_gate_passed": true,
     "samples": 60
@@ -196,18 +196,18 @@
     "ever_succeeded": true,
     "released": false,
     "initial_phone_height_m": 0.814,
-    "phone_height_m": 1.041888601560487,
-    "height_gain_m": 0.22788860156048696,
+    "phone_height_m": 1.041909718147622,
+    "height_gain_m": 0.22790971814762206,
     "bilateral_contact": true,
     "finger_contacts": [
       "left_finger_-1",
       "left_finger_1"
     ],
     "normal_forces_n": {
-      "left_finger_-1": 7.716368075362196,
-      "left_finger_1": 7.6837273732218625
+      "left_finger_-1": 8.276242834257616,
+      "left_finger_1": 8.405647258256336
     },
-    "bilateral_hold_s": 15.918000000001985,
+    "bilateral_hold_s": 10.372000000000133,
     "ik_errors": {
       "hover": {
         "position_error_m": 0.00007335937194013162,
@@ -222,7 +222,7 @@
         "orientation_error_rad": 0.0005442446530821728
       }
     },
-    "collision_samples": 240,
+    "collision_samples": 300,
     "sampled_collision_gate_passed": true,
     "attachment_constraints": 0
   },
@@ -233,8 +233,8 @@
     "ever_succeeded": true,
     "released": true,
     "initial_phone_height_m": 0.814,
-    "phone_height_m": 0.8134619471154676,
-    "height_gain_m": -0.0005380528845323473,
+    "phone_height_m": 0.8134666742106098,
+    "height_gain_m": -0.0005333257893901377,
     "bilateral_contact": false,
     "finger_contacts": [],
     "normal_forces_n": {
@@ -256,7 +256,7 @@
         "orientation_error_rad": 0.0005442446530821728
       }
     },
-    "collision_samples": 240,
+    "collision_samples": 300,
     "sampled_collision_gate_passed": true,
     "attachment_constraints": 0
   },
@@ -264,32 +264,32 @@
     "stage": "return_stages",
     "complete": true,
     "positions_m": {
-      "left": -3.0069430716357906e-8,
-      "right": -3.006943072483939e-8
+      "left": -7.152735264711251e-9,
+      "right": -7.152735265285009e-9
     },
     "min_positions_m": {
-      "left": -0.6605216231863662,
-      "right": -0.6606040594814956
+      "left": -0.6605216562481622,
+      "right": -0.6606041133630597
     },
     "max_positions_m": {
-      "left": 0.18094843518700635,
-      "right": 0.18094843516536874
+      "left": 0.18094858105884232,
+      "right": 0.1809485810409478
     },
     "travel_m": {
-      "left": 0.8414700583733725,
-      "right": 0.8415524946468643
+      "left": 0.8414702373070044,
+      "right": 0.8415526944040075
     },
     "hand_height_m": {
-      "left": 0.9380571816692623,
-      "right": 0.9380571816692621
+      "left": 0.9377844826707871,
+      "right": 0.9377844826707871
     },
     "min_hand_height_m": {
-      "left": 0.13253566670651012,
-      "right": 0.13249605872790332
+      "left": 0.1322611405174501,
+      "right": 0.13222152116833602
     },
     "max_hand_height_m": {
-      "left": 1.7239287016284037,
-      "right": 1.7239287018292768
+      "left": 1.723651475871447,
+      "right": 1.723651475798467
     },
     "estimated_range_m": [
       -0.72,
@@ -297,7 +297,28 @@
     ]
   },
   "contact_stop": {
-    "physics_steps": 10001,
+    "drive": {
+      "forward_velocity_m_s": 0.0020418904010781683,
+      "lateral_velocity_m_s": -0.00003493419167842095,
+      "yaw_rate_rad_s": 0.0383325646035048,
+      "wheel_ground_contacts": {
+        "left": true,
+        "right": true
+      },
+      "wheel_normal_force_n": {
+        "left": 70.8743346819811,
+        "right": 70.8743346819811
+      },
+      "actuator_count": 22,
+      "base_pose": {
+        "x": 0.1799998238055701,
+        "y": -0.700012592410549,
+        "z": 0.12972343120070418,
+        "yaw": 0.00009953000633728183
+      },
+      "constraint": "upright_unvalidated"
+    },
+    "physics_steps": 11501,
     "finite_dynamics": true,
     "contacts": [
       {
@@ -305,7 +326,7 @@
           "right_link_4_geom",
           "mast_geom"
         ],
-        "distance_m": -0.0031329950884645755,
+        "distance_m": -0.003132995088464506,
         "self_collision": true
       },
       {
@@ -313,7 +334,7 @@
           "right_link_4_geom",
           "mast_geom"
         ],
-        "distance_m": -0.0031329950884645755,
+        "distance_m": -0.003132995088464506,
         "self_collision": true
       }
     ],
@@ -328,16 +349,16 @@
       "ever_succeeded": true,
       "released": false,
       "initial_phone_height_m": 0.814,
-      "phone_height_m": 1.0418885782302505,
-      "height_gain_m": 0.22788857823025055,
+      "phone_height_m": 1.0419083765366943,
+      "height_gain_m": 0.22790837653669438,
       "bilateral_contact": true,
       "finger_contacts": [
         "left_finger_-1",
         "left_finger_1"
       ],
       "normal_forces_n": {
-        "left_finger_-1": 7.804713140188845,
-        "left_finger_1": 7.603502761810356
+        "left_finger_-1": 8.302526689701939,
+        "left_finger_1": 8.29367869320544
       },
       "bilateral_hold_s": 0,
       "ik_errors": {
@@ -354,7 +375,7 @@
           "orientation_error_rad": 0.0005442446530821728
         }
       },
-      "collision_samples": 240,
+      "collision_samples": 300,
       "sampled_collision_gate_passed": true,
       "attachment_constraints": 0
     }
@@ -364,32 +385,34 @@
       "command": "bedside_demo",
       "name": "Bedside approach",
       "stage": "settle",
-      "stage_index": 5,
-      "stage_count": 6,
+      "stage_index": 11,
+      "stage_count": 12,
       "progress": 1,
-      "elapsed_s": 16.00000000000201,
-      "duration_s": 15,
+      "elapsed_s": 34.4999999999962,
+      "duration_s": 34.29700190456798,
       "status": "complete",
       "complete": true,
       "measurements": {
-        "collision_samples": 360,
-        "settle_dwell_s": 1.9760000000000015,
-        "rest_qpos_error": 0.00021986826953029895,
-        "robot_speed": 0.00011045343968507627,
+        "collision_samples": 720,
+        "settle_dwell_s": 1.1720000000000008,
+        "rest_qpos_error": 6.345726958078156e-7,
+        "robot_speed": 0.00014305980228641193,
+        "base_home_error_m": 0.00004085300984435424,
+        "base_home_yaw_error_rad": 1.5836797416077708e-10,
         "base_position_qpos": [
-          -0.00021986826953029895,
-          -0.00005781375445341661,
-          -0.0000014249766907075858
+          -0.00000863201939996329,
+          0.00003993064805912322,
+          1.5836797416077708e-10
         ],
-        "base_goal_error_m": 0.7914277177518392,
-        "base_yaw_error_rad": 0.2500014249766907,
-        "base_home_error_m": 0.0002273422225418062,
-        "max_base_excursion_m": 0.8070335733745673,
+        "base_goal_error_m": 0.7911955610939481,
+        "base_yaw_error_rad": 0.24999999984163201,
+        "max_base_excursion_m": 0.7912172491147457,
         "visited_bedside": true
       },
       "checks": {
         "returned_to_rest": true,
         "robot_settled": true,
+        "base_returned_home": true,
         "visited_bedside": true,
         "base_travel_observed": true
       }
@@ -408,17 +431,20 @@
       "measurements": {
         "collision_samples": 600,
         "settle_dwell_s": 0.8720000000000007,
-        "rest_qpos_error": 0.00020495423660895224,
-        "robot_speed": 0.0006605927093708711,
-        "hand_height_m": 0.9380605898459846,
-        "max_hand_height_m": 1.6931344949415328,
-        "wave_range_rad": 0.7105709595093997,
-        "wave_min_rad": -0.5349604440333113,
-        "wave_max_rad": 0.17561051547608839
+        "rest_qpos_error": 0.0000027381321721087204,
+        "robot_speed": 0.0003019183532976296,
+        "base_home_error_m": 0.000020014421776938223,
+        "base_home_yaw_error_rad": 0.000025070369220599883,
+        "hand_height_m": 0.9377841029011923,
+        "max_hand_height_m": 1.6928688955161242,
+        "wave_range_rad": 0.7105729006222612,
+        "wave_min_rad": -0.5349621480831249,
+        "wave_max_rad": 0.17561075253913627
       },
       "checks": {
         "returned_to_rest": true,
         "robot_settled": true,
+        "base_returned_home": true,
         "hand_raised": true,
         "wrist_waved": true
       }
@@ -427,42 +453,45 @@
       "command": "phone_return_demo",
       "name": "Pick up and put back",
       "stage": "settle",
-      "stage_index": 13,
-      "stage_count": 14,
+      "stage_index": 15,
+      "stage_count": 16,
       "progress": 1,
-      "elapsed_s": 38.000000000000476,
-      "duration_s": 38,
+      "elapsed_s": 47.500000000012086,
+      "duration_s": 47.09090909090909,
       "status": "complete",
       "complete": true,
       "measurements": {
-        "collision_samples": 240,
-        "settle_dwell_s": 1.9140000000000015,
-        "rest_qpos_error": 0.0001434058483844926,
-        "robot_speed": 0.0001518905555307291,
+        "collision_samples": 300,
+        "settle_dwell_s": 2.321999999999966,
+        "rest_qpos_error": 7.126952939928062e-9,
+        "robot_speed": 0.000006287211280739846,
+        "base_home_error_m": 0.00001125031165903401,
+        "base_home_yaw_error_rad": 6.412337217558606e-7,
         "phone_position": [
-          0.6302220847199136,
-          -0.7213214832609621,
-          0.813477704129232
+          0.6298927729239373,
+          -0.7214274103263073,
+          0.813477703955264
         ],
-        "phone_xy_error_m": 0.0013400147879117832,
-        "phone_z_error_m": 0.000022295870767963244,
-        "phone_speed_m_s": 1.8175460860642737e-14,
-        "phone_angular_speed_rad_s": 2.0841744247194139e-16,
-        "riser_support_force_n": 1.7657999979380812,
-        "hand_clearance_m": 0.7996439448260009,
+        "phone_xy_error_m": 0.0014314321099827825,
+        "phone_z_error_m": 0.000022296044736025422,
+        "phone_speed_m_s": 1.8965372203696994e-14,
+        "phone_angular_speed_rad_s": 4.4653453209090985e-17,
+        "riser_support_force_n": 1.7657999722854067,
+        "hand_clearance_m": 0.799151351722524,
         "gate_bilateral_contact_passed": true,
         "gate_grasp_confirmed_passed": true,
-        "confirmed_grasp_height_m": 0.2278885687832496,
+        "confirmed_grasp_height_m": 0.22790954205177905,
         "confirmed_grasp_hold_s": 3.417999999999845,
         "gate_phone_supported_passed": true,
-        "supported_release_height_m": 0.8135326160778762,
-        "supported_release_force_n": 2.3552406560536876,
+        "supported_release_height_m": 0.8135161498563311,
+        "supported_release_force_n": 2.491257872924153,
         "supported_release_bilateral": true,
         "gate_phone_settled_passed": true
       },
       "checks": {
         "returned_to_rest": true,
         "robot_settled": true,
+        "base_returned_home": true,
         "confirmed_grasp": true,
         "phone_on_riser": true,
         "fingers_clear": true,
@@ -475,47 +504,49 @@
       "command": "deliver_phone_demo",
       "name": "Deliver phone to bedside",
       "stage": "settle",
-      "stage_index": 18,
-      "stage_count": 19,
+      "stage_index": 35,
+      "stage_count": 36,
       "progress": 1,
-      "elapsed_s": 58.50000000002553,
-      "duration_s": 58.5,
+      "elapsed_s": 137.49999999992843,
+      "duration_s": 137.3588411980772,
       "status": "complete",
       "complete": true,
       "measurements": {
-        "collision_samples": 1140,
-        "settle_dwell_s": 1.9140000000000015,
-        "rest_qpos_error": 0.00008784122589496502,
-        "robot_speed": 0.00025927535423163426,
+        "collision_samples": 2160,
+        "settle_dwell_s": 2.083999999999992,
+        "rest_qpos_error": 1.3918852406783083e-8,
+        "robot_speed": 0.000015527930534087094,
+        "base_home_error_m": 0.00023503797946936283,
+        "base_home_yaw_error_rad": 2.7467817286067304e-7,
         "object_name": "phone",
         "object_position": [
-          0.8499429714714705,
-          1.479191009341869,
-          1.0534777108392273
+          0.8498827766517748,
+          1.4786243811790134,
+          1.0534704891745739
         ],
-        "object_height_gain_m": 0.2394777108392273,
-        "object_xy_error_m": 0.0008109982355156365,
-        "object_z_error_m": 0.00002228916077284815,
-        "object_speed_m_s": 3.032111209129248e-14,
-        "object_angular_speed_rad_s": 4.219472944497972e-17,
-        "support_force_n": 1.7657999611482211,
+        "object_height_gain_m": 0.23947048917457392,
+        "object_xy_error_m": 0.0013806043799806035,
+        "object_z_error_m": 0.00002951082542623773,
+        "object_speed_m_s": 0.00004560872107212369,
+        "object_angular_speed_rad_s": 9.523562257171746e-17,
+        "support_force_n": 1.7817631969157255,
         "bilateral_contact": false,
         "fingers_clear": true,
-        "hand_clearance_m": 2.2679584502877503,
-        "patient_hand_distance_m": 0.30499115852911246,
+        "hand_clearance_m": 2.2671479169991042,
+        "patient_hand_distance_m": 0.3052357297537887,
         "grasp_hold_s": 0,
         "ever_grasped": true,
         "supported_on_tray": true,
         "gate_assist_bilateral_passed": true,
         "gate_assist_grasped_passed": true,
-        "confirmed_grasp_height_m": 0.35791301646389095,
+        "confirmed_grasp_height_m": 0.35791979736571167,
         "confirmed_grasp_hold_s": 4.073999999999773,
         "gate_assist_supported_passed": true,
-        "supported_release_force_n": 1.1659498718273424,
+        "supported_release_force_n": 1.1335865148026862,
         "supported_release_position": [
-          0.8497816105827443,
-          1.479277230864114,
-          1.0535052593246967
+          0.849790815161161,
+          1.478790973801714,
+          1.054111702722623
         ],
         "supported_release_bilateral": true,
         "gate_assist_released_passed": true
@@ -523,6 +554,7 @@
       "checks": {
         "returned_to_rest": true,
         "robot_settled": true,
+        "base_returned_home": true,
         "verified_grasp": true,
         "placed_on_tray": true,
         "fingers_clear": true,
@@ -534,47 +566,49 @@
       "command": "deliver_meal_demo",
       "name": "Deliver meal container",
       "stage": "settle",
-      "stage_index": 18,
-      "stage_count": 19,
+      "stage_index": 37,
+      "stage_count": 38,
       "progress": 1,
-      "elapsed_s": 58.50000000002553,
-      "duration_s": 58.5,
+      "elapsed_s": 139.49999999993798,
+      "duration_s": 139.45542238775874,
       "status": "complete",
       "complete": true,
       "measurements": {
-        "collision_samples": 1140,
-        "settle_dwell_s": 1.9140000000000015,
-        "rest_qpos_error": 0.00008784124105593078,
-        "robot_speed": 0.00025927473893998373,
+        "collision_samples": 2280,
+        "settle_dwell_s": 1.9800000000000015,
+        "rest_qpos_error": 2.3438171514913135e-8,
+        "robot_speed": 0.00001953700481726566,
+        "base_home_error_m": 0.0002350381422716721,
+        "base_home_yaw_error_rad": 3.7985285811486036e-7,
         "object_name": "meal_box",
         "object_position": [
-          0.849939381079448,
-          1.2180486813684532,
-          1.0674777133362057
+          0.8490748214465247,
+          1.2184428608242506,
+          1.0674776488942614
         ],
-        "object_height_gain_m": 0.2394777133362057,
-        "object_xy_error_m": 0.0019522599866181568,
-        "object_z_error_m": 0.000022286663794224282,
-        "object_speed_m_s": 3.1293261838547926e-14,
-        "object_angular_speed_rad_s": 1.440520043427558e-17,
-        "support_force_n": 1.1771998819210627,
+        "object_height_gain_m": 0.23947764889426149,
+        "object_xy_error_m": 0.0018112530934312177,
+        "object_z_error_m": 0.00002235110573844956,
+        "object_speed_m_s": 3.106121845470406e-14,
+        "object_angular_speed_rad_s": 1.6069221722628504e-16,
+        "support_force_n": 1.1771999880244706,
         "bilateral_contact": false,
         "fingers_clear": true,
-        "hand_clearance_m": 2.037948838689795,
-        "patient_hand_distance_m": 0.460653121041931,
+        "hand_clearance_m": 2.0376017690556902,
+        "patient_hand_distance_m": 0.4608699580141113,
         "grasp_hold_s": 0,
         "ever_grasped": true,
         "supported_on_tray": true,
         "gate_assist_bilateral_passed": true,
         "gate_assist_grasped_passed": true,
-        "confirmed_grasp_height_m": 0.34155659502824587,
-        "confirmed_grasp_hold_s": 4.00999999999978,
+        "confirmed_grasp_height_m": 0.34104127650233973,
+        "confirmed_grasp_hold_s": 4.005999999999781,
         "gate_assist_supported_passed": true,
-        "supported_release_force_n": 2.3334266235496557,
+        "supported_release_force_n": 1.872710467995342,
         "supported_release_position": [
-          0.8498751658371333,
-          1.2189634991774092,
-          1.0676038588603263
+          0.8497955908019248,
+          1.219147508402959,
+          1.0682331103505662
         ],
         "supported_release_bilateral": true,
         "gate_assist_released_passed": true
@@ -582,6 +616,7 @@
       "checks": {
         "returned_to_rest": true,
         "robot_settled": true,
+        "base_returned_home": true,
         "verified_grasp": true,
         "placed_on_tray": true,
         "fingers_clear": true,
@@ -593,28 +628,31 @@
       "command": "blinds_demo",
       "name": "Open window blinds",
       "stage": "settle",
-      "stage_index": 12,
-      "stage_count": 13,
+      "stage_index": 22,
+      "stage_count": 23,
       "progress": 1,
-      "elapsed_s": 50.00000000001514,
-      "duration_s": 50,
+      "elapsed_s": 111.49999999992154,
+      "duration_s": 111.4707225773638,
       "status": "complete",
       "complete": true,
       "measurements": {
-        "collision_samples": 300,
-        "settle_dwell_s": 1.8720000000000014,
-        "rest_qpos_error": 0.00001372971816509698,
-        "robot_speed": 0.000411100853609794,
-        "handle_travel_m": 0.18017026848117285,
-        "minimum_slat_angle_rad": 1.4011677143861725,
-        "maximum_slat_angle_rad": 1.4011677143861725,
+        "collision_samples": 600,
+        "settle_dwell_s": 1.8920000000000015,
+        "rest_qpos_error": 2.9131285383954264e-8,
+        "robot_speed": 0.00004310285003618101,
+        "base_home_error_m": 0.0000026255362643071773,
+        "base_home_yaw_error_rad": 1.201702232274684e-12,
+        "handle_travel_m": 0.18017093538383377,
+        "minimum_slat_angle_rad": 1.4011693268871925,
+        "maximum_slat_angle_rad": 1.4011693268871925,
         "control_contact_force_n": 0,
-        "maximum_control_contact_force_n": 3.256686029694907,
+        "maximum_control_contact_force_n": 3.2917962872460036,
         "gate_blinds_open_passed": true
       },
       "checks": {
         "returned_to_rest": true,
         "robot_settled": true,
+        "base_returned_home": true,
         "handle_moved": true,
         "slats_open": true,
         "physical_control_contact": true
