@@ -16,6 +16,13 @@ const descriptors=JSON.parse(readFileSync(new URL('../public/simulation/referenc
 const trajectories=JSON.parse(readFileSync(new URL('../../../sim/reference_demo_trajectories.json',import.meta.url),'utf8'));
 const create=(library=trajectories)=>new BrowserPhysics(engine,xml,descriptors,library);
 const evidence={engine:'MuJoCo 3.13.0 WebAssembly',model_hash:descriptors.model_hash};
+const assertNoObjectAttachments=sim=>{
+  for(let i=0;i<sim.model.neq;i++){
+    assert.equal(sim.model.eq_type[i],engine.mjtEq.mjEQ_JOINT.value,'Only passive blinds joint couplings may be present');
+    const name=id=>engine.mj_id2name(sim.model,engine.mjtObj.mjOBJ_JOINT.value,id);
+    assert.match(name(sim.model.eq_obj1id[i]),/^blinds_tilt_\d{2}$/);assert.equal(name(sim.model.eq_obj2id[i]),'blinds_slide');
+  }
+};
 after(()=>writeFileSync(new URL('../../../artifacts/browser-contact-physics.json',import.meta.url),JSON.stringify(evidence,null,2)+'\n'));
 
 test('native reference XML compiles in official WASM with matching body topology',()=>{
@@ -23,13 +30,52 @@ test('native reference XML compiles in official WASM with matching body topology
   try{
     const state=sim.advance(0);
     assert.equal(state.engine,'mujoco-wasm');assert.equal(state.engine_version,'3.13.0');
-    assert.equal(Object.keys(state.bodies).length,28);assert.equal(Object.keys(state.joints).length,25);
+    assert.equal(Object.keys(state.bodies).length,descriptors.body_specs.length);assert.equal(Object.keys(state.joints).length,25);
     assert.equal(state.hardware_model_verified,false);assert.equal(state.authorizes_hardware,false);
     for(const [name,pose]of Object.entries(state.bodies)){
       const expected=descriptors.initial_world_poses[name];
       assert.ok(pose.position.every((value,i)=>Math.abs(value-expected.position[i])<1e-12));
       assert.ok(pose.quaternion.every((value,i)=>Math.abs(value-expected.quaternion[i])<1e-12));
     }
+  }finally{sim.dispose()}
+});
+
+test('modeled optical cameras stay aligned with moving head and wrist bodies',()=>{
+  const sim=create();
+  const rotate=([w,x,y,z],[a,b,c])=>[
+    (1-2*y*y-2*z*z)*a+(2*x*y-2*z*w)*b+(2*x*z+2*y*w)*c,
+    (2*x*y+2*z*w)*a+(1-2*x*x-2*z*z)*b+(2*y*z-2*x*w)*c,
+    (2*x*z-2*y*w)*a+(2*y*z+2*x*w)*b+(1-2*x*x-2*y*y)*c,
+  ];
+  const check=state=>{
+    assert.deepEqual(Object.keys(state.cameras).sort(),['head_rgb','head_stereo_right','left_wrist','right_wrist']);
+    for(const [name,parent,offset,fovy]of [['head_rgb','head',[.067,.027,.008],90],['head_stereo_right','head',[.067,-.027,.008],90],['left_wrist','left_hand',[.046,0,-.008],75],['right_wrist','right_hand',[.046,0,-.008],75]]){
+      const camera=state.cameras[name],body=state.bodies[parent],translated=rotate(body.quaternion,offset);
+      assert.equal(camera.convention,'mujoco_opengl');assert.equal(camera.fovy_deg,fovy);assert.equal(camera.rotation.length,9);
+      for(let axis=0;axis<3;axis++)assert.ok(Math.abs(camera.position[axis]-body.position[axis]-translated[axis])<1e-9,`${name} optical offset`);
+      const columns=[0,1,2].map(column=>[0,1,2].map(row=>camera.rotation[row*3+column]));
+      for(let a=0;a<3;a++)for(let b=0;b<3;b++)assert.ok(Math.abs(columns[a].reduce((sum,v,i)=>sum+v*columns[b][i],0)-(a===b?1:0))<1e-9);
+    }
+    const left=state.cameras.head_rgb,right=state.cameras.head_stereo_right;
+    assert.ok(Math.abs(Math.hypot(...right.position.map((value,i)=>value-left.position[i]))-.054)<1e-9);
+    for(let i=0;i<3;i++){assert.ok(Math.abs((right.position[i]-left.position[i])/.054-left.rotation[i*3])<1e-9);assert.ok(Math.abs(-left.rotation[i*3+2]-rotate(state.bodies.head.quaternion,[1,0,0])[i])<1e-9)}
+    const focal=240/(2*Math.tan(left.fovy_deg*Math.PI/360));assert.ok(Math.abs(focal-120)<1e-10);
+  };
+  try{
+    const initial=sim.advance(0);check(initial);sim.command('joint_demo');const moving=sim.advance(.5);check(moving);
+    assert.ok(Math.hypot(...moving.cameras.left_wrist.position.map((value,i)=>value-initial.cameras.left_wrist.position[i]))>.001);
+    const paused=sim.command('pause');assert.deepEqual(sim.advance(1).cameras,paused.cameras);
+    evidence.cameras={initial:initial.cameras,after_motion:moving.cameras,stereo_baseline_m:.054,head_focal_length_px_at_320x240:120};
+  }finally{sim.dispose()}
+});
+
+test('passive blinds coupling never adds an object or mechanism actuator',()=>{
+  const sim=create();
+  try{
+    const state=sim.advance(0);assert.equal(sim.model.nu,25);assert.equal(sim.model.neq,16);assertNoObjectAttachments(sim);
+    assert.equal(Object.keys(state.joints).length,25);assert.equal(Object.keys(state.object_joints).length,17);
+    assert.ok(Object.keys(state.object_joints).every(name=>name==='blinds_slide'||/^blinds_tilt_\d{2}$/.test(name)));
+    for(const name of ['phone','meal_box','blinds_handle'])assert.equal(sim.robotBodies.has(sim.bodyIds.get(name)),false);
   }finally{sim.dispose()}
 });
 
@@ -95,7 +141,7 @@ test('a slow browser frame advances at most 50 ms instead of replaying missed wa
 test('actual contact dynamics lift and hold the free phone, then release it under gravity',()=>{
   const sim=create();
   try{
-    assert.equal(sim.model.neq,0,'No attachment constraints may be present');
+    assertNoObjectAttachments(sim);
     const start=sim.command('pickup_demo');assert.equal(start.metrics.pickup.collision_samples,240);
     for(let i=0;i<16;i++){const step=sim.advance(2);assert.equal(step.paused,false,step.metrics.stop_reason)}
     const held=sim.advance(0);assert.equal(held.metrics.pickup.success,true);
@@ -173,7 +219,7 @@ for(const [command,seconds]of [['bedside_demo',16],['greeting_demo',16],['phone_
       if(command==='bedside_demo'){assert.ok(measured.max_base_excursion_m>.75);assert.equal(measured.visited_bedside,true);assert.ok(measured.base_home_error_m<.01)}
       if(command==='greeting_demo'){assert.ok(measured.max_hand_height_m>1.65);assert.ok(measured.wave_range_rad>.65)}
       if(command==='phone_return_demo'){
-        assert.equal(sim.model.neq,0);assert.equal(state.metrics.pickup.ever_succeeded,true);assert.equal(state.metrics.pickup.success,false);assert.equal(state.metrics.pickup.released,true);
+        assertNoObjectAttachments(sim);assert.equal(state.metrics.pickup.ever_succeeded,true);assert.equal(state.metrics.pickup.success,false);assert.equal(state.metrics.pickup.released,true);
         assert.equal(measured.gate_bilateral_contact_passed,true);assert.equal(measured.gate_grasp_confirmed_passed,true);assert.equal(measured.gate_phone_supported_passed,true);assert.equal(measured.gate_phone_settled_passed,true);
         assert.ok(measured.confirmed_grasp_height_m>.20);assert.ok(measured.confirmed_grasp_hold_s>=2);
         assert.ok(measured.supported_release_force_n>.05);assert.equal(measured.supported_release_bilateral,true);assert.ok(Math.abs(measured.supported_release_height_m-.8135)<.006);
@@ -243,5 +289,70 @@ test('a changed physical pose revokes a previously completed demo and latches re
     sim.data.qpos[sim.qindex('right_joint_1')]=-2;sim.data.qpos[sim.qindex('right_joint_2')]=1/3;engine.mj_forward(sim.model,sim.data);
     const stopped=sim.advance(.002);assert.equal(stopped.paused,true);assert.equal(stopped.metrics.demo.complete,false);assert.equal(stopped.metrics.demo.status,'stopped');
     assert.ok(stopped.metrics.stop_reason);assert.throws(()=>sim.command('pause'),/Reset the scene/);const reset=sim.command('reset');assert.equal(reset.metrics.demo,undefined);assert.equal(reset.metrics.stop_reason,null);
+  }finally{sim.dispose()}
+});
+
+for(const command of ['deliver_phone_demo','deliver_meal_demo','blinds_demo']){
+  test(`${command} performs physical assistance and returns the robot to rest`,()=>{
+    const sim=create();
+    try{
+      const definition=trajectories.commands[command],duration=definition.duration_s,start=sim.command(command);
+      assert.equal(start.metrics.demo.complete,false);assertNoObjectAttachments(sim);
+      assert.equal(start.metrics.demo.measurements.collision_samples,command==='blinds_demo'?300:definition.stages.length*60);
+      for(let elapsed=0;elapsed<duration;){const seconds=Math.min(2,duration-elapsed),state=sim.advance(seconds);elapsed+=seconds;assert.equal(state.paused,false,`${state.metrics.stop_reason}: ${JSON.stringify(state.metrics.demo)}`);assert.deepEqual(state.metrics.contacts,[])}
+      const final=sim.advance(0),demo=final.metrics.demo,measured=demo.measurements;
+      assert.equal(demo.complete,true,JSON.stringify(demo));assert.equal(demo.status,'complete');assert.equal(demo.progress,1);assert.ok(Object.values(demo.checks).every(Boolean));
+      assert.ok(measured.rest_qpos_error<.01);assert.ok(measured.settle_dwell_s>=.5);assert.equal(final.metrics.object_attached,false);
+      if(command==='blinds_demo'){
+        assert.ok(measured.handle_travel_m>.15);assert.ok(measured.minimum_slat_angle_rad>1.10);assert.ok(measured.maximum_control_contact_force_n>.05);assert.equal(measured.gate_blinds_open_passed,true);
+        assert.ok(final.object_joints.blinds_slide>.15);assert.ok(Object.entries(final.object_joints).filter(([name])=>name.startsWith('blinds_tilt_')).every(([,value])=>value>1.10));
+      }else{
+        const object=definition.object_name;
+        assert.ok(measured.confirmed_grasp_height_m>.15);assert.ok(measured.confirmed_grasp_hold_s>=2);assert.equal(measured.supported_release_bilateral,true);assert.ok(measured.supported_release_force_n>.05);
+        for(const gate of ['assist_bilateral','assist_grasped','assist_supported','assist_released'])assert.equal(measured[`gate_${gate}_passed`],true);
+        assert.ok(measured.object_xy_error_m<.025);assert.ok(measured.object_z_error_m<.008);assert.ok(measured.object_speed_m_s<.04);assert.ok(measured.support_force_n>.05);assert.ok(measured.hand_clearance_m>.12);assert.ok(measured.patient_hand_distance_m<=.55);
+        assert.equal(measured.fingers_clear,true);assert.ok(Math.hypot(...final.bodies[object].position.map((value,i)=>value-definition.source_position[i]))>1.5);
+      }
+      evidence.assistance??={};evidence.assistance[command]=demo;
+    }finally{sim.dispose()}
+  });
+}
+
+test('tracking-loss pause is idempotent and preserves physical grip actuator targets',()=>{
+  const sim=create();
+  try{
+    sim.command('pickup_demo');for(let i=0;i<10;i++)sim.advance(2);assert.equal(sim.advance(0).metrics.pickup.success,true);
+    const controls=Array.from(sim.data.ctrl),paused=sim.command('pause_for_tracking');
+    assert.equal(paused.paused,true);assert.equal(paused.metrics.visual_tracking_pause_reason,'Visual tracking lost');assert.deepEqual(Array.from(sim.data.ctrl),controls);
+    assert.deepEqual(sim.command('pause_for_tracking'),paused);assert.deepEqual(sim.advance(2),paused);
+    const resumed=sim.command('pause');assert.equal(resumed.paused,false);assert.equal(resumed.metrics.visual_tracking_pause_reason,null);assert.equal(sim.advance(1).metrics.pickup.success,true);
+    assert.equal(sim.command('reset').metrics.visual_tracking_pause_reason,null);
+  }finally{sim.dispose()}
+});
+
+test('assistance rejects moved meal, passive mechanism changes, and contact-allowlist tampering',()=>{
+  for(const changed of ['meal','blinds']){
+    const sim=create();
+    try{
+      if(changed==='meal'){const joint=engine.mj_name2id(sim.model,engine.mjtObj.mjOBJ_JOINT.value,'meal_box_free');sim.data.qpos[sim.model.jnt_qposadr[joint]]+=.04}else sim.data.qpos[sim.qindex('blinds_slide')]=.04;
+      engine.mj_forward(sim.model,sim.data);const before=sim.advance(0),controls=Array.from(sim.data.ctrl);
+      assert.throws(()=>sim.command('deliver_meal_demo'),/Reset the scene/);assert.deepEqual(sim.advance(0),before);assert.deepEqual(Array.from(sim.data.ctrl),controls);
+    }finally{sim.dispose()}
+  }
+  const library=structuredClone(trajectories);library.commands.deliver_meal_demo.intentional_contacts.push(['meal_box_geom','patient_torso']);const sim=create(library);
+  try{const before=sim.advance(0);assert.throws(()=>sim.command('deliver_meal_demo'),/intentional contact/);assert.deepEqual(sim.advance(0),before);assert.equal(sim.intentionalContacts.size,0)}finally{sim.dispose()}
+});
+
+test('a carried object striking an unapproved surface stops assistance',()=>{
+  const sim=create();
+  try{
+    sim.command('deliver_phone_demo');for(let i=0;i<10;i++)sim.advance(2);
+    assert.equal(sim.advance(0).metrics.demo.measurements.ever_grasped,true);
+    // Simulate an unexpected obstacle at the held object's current location.
+    const position=sim.advance(0).bodies.phone.position,geom=engine.mj_name2id(sim.model,engine.mjtObj.mjOBJ_GEOM.value,'visitor_chair');
+    sim.model.geom_pos.set(position,geom*3);engine.mj_forward(sim.model,sim.data);
+    assert.ok(sim.contacts().some(contact=>contact.carried_object_collision),'Actual object contact must be recognized independently of robot contact');
+    const stopped=sim.advance(.002);assert.equal(stopped.paused,true);assert.equal(stopped.metrics.demo.complete,false);assert.equal(stopped.metrics.demo.status,'stopped');assert.ok(stopped.metrics.stop_reason);
+    assert.throws(()=>sim.command('pause_for_tracking'),/Reset the scene/);
   }finally{sim.dispose()}
 });

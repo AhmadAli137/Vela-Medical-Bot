@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {existsSync,readFileSync} from 'node:fs';
 
 const sceneHash=createHash('sha256');
-for(const path of ['../../assets/simulation/room.glb','../../assets/simulation/robot.glb','../../assets/simulation/phone.glb','public/simulation/reference.xml','public/simulation/reference-descriptors.json']){
+for(const path of ['../../assets/simulation/room.glb','../../assets/simulation/robot.glb','../../assets/simulation/phone.glb','../../assets/simulation/meal_box.glb','public/simulation/reference.xml','public/simulation/reference-descriptors.json']){
   const file=new URL(path,import.meta.url);
   sceneHash.update(path);
   if(existsSync(file))sceneHash.update(readFileSync(file));

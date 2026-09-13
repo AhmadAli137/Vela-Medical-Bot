@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="a delayed read and tracking pause finish before reset/start and the next observation" time="0.005163" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\simulation-transport.mjs"/>
+	<testcase name="a failed queued operation preserves its exact error and permits recovery" time="0.000786" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\simulation-transport.mjs"/>
+	<testcase name="synchronous runtime failures reject the caller without poisoning the queue" time="0.000373" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\simulation-transport.mjs"/>
+	<testcase name="dispose aborts the active transport once and never starts queued controls" time="0.006366" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\simulation-transport.mjs"/>
+	<testcase name="a read that ignores abort cannot publish a successful state after disposal" time="0.000709" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\simulation-transport.mjs"/>
+	<!-- tests 5 -->
+	<!-- suites 0 -->
+	<!-- pass 5 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 258.137 -->
+</testsuites>

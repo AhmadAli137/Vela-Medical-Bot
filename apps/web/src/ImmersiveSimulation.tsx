@@ -13,9 +13,12 @@ import { PUBLIC_DEMO, REPOSITORY_URL, simulationAsset } from './deployment';
 import { createSimulationTransport, type ReferenceState, type SimulationCommand, type SimulationTransport } from './simulationTransport';
 import SimulationDemoGallery, { EXTRA_DEMOS, type ExtraDemoCommand } from './SimulationDemoGallery';
 import SimulationDemoMetrics from './SimulationDemoMetrics';
+import RobotPerceptionPanel from './RobotPerceptionPanel';
+import { RobotSensors, type SensorCanvasSet, type SensorName, type SensorPose, type SensorSnapshot } from './robotSensors';
+import { VisualTrackingGuard } from './visualTrackingGuard';
 import './immersive.css';
 
-type ViewName='overview'|'bedside'|'robot'|'pickup'|'patient'|'patient_face'|'bed_foot'|'bed_rear'|'chair'|'storage'|'wardrobe';
+type ViewName='overview'|'bedside'|'robot'|'pickup'|'patient'|'patient_face'|'bed_foot'|'bed_rear'|'chair'|'storage'|'wardrobe'|'delivery'|'blinds';
 type ViewerApi={setView:(name:ViewName)=>void;setQuality:(value:boolean)=>void;resetCamera:()=>void};
 const PRESETS:Record<ViewName,{position:[number,number,number];target:[number,number,number];label:string}>={
   overview:{position:[6.8,-8.8,6.4],target:[0,.25,.95],label:'Room overview'},
@@ -29,6 +32,8 @@ const PRESETS:Record<ViewName,{position:[number,number,number];target:[number,nu
   chair:{position:[.50,2.60,1.20],target:[-1.60,1.30,.58],label:'Chair construction'},
   storage:{position:[3.2,.75,1.08],target:[2.62,2.28,.48],label:'Bedside storage'},
   wardrobe:{position:[1,-1.6,1.65],target:[-2.3,2.1,1],label:'Wardrobe and visitor table'},
+  delivery:{position:[3.9,-2.8,3.3],target:[.55,.65,1.05],label:'Bedside delivery'},
+  blinds:{position:[.8,-3.9,2.75],target:[-2.85,-.2,1.45],label:'Window blinds'},
 };
 const ROOM_ASSEMBLIES=['patient','hospital_bed','visitor_chair','bedside_table','bedside_storage','wardrobe','visitor_table','room_plant'];
 const INSPECTION_VIEWS:ViewName[]=['patient_face','bed_foot','bed_rear','chair','storage','wardrobe'];
@@ -39,7 +44,7 @@ export default function ImmersiveSimulation(){
   const latest=useRef<ReferenceState|undefined>(undefined);
   const [state,setState]=useState<ReferenceState>();
   const [connected,setConnected]=useState(false);
-  const [assets,setAssets]=useState({room:false,robot:false,phone:false});
+  const [assets,setAssets]=useState({room:false,robot:false,phone:false,meal_box:false});
   const [error,setError]=useState('');
   const [notice,setNotice]=useState('');
   const [view,setView]=useState<ViewName>('bedside');
@@ -54,12 +59,36 @@ export default function ImmersiveSimulation(){
   const [bodyCount,setBodyCount]=useState(0);
   const [ready,setReady]=useState(false);
   const [hasPatient,setHasPatient]=useState(false);
+  const sensorCanvases=useRef<SensorCanvasSet>({});
+  const sensors=useRef<RobotSensors|undefined>(undefined);
+  const [sensorSnapshot,setSensorSnapshot]=useState<SensorSnapshot>();
+  const latestVision=useRef<{snapshot:SensorSnapshot;frameAtMs:number}|undefined>(undefined);
+  const trackingGuard=useRef(new VisualTrackingGuard());
+  const [guardEnabled,setGuardEnabled]=useState(false);
+  const [visionPaused,setVisionPaused]=useState(false);
+  const guardPending=useRef(false);
+  const manualControlPending=useRef(false);
   const transport=useRef<SimulationTransport|undefined>(undefined);
   const command=useCallback(async(value:SimulationCommand)=>{
-    setBusy(true);setError('');
+    manualControlPending.current=true;setBusy(true);setError('');
+    trackingGuard.current.reset();setVisionPaused(false);
     try{if(!transport.current)throw new Error('The physics engine is still loading.');const result=await transport.current.command(value);if(result.bodies){latest.current=result;setState(result)}setNotice(value==='reset'?'Simulation returned to its starting state.':value==='joint_demo'?'Joint movement demonstration started.':value==='reach_demo'?'Table reach demonstration started.':value==='pickup_demo'?'Contact pickup sequence started.':value==='lift_demo'?'Vertical carriage travel started.':value==='release_phone'?'Grippers opening. The phone remains under physics.':'Simulation playback updated.')}
-    catch(e){setError((e as Error).message)}finally{setBusy(false)}
+    catch(e){setError((e as Error).message)}finally{manualControlPending.current=false;setVisionPaused(false);setBusy(false)}
   },[]);
+
+  useEffect(()=>{
+    trackingGuard.current.reset();
+    const timer=window.setInterval(()=>{
+      const current=latest.current,observation=latestVision.current;
+      const moving=!manualControlPending.current&&!!current&&current.mode!=='idle'&&!current.paused&&!current.metrics?.demo?.complete;
+      const shouldPause=trackingGuard.current.evaluate({enabled:guardEnabled,moving,nowMs:performance.now(),frameAtMs:observation?.frameAtMs??null,status:observation?.snapshot.slam.status??'initializing',hasPose:!!observation?.snapshot.slam.pose});
+      if(shouldPause&&moving&&!guardPending.current&&transport.current){
+        guardPending.current=true;
+        transport.current.command('pause_for_tracking').then(result=>{latest.current=result;setState(result);setVisionPaused(true)}).catch(error=>setError(`Visual tracking pause failed: ${(error as Error).message}`)).finally(()=>{guardPending.current=false});
+      }
+    },150);
+    return()=>window.clearInterval(timer);
+  },[guardEnabled]);
 
   useEffect(()=>{
     let cancelled=false;let timer:number;let runtime:SimulationTransport|undefined;let uiAt=0;
@@ -139,7 +168,7 @@ export default function ImmersiveSimulation(){
     renderer.domElement.dataset.cameraView='bedside';renderer.domElement.dataset.cameraSettled='true';
     viewer.current={setView:selectView,setQuality:value=>{ssao.enabled=value;renderer.setPixelRatio(value?Math.min(window.devicePixelRatio,1.5):1);renderer.setSize(element.clientWidth,element.clientHeight);composer.setPixelRatio(renderer.getPixelRatio());composer.setSize(element.clientWidth,element.clientHeight)},resetCamera:()=>selectView('overview')};
     const loader=new GLTFLoader();
-    const load=async(kind:'room'|'robot'|'phone')=>{
+    const load=async(kind:'room'|'robot'|'phone'|'meal_box')=>{
       if(disposed)return;
       if(!PUBLIC_DEMO&&!transport.current){retryTimers.push(window.setTimeout(()=>load(kind),150));return}
       try{
@@ -148,7 +177,7 @@ export default function ImmersiveSimulation(){
         if(disposed){gltf.scene.traverse(disposeObject);return}
         gltf.scene.name=`${kind}_asset_root`;
         gltf.scene.traverse(node=>{
-          if(kind!=='room'&&node.name)objects.set(node.name,node);
+          if(node.name)objects.set(node.name,node);
           if(node instanceof THREE.Mesh){
             const materials=Array.isArray(node.material)?node.material:[node.material];
             node.castShadow=!materials.some(material=>material.transparent&&material.opacity<.6);
@@ -176,7 +205,8 @@ export default function ImmersiveSimulation(){
         if(!disposed){setError(`The ${kind} model could not load: ${(error as Error).message}`);retryTimers.push(window.setTimeout(()=>load(kind),4000))}
       }
     };
-    load('room');load('robot');load('phone');
+    load('room');load('robot');load('phone');load('meal_box');
+    const sensorRig=new RobotSensors(renderer,scene);sensors.current=sensorRig;
     const targetPosition=new THREE.Vector3(),targetQuaternion=new THREE.Quaternion(),parentQuaternion=new THREE.Quaternion();
     const resize=new ResizeObserver(()=>{
       if(!element.clientWidth||!element.clientHeight)return;
@@ -205,12 +235,20 @@ export default function ImmersiveSimulation(){
         object.position.copy(targetPosition);object.quaternion.copy(targetQuaternion);object.updateMatrixWorld(true);matches++;
       }
       controls.update();composer.render();frameCount++;
+      if(latest.current?.cameras&&objects.has('head')&&scene.getObjectByName('room_asset_root')){
+        const markerVisible=targetMarker.visible;targetMarker.visible=false;
+        try{
+          const snapshot=sensorRig.sample(latest.current.cameras as Partial<Record<SensorName,SensorPose>>,latest.current.simulation_time??0,now,sensorCanvases.current);
+          if(snapshot){latestVision.current={snapshot,frameAtMs:snapshot.timestampMs};setSensorSnapshot(snapshot)}
+        }catch(error){setError(`Robot vision: ${(error as Error).message}`)}
+        finally{targetMarker.visible=markerVisible}
+      }
       if(now-uiAt>500){setBodyCount(matches);uiAt=now}
       if(now-sampleAt>1000){setFps(Math.round(frameCount*1000/(now-sampleAt)));frameCount=0;sampleAt=now}
     }
     animate();setReady(true);
     return()=>{
-      disposed=true;cancelAnimationFrame(frame);retryTimers.forEach(clearTimeout);resize.disconnect();controls.dispose();scene.traverse(disposeObject);envTexture.dispose();ssao.dispose();composer.dispose();renderer.dispose();renderer.domElement.remove();viewer.current=undefined;
+      disposed=true;cancelAnimationFrame(frame);retryTimers.forEach(clearTimeout);resize.disconnect();controls.dispose();sensorRig.dispose();sensors.current=undefined;scene.traverse(disposeObject);envTexture.dispose();ssao.dispose();composer.dispose();renderer.dispose();renderer.domElement.remove();viewer.current=undefined;
     };
   },[]);
 
@@ -235,18 +273,20 @@ export default function ImmersiveSimulation(){
   const chooseView=(name:ViewName)=>{setView(name);viewer.current?.setView(name)};
   const startExtraDemo=async(value:ExtraDemoCommand)=>{
     if(busy||!transport.current)return;
+    manualControlPending.current=true;
     setBusy(true);setError('');setNotice('');setShowDemos(false);setShowDetails(false);
+    trackingGuard.current.reset();setVisionPaused(false);
     try{
       await transport.current.command('reset');
       const result=await transport.current.command(value);
       latest.current=result;setState(result);
       const selected=EXTRA_DEMOS.find(demo=>demo.command===value)!;
       chooseView(selected.view);setNotice(`${selected.title} started.`);
-    }catch(error){setError((error as Error).message)}finally{setBusy(false)}
+    }catch(error){setError((error as Error).message)}finally{manualControlPending.current=false;setVisionPaused(false);setBusy(false)}
   };
   const paused=state?.paused??(state?.running===false);
   const joints=Array.isArray(state?.joints)?state.joints.map(item=>[item.name,item.position] as const):Object.entries(state?.joints??{});
-  const loaded=assets.room&&assets.robot&&assets.phone;
+  const loaded=assets.room&&assets.robot&&assets.phone&&assets.meal_box;
   const pickup=state?.metrics?.pickup,lift=state?.metrics?.lift,demo=state?.metrics?.demo;
   const demoActive=state?.mode!==undefined&&state.mode!=='idle';
   const runningLabel=!connected?'Connecting':state?.metrics?.stop_reason?'Contact stop':paused?'Paused':state?.mode==='idle'?'Ready':demo?(demo.complete?'Complete':demo.name):human(state?.mode??'Live physics');
@@ -254,7 +294,7 @@ export default function ImmersiveSimulation(){
     <header className="immersive-header">{PUBLIC_DEMO?<button className="immersive-back" aria-label="About this demo" onClick={()=>setShowAbout(true)}><CircleHelp size={17}/></button>:<a href="#research" className="immersive-back" aria-label="Back to workspace"><ArrowLeft size={17}/></a>}<a href={PUBLIC_DEMO?"#simulation":"#staff"} className="immersive-brand">vela<span>.</span></a><span className="immersive-header-divider"/><div className="immersive-page-title"><strong>Simulation studio</strong><span>Hospital room · Reference environment</span></div><div className="immersive-header-right"><span className={`physics-status ${connected?'connected':''}`}><i/>{connected?(PUBLIC_DEMO?'MuJoCo · in browser':'MuJoCo connected'):'Loading MuJoCo'}</span><button className="immersive-icon-button" title="Viewer controls" aria-label="Viewer controls" onClick={()=>setShowHelp(!showHelp)}><CircleHelp size={19}/></button><button className="immersive-icon-button" aria-label="Toggle full screen" onClick={()=>document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}><Expand size={18}/></button></div></header>
     <div className="immersive-stage"><div ref={mount} className="immersive-canvas"/>
       <div className="scene-topline"><span><i/>INTERACTIVE 3D ENVIRONMENT</span><span>REAL-TIME PHYSICS · REFERENCE GEOMETRY</span></div>
-      <aside className="immersive-scene-card"><div className="immersive-kicker"><Layers3 size={13}/> SCENE 01</div><h1>Patient room<br/>417.</h1><p>Explore the room and try a bedside approach, greeting, or contact-based phone task.</p><div className="immersive-room-meta"><span><Box size={14}/>Hospital room</span>{hasPatient&&<span className="immersive-synthetic-patient"><UserRound size={14}/>Synthetic patient model</span>}<span>7 × 6 m<span className="estimated-label">scene estimate</span></span></div>
+      <aside className="immersive-scene-card"><div className="immersive-kicker"><Layers3 size={13}/> SCENE 01</div><h1>Patient room<br/>417.</h1><p>See through the robot cameras. Bring a phone or meal to the patient, or open the blinds.</p><div className="immersive-room-meta"><span><Box size={14}/>Hospital room</span>{hasPatient&&<span className="immersive-synthetic-patient"><UserRound size={14}/>Synthetic patient model</span>}<span>7 × 6 m<span className="estimated-label">scene estimate</span></span></div>
       {demo&&<SimulationDemoMetrics demo={demo} pickup={pickup} paused={!!paused} onBrowse={()=>setShowDemos(true)}/>}
       {pickup&&!demo&&<div className="immersive-action-metrics" data-testid="pickup-metrics" data-success={pickup.success} data-released={pickup.released} data-height-gain={pickup.height_gain_m} data-bilateral-contact={pickup.bilateral_contact} data-hold-seconds={pickup.bilateral_hold_s}>
         <strong>{pickup.success?'Pickup confirmed':pickup.released?'Phone released':pickup.status==='failed'?'Pickup stopped':'Contact pickup'}</strong>
@@ -272,6 +312,7 @@ export default function ImmersiveSimulation(){
       </aside>
       <div className="immersive-camera-switch" role="group" aria-label="Camera view">{(['overview','bedside','patient','robot','pickup'] as ViewName[]).map((name,index)=><button key={name} aria-pressed={view===name} onClick={()=>chooseView(name)}>{index===0?<Orbit size={15}/>:index===1?<Focus size={15}/>:index===2?<UserRound size={15}/>:index===3?<Move3D size={15}/>:<Smartphone size={15}/>}<span>{PRESETS[name].label}</span></button>)}</div>
       <div className="immersive-lighting"><Sun size={14}/><span>Daylight</span><i/><button aria-pressed={quality} onClick={()=>{setQuality(!quality);viewer.current?.setQuality(!quality)}}>{quality?'High quality':'Performance'}</button></div>
+      <RobotPerceptionPanel canvases={sensorCanvases} snapshot={sensorSnapshot} guardEnabled={guardEnabled} onGuardChange={setGuardEnabled} visionPaused={visionPaused} onReset={()=>{sensors.current?.reset();setSensorSnapshot(undefined);latestVision.current=undefined;trackingGuard.current.reset()}}/>
       {(!loaded||!connected)&&<div className="immersive-loading"><div><LoaderCircle size={22} className="spin"/><h2>{ready?(loaded?'Starting the physics engine':'Loading the detailed environment'):'Preparing the 3D viewer'}</h2><p>{assets.room?'Room ready':'Hospital room'} · {assets.robot?'Robot ready':'Reference robot'} · {assets.phone?'Phone ready':'Dynamic phone'}</p></div></div>}
       {showHelp&&<div className="immersive-help"><div><strong>Make yourself at home.</strong><button className="immersive-icon-button" aria-label="Close controls help" onClick={()=>setShowHelp(false)}><X size={16}/></button></div><p><span>Orbit</span>Drag with the left mouse button</p><p><span>Pan</span>Drag with the right mouse button</p><p><span>Zoom</span>Scroll, or pinch on a trackpad</p><p><span>Touch</span>One finger to orbit; two to pan</p><button onClick={()=>chooseView('overview')}><RotateCcw size={13}/>Reset camera</button></div>}
       <div className="immersive-view-caption"><span className="immersive-view-line"/><span>BRACKET BOT<br/><strong>Reference reconstruction</strong></span></div>

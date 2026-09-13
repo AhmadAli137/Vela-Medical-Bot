@@ -20,6 +20,7 @@ bpy.ops.object.delete(use_global=False)
 room_objects=[]
 robot_objects=[]
 phone_objects=[]
+meal_objects=[]
 current_objects=room_objects
 current_assembly=None
 
@@ -388,7 +389,7 @@ def robot(descriptors):
     if isinstance(bodies,dict):bodies=[{"name":k,**v} for k,v in bodies.items()]
     for desc in bodies:
         name=desc.get("name",desc.get("id"))
-        if name=="phone":continue
+        if name in {"phone","meal_box"}:continue
         empty=bpy.data.objects.new(name,None);bpy.context.collection.objects.link(empty);parents[name]=empty;robot_objects.append(empty)
         position=desc.get("world_position",desc.get("position",(0,0,0)))
         quat=desc.get("world_quaternion",desc.get("quaternion",(1,0,0,0)))
@@ -426,7 +427,7 @@ def robot(descriptors):
     if p:
         box("Stereo rounded optical housing",(0,0,0),(.095,.185,.094),M["shell"],.041,p)
         box("Black stereo visor",(.051,0,.005),(.012,.158,.065),M["glass"],.027,p)
-        for y in (-.050,.050):
+        for y in (-.027,.027):
             cylinder("Stereo lens bezel",(.060,y,.008),.014,.005,M["black"],axis=(1,0,0),parent=p)
             cylinder("Stereo lens",(.064,y,.008),.009,.003,M["lens"],axis=(1,0,0),parent=p)
         cylinder("Head swivel mount",(0,0,-.08),.025,.07,M["metal"],parent=p)
@@ -465,13 +466,26 @@ def robot(descriptors):
             box("Compact rotary gripper palm",(0,0,0),(.079,.102,.047),M["darkmetal"],.018,p)
             box("Gripper white top plate",(.002,0,.029),(.078,.095,.012),M["shell"],.007,p)
             box("Green fingertip status accent",(.043,0,-.009),(.010,.070,.018),M["green"],.005,p)
-            box("Wrist camera mount",(-.028,0,.044),(.028,.04,.045),M["shell"],.009,p)
-            cylinder("Wrist camera optic",(-.013,0,.047),.010,.005,M["lens"],axis=(1,0,0),parent=p)
+            box("Wrist camera mount",(.046,0,.013),(.030,.034,.035),M["shell"],.008,p)
+            cylinder("Wrist camera bezel",(.046,0,-.005),.012,.005,M["black"],parent=p)
+            cylinder("Wrist camera optic",(.046,0,-.0075),.009,.001,M["lens"],parent=p)
         for sign in (-1,1):
             p=parent(f"{side}_finger_{sign}")
             if p:
                 box("Pincher finger body",(0,0,-.030),(.026,.019,.067),M["darkmetal"],.008,p)
                 box("Pincher rubber contact pad",(0,-sign*.011,-.046),(.022,.006,.039),M["rubber"],.003,p)
+    # Passive room parts use the same flattened MuJoCo world-pose binding.
+    for spec in descriptors["body_specs"]:
+        p=parent(spec["name"])
+        if not p:continue
+        if spec["geometry"]=="blinds_slat":
+            box("Tilting blind slat",(0,0,0),spec["dimensions"],M["white"],.004,p)
+            for y in (-1.24,1.24):
+                cylinder("Slat pivot ferrule",(0,y,0),.006,.04,M["steel"],axis=(0,1,0),parent=p)
+        elif spec["geometry"]=="blinds_handle":
+            box("Blind push control",(0,0,0),spec["dimensions"],M["shell"],.014,p)
+            box("Blind control contact inset",(0,0,.0255),(.075,.075,.002),M["green"],.007,p)
+            box("Blind handle carriage",(-.035,0,0),(.022,.14,.09),M["steel"],.005,p)
 
 
 def phone(descriptors):
@@ -486,6 +500,61 @@ def phone(descriptors):
     cylinder("Phone front camera",(0,-.063,.0064),.0017,.0006,M["lens"],parent=parent,vertices=20)
     box("Phone earpiece",(0,-.069,.0064),(.015,.001,.0003),M["black"],.0003,parent)
     box("Phone side key",(.041,-.032,0),(.001,.019,.002),M["steel"],.0005,parent)
+
+
+def assistance_room(descriptors):
+    """Fixed furniture and mechanism mounts; measurements share the XML contract."""
+    global current_objects
+    current_objects=room_objects
+    import xml.etree.ElementTree as ET
+    world=ET.fromstring((ROOT/"sim"/"reference_body_descriptors.xml").read_text(encoding="utf-8")).find("worldbody")
+    colliders={node.get("name"):node for node in world.findall("geom")}
+    assembly("patient_tray")
+    tray=colliders["bedside_tray"]
+    x,y,z=map(float,tray.get("pos").split());dimensions=[2*float(v) for v in tray.get("size").split()]
+    box("Patient tray tabletop",(x,y,z),dimensions,M["wood"],.014)
+    box("Patient tray underside frame",(x,y,z-.038),(dimensions[0]-.04,dimensions[1]-.04,.040),M["bedframe"],.01)
+    # Over-bed cantilever support has a complete column and rolling base.
+    sx=x-.24
+    box("Tray support outer column",(sx,y,.45),(.065,.075,.75),M["bedframe"],.014)
+    box("Tray telescoping support",(sx,y,.865),(.043,.052,.21),M["steel"],.008)
+    box("Tray adjustment latch",(sx-.047,y,.79),(.045,.075,.025),M["darkmetal"],.008)
+    box("Tray floor spine",(sx,y,.10),(.07,.53,.055),M["bedframe"],.013)
+    for yy in (y-.25,y+.25):
+        box("Tray floor outrigger",(x,yy,.10),(.54,.065,.055),M["bedframe"],.014)
+        for xx in (x-.24,x+.24):
+            cylinder("Tray caster tire",(xx,yy,.045),.045,.038,M["rubber"],axis=(0,1,0))
+            cylinder("Tray caster stem",(xx,yy,.085),.012,.05,M["steel"])
+    for name in ("phone_delivery_riser","meal_delivery_riser"):
+        node=colliders[name]
+        box("Tray object landing pad",tuple(map(float,node.get("pos").split())),tuple(2*float(v) for v in node.get("size").split()),M["panel"],.006)
+    assembly("meal_pickup_rest")
+    node=colliders["meal_riser"]
+    box("Meal pickup rest",tuple(map(float,node.get("pos").split())),tuple(2*float(v) for v in node.get("size").split()),M["panel"],.006)
+    assembly("window_blind_mounts")
+    box("Blind head rail",(-3.43,.05,2.54),(.10,2.84,.075),M["white"],.009)
+    for yy in (-1.19,1.29):
+        cylinder("Blind tilt linkage rod",(-3.43,yy,1.7),.005,1.58,M["steel"])
+    handle=next(spec for spec in descriptors["body_specs"] if spec["name"]=="blinds_handle")
+    hx,hy,hz=handle["pos"]
+    box("Blind wall control rail",(hx-.063,hy,hz-.09),(.024,.16,.36),M["panel"],.012)
+    for zz in (hz+.06,hz-.25):
+        box("Blind control rail mounting bracket",(-3.285,hy,zz),(.30,.10,.03),M["steel"],.005)
+    tube("Blind mechanical control cable",[(hx-.085,hy,hz+.08),(hx-.085,hy,2.54),(-3.43,hy,2.54)],.007,M["white"])
+
+
+def meal(descriptors):
+    global current_objects
+    current_objects=meal_objects
+    spec=next(item for item in descriptors["body_specs"] if item["name"]=="meal_box")
+    pose=descriptors["initial_world_poses"]["meal_box"]
+    parent=bpy.data.objects.new("meal_box",None);bpy.context.collection.objects.link(parent);meal_objects.append(parent)
+    parent.location=pose["position"];parent.rotation_mode="QUATERNION";parent.rotation_quaternion=Quaternion(pose["quaternion"])
+    dx,dy,dz=spec["dimensions"]
+    box("Sealed meal container",(0,0,0),(dx,dy,dz),M["white"],.009,parent)
+    box("Meal lid rim",(0,0,dz/2-.002),(dx+.001,dy+.001,.004),M["panel"],.005,parent)
+    box("Meal label",(0,0,dz/2+.0002),(dx*.64,dy*.62,.0005),M["upholstery"],.005,parent)
+    for yy in (-.018,-.006,.006):box("Meal label type",(0,yy,dz/2+.0006),(.034,.002,.0003),M["white"],.0005,parent)
 
 
 def export_selected(objects,name):
@@ -556,6 +625,9 @@ def setup_render():
 
 
 room()
+descriptor_path=ROOT/"sim"/"reference_body_descriptors.json"
+descriptors=json.loads(descriptor_path.read_text(encoding="utf-8")) if descriptor_path.exists() else None
+if descriptors and any(spec["name"]=="meal_box" for spec in descriptors["body_specs"]):assistance_room(descriptors)
 add_texture(M["wood"],"oak_veneer_01")
 add_texture(M["floor"],"linoleum_brown")
 add_texture(M["blanket"],"rough_linen")
@@ -572,13 +644,15 @@ if "--audit-only" in sys.argv:
     print("Wrote pre-merge room geometry manifest")
     sys.exit(0)
 export_selected(room_objects,"room.glb")
-descriptor_path=ROOT/"sim"/"reference_body_descriptors.json"
 if descriptor_path.exists():
     descriptors=json.loads(descriptor_path.read_text(encoding="utf-8"))
     robot(descriptors)
     export_selected(robot_objects,"robot.glb")
     phone(descriptors)
     export_selected(phone_objects,"phone.glb")
+    if any(spec["name"]=="meal_box" for spec in descriptors["body_specs"]):
+        meal(descriptors)
+        export_selected(meal_objects,"meal_box.glb")
 setup_render()
 bpy.ops.file.pack_all()
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/"reference-scene.blend"))

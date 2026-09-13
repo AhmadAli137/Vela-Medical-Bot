@@ -12,7 +12,7 @@ from sim.reference_runtime import ReferenceSimulation
 @pytest.fixture(scope="module")
 def outcomes():
     # Save the same observed rollout as the reviewable evidence artifact.
-    return verify_demos()
+    return verify_demos(commands={"bedside_demo","greeting_demo","phone_return_demo"})
 
 
 def test_bedside_visits_goal_and_returns_under_real_actuation(outcomes):

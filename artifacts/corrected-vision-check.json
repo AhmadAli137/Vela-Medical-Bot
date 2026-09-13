@@ -1,0 +1,86 @@
+{
+  "started": "2026-09-13T15:13:38.823Z",
+  "target": "http://127.0.0.1:4176/#simulation",
+  "errors": [],
+  "requests": [],
+  "cameraStats": [
+    {
+      "name": "head_rgb",
+      "width": 320,
+      "height": 240,
+      "frames": 6,
+      "span": 222.66666666666666,
+      "mean": 224.5563151041755
+    },
+    {
+      "name": "head_stereo_right",
+      "width": 320,
+      "height": 240,
+      "frames": 6,
+      "span": 222.33333333333334,
+      "mean": 224.9068315972316
+    },
+    {
+      "name": "left_wrist",
+      "width": 320,
+      "height": 240,
+      "frames": 6,
+      "span": 224.33333333333334,
+      "mean": 205.95916232638695
+    },
+    {
+      "name": "right_wrist",
+      "width": 320,
+      "height": 240,
+      "frames": 6,
+      "span": 224.33333333333334,
+      "mean": 206.20763020833115
+    }
+  ],
+  "vision": [
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.9999999999999989,
+        "pose": {
+          "position": [
+            -4.4236166062295353e-17,
+            -3.2923341807742536e-17,
+            -1.72293380343348e-17
+          ],
+          "orientation": [
+            -1.0482671439893178e-17,
+            1.2913697384011638e-17,
+            2.179756349681523e-18,
+            1
+          ],
+          "timestampMs": 1394.000000000001
+        },
+        "mapSize": 42,
+        "detected": 52,
+        "stereoMatches": 42,
+        "mapMatches": 42,
+        "inliers": 42,
+        "reprojectionErrorPx": 4.3855649767605176e-15,
+        "processingMs": 15.099999999860302,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          0,
+          0,
+          0
+        ],
+        "positionErrorM": 5.777226767906721e-17
+      },
+      "frames": 8
+    }
+  ],
+  "demos": [],
+  "screenshots": [
+    "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\apps\\web\\artifacts\\corrected-vision-camera-views.png"
+  ],
+  "passed": true,
+  "finished": "2026-09-13T15:13:44.448Z"
+}

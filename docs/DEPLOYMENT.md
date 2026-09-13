@@ -6,7 +6,7 @@ Live production: **https://vela-medical-bot.vercel.app**. Source: **https://gith
 
 The geometry and physical pickup correction (`ce06e0d`) deployed successfully on September 13, 2026. Anonymous Chrome verified the production joint motion, low/high travel, contact pickup, sustained hold and gravity release with zero browser or network errors. [Measured result](../artifacts/vercel-browser-check.json).
 
-The public build runs the reference robot's MuJoCo 3.13.0 physics inside the browser using the official `@mujoco/mujoco` WebAssembly package. It includes three GLBs, the estimated MJCF model, 28 synchronized bodies (27 robot plus one free phone), joint and vertical-travel demonstrations, runtime Jacobian IK and contact-driven pickup/release. The phone starts on a visible 35 mm rest; there is no weld or kinematic object attachment. Each visitor has an independent, ephemeral simulation. No Python server, shared task database, paid model API, robot connection, or recorded-pose playback is required for this view.
+The public build runs the reference robot's MuJoCo 3.13.0 physics inside the browser using the official `@mujoco/mujoco` WebAssembly package. It includes four GLBs, the estimated MJCF model, 46 synchronized bodies (27 robot, two free objects and 17 passive blind parts), four camera views, a visual mapping prototype, and contact-driven pickup, delivery and blind-control demonstrations. The phone starts on a visible 35 mm rest; there is no weld or kinematic object attachment. Each visitor has an independent, ephemeral simulation. No Python server, shared task database, paid model API, robot connection, or recorded-pose playback is required for this view.
 
 The full staff/patient/fleet/research workspace remains the separate local Python application described below. The public build opens the 3D view and explains this boundary instead of exposing disconnected operational controls.
 
@@ -20,7 +20,7 @@ npm --prefix apps/web run preview -- --port 4173
 
 The public build replaces `apps/web/dist`. Run `npm --prefix apps/web run build` afterward to restore the local dashboard bundle served by FastAPI. Vercel builds its own deployment independently. Do not serve the public WASM bundle through an older local CSP that lacks `wasm-unsafe-eval`.
 
-Vite computes one revision hash from all three GLBs and both physics metadata files. Their fetch URLs share that revision, so an ordinary page reload after deployment cannot mix a cached old room or robot with the new physics topology.
+Vite computes one revision hash from all four GLBs and both physics metadata files. Their fetch URLs share that revision, so an ordinary page reload after deployment cannot mix a cached old room or robot with the new physics topology.
 
 `.vercelignore` restricts CLI uploads to the frontend build inputs and authored GLBs. `.gitignore` excludes provider credentials, `.env.local`, `.vercel`, local databases, raw source media and copyrighted reference photographs. The source repository retains the full implementation and the separately licensed CC0 material provenance.
 

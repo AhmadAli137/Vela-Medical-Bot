@@ -10,10 +10,11 @@ import argparse
 from pathlib import Path
 
 from sim.reference_model import load_reference_model
-from sim.reference_pickup import pickup_stages
+from sim.reference_pickup import pickup_stages, solve_pose
+from sim.reference_assistance import ASSISTANCE_COMMANDS, build_assistance_commands
 
 LIBRARY_PATH = Path(__file__).with_name("reference_demo_trajectories.json")
-DEMO_COMMANDS = {"bedside_demo", "greeting_demo", "phone_return_demo"}
+DEMO_COMMANDS = {"bedside_demo", "greeting_demo", "phone_return_demo"} | ASSISTANCE_COMMANDS
 
 
 def build_trajectories():
@@ -52,6 +53,10 @@ def build_trajectories():
     pickup,errors=pickup_stages(model,initial)
     returned=[stage(p["name"],p["target_qpos"],p["duration_s"],"bilateral_contact" if p["name"]=="close" else "grasp_confirmed" if p["name"]=="hold" else None)for p in pickup]
     closed=pickup[4]["target_qpos"].copy()
+    # A 1 mm downward placement bias lets the physical riser take load before
+    # release despite small solver differences. It changes actuator targets
+    # only; the free phone pose and the measured support-force gate are intact.
+    closed,errors["return_place"]=solve_pose(model,closed,[.63,-.72,.8125])
     opened=closed.copy()
     for finger in (-1,1):
         opened[model.joint(f"left_gripper_{finger}").qposadr[0]]=finger*.60
@@ -61,6 +66,7 @@ def build_trajectories():
         "greeting_demo":{"name":"Arm greeting","description":"Raise the left arm, wave the wrist twice, then return to rest.","stages":greeting,"outcomes":{**common,"minimum_hand_height_m":1.50,"minimum_wave_range_rad":.50}},
         "phone_return_demo":{"name":"Pick up and put back","description":"Grip and lift the phone, lower it onto its original riser, open the fingers, then retreat and confirm the phone is settled.","stages":returned,"ik_errors":errors,"outcomes":{**common,"phone_target":[.63,-.72,.8135],"phone_xy_tolerance_m":.02,"phone_z_tolerance_m":.006,"phone_speed_tolerance_m_s":.03,"phone_angular_speed_tolerance_rad_s":.4,"hand_clearance_m":.10,"support_force_minimum_n":.05,"minimum_grasp_height_m":.15,"minimum_bilateral_hold_s":2.}},
     }
+    commands.update(build_assistance_commands(model,initial))
     for command in commands.values():
         command["duration_s"]=sum(item["duration_s"]for item in command["stages"])
     return {"schema_version":1,"model_hash":metadata["model_hash"],"nq":model.nq,"nu":model.nu,"actuated_q_indices":model.jnt_qposadr[model.actuator_trnid[:,0]].tolist(),"commands":commands,"hardware_model_verified":False,"authorizes_hardware":False,"notes":["Targets are position-actuator controls, not body pose playback","The base uses existing constrained planar sliders; wheel targets follow forward/yaw travel, without traction or balance validation","Free-space paths receive sampled collision checks; loaded finger targets are checked through actual contact dynamics","Completion requires measured outcomes and is revoked on fault"]}
@@ -73,11 +79,11 @@ def load_trajectories(model_hash):
     return library
 
 
-def verify_demos(output="sim/outputs/reference_more_demos.json"):
+def verify_demos(output="sim/outputs/reference_more_demos.json", commands=None):
     """Execute each demo and save actual outcomes; never replay pose samples."""
     from sim.reference_runtime import ReferenceSimulation
     results={}
-    for command in sorted(DEMO_COMMANDS):
+    for command in sorted(DEMO_COMMANDS if commands is None else commands):
         simulation=ReferenceSimulation()
         initial=simulation.command(command)
         samples=[]

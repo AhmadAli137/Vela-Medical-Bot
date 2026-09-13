@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="native reference XML compiles in official WASM with matching body topology" time="0.102316" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="modeled optical cameras stay aligned with moving head and wrist bodies" time="0.130705" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="passive blinds coupling never adds an object or mechanism actuator" time="0.027243" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="actual forward dynamics actuates all 25 DOFs over a 16 second contact-free cycle" time="1.695464" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="runtime WASM Jacobian IK and actual servo tracking match native endpoint evidence" time="0.664071" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="unreachable and malformed goals are checked without changing live state" time="0.104644" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="real WASM contact structs trigger a numerical stop when robot intersects table" time="0.033529" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="pause, reset, bounded stepping and disposal prevent unintended mutation" time="0.074651" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="a slow browser frame advances at most 50 ms instead of replaying missed wall time" time="0.039682" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="actual contact dynamics lift and hold the free phone, then release it under gravity" time="7.055340" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="vertical carriages traverse 84 cm while hands reach low and high without collision" time="4.393236" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="fixture checks reject moved starts and unconfirmed release without teleporting bodies" time="0.228414" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="an actual collision during a held pickup clears success and latches the stop" time="3.899639" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="bedside_demo completes from actual WASM motion and measured outcomes" time="2.572244" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="greeting_demo completes from actual WASM motion and measured outcomes" time="2.534772" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="phone_return_demo completes from actual WASM motion and measured outcomes" time="9.741500" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="incompatible or malformed demo libraries are rejected before live control mutation" time="0.178304" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="new demos require the baseline fixture and pause freezes progress and physics" time="2.675696" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="a lost physical grasp stops the return sequence before it can claim placement" time="4.563450" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="elapsed trajectory time cannot fake an unmet measured greeting outcome" time="2.865679" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="a changed physical pose revokes a previously completed demo and latches reset" time="2.572900" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="deliver_phone_demo performs physical assistance and returns the robot to rest" time="12.517018" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="deliver_meal_demo performs physical assistance and returns the robot to rest" time="13.527670" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="blinds_demo performs physical assistance and returns the robot to rest" time="12.189650" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="tracking-loss pause is idempotent and preserves physical grip actuator targets" time="4.118240" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="assistance rejects moved meal, passive mechanism changes, and contact-allowlist tampering" time="0.116494" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<testcase name="a carried object striking an unapproved surface stops assistance" time="4.932144" classname="test" file="C:\Users\Ahmad\OneDrive\Desktop\Vela-Medical-Bot\apps\web\tests\browser-physics-wasm.mjs"/>
+	<!-- tests 27 -->
+	<!-- suites 0 -->
+	<!-- pass 27 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 94038.7961 -->
+</testsuites>

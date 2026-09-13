@@ -5,7 +5,7 @@ import {dirname, resolve} from 'node:path';
 const webRoot=resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const destination=resolve(webRoot, 'dist/simulation');
 await mkdir(destination, {recursive: true});
-for (const filename of ['room.glb', 'robot.glb', 'phone.glb']) {
+for (const filename of ['room.glb', 'robot.glb', 'phone.glb', 'meal_box.glb']) {
   const source=resolve(webRoot, '../../assets/simulation', filename);
   const information=await stat(source);
   if (!information.size) throw new Error(`Empty simulation asset: ${filename}`);

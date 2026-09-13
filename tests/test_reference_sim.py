@@ -11,11 +11,13 @@ from sim.reference_runtime import ReferenceSimulation
 
 def test_reference_topology_geometry_and_artifact_provenance():
     model, data, metadata = load_reference_model()
-    assert model.njnt == 26 and model.nu == 25
-    assert model.nq == 32 and model.nv == 31
-    assert len(body_descriptors()) == 28
+    assert model.njnt == 44 and model.nu == 25
+    assert model.nq == 56 and model.nv == 54
+    assert len(body_descriptors()) == 46
     assert model.joint("phone_free").type[0] == mujoco.mjtJoint.mjJNT_FREE
-    assert model.neq == 0, "Grasp must not use a weld or attachment constraint"
+    assert model.neq == 16
+    assert all(kind==mujoco.mjtEq.mjEQ_JOINT for kind in model.eq_type)
+    assert all(model.joint(int(joint)).name.startswith("blinds_") for joint in [*model.eq_obj1id,*model.eq_obj2id]), "Only the passive blinds mechanism has joint coupling; grasp has no attachment"
     assert metadata["hardware_model_verified"] is False
     assert "handout-page-1.png" in metadata["reference_files"][0]
     for side in ("left", "right"):

@@ -5,7 +5,7 @@ import demoTrajectories from '../../../sim/reference_demo_trajectories.json';
 import {physicsAsset} from './deployment';
 
 export {BrowserPhysics};
-export type {BrowserPhysicsState,PhysicsCommand,ReferenceDescriptors,DemoMetrics,DemoTrajectories} from './browserPhysicsCore';
+export type {BrowserPhysicsState,PhysicsCommand,ReferenceDescriptors,DemoMetrics,DemoTrajectories,CameraPose} from './browserPhysicsCore';
 
 /** Load same-origin MJCF + descriptors and the bundled official WASM engine. */
 export async function createBrowserPhysics(options:{modelUrl?:string;descriptorsUrl?:string}={}):Promise<BrowserPhysics>{
@@ -16,5 +16,6 @@ export async function createBrowserPhysics(options:{modelUrl?:string;descriptors
   if(responses.some(response=>!response.ok))throw new Error('Reference physics assets could not be loaded');
   const [xml,descriptors]=await Promise.all([responses[0].text(),responses[1].json() as Promise<ReferenceDescriptors>]);
   const engine=await loadMujoco({locateFile:(file:string)=>file.endsWith('.wasm')?wasmUrl:file});
-  return new BrowserPhysics(engine,xml,descriptors,demoTrajectories as DemoTrajectories);
+  // Runtime compatibility/shape checks run before any shared command is applied.
+  return new BrowserPhysics(engine,xml,descriptors,demoTrajectories as unknown as DemoTrajectories);
 }

@@ -1,0 +1,88 @@
+{
+  "started": "2026-09-13T15:10:21.564Z",
+  "target": "http://127.0.0.1:4176/#simulation",
+  "errors": [],
+  "requests": [],
+  "cameraStats": [
+    {
+      "name": "head_rgb",
+      "width": 320,
+      "height": 240,
+      "frames": 7,
+      "span": 222,
+      "mean": 188.06949218750003
+    },
+    {
+      "name": "head_stereo_right",
+      "width": 320,
+      "height": 240,
+      "frames": 7,
+      "span": 222.33333333333334,
+      "mean": 188.52663194444426
+    },
+    {
+      "name": "left_wrist",
+      "width": 320,
+      "height": 240,
+      "frames": 7,
+      "span": 224.33333333333334,
+      "mean": 205.9546137152756
+    },
+    {
+      "name": "right_wrist",
+      "width": 320,
+      "height": 240,
+      "frames": 7,
+      "span": 224.33333333333334,
+      "mean": 206.2082291666645
+    }
+  ],
+  "vision": [
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.9999999999999989,
+        "pose": {
+          "position": [
+            9.136088189514633e-18,
+            -4.0637990212699516e-17,
+            -2.101731154374758e-18
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "timestampMs": 1376.000000000001
+        },
+        "mapSize": 44,
+        "detected": 53,
+        "stereoMatches": 44,
+        "mapMatches": 44,
+        "inliers": 44,
+        "reprojectionErrorPx": 4.284733912779808e-15,
+        "processingMs": 16.100000000093132,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          0,
+          0,
+          0
+        ],
+        "positionErrorM": 4.170529498492153e-17
+      },
+      "frames": 9
+    }
+  ],
+  "demos": [],
+  "screenshots": [
+    "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\apps\\web\\artifacts\\vision-motion-camera-views.png",
+    "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\apps\\web\\artifacts\\vision-motion-failure.png"
+  ],
+  "passed": false,
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   'Demo trajectories do not match this reference physics model'\n+ ]\n- []\n\n    at healthy (file:///C:/Users/Ahmad/OneDrive/Desktop/Vela-Medical-Bot/apps/web/scripts/check-assistance-vision.mjs:28:105)\n    at async file:///C:/Users/Ahmad/OneDrive/Desktop/Vela-Medical-Bot/apps/web/scripts/check-assistance-vision.mjs:46:34",
+  "finished": "2026-09-13T15:10:27.697Z"
+}

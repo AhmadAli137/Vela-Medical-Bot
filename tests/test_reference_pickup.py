@@ -8,7 +8,8 @@ from sim.reference_runtime import ReferenceSimulation
 
 def test_free_phone_is_lifted_held_and_released_by_friction_only():
     sim = ReferenceSimulation()
-    assert sim.model.neq == 0
+    assert not any(kind in {mujoco.mjtEq.mjEQ_WELD,mujoco.mjtEq.mjEQ_CONNECT} for kind in sim.model.eq_type)
+    assert all(sim.model.joint(int(joint)).name.startswith("blinds_") for joint in [*sim.model.eq_obj1id,*sim.model.eq_obj2id])
     phone = sim.model.body("phone").id
     assert sim.model.body_gravcomp[phone] == 0
     assert sim.model.joint("phone_free").type[0] == mujoco.mjtJoint.mjJNT_FREE

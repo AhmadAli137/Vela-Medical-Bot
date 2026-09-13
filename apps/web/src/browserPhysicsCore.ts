@@ -6,16 +6,20 @@ import type {MainModule, MjData, MjModel} from '@mujoco/mujoco';
 
 export type Vec3=[number,number,number];
 export type Quat=[number,number,number,number];
-export type SharedDemoCommand='bedside_demo'|'greeting_demo'|'phone_return_demo';
-export type PhysicsCommand='joint_demo'|'reach_demo'|'pickup_demo'|'release_phone'|'lift_demo'|SharedDemoCommand|'pause'|'reset';
-export type ReferenceDescriptors={model_hash:string;body_specs:{name:string;joint?:string;joint_type?:string;dynamic_object?:boolean;initial_q?:number}[];hardware_model_verified:false};
-type Contact={geoms:[string,string];distance_m:number;self_collision:boolean};
+export type SharedDemoCommand='bedside_demo'|'greeting_demo'|'phone_return_demo'|'deliver_phone_demo'|'deliver_meal_demo'|'blinds_demo';
+export type PhysicsCommand='joint_demo'|'reach_demo'|'pickup_demo'|'release_phone'|'lift_demo'|SharedDemoCommand|'pause'|'pause_for_tracking'|'reset';
+export type ReferenceDescriptors={model_hash:string;body_specs:{name:string;joint?:string;joint_type?:string;dynamic_object?:boolean;robot_body?:boolean;initial_q?:number}[];hardware_model_verified:false};
+/** Camera-local right/up/back to world, row-major rotation; optical forward is
+ * local -Z and up is local +Y. Positions use the scene's Z-up metre coordinates.
+ * fovy_deg is the modeled vertical field of view, not hardware calibration. */
+export type CameraPose={position:Vec3;rotation:number[];fovy_deg:number;fovy?:number;convention:'mujoco_opengl'};
+type Contact={geoms:[string,string];distance_m:number;self_collision:boolean;carried_object_collision?:boolean};
 type ReachPlan={target:Vec3;side:'left'|'right';residual_m:number;reachable:boolean;collision_free_samples:boolean;sample_count:number;contacts:Contact[];target_qpos:number[];start_qpos?:number[];duration_s?:number};
 type PosePlan={target_qpos:number[];position_error_m:number;orientation_error_rad:number};
-type StageGate='bilateral_contact'|'grasp_confirmed'|'phone_supported'|'phone_settled';
+type StageGate='bilateral_contact'|'grasp_confirmed'|'phone_supported'|'phone_settled'|'assist_bilateral'|'assist_grasped'|'assist_supported'|'assist_released'|'blinds_open';
 type Stage={name:string;target_qpos:number[];duration_s:number;gate_after?:StageGate};
-export type DemoDefinition={name:string;description:string;stages:Stage[];outcomes:Record<string,number|number[]>;ik_errors?:PickupMetrics['ik_errors']};
-export type DemoTrajectories={schema_version:1;model_hash:string;nq:number;nu:number;actuated_q_indices:number[];commands:Record<SharedDemoCommand,DemoDefinition>};
+export type DemoDefinition={name:string;description:string;stages:Stage[];outcomes:Record<string,number|number[]>;ik_errors?:PickupMetrics['ik_errors'];object_name?:'phone'|'meal_box';source_position?:number[];support_geom?:string;intentional_contacts?:[string,string][]};
+export type DemoTrajectories={schema_version:1;model_hash:string;nq:number;nu:number;actuated_q_indices:number[];commands:Partial<Record<SharedDemoCommand,DemoDefinition>>};
 export type DemoMetrics={command:SharedDemoCommand;name:string;stage:string;stage_index:number;stage_count:number;progress:number;elapsed_s:number;duration_s:number;status:'running'|'complete'|'stopped';complete:boolean;measurements:Record<string,number|string|boolean|number[]|null>;checks:Record<string,boolean>};
 type PhoneObservation={phone_position:Vec3;phone_xy_error_m:number;phone_z_error_m:number;phone_speed_m_s:number;phone_angular_speed_rad_s:number;riser_support_force_n:number;hand_clearance_m:number};
 export type PickupMetrics={stage:string;status:string;success:boolean;ever_succeeded:boolean;released:boolean;initial_phone_height_m:number;phone_height_m:number;height_gain_m:number;bilateral_contact:boolean;finger_contacts:string[];normal_forces_n:Record<string,number>;bilateral_hold_s:number;ik_errors:Record<string,{position_error_m:number;orientation_error_rad:number}>;collision_samples:number;sampled_collision_gate_passed:boolean;attachment_constraints:0};
@@ -23,14 +27,18 @@ export type LiftMetrics={stage:string;complete:boolean;positions_m:Record<'left'
 export type BrowserPhysicsState={
   bodies:Record<string,{position:Vec3;quaternion:Quat}>;
   joints:Record<string,number>;
+  object_joints:Record<string,number>;
+  cameras:Record<string,CameraPose>;
   mode:'idle'|'joint_demo'|'reach_demo'|'pickup_demo'|'release_phone'|'lift_demo'|SharedDemoCommand;paused:boolean;simulation_time:number;
   target:{position:Vec3};end_effectors:Record<string,Vec3>;
-  metrics:{physics_steps:number;finite_dynamics:boolean;contacts:Contact[];stop_reason:string|null;grasp_success:null|boolean;object_attached:false;pickup?:PickupMetrics;lift?:LiftMetrics;demo?:DemoMetrics;reach?:{target:Vec3;ik_residual_m:number;actual_endpoint_error_m:number;endpoint_reached:boolean;sampled_collision_gate_passed:boolean;samples:number}};
+  metrics:{physics_steps:number;finite_dynamics:boolean;contacts:Contact[];stop_reason:string|null;visual_tracking_pause_reason?:string|null;grasp_success:null|boolean;object_attached:false;pickup?:PickupMetrics;lift?:LiftMetrics;demo?:DemoMetrics;reach?:{target:Vec3;ik_residual_m:number;actual_endpoint_error_m:number;endpoint_reached:boolean;sampled_collision_gate_passed:boolean;samples:number}};
   model_hash:string;hardware_model_verified:false;authorizes_hardware:false;source:string;engine:'mujoco-wasm';engine_version:string;
 };
 
 const INITIAL_ARM_Q=[0,-.30,0,-1.50,0,-.15,0];
-const SHARED_DEMOS:SharedDemoCommand[]=['bedside_demo','greeting_demo','phone_return_demo'];
+const ASSISTANCE_DEMOS:SharedDemoCommand[]=['deliver_phone_demo','deliver_meal_demo','blinds_demo'];
+const SHARED_DEMOS:SharedDemoCommand[]=['bedside_demo','greeting_demo','phone_return_demo',...ASSISTANCE_DEMOS];
+const contactKey=(names:string[])=>[...names].sort().join('|');
 const clamp=(value:number,minimum:number,maximum:number)=>Math.max(minimum,Math.min(maximum,value));
 const norm=(values:number[])=>Math.sqrt(values.reduce((sum,value)=>sum+value*value,0));
 const read3=(values:ArrayLike<number>,offset:number):Vec3=>[values[offset],values[offset+1],values[offset+2]];
@@ -62,6 +70,8 @@ export class BrowserPhysics {
   private readonly actuatorIds=new Map<string,number>();
   private readonly siteIds=new Map<string,number>();
   private readonly jointNames:string[]=[];
+  private readonly objectJointNames:string[]=[];
+  private readonly cameraIds=new Map<string,number>();
   private readonly timestep:number;
   private mode:BrowserPhysicsState['mode']='idle';
   private paused=false;
@@ -83,28 +93,32 @@ export class BrowserPhysics {
   private liftDemo:LiftMetrics|null=null;
   private demo:DemoMetrics|null=null;
   private demoDefinition:DemoDefinition|null=null;
+  private intentionalContacts=new Set<string>();
+  private visualTrackingPauseReason:string|null=null;
 
   constructor(private readonly engine:MainModule,xml:string,private readonly descriptors:ReferenceDescriptors,private readonly demoTrajectories?:DemoTrajectories){
     if(descriptors.hardware_model_verified!==false||!Array.isArray(descriptors.body_specs))throw new Error('Expected unverified reference descriptors');
     this.model=engine.MjModel.from_xml_string(xml);
     try{this.data=new engine.MjData(this.model)}catch(error){this.model.delete();throw error}
     const option=this.model.opt;this.timestep=option.timestep;option.delete();
-    if(this.model.nq!==32||this.model.nu!==25){this.data.delete();this.model.delete();throw new Error('Expected 25 robot actuators and one free phone body')}
+    if(this.model.nq<32||this.model.nu!==25){this.data.delete();this.model.delete();throw new Error('Expected 25 robot actuators and the reference object dynamics')}
     this.actuatedQ=Array.from({length:this.model.nu},(_,i)=>this.model.jnt_qposadr[this.model.actuator_trnid[i*2]]);
     this.actuatedDofs=Array.from({length:this.model.nu},(_,i)=>this.model.jnt_dofadr[this.model.actuator_trnid[i*2]]);
+    const actuatedJoints=new Set(Array.from({length:this.model.nu},(_,i)=>this.model.actuator_trnid[i*2]));
     for(let i=0;i<this.model.njnt;i++){
       if(this.model.jnt_type[i]===engine.mjtJoint.mjJNT_FREE.value)continue;
       const name=engine.mj_id2name(this.model,engine.mjtObj.mjOBJ_JOINT.value,i);
-      this.jointNames.push(name);this.jointIds.set(name,i);
+      (actuatedJoints.has(i)?this.jointNames:this.objectJointNames).push(name);this.jointIds.set(name,i);
     }
     for(let i=0;i<this.model.nu;i++)this.actuatorIds.set(engine.mj_id2name(this.model,engine.mjtObj.mjOBJ_ACTUATOR.value,i),i);
     for(const body of descriptors.body_specs){
       const id=engine.mj_name2id(this.model,engine.mjtObj.mjOBJ_BODY.value,body.name);
       if(id<0){this.dispose();throw new Error(`Reference body missing: ${body.name}`)}
-      this.bodyIds.set(body.name,id);if(!body.dynamic_object)this.robotBodies.add(id);
+      this.bodyIds.set(body.name,id);if(body.robot_body??!body.dynamic_object)this.robotBodies.add(id);
       if(body.joint&&body.joint_type!=='free')this.data.qpos[this.qindex(body.joint)]=body.initial_q??0;
     }
     for(const side of ['left','right'])this.siteIds.set(side,engine.mj_name2id(this.model,engine.mjtObj.mjOBJ_SITE.value,`${side}_ee`));
+    for(const name of ['head_rgb','head_stereo_right','left_wrist','right_wrist']){const id=engine.mj_name2id(this.model,engine.mjtObj.mjOBJ_CAMERA.value,name);if(id>=0)this.cameraIds.set(name,id)}
     for(let i=0;i<this.model.nu;i++)this.data.ctrl[i]=this.data.qpos[this.model.jnt_qposadr[this.model.actuator_trnid[i*2]]];
     engine.mj_forward(this.model,this.data);
     this.initialQ=Array.from(this.data.qpos);this.initialCtrl=Array.from(this.data.ctrl);
@@ -115,7 +129,7 @@ export class BrowserPhysics {
   private qindex(name:string){const id=this.jointIds.get(name);if(id===undefined)throw new Error(`Unknown synthetic joint ${name}`);return this.model.jnt_qposadr[id] as number}
   private setTarget(name:string,value:number){const actuator=this.actuatorIds.get(`ctrl_${name}`);if(actuator===undefined)throw new Error(`Unknown actuator ${name}`);this.data.ctrl[actuator]=clamp(value,this.model.actuator_ctrlrange[actuator*2],this.model.actuator_ctrlrange[actuator*2+1])}
   private finite(data=this.data){return Array.from(data.qpos as ArrayLike<number>).every(Number.isFinite)&&Array.from(data.qvel as ArrayLike<number>).every(Number.isFinite)}
-  private contacts(data=this.data,allowPhoneGrasp=this.mode==='pickup_demo'||this.mode==='release_phone'||this.mode==='phone_return_demo'):Contact[]{
+  private contacts(data=this.data,allowPhoneGrasp=this.mode==='pickup_demo'||this.mode==='release_phone'||this.mode==='phone_return_demo',intentionalContacts=this.intentionalContacts):Contact[]{
     if(!data.ncon)return [];
     const found:Contact[]=[];const contacts=data.contact;
     try{
@@ -124,7 +138,12 @@ export class BrowserPhysics {
         try{
           const a=contact.geom1,b=contact.geom2;
           const names:[string,string]=[this.engine.mj_id2name(this.model,this.engine.mjtObj.mjOBJ_GEOM.value,a),this.engine.mj_id2name(this.model,this.engine.mjtObj.mjOBJ_GEOM.value,b)];
+          if(intentionalContacts.has(contactKey(names)))continue;
           if(allowPhoneGrasp&&names.includes('phone_geom')&&names.some(name=>name==='left_finger_-1_geom'||name==='left_finger_1_geom'))continue;
+          if(ASSISTANCE_DEMOS.includes(this.mode as SharedDemoCommand)&&this.demoDefinition?.object_name){
+            const object=this.demoDefinition.object_name,allowedSupports=[this.demoDefinition.support_geom,object==='phone'?'phone_riser':'meal_riser','bedside_tray'];
+            if(names.includes(`${object}_geom`)&&!names.some(name=>allowedSupports.includes(name))&&contact.dist<-.0001){found.push({geoms:names,distance_m:contact.dist,self_collision:false,carried_object_collision:true});continue}
+          }
           const robotA=this.robotBodies.has(this.model.geom_bodyid[a]),robotB=this.robotBodies.has(this.model.geom_bodyid[b]);
           if((robotA||robotB)&&contact.dist<-.0001)found.push({geoms:names,distance_m:contact.dist,self_collision:robotA&&robotB});
         }finally{contact.delete()}
@@ -247,6 +266,14 @@ export class BrowserPhysics {
   private requireFixtureStart(){
     const phone=read3(this.data.xpos,this.bodyIds.get('phone')!*3);
     if(Math.max(...this.actuatedQ.map(q=>Math.abs(this.data.qpos[q]-this.initialQ[q])))>.025||Math.hypot(phone[0]-.63,phone[1]+.72)>.01||Math.abs(phone[2]-.8135)>.015)throw new Error('Reset the scene before starting this fixture demonstration');
+    for(const spec of this.descriptors.body_specs){
+      if(!spec.dynamic_object)continue;
+      const body=this.bodyIds.get(spec.name)!,joint=this.model.body_jntadr[body];
+      if(joint<0||this.model.jnt_type[joint]!==this.engine.mjtJoint.mjJNT_FREE.value)continue;
+      const q=this.model.jnt_qposadr[joint],position=read3(this.data.xpos,body*3);
+      if(Math.hypot(...position.map((value,i)=>value-this.initialQ[q+i]))>.015)throw new Error('Reset the scene before starting this fixture demonstration');
+    }
+    if(this.objectJointNames.some(name=>Math.abs(this.data.qpos[this.qindex(name)]-this.initialQ[this.qindex(name)])>.01))throw new Error('Reset the scene before starting this fixture demonstration');
   }
 
   private sharedDefinition(command:SharedDemoCommand):DemoDefinition{
@@ -254,28 +281,50 @@ export class BrowserPhysics {
     if(!library||library.schema_version!==1||library.model_hash!==this.descriptors.model_hash||library.nq!==this.model.nq||library.nu!==this.model.nu||!Array.isArray(library.actuated_q_indices)||library.actuated_q_indices.length!==this.actuatedQ.length||!library.actuated_q_indices.every((value,i)=>value===this.actuatedQ[i]))throw new Error('Demo trajectories do not match this reference physics model');
     const definition=library.commands?.[command];
     if(!definition||typeof definition.name!=='string'||!definition.name||!Array.isArray(definition.stages)||!definition.stages.length||definition.stages.length>100||!definition.outcomes)throw new Error('Invalid reference demo definition');
+    if(command==='deliver_phone_demo'||command==='deliver_meal_demo'){
+      const object=command==='deliver_phone_demo'?'phone':'meal_box';
+      if(definition.object_name!==object||!Array.isArray(definition.source_position)||definition.source_position.length!==3||!definition.source_position.every(Number.isFinite)||definition.support_geom!==(object==='phone'?'phone_delivery_riser':'meal_delivery_riser'))throw new Error('Invalid assistance object or support definition');
+    }
     for(const stage of definition.stages){
-      if(typeof stage.name!=='string'||!stage.name||!Number.isFinite(stage.duration_s)||stage.duration_s<=0||stage.duration_s>60||!Array.isArray(stage.target_qpos)||stage.target_qpos.length!==this.model.nq||!stage.target_qpos.every(Number.isFinite)||(stage.gate_after!==undefined&&!['bilateral_contact','grasp_confirmed','phone_supported','phone_settled'].includes(stage.gate_after)))throw new Error('Invalid bounded reference demo stage');
+      if(typeof stage.name!=='string'||!stage.name||!Number.isFinite(stage.duration_s)||stage.duration_s<=0||stage.duration_s>60||!Array.isArray(stage.target_qpos)||stage.target_qpos.length!==this.model.nq||!stage.target_qpos.every(Number.isFinite)||(stage.gate_after!==undefined&&!['bilateral_contact','grasp_confirmed','phone_supported','phone_settled','assist_bilateral','assist_grasped','assist_supported','assist_released','blinds_open'].includes(stage.gate_after)))throw new Error('Invalid bounded reference demo stage');
       for(let actuator=0;actuator<this.model.nu;actuator++){
         const value=stage.target_qpos[this.actuatedQ[actuator]],minimum=this.model.actuator_ctrlrange[actuator*2],maximum=this.model.actuator_ctrlrange[actuator*2+1];
         if(minimum<maximum&&(value<minimum||value>maximum))throw new Error('Reference demo target exceeds actuator limits');
       }
     }
+    if(Object.values(definition.ik_errors??{}).some(error=>!Number.isFinite(error.position_error_m)||!Number.isFinite(error.orientation_error_rad)||error.position_error_m>.003||error.orientation_error_rad>.01))throw new Error('Demo rejected by pose IK gate');
     return structuredClone(definition);
   }
 
-  private startStages(stages:Stage[],allowPhoneGrasp=false):number{
+  private permittedContacts(command:SharedDemoCommand,definition:DemoDefinition):Set<string>{
+    const permitted=new Set<string>();
+    const object=command==='deliver_phone_demo'?'phone_geom':command==='deliver_meal_demo'?'meal_box_geom':command==='blinds_demo'?'blinds_handle_geom':null;
+    const robotGeoms=['left_finger_-1_geom','left_finger_1_geom',...(command==='blinds_demo'?['left_hand_geom']:[])];
+    for(const pair of definition.intentional_contacts??[]){
+      if(!Array.isArray(pair)||pair.length!==2||!object||!robotGeoms.some(robot=>contactKey(pair)===contactKey([object,robot])))throw new Error('Invalid intentional contact pair in assistance definition');
+      permitted.add(contactKey(pair));
+    }
+    if(permitted.size!==(object?robotGeoms.length:0))throw new Error('Invalid intentional contact allowance');
+    return permitted;
+  }
+
+  private startStages(stages:Stage[],loadedContactStages=false,intentionalContacts=this.intentionalContacts,allowPhoneGrasp=loadedContactStages):number{
     const sampled=new this.engine.MjData(this.model);let previous=Array.from(this.data.qpos as Float64Array),checked=0;
     try{
       for(const stage of stages){
         // Loaded finger targets compress against the phone; they are not a
         // prediction of the contact-constrained pose. Preflight free-space only.
-        if(allowPhoneGrasp&&['close','lift','hold'].includes(stage.name))break;
+        if(loadedContactStages&&['close','lift','hold','press_blinds_control'].includes(stage.name))break;
         for(let sample=0;sample<60;sample++){
           const ratio=sample/59;sampled.qpos.set(this.data.qpos);
           for(const q of this.actuatedQ)sampled.qpos[q]=(1-ratio)*previous[q]+ratio*stage.target_qpos[q];
+          if([...intentionalContacts].some(pair=>pair.includes('phone_geom')||pair.includes('meal_box_geom'))){
+            // Loaded servo targets press through the object. Only the sampled
+            // route uses open pads; actual contact dynamics remain authoritative.
+            for(const finger of [-1,1]){const q=this.qindex(`left_gripper_${finger}`);sampled.qpos[q]=finger*Math.max(.10,finger*sampled.qpos[q])}
+          }
           this.engine.mj_forward(this.model,sampled);checked++;
-          const collisions=this.contacts(sampled,allowPhoneGrasp);
+          const collisions=this.contacts(sampled,allowPhoneGrasp,intentionalContacts);
           if(collisions.length)throw new Error(`Fixture path rejected during ${stage.name}: ${JSON.stringify(collisions)}`);
         }
         previous=stage.target_qpos;
@@ -313,6 +362,8 @@ export class BrowserPhysics {
         if(!passed){this.stop(`Demo stopped: ${stage.gate_after} gate failed after ${stage.name}`);return}
         if(stage.gate_after==='grasp_confirmed'&&this.pickup){this.demo.measurements.confirmed_grasp_height_m=this.pickup.height_gain_m;this.demo.measurements.confirmed_grasp_hold_s=this.pickup.bilateral_hold_s}
         if(stage.gate_after==='phone_supported'){const observation=this.phoneObservation();this.demo.measurements.supported_release_height_m=observation.phone_position[2];this.demo.measurements.supported_release_force_n=observation.riser_support_force_n;this.demo.measurements.supported_release_bilateral=this.fingerContacts().touching.length===2}
+        if(stage.gate_after==='assist_grasped'){this.demo.measurements.confirmed_grasp_height_m=this.demo.measurements.object_height_gain_m;this.demo.measurements.confirmed_grasp_hold_s=this.demo.measurements.grasp_hold_s}
+        if(stage.gate_after==='assist_supported'){this.demo.measurements.supported_release_force_n=this.demo.measurements.support_force_n;this.demo.measurements.supported_release_position=structuredClone(this.demo.measurements.object_position);this.demo.measurements.supported_release_bilateral=this.demo.measurements.bilateral_contact}
       }
       if(stage.name==='close'&&this.fingerContacts().touching.length!==2){this.stop('Pickup stopped: bilateral finger contact not established');return}
       this.stageIndex++;this.stageStarted=this.data.time;
@@ -345,6 +396,47 @@ export class BrowserPhysics {
     }
   }
 
+  private assistanceForces(object:string):{forces:Record<string,number>;support:number}{
+    const forces:Record<string,number>={'left_finger_-1':0,'left_finger_1':0};if(object==='blinds_handle')forces.left_hand=0;
+    let support=0;if(!this.data.ncon)return{forces,support};
+    const contacts=this.data.contact,wrench=new this.engine.DoubleBuffer(6);
+    try{
+      for(let i=0;i<this.data.ncon;i++){
+        const contact=contacts.get(i);if(!contact)continue;
+        try{
+          const names=[this.engine.mj_id2name(this.model,this.engine.mjtObj.mjOBJ_GEOM.value,contact.geom1),this.engine.mj_id2name(this.model,this.engine.mjtObj.mjOBJ_GEOM.value,contact.geom2)];
+          if(!names.includes(`${object}_geom`))continue;
+          this.engine.mj_contactForce(this.model,this.data,i,wrench);const force=Math.max(0,(wrench.GetView() as Float64Array)[0]);
+          for(const finger of Object.keys(forces))if(names.includes(`${finger}_geom`))forces[finger]+=force;
+          if(this.demoDefinition?.support_geom&&names.includes(this.demoDefinition.support_geom))support+=force;
+        }finally{contact.delete()}
+      }
+      return{forces,support};
+    }finally{wrench.delete();contacts.delete()}
+  }
+
+  private observeAssistance():Record<string,boolean>{
+    const definition=this.demoDefinition!,demo=this.demo!,measured=demo.measurements,thresholds=definition.outcomes;
+    const previous=(key:string,fallback=0):number=>typeof measured[key]==='number'?measured[key] as number:fallback;
+    if(this.mode==='blinds_demo'){
+      const travel=this.data.qpos[this.qindex('blinds_slide')],angles=Array.from({length:16},(_,i)=>this.data.qpos[this.qindex(`blinds_tilt_${String(i).padStart(2,'0')}`)]);
+      const {forces}=this.assistanceForces('blinds_handle'),force=Object.values(forces).reduce((sum,value)=>sum+value,0);
+      Object.assign(measured,{handle_travel_m:travel,minimum_slat_angle_rad:Math.min(...angles),maximum_slat_angle_rad:Math.max(...angles),control_contact_force_n:force,maximum_control_contact_force_n:Math.max(previous('maximum_control_contact_force_n'),force)});
+      return{handle_moved:travel>=(thresholds.minimum_handle_travel_m as number),slats_open:Math.min(...angles)>=(thresholds.minimum_slat_angle_rad as number),physical_control_contact:previous('maximum_control_contact_force_n')>=(thresholds.minimum_control_contact_force_n as number)};
+    }
+    const body=definition.object_name!,position=read3(this.data.xpos,this.bodyIds.get(body)!*3),joint=this.engine.mj_name2id(this.model,this.engine.mjtObj.mjOBJ_JOINT.value,`${body}_free`),address=this.model.jnt_dofadr[joint];
+    const {forces,support}=this.assistanceForces(body),bilateral=Object.values(forces).every(force=>force>.01),fingersClear=!Object.values(forces).some(force=>force>.01);
+    const target=thresholds.object_target as number[],height=position[2]-definition.source_position![2],hand=this.engine.mj_name2id(this.model,this.engine.mjtObj.mjOBJ_SITE.value,'left_grasp_center');
+    const handReference=thresholds.patient_hand_reference as number[];
+    Object.assign(measured,{object_name:body,object_position:position,object_height_gain_m:height,object_xy_error_m:Math.hypot(position[0]-target[0],position[1]-target[1]),object_z_error_m:Math.abs(position[2]-target[2]),object_speed_m_s:norm(read3(this.data.qvel,address)),object_angular_speed_rad_s:norm(read3(this.data.qvel,address+3)),support_force_n:support,bilateral_contact:bilateral,fingers_clear:fingersClear,hand_clearance_m:norm(read3(this.data.site_xpos,hand*3).map((value,i)=>value-position[i])),patient_hand_distance_m:norm(position.map((value,i)=>value-handReference[i]))});
+    measured.grasp_hold_s=bilateral&&height>=(thresholds.minimum_grasp_height_m as number)?previous('grasp_hold_s')+this.timestep:0;
+    measured.ever_grasped=!!measured.ever_grasped||measured.grasp_hold_s>=(thresholds.minimum_bilateral_hold_s as number);
+    const supported=previous('object_xy_error_m')<=(thresholds.object_xy_tolerance_m as number)&&previous('object_z_error_m')<=(thresholds.object_z_tolerance_m as number)&&previous('object_speed_m_s')<=(thresholds.object_speed_tolerance_m_s as number)&&previous('object_angular_speed_rad_s')<=(thresholds.object_angular_speed_tolerance_rad_s as number)&&support>(thresholds.support_force_minimum_n as number);
+    measured.supported_on_tray=supported;
+    if(['raise_object','confirm_grasp','clear_work_table','navigate_bedside','tray_hover','lower_to_tray'].includes(demo.stage)&&height>.02&&!bilateral)this.stop('Assistance stopped: bilateral object contact lost during transport');
+    return{verified_grasp:!!measured.ever_grasped,placed_on_tray:supported,fingers_clear:fingersClear,hand_retracted:previous('hand_clearance_m')>=(thresholds.hand_clearance_m as number),within_modeled_patient_reach:previous('patient_hand_distance_m')<=(thresholds.maximum_patient_reach_m as number)};
+  }
+
   private phoneObservation():PhoneObservation{
     const phone=read3(this.data.xpos,this.bodyIds.get('phone')!*3);
     const joint=this.engine.mj_name2id(this.model,this.engine.mjtObj.mjOBJ_JOINT.value,'phone_free'),address=this.model.jnt_dofadr[joint];
@@ -372,6 +464,15 @@ export class BrowserPhysics {
   }
 
   private demoGate(gate:StageGate):boolean{
+    if(ASSISTANCE_DEMOS.includes(this.mode as SharedDemoCommand)){
+      const measured=this.demo!.measurements;
+      if(gate==='assist_bilateral')return !!measured.bilateral_contact;
+      if(gate==='assist_grasped')return !!(measured.ever_grasped&&measured.bilateral_contact);
+      if(gate==='assist_supported')return !!(measured.supported_on_tray&&measured.bilateral_contact);
+      if(gate==='assist_released')return !!(measured.supported_on_tray&&measured.fingers_clear);
+      if(gate==='blinds_open')return ['handle_moved','slats_open','physical_control_contact'].every(key=>this.demo!.checks[key]);
+      throw new Error('Unknown assistance contact gate');
+    }
     const {touching}=this.fingerContacts();
     if(gate==='bilateral_contact')return touching.length===2;
     if(gate==='grasp_confirmed')return !!(this.pickup?.success&&this.pickup.ever_succeeded);
@@ -388,7 +489,8 @@ export class BrowserPhysics {
     measured.rest_qpos_error=Math.max(...this.actuatedQ.map(q=>Math.abs(this.data.qpos[q]-this.initialQ[q])));
     measured.robot_speed=Math.max(...this.actuatedDofs.map(dof=>Math.abs(this.data.qvel[dof])));
     const checks:Record<string,boolean>={returned_to_rest:measured.rest_qpos_error<=(thresholds.rest_qpos_tolerance as number),robot_settled:measured.robot_speed<=(thresholds.robot_speed_tolerance as number)};
-    if(this.mode==='bedside_demo'){
+    if(ASSISTANCE_DEMOS.includes(this.mode as SharedDemoCommand))Object.assign(checks,this.observeAssistance());
+    else if(this.mode==='bedside_demo'){
       const base=['base_x','base_y','base_yaw'].map(name=>this.data.qpos[this.qindex(name)]),target=thresholds.base_goal_qpos as number[];
       Object.assign(measured,{base_position_qpos:base,base_goal_error_m:Math.hypot(base[0]-target[0],base[1]-target[1]),base_yaw_error_rad:Math.abs(base[2]-target[2]),base_home_error_m:Math.hypot(base[0],base[1])});
       measured.max_base_excursion_m=Math.max(previousNumber('max_base_excursion_m'),previousNumber('base_home_error_m'));
@@ -416,14 +518,16 @@ export class BrowserPhysics {
   command(action:PhysicsCommand|string):BrowserPhysicsState{
     this.assertOpen();
     if(this.stopReason&&action!=='reset')throw new Error('Reset the scene before continuing after a simulation stop');
-    if(SHARED_DEMOS.includes(this.mode as SharedDemoCommand)&&action!=='reset'&&action!=='pause')throw new Error('Reset the scene before starting another demonstration');
+    if(SHARED_DEMOS.includes(this.mode as SharedDemoCommand)&&!['reset','pause','pause_for_tracking'].includes(action))throw new Error('Reset the scene before starting another demonstration');
     if(['joint_demo','reach_demo','lift_demo','pickup_demo',...SHARED_DEMOS].includes(action)&&['pickup_demo','release_phone'].includes(this.mode))throw new Error('Release the phone and reset the scene before another demonstration');
     if(action==='reset'){
       this.engine.mj_resetData(this.model,this.data);this.data.qpos.set(this.initialQ);this.data.ctrl.set(this.initialCtrl);this.engine.mj_forward(this.model,this.data);
       this.mode='idle';this.paused=false;this.reachPlan=null;this.stopReason=null;this.lastContacts=[];this.stepCount=0;this.accumulator=0;
       this.stages=[];this.pickup=null;this.liftDemo=null;this.stageIndex=0;this.stageStarted=0;
       this.demo=null;this.demoDefinition=null;
-    }else if(action==='pause'){this.paused=!this.paused}
+      this.intentionalContacts.clear();this.visualTrackingPauseReason=null;
+    }else if(action==='pause'){this.paused=!this.paused;this.visualTrackingPauseReason=null}
+    else if(action==='pause_for_tracking'){this.paused=true;this.visualTrackingPauseReason='Visual tracking lost'}
     else if(action==='joint_demo'){this.mode='joint_demo';this.paused=false;this.modeStarted=this.data.time;this.stopReason=null;this.reachPlan=null;this.stages=[];this.liftDemo=null}
     else if(action==='pickup_demo'||action==='lift_demo'){
       this.requireFixtureStart();
@@ -455,7 +559,9 @@ export class BrowserPhysics {
       else{this.reachPlan={...plan,start_qpos:Array.from(this.data.qpos),duration_s:4};this.data.mocap_pos.set(plan.target);this.mode='reach_demo';this.paused=false;this.modeStarted=this.data.time;this.stopReason=null}
     }else if(SHARED_DEMOS.includes(action as SharedDemoCommand)){
       this.requireFixtureStart();const command=action as SharedDemoCommand,definition=this.sharedDefinition(command);
-      const checked=this.startStages(definition.stages,command==='phone_return_demo');
+      const allowed=this.permittedContacts(command,definition);
+      const checked=this.startStages(definition.stages,command==='phone_return_demo'||ASSISTANCE_DEMOS.includes(command),allowed,command==='phone_return_demo');
+      this.intentionalContacts=allowed;
       this.demoDefinition=definition;
       this.demo={command,name:definition.name,stage:definition.stages[0].name,stage_index:0,stage_count:definition.stages.length,progress:0,elapsed_s:0,duration_s:definition.stages.reduce((sum,stage)=>sum+stage.duration_s,0),status:'running',complete:false,measurements:{collision_samples:checked,settle_dwell_s:0},checks:{}};
       this.pickup=null;this.liftDemo=null;this.reachPlan=null;
@@ -464,7 +570,7 @@ export class BrowserPhysics {
         this.pickup={stage:definition.stages[0].name,status:'running',success:false,ever_succeeded:false,released:false,initial_phone_height_m:height,phone_height_m:height,height_gain_m:0,bilateral_contact:false,finger_contacts:[],normal_forces_n:{},bilateral_hold_s:0,ik_errors:definition.ik_errors??{},collision_samples:checked,sampled_collision_gate_passed:true,attachment_constraints:0};
       }
       this.mode=command;this.paused=false;this.modeStarted=this.data.time;this.stopReason=null;
-    }else throw new Error('Allowed commands: joint_demo, reach_demo, pickup_demo, release_phone, lift_demo, bedside_demo, greeting_demo, phone_return_demo, pause, reset');
+    }else throw new Error('Allowed commands: joint_demo, reach_demo, pickup_demo, release_phone, lift_demo, bedside_demo, greeting_demo, phone_return_demo, deliver_phone_demo, deliver_meal_demo, blinds_demo, pause, pause_for_tracking, reset');
     this.lastClock=performance.now();return this.snapshot();
   }
 
@@ -497,13 +603,16 @@ export class BrowserPhysics {
     const bodies:BrowserPhysicsState['bodies']={};
     for(const [name,id]of this.bodyIds){const q=this.data.xquat;bodies[name]={position:read3(this.data.xpos,id*3),quaternion:[q[id*4],q[id*4+1],q[id*4+2],q[id*4+3]]}}
     const joints:Record<string,number>={};for(const name of this.jointNames)joints[name]=this.data.qpos[this.qindex(name)];
+    const objectJoints:Record<string,number>={};for(const name of this.objectJointNames)objectJoints[name]=this.data.qpos[this.qindex(name)];
+    const cameras:Record<string,CameraPose>={};for(const [name,id]of this.cameraIds)cameras[name]={position:read3(this.data.cam_xpos,id*3),rotation:Array.from({length:9},(_,i)=>this.data.cam_xmat[id*9+i]),fovy_deg:this.model.cam_fovy[id],fovy:this.model.cam_fovy[id],convention:'mujoco_opengl'};
     const endEffectors:Record<string,Vec3>={};for(const [side,id]of this.siteIds)endEffectors[side]=read3(this.data.site_xpos,id*3);
     const metrics:BrowserPhysicsState['metrics']={physics_steps:this.stepCount,finite_dynamics:this.finite(),contacts:this.lastContacts,stop_reason:this.stopReason,grasp_success:null,object_attached:false};
+    metrics.visual_tracking_pause_reason=this.visualTrackingPauseReason;
     if(this.pickup){metrics.pickup=structuredClone(this.pickup);metrics.grasp_success=this.pickup.success}
     if(this.liftDemo)metrics.lift=structuredClone(this.liftDemo);
     if(this.demo)metrics.demo=structuredClone(this.demo);
     if(this.reachPlan){const distance=norm(endEffectors[this.reachPlan.side].map((value,i)=>value-this.reachPlan!.target[i]));metrics.reach={target:this.reachPlan.target,ik_residual_m:this.reachPlan.residual_m,actual_endpoint_error_m:distance,endpoint_reached:distance<.02,sampled_collision_gate_passed:this.reachPlan.collision_free_samples,samples:this.reachPlan.sample_count}}
-    return{bodies,joints,mode:this.mode,paused:this.paused,simulation_time:this.data.time,target:{position:read3(this.data.mocap_pos,0)},end_effectors:endEffectors,metrics,model_hash:this.descriptors.model_hash,hardware_model_verified:false,authorizes_hardware:false,source:'Actual MuJoCo WebAssembly dynamics on reference-informed unverified surrogate',engine:'mujoco-wasm',engine_version:this.engine.mj_versionString()};
+    return{bodies,joints,object_joints:objectJoints,cameras,mode:this.mode,paused:this.paused,simulation_time:this.data.time,target:{position:read3(this.data.mocap_pos,0)},end_effectors:endEffectors,metrics,model_hash:this.descriptors.model_hash,hardware_model_verified:false,authorizes_hardware:false,source:'Actual MuJoCo WebAssembly dynamics on reference-informed unverified surrogate',engine:'mujoco-wasm',engine_version:this.engine.mj_versionString()};
   }
   dispose(){if(this.disposed)return;this.disposed=true;this.data.delete();this.model.delete()}
 }

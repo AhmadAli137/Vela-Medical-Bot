@@ -2,7 +2,7 @@
 
 Blender, pre-merge scene:
   blender --background scene.blend --python scripts/audit_room_visuals.py -- --scene
-Blender, build only room() without exports or rendering:
+Blender, build room() and available assistance furniture without exports:
   blender --background --factory-startup --python scripts/audit_room_visuals.py -- --builder scripts/build_reference_visuals.py
 Bounds-only inspection, also runnable with ordinary Python:
   python scripts/audit_room_visuals.py --manifest assets/simulation/room-geometry-manifest.json
@@ -25,7 +25,11 @@ from pathlib import Path
 import re
 import sys
 
-ASSEMBLIES = {"hospital_bed", "visitor_chair", "wardrobe", "bedside_storage", "bedside_table", "visitor_table", "room_plant"}
+REQUIRED_ASSEMBLIES = {"hospital_bed", "visitor_chair", "wardrobe", "bedside_storage", "bedside_table", "visitor_table", "room_plant"}
+# Older room-only scenes predate this optional extension. Once any tray part
+# is present, its complete design and every connection to floor are checked.
+OPTIONAL_ASSEMBLIES = {"patient_tray"}
+ASSEMBLIES = REQUIRED_ASSEMBLIES | OPTIONAL_ASSEMBLIES
 PATIENT_SUPPORTS = {"patient_anatomical_skin", "patient_hospital_gown", "patient_contoured_blanket", "patient_blanket_turned_hem"}
 # Semantic completeness of this furniture design, not authored coordinates.
 REQUIRED_PARTS = {
@@ -40,6 +44,11 @@ REQUIRED_PARTS = {
     "visitor_table": {"Round visitor table top": 1, "Visitor table stem": 1, "Visitor table foot": 1,
                       "Water cup base": 1, "Open cup wall": 1, "Rolled cup rim": 1},
     "room_plant": {"Plant pot base": 1, "Plant pot open wall": 1, "Plant pot rounded rim": 1, "Plant soil": 1},
+    "patient_tray": {"Patient tray tabletop": 1, "Patient tray underside frame": 1,
+                     "Tray support outer column": 1, "Tray telescoping support": 1,
+                     "Tray adjustment latch": 1, "Tray floor spine": 1,
+                     "Tray floor outrigger": 2, "Tray caster tire": 4,
+                     "Tray caster stem": 4, "Tray object landing pad": 2},
 }
 
 
@@ -53,6 +62,8 @@ def is_soft_layer(part):
 
 
 def infer_assembly(name):
+    if name.startswith(("Patient tray", "Tray ")):
+        return "patient_tray"
     if name.startswith(("Bedside storage", "Drawer")):
         return "bedside_storage"
     if name.startswith(("Bedside tabletop", "Table ", "Raised phone", "Soft glasses")):
@@ -282,7 +293,7 @@ def audit_parts(parts, tolerance=.0015):
             issues.append({"kind": "invalid_bounds", "name": part.name})
         if part.assembly in ASSEMBLIES:
             grouped[part.assembly].append(part)
-    for missing in sorted(ASSEMBLIES - set(grouped)):
+    for missing in sorted(REQUIRED_ASSEMBLIES - set(grouped)):
         issues.append({"kind": "missing_assembly", "assembly": missing})
     for assembly, members in sorted(grouped.items()):
         counts = defaultdict(int)
@@ -364,6 +375,7 @@ def audit_parts(parts, tolerance=.0015):
     return {"checked_at": datetime.now(timezone.utc).isoformat(), "passed": not issues,
             "method": "evaluated_mesh_bvh" if exact else "bounds_only",
             "surface_contacts_verified": exact, "tolerance_m": tolerance,
+            "optional_assemblies_present": sorted(OPTIONAL_ASSEMBLIES & set(grouped)),
             "soft_layer_contact_tolerance_m": max(tolerance, .006),
             "part_count": len(parts) - 1, "assemblies": assemblies, "bedding": bedding, "issues": issues,
             "limitations": ["Connectivity does not prove load capacity or furniture safety",
@@ -386,7 +398,12 @@ def write_report(report, output):
 
 
 def _build_room_only(path):
-    """Execute this trusted repository builder only up to its first room() call."""
+    """Build furniture without executing post-room exports/rendering.
+
+    The legacy room() boundary remains the execution cutoff. The known optional
+    assistance_room(descriptors) function is called explicitly only when the
+    repository descriptor contains its meal/assistance fixture.
+    """
     path = Path(path).resolve()
     tree = ast.parse(path.read_text(encoding="utf-8-sig"), filename=str(path))
     cutoff = next((i for i, statement in enumerate(tree.body)
@@ -397,6 +414,12 @@ def _build_room_only(path):
     namespace = {"__file__": str(path), "__name__": "room_visual_audit_builder"}
     exec(compile(ast.Module(body=tree.body[:cutoff], type_ignores=[]), str(path), "exec"), namespace)
     namespace["room"]()
+    assistance = namespace.get("assistance_room")
+    descriptor_path = Path(namespace.get("ROOT", path.parent.parent)) / "sim" / "reference_body_descriptors.json"
+    if callable(assistance) and descriptor_path.exists():
+        descriptors = json.loads(descriptor_path.read_text(encoding="utf-8-sig"))
+        if any(spec.get("name") == "meal_box" for spec in descriptors.get("body_specs", [])):
+            assistance(descriptors)
     return namespace["room_objects"]
 
 

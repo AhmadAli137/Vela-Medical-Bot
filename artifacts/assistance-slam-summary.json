@@ -1,0 +1,363 @@
+{
+  "source": "artifacts/assistance-check.json",
+  "source_sha256": "647b6baf5a64c304c6600d475f38c7e6f46f4ac22662f200181d6cb464557b69",
+  "source_passed": true,
+  "source_started": "2026-09-13T15:18:53.711Z",
+  "source_finished": "2026-09-13T15:22:19.620Z",
+  "method": {
+    "partition": "One pre-demo sample excluded; subsequent samples align with each demo trace in order; frame counter reset verified.",
+    "availability": "Fraction of sampled post-origin observations with a current verified tracking/relocalized pose; not every sensor frame is logged.",
+    "error": "Euclidean translation difference from isolated evaluation ground truth, recomputed from pose; first reset-origin sample excluded.",
+    "p95": "Nearest rank: sorted values[ceil(0.95*n)-1].",
+    "loss_timing": "Consecutive sampled lost statuses bracketed by adjacent observations; simulation elapsed time, not exact frame-level onset/recovery.",
+    "orientation": "No ground-truth orientation is present in this trace; orientation accuracy is not evaluated."
+  },
+  "runs": [
+    {
+      "command": "bedside_demo",
+      "source_vision_start_index": 1,
+      "sample_count": 20,
+      "origin_samples_excluded": 1,
+      "sensor_frame_counter_final": 78,
+      "sampled_status_counts": {
+        "tracking": 20
+      },
+      "verified_temporal_samples": 19,
+      "post_origin_samples": 19,
+      "sampled_temporal_availability": 1.0,
+      "translation_error_m": {
+        "count": 19,
+        "median": 0.019946006574790162,
+        "p95": 0.04910984902506978,
+        "maximum": 0.04910984902506978
+      },
+      "camera_translating_error_m": {
+        "count": 12,
+        "median": 0.02292488153479922,
+        "p95": 0.04910984902506978,
+        "maximum": 0.04910984902506978
+      },
+      "camera_translating_definition": "Consecutive ground-truth translation / demo elapsed interval exceeds 0.01 m/s; evaluation subset only.",
+      "maximum_ground_truth_displacement_m": 0.7997589381124864,
+      "maximum_map_size": 512,
+      "relocalizations": 0,
+      "sampled_lost_intervals": [],
+      "recovery_between_polls_without_sampled_loss": [],
+      "processing_ms": {
+        "count": 20,
+        "median": 14.45000000006985,
+        "p95": 15.300000000046566,
+        "maximum": 15.400000000139698
+      },
+      "worst_valid_pose_sample": {
+        "index": 6,
+        "elapsed_s": 4.727999999999701,
+        "metrics": {
+          "status": "tracking",
+          "confidence": 0.280326619569816,
+          "pose": {
+            "position": [
+              -0.19468843335917754,
+              -0.03479354229635879,
+              0.5322873077098569
+            ],
+            "orientation": [
+              -0.006240732112276159,
+              -0.09406485891702109,
+              -0.00038480284144118366,
+              0.9955464366398974
+            ],
+            "timestampMs": 4871.999999999685
+          },
+          "mapSize": 218,
+          "detected": 79,
+          "stereoMatches": 72,
+          "mapMatches": 37,
+          "inliers": 25,
+          "reprojectionErrorPx": 1.3447462594347024,
+          "processingMs": 14.300000000046566,
+          "keyframes": 5,
+          "relocalizations": 0
+        },
+        "evaluation": {
+          "groundTruthPosition": [
+            -0.22382514314123653,
+            0,
+            0.5510553344791448
+          ],
+          "positionErrorM": 0.04910984902506978
+        },
+        "frames": 25
+      }
+    },
+    {
+      "command": "deliver_phone_demo",
+      "source_vision_start_index": 21,
+      "sample_count": 71,
+      "origin_samples_excluded": 1,
+      "sensor_frame_counter_final": 300,
+      "sampled_status_counts": {
+        "tracking": 69,
+        "lost": 2
+      },
+      "verified_temporal_samples": 68,
+      "post_origin_samples": 70,
+      "sampled_temporal_availability": 0.9714285714285714,
+      "translation_error_m": {
+        "count": 68,
+        "median": 0.31260967466022793,
+        "p95": 0.49122884123963934,
+        "maximum": 0.49567020269713885
+      },
+      "camera_translating_error_m": {
+        "count": 32,
+        "median": 0.32867535251663654,
+        "p95": 0.47437758086139975,
+        "maximum": 0.47787782910290183
+      },
+      "camera_translating_definition": "Consecutive ground-truth translation / demo elapsed interval exceeds 0.01 m/s; evaluation subset only.",
+      "maximum_ground_truth_displacement_m": 2.4262879745711916,
+      "maximum_map_size": 700,
+      "relocalizations": 1,
+      "sampled_lost_intervals": [
+        {
+          "first_sample_index": 61,
+          "last_sample_index": 62,
+          "sample_count": 2,
+          "first_observed_lost_s": 51.640000000017146,
+          "last_observed_lost_s": 52.41200000001809,
+          "observed_lost_span_s": 0.7720000000009435,
+          "previous_observation_s": 50.830000000016156,
+          "next_observation_s": 53.448000000019356,
+          "relocalizations_during_lost_samples": 0
+        }
+      ],
+      "recovery_between_polls_without_sampled_loss": [],
+      "processing_ms": {
+        "count": 71,
+        "median": 15.799999999813735,
+        "p95": 23.800000000046566,
+        "maximum": 28.300000000046566
+      },
+      "worst_valid_pose_sample": {
+        "index": 39,
+        "elapsed_s": 33.1919999999946,
+        "metrics": {
+          "status": "tracking",
+          "confidence": 0.18877004046353524,
+          "pose": {
+            "position": [
+              -1.858579979383779,
+              -0.19232449390272324,
+              0.6966350757640012
+            ],
+            "orientation": [
+              -0.004678117878079929,
+              -0.035320764306720806,
+              0.035174355957918894,
+              0.998745875338093
+            ],
+            "timestampMs": 33191.9999999946
+          },
+          "mapSize": 700,
+          "detected": 62,
+          "stereoMatches": 58,
+          "mapMatches": 20,
+          "inliers": 15,
+          "reprojectionErrorPx": 1.315270535629721,
+          "processingMs": 15.799999999813735,
+          "keyframes": 24,
+          "relocalizations": 0
+        },
+        "evaluation": {
+          "groundTruthPosition": [
+            -2.200115514509677,
+            0,
+            1.0000386306758555
+          ],
+          "positionErrorM": 0.49567020269713885
+        },
+        "frames": 172
+      }
+    },
+    {
+      "command": "deliver_meal_demo",
+      "source_vision_start_index": 92,
+      "sample_count": 83,
+      "origin_samples_excluded": 1,
+      "sensor_frame_counter_final": 334,
+      "sampled_status_counts": {
+        "tracking": 83
+      },
+      "verified_temporal_samples": 82,
+      "post_origin_samples": 82,
+      "sampled_temporal_availability": 1.0,
+      "translation_error_m": {
+        "count": 82,
+        "median": 0.09709650766054809,
+        "p95": 0.14133902708462415,
+        "maximum": 0.1624965866047012
+      },
+      "camera_translating_error_m": {
+        "count": 36,
+        "median": 0.10134214671400656,
+        "p95": 0.1583620094624138,
+        "maximum": 0.1624965866047012
+      },
+      "camera_translating_definition": "Consecutive ground-truth translation / demo elapsed interval exceeds 0.01 m/s; evaluation subset only.",
+      "maximum_ground_truth_displacement_m": 2.19289282704416,
+      "maximum_map_size": 700,
+      "relocalizations": 1,
+      "sampled_lost_intervals": [],
+      "recovery_between_polls_without_sampled_loss": [
+        {
+          "between_samples": [
+            37,
+            38
+          ],
+          "between_elapsed_s": [
+            27.015999999995906,
+            27.807999999995467
+          ],
+          "recovery_count": 1
+        }
+      ],
+      "processing_ms": {
+        "count": 83,
+        "median": 13.800000000046566,
+        "p95": 18.699999999953434,
+        "maximum": 22.700000000186265
+      },
+      "worst_valid_pose_sample": {
+        "index": 31,
+        "elapsed_s": 22.329999999998503,
+        "metrics": {
+          "status": "tracking",
+          "confidence": 0.2115476659455866,
+          "pose": {
+            "position": [
+              -0.6400450140910194,
+              -0.10696104558746787,
+              0.7382558405977199
+            ],
+            "orientation": [
+              -0.01570042281297611,
+              -0.015132976825000925,
+              0.0024696817881348404,
+              0.999759166203428
+            ],
+            "timestampMs": 22463.99999999843
+          },
+          "mapSize": 298,
+          "detected": 43,
+          "stereoMatches": 40,
+          "mapMatches": 22,
+          "inliers": 16,
+          "reprojectionErrorPx": 1.0912195932481843,
+          "processingMs": 13.199999999953434,
+          "keyframes": 11,
+          "relocalizations": 0
+        },
+        "evaluation": {
+          "groundTruthPosition": [
+            -0.7550321806073206,
+            0,
+            0.7799982281859642
+          ],
+          "positionErrorM": 0.1624965866047012
+        },
+        "frames": 128
+      }
+    },
+    {
+      "command": "blinds_demo",
+      "source_vision_start_index": 175,
+      "sample_count": 62,
+      "origin_samples_excluded": 1,
+      "sensor_frame_counter_final": 262,
+      "sampled_status_counts": {
+        "tracking": 30,
+        "lost": 32
+      },
+      "verified_temporal_samples": 29,
+      "post_origin_samples": 61,
+      "sampled_temporal_availability": 0.47540983606557374,
+      "translation_error_m": {
+        "count": 29,
+        "median": 0.027557282730434347,
+        "p95": 0.15152476650823052,
+        "maximum": 0.1895115458910727
+      },
+      "camera_translating_error_m": {
+        "count": 21,
+        "median": 0.04989135653426415,
+        "p95": 0.15152476650823052,
+        "maximum": 0.1895115458910727
+      },
+      "camera_translating_definition": "Consecutive ground-truth translation / demo elapsed interval exceeds 0.01 m/s; evaluation subset only.",
+      "maximum_ground_truth_displacement_m": 2.2321287118919924,
+      "maximum_map_size": 700,
+      "relocalizations": 1,
+      "sampled_lost_intervals": [
+        {
+          "first_sample_index": 14,
+          "last_sample_index": 45,
+          "sample_count": 32,
+          "first_observed_lost_s": 11.194000000000408,
+          "last_observed_lost_s": 37.351999999999684,
+          "observed_lost_span_s": 26.157999999999276,
+          "previous_observation_s": 10.416000000000148,
+          "next_observation_s": 38.080000000000574,
+          "relocalizations_during_lost_samples": 0
+        }
+      ],
+      "recovery_between_polls_without_sampled_loss": [],
+      "processing_ms": {
+        "count": 62,
+        "median": 23.849999999976717,
+        "p95": 36.699999999953434,
+        "maximum": 38.0999999998603
+      },
+      "worst_valid_pose_sample": {
+        "index": 47,
+        "elapsed_s": 39.04800000000176,
+        "metrics": {
+          "status": "tracking",
+          "confidence": 0.40873526666389715,
+          "pose": {
+            "position": [
+              0.14391125409545755,
+              -0.0788592050790544,
+              -1.9738868623023995
+            ],
+            "orientation": [
+              -0.010041304834905012,
+              -0.02900124207380013,
+              -0.0020279966080251934,
+              0.999526881772145
+            ],
+            "timestampMs": 39048.00000000175
+          },
+          "mapSize": 700,
+          "detected": 76,
+          "stereoMatches": 62,
+          "mapMatches": 43,
+          "inliers": 32,
+          "reprojectionErrorPx": 1.253809927101941,
+          "processingMs": 35.299999999813735,
+          "keyframes": 26,
+          "relocalizations": 1
+        },
+        "evaluation": {
+          "groundTruthPosition": [
+            0.001029206224281487,
+            0,
+            -2.0702225887825727
+          ],
+          "positionErrorM": 0.1895115458910727
+        },
+        "frames": 204
+      }
+    }
+  ]
+}

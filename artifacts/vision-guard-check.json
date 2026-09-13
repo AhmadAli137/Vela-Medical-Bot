@@ -1,0 +1,94 @@
+{
+  "started": "2026-09-13T15:24:14.659Z",
+  "target": "http://127.0.0.1:4176/#simulation",
+  "errors": [],
+  "requests": [],
+  "cameraStats": [
+    {
+      "name": "head_rgb",
+      "width": 320,
+      "height": 240,
+      "frames": 6,
+      "span": 222.66666666666666,
+      "mean": 211.1932421875021
+    },
+    {
+      "name": "head_stereo_right",
+      "width": 320,
+      "height": 240,
+      "frames": 6,
+      "span": 222.33333333333334,
+      "mean": 211.42444878472432
+    },
+    {
+      "name": "left_wrist",
+      "width": 320,
+      "height": 240,
+      "frames": 6,
+      "span": 224.33333333333334,
+      "mean": 186.83242187492283
+    },
+    {
+      "name": "right_wrist",
+      "width": 320,
+      "height": 240,
+      "frames": 6,
+      "span": 224.33333333333334,
+      "mean": 187.26776909714664
+    }
+  ],
+  "vision": [
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.9999999999999978,
+        "pose": {
+          "position": [
+            -1.171999776051329e-16,
+            1.1867329194359517e-16,
+            1.4626974306230928e-16
+          ],
+          "orientation": [
+            4.9503887462116865e-18,
+            2.656431570953035e-17,
+            -7.114162268087575e-18,
+            1
+          ],
+          "timestampMs": 4032.5
+        },
+        "mapSize": 56,
+        "detected": 68,
+        "stereoMatches": 56,
+        "mapMatches": 56,
+        "inliers": 56,
+        "reprojectionErrorPx": 8.702335715267317e-15,
+        "processingMs": 14.199999999953434,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          0,
+          0,
+          0
+        ],
+        "positionErrorM": 2.2184233749870062e-16
+      },
+      "frames": 8
+    }
+  ],
+  "demos": [],
+  "screenshots": [
+    "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\apps\\web\\artifacts\\vision-guard-camera-views.png",
+    "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\apps\\web\\artifacts\\vision-guard-tracking-loss-pause.png"
+  ],
+  "passed": true,
+  "visualGuard": {
+    "passed": true,
+    "corruption": "Camera RGBA readback only",
+    "pausedClock": 2.54,
+    "automaticResume": false,
+    "manualResume": true
+  },
+  "finished": "2026-09-13T15:24:25.468Z"
+}

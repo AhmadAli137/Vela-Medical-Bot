@@ -33,7 +33,8 @@
       "geometry": "transverse_barrel",
       "radius": 0.1,
       "half_width": 0.155,
-      "mass": 12.0
+      "mass": 12.0,
+      "robot_body": true
     },
     {
       "name": "left_wheel",
@@ -53,10 +54,11 @@
       ],
       "joint": "left_wheel_joint",
       "range": [
-        -20,
-        20
+        -40,
+        40
       ],
-      "mass": 0.9
+      "mass": 0.9,
+      "robot_body": true
     },
     {
       "name": "right_wheel",
@@ -76,10 +78,11 @@
       ],
       "joint": "right_wheel_joint",
       "range": [
-        -20,
-        20
+        -40,
+        40
       ],
-      "mass": 0.9
+      "mass": 0.9,
+      "robot_body": true
     },
     {
       "name": "mast",
@@ -95,7 +98,8 @@
         0.085,
         1.36
       ],
-      "mass": 3.0
+      "mass": 3.0,
+      "robot_body": true
     },
     {
       "name": "head",
@@ -111,7 +115,8 @@
         0.15,
         0.075
       ],
-      "mass": 0.3
+      "mass": 0.3,
+      "robot_body": true
     },
     {
       "name": "left_shoulder",
@@ -138,7 +143,8 @@
         -0.72,
         0.2
       ],
-      "mass": 0.8
+      "mass": 0.8,
+      "robot_body": true
     },
     {
       "name": "left_link_1",
@@ -168,7 +174,8 @@
         2.7
       ],
       "initial_q": 0.0,
-      "mass": 0.28
+      "mass": 0.28,
+      "robot_body": true
     },
     {
       "name": "left_link_2",
@@ -198,7 +205,8 @@
         2.7
       ],
       "initial_q": -0.3,
-      "mass": 0.28
+      "mass": 0.28,
+      "robot_body": true
     },
     {
       "name": "left_link_3",
@@ -228,7 +236,8 @@
         2.7
       ],
       "initial_q": 0.0,
-      "mass": 0.28
+      "mass": 0.28,
+      "robot_body": true
     },
     {
       "name": "left_link_4",
@@ -258,7 +267,8 @@
         2.7
       ],
       "initial_q": -1.5,
-      "mass": 0.28
+      "mass": 0.28,
+      "robot_body": true
     },
     {
       "name": "left_link_5",
@@ -288,7 +298,8 @@
         2.7
       ],
       "initial_q": 0.0,
-      "mass": 0.12
+      "mass": 0.12,
+      "robot_body": true
     },
     {
       "name": "left_link_6",
@@ -318,7 +329,8 @@
         2.7
       ],
       "initial_q": -0.15,
-      "mass": 0.12
+      "mass": 0.12,
+      "robot_body": true
     },
     {
       "name": "left_link_7",
@@ -348,7 +360,8 @@
         2.7
       ],
       "initial_q": 0.0,
-      "mass": 0.12
+      "mass": 0.12,
+      "robot_body": true
     },
     {
       "name": "left_hand",
@@ -364,7 +377,8 @@
         0.09,
         0.047
       ],
-      "mass": 0.17
+      "mass": 0.17,
+      "robot_body": true
     },
     {
       "name": "left_finger_-1",
@@ -392,7 +406,8 @@
         0.65
       ],
       "initial_q": 0.15,
-      "mass": 0.035
+      "mass": 0.035,
+      "robot_body": true
     },
     {
       "name": "left_finger_1",
@@ -420,7 +435,8 @@
         0.65
       ],
       "initial_q": -0.15,
-      "mass": 0.035
+      "mass": 0.035,
+      "robot_body": true
     },
     {
       "name": "right_shoulder",
@@ -447,7 +463,8 @@
         -0.72,
         0.2
       ],
-      "mass": 0.8
+      "mass": 0.8,
+      "robot_body": true
     },
     {
       "name": "right_link_1",
@@ -477,7 +494,8 @@
         2.7
       ],
       "initial_q": 0.0,
-      "mass": 0.28
+      "mass": 0.28,
+      "robot_body": true
     },
     {
       "name": "right_link_2",
@@ -507,7 +525,8 @@
         2.7
       ],
       "initial_q": -0.3,
-      "mass": 0.28
+      "mass": 0.28,
+      "robot_body": true
     },
     {
       "name": "right_link_3",
@@ -537,7 +556,8 @@
         2.7
       ],
       "initial_q": 0.0,
-      "mass": 0.28
+      "mass": 0.28,
+      "robot_body": true
     },
     {
       "name": "right_link_4",
@@ -567,7 +587,8 @@
         2.7
       ],
       "initial_q": -1.5,
-      "mass": 0.28
+      "mass": 0.28,
+      "robot_body": true
     },
     {
       "name": "right_link_5",
@@ -597,7 +618,8 @@
         2.7
       ],
       "initial_q": 0.0,
-      "mass": 0.12
+      "mass": 0.12,
+      "robot_body": true
     },
     {
       "name": "right_link_6",
@@ -627,7 +649,8 @@
         2.7
       ],
       "initial_q": -0.15,
-      "mass": 0.12
+      "mass": 0.12,
+      "robot_body": true
     },
     {
       "name": "right_link_7",
@@ -657,7 +680,8 @@
         2.7
       ],
       "initial_q": 0.0,
-      "mass": 0.12
+      "mass": 0.12,
+      "robot_body": true
     },
     {
       "name": "right_hand",
@@ -673,7 +697,8 @@
         0.09,
         0.047
       ],
-      "mass": 0.17
+      "mass": 0.17,
+      "robot_body": true
     },
     {
       "name": "right_finger_-1",
@@ -701,7 +726,8 @@
         0.65
       ],
       "initial_q": 0.15,
-      "mass": 0.035
+      "mass": 0.035,
+      "robot_body": true
     },
     {
       "name": "right_finger_1",
@@ -729,7 +755,8 @@
         0.65
       ],
       "initial_q": -0.15,
-      "mass": 0.035
+      "mass": 0.035,
+      "robot_body": true
     },
     {
       "name": "phone",
@@ -748,10 +775,563 @@
       "joint": "phone_free",
       "joint_type": "free",
       "mass": 0.18,
-      "dynamic_object": true
+      "dynamic_object": true,
+      "robot_body": false
+    },
+    {
+      "name": "meal_box",
+      "parent": "world",
+      "pos": [
+        0.63,
+        -0.45,
+        0.828
+      ],
+      "geometry": "meal_container",
+      "dimensions": [
+        0.082,
+        0.13,
+        0.04
+      ],
+      "joint": "meal_box_free",
+      "joint_type": "free",
+      "mass": 0.12,
+      "dynamic_object": true,
+      "robot_body": false
+    },
+    {
+      "name": "blinds_handle",
+      "parent": "world",
+      "pos": [
+        -3.14,
+        -0.4,
+        1.18
+      ],
+      "geometry": "blinds_handle",
+      "dimensions": [
+        0.11,
+        0.1,
+        0.05
+      ],
+      "joint": "blinds_slide",
+      "joint_type": "slide",
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "range": [
+        0,
+        0.18
+      ],
+      "mass": 0.08,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_00",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        0.95
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_00",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_01",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        1.05
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_01",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_02",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        1.15
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_02",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_03",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        1.25
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_03",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_04",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        1.35
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_04",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_05",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        1.45
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_05",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_06",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        1.55
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_06",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_07",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        1.65
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_07",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_08",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        1.75
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_08",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_09",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        1.85
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_09",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_10",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        1.95
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_10",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_11",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        2.05
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_11",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_12",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        2.1500000000000004
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_12",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_13",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        2.25
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_13",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_14",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        2.35
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_14",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
+    },
+    {
+      "name": "blinds_slat_15",
+      "parent": "world",
+      "pos": [
+        -3.43,
+        0.05,
+        2.45
+      ],
+      "geometry": "blinds_slat",
+      "dimensions": [
+        0.018,
+        2.8,
+        0.095
+      ],
+      "joint": "blinds_tilt_15",
+      "joint_type": "hinge",
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "range": [
+        0,
+        1.4
+      ],
+      "mass": 0.025,
+      "robot_body": false,
+      "passive_joint": true
     }
   ],
   "room_colliders": [
+    {
+      "name": "wall_right",
+      "pos": [
+        3.55,
+        0.0,
+        1.5
+      ],
+      "size": [
+        0.05,
+        3.05,
+        1.5
+      ]
+    },
+    {
+      "name": "wall_front",
+      "pos": [
+        0.0,
+        -3.05,
+        1.5
+      ],
+      "size": [
+        3.5,
+        0.05,
+        1.5
+      ]
+    },
+    {
+      "name": "ceiling",
+      "pos": [
+        0.0,
+        0.0,
+        3.05
+      ],
+      "size": [
+        3.5,
+        3.0,
+        0.05
+      ]
+    },
     {
       "name": "work_table",
       "pos": [
@@ -775,6 +1355,110 @@
       "size": [
         0.025,
         0.06,
+        0.0175
+      ]
+    },
+    {
+      "name": "meal_riser",
+      "pos": [
+        0.63,
+        -0.45,
+        0.79
+      ],
+      "size": [
+        0.025,
+        0.045,
+        0.0175
+      ]
+    },
+    {
+      "name": "bedside_tray",
+      "pos": [
+        0.85,
+        1.4,
+        0.99
+      ],
+      "size": [
+        0.3,
+        0.32,
+        0.0225
+      ]
+    },
+    {
+      "name": "bedside_tray_column",
+      "pos": [
+        0.61,
+        1.4,
+        0.45
+      ],
+      "size": [
+        0.0325,
+        0.0375,
+        0.375
+      ]
+    },
+    {
+      "name": "bedside_tray_telescope",
+      "pos": [
+        0.61,
+        1.4,
+        0.865
+      ],
+      "size": [
+        0.0215,
+        0.026,
+        0.105
+      ]
+    },
+    {
+      "name": "bedside_tray_foot_front",
+      "pos": [
+        0.85,
+        1.15,
+        0.1
+      ],
+      "size": [
+        0.27,
+        0.025,
+        0.025
+      ]
+    },
+    {
+      "name": "bedside_tray_foot_back",
+      "pos": [
+        0.85,
+        1.65,
+        0.1
+      ],
+      "size": [
+        0.27,
+        0.025,
+        0.025
+      ]
+    },
+    {
+      "name": "phone_delivery_riser",
+      "pos": [
+        0.85,
+        1.48,
+        1.03
+      ],
+      "size": [
+        0.025,
+        0.06,
+        0.0175
+      ]
+    },
+    {
+      "name": "meal_delivery_riser",
+      "pos": [
+        0.85,
+        1.22,
+        1.03
+      ],
+      "size": [
+        0.025,
+        0.045,
         0.0175
       ]
     },
@@ -898,7 +1582,7 @@
       ]
     }
   ],
-  "model_hash": "d047a8c2c035da2879f8a7c89626534fca81f8737685d23519cc44f9f864eb60",
+  "model_hash": "d22407cbce4f082eb3cd1b594c8337060707bad2f58835ad8ff8c92dd1eab58b",
   "initial_world_poses": {
     "robot_base": {
       "position": [
@@ -1256,6 +1940,240 @@
         0.63,
         -0.72,
         0.814
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "meal_box": {
+      "position": [
+        0.63,
+        -0.45,
+        0.828
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_handle": {
+      "position": [
+        -3.14,
+        -0.4,
+        1.18
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_00": {
+      "position": [
+        -3.43,
+        0.05,
+        0.95
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_01": {
+      "position": [
+        -3.43,
+        0.05,
+        1.05
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_02": {
+      "position": [
+        -3.43,
+        0.05,
+        1.15
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_03": {
+      "position": [
+        -3.43,
+        0.05,
+        1.25
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_04": {
+      "position": [
+        -3.43,
+        0.05,
+        1.35
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_05": {
+      "position": [
+        -3.43,
+        0.05,
+        1.45
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_06": {
+      "position": [
+        -3.43,
+        0.05,
+        1.55
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_07": {
+      "position": [
+        -3.43,
+        0.05,
+        1.65
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_08": {
+      "position": [
+        -3.43,
+        0.05,
+        1.75
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_09": {
+      "position": [
+        -3.43,
+        0.05,
+        1.85
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_10": {
+      "position": [
+        -3.43,
+        0.05,
+        1.95
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_11": {
+      "position": [
+        -3.43,
+        0.05,
+        2.05
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_12": {
+      "position": [
+        -3.43,
+        0.05,
+        2.1500000000000004
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_13": {
+      "position": [
+        -3.43,
+        0.05,
+        2.25
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_14": {
+      "position": [
+        -3.43,
+        0.05,
+        2.35
+      ],
+      "quaternion": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "blinds_slat_15": {
+      "position": [
+        -3.43,
+        0.05,
+        2.45
       ],
       "quaternion": [
         1.0,

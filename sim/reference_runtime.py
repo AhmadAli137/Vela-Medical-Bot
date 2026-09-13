@@ -16,6 +16,7 @@ import numpy as np
 from sim.reference_model import INITIAL_ARM_Q, load_reference_model
 from sim.reference_pickup import lift_stages, pickup_stages
 from sim.reference_demos import DEMO_COMMANDS, load_trajectories
+from sim.reference_assistance import ASSISTANCE_COMMANDS, assistance_gate, observe_assistance
 
 
 class ReferenceSimulation:
@@ -25,7 +26,7 @@ class ReferenceSimulation:
         self.initial_q = self.data.qpos.copy()
         self.initial_ctrl = self.data.ctrl.copy()
         self.body_names = [spec["name"] for spec in self.metadata["body_specs"]]
-        self.body_ids = {self.model.body(spec["name"]).id for spec in self.metadata["body_specs"] if not spec.get("dynamic_object")}
+        self.body_ids = {self.model.body(spec["name"]).id for spec in self.metadata["body_specs"] if spec.get("robot_body", not spec.get("dynamic_object"))}
         self.actuated_q = self.model.jnt_qposadr[self.model.actuator_trnid[:, 0]].copy()
         self.actuated_dofs = self.model.jnt_dofadr[self.model.actuator_trnid[:, 0]].copy()
         self.mode = "idle"
@@ -34,6 +35,7 @@ class ReferenceSimulation:
         self.mode_started = 0.
         self.last_contacts = []
         self.stop_reason = None
+        self.visual_tracking_pause_reason = None
         self.reach_plan = None
         self.step_count = 0
         self._accumulator = 0.
@@ -45,6 +47,7 @@ class ReferenceSimulation:
         self.lift_demo = None
         self.demo = None
         self.demo_definition = None
+        self.intentional_contacts = set()
 
     def _contacts(self, data=None, allow_phone_grasp=None):
         data = self.data if data is None else data
@@ -56,8 +59,16 @@ class ReferenceSimulation:
             robot_a = int(self.model.geom_bodyid[a]) in self.body_ids
             robot_b = int(self.model.geom_bodyid[b]) in self.body_ids
             names = [self.model.geom(a).name, self.model.geom(b).name]
+            if frozenset(names) in self.intentional_contacts:
+                continue
             if allow_phone_grasp and "phone_geom" in names and any(name in {"left_finger_-1_geom", "left_finger_1_geom"} for name in names):
                 continue
+            if self.mode in ASSISTANCE_COMMANDS and self.demo_definition and self.demo_definition.get("object_name"):
+                object_name=self.demo_definition["object_name"]
+                allowed_supports={self.demo_definition["support_geom"],"phone_riser" if object_name=="phone" else "meal_riser","bedside_tray"}
+                if f"{object_name}_geom" in names and not allowed_supports.intersection(names) and contact.dist<-.0001:
+                    result.append({"geoms":names,"distance_m":float(contact.dist),"self_collision":False,"carried_object_collision":True})
+                    continue
             if (robot_a or robot_b) and contact.dist < -.0001:
                 result.append({"geoms": names, "distance_m": float(contact.dist), "self_collision": robot_a and robot_b})
         return result
@@ -138,6 +149,12 @@ class ReferenceSimulation:
         phone = self.data.xpos[self.model.body("phone").id]
         if np.max(np.abs(self.data.qpos[self.actuated_q]-self.initial_q[self.actuated_q])) > .025 or np.linalg.norm(phone[:2]-[.63, -.72]) > .01 or abs(phone[2]-.8135) > .015:
             raise ValueError("Reset the scene before starting this fixture demonstration")
+        for spec in self.metadata["body_specs"]:
+            if spec.get("dynamic_object"):
+                if np.linalg.norm(self.data.xpos[self.model.body(spec["name"]).id]-np.asarray(spec["pos"]))>.015:
+                    raise ValueError("Reset the scene before starting this fixture demonstration")
+            elif spec.get("passive_joint") and abs(float(self.data.qpos[self.model.joint(spec["joint"]).qposadr[0]]))>.01:
+                raise ValueError("Reset the scene before starting this fixture demonstration")
 
     def _start_stages(self, stages, allow_phone_grasp=False):
         # Sampling checks the robot's commanded path; the separate online gate
@@ -150,11 +167,18 @@ class ReferenceSimulation:
             # contacted object to produce spring force. Forward kinematics at
             # those targets is not a prediction of a frictional grasp. Check
             # free-space approach here and check every actual physics step.
-            if allow_phone_grasp and stage["name"] in {"close", "lift", "hold"}:
+            if allow_phone_grasp and stage["name"] in {"close", "lift", "hold", "press_blinds_control"}:
                 break
             for ratio in np.linspace(0., 1., 60):
                 sampled.qpos[:] = self.data.qpos
                 sampled.qpos[self.actuated_q] = (1-ratio)*previous[self.actuated_q]+ratio*stage["target_qpos"][self.actuated_q]
+                if any("meal_box_geom" in pair or "phone_geom" in pair for pair in self.intentional_contacts):
+                    # A loaded servo target lies inside the grasped object.
+                    # Use an open pad pose for route checks;
+                    # every actual pad/object/support contact is checked online.
+                    for finger in (-1,1):
+                        address=self.model.joint(f"left_gripper_{finger}").qposadr[0]
+                        sampled.qpos[address]=finger*max(.10,finger*sampled.qpos[address])
                 mujoco.mj_forward(self.model, sampled)
                 checked += 1
                 collisions = self._contacts(sampled, allow_phone_grasp)
@@ -204,6 +228,13 @@ class ReferenceSimulation:
                     measured["supported_release_height_m"]=observation["phone_position"][2]
                     measured["supported_release_force_n"]=observation["riser_support_force_n"]
                     measured["supported_release_bilateral"]=len(self._finger_contacts()[0])==2
+                elif gate=="assist_grasped":
+                    measured["confirmed_grasp_height_m"]=measured["object_height_gain_m"]
+                    measured["confirmed_grasp_hold_s"]=measured["grasp_hold_s"]
+                elif gate=="assist_supported":
+                    measured["supported_release_force_n"]=measured["support_force_n"]
+                    measured["supported_release_position"]=list(measured["object_position"])
+                    measured["supported_release_bilateral"]=measured["bilateral_contact"]
             if stage["name"] == "close" and len(self._finger_contacts()[0]) != 2:
                 self.stop_reason = "Pickup stopped: bilateral finger contact not established"
                 self.paused = True
@@ -281,6 +312,8 @@ class ReferenceSimulation:
         return (observation["phone_xy_error_m"] <= thresholds["phone_xy_tolerance_m"] and observation["phone_z_error_m"] <= thresholds["phone_z_tolerance_m"] and observation["phone_speed_m_s"] <= thresholds["phone_speed_tolerance_m_s"] and observation["phone_angular_speed_rad_s"] <= thresholds["phone_angular_speed_tolerance_rad_s"] and observation["riser_support_force_n"] > thresholds["support_force_minimum_n"])
 
     def _demo_gate(self, gate):
+        if self.mode in ASSISTANCE_COMMANDS:
+            return assistance_gate(self,gate)
         touching, _ = self._finger_contacts()
         if gate == "bilateral_contact":
             return len(touching) == 2
@@ -312,7 +345,9 @@ class ReferenceSimulation:
         measured["rest_qpos_error"] = float(np.max(np.abs(self.data.qpos[self.actuated_q]-self.initial_q[self.actuated_q])))
         measured["robot_speed"] = float(np.max(np.abs(self.data.qvel[self.actuated_dofs])))
         checks = {"returned_to_rest": measured["rest_qpos_error"] <= thresholds["rest_qpos_tolerance"], "robot_settled": measured["robot_speed"] <= thresholds["robot_speed_tolerance"]}
-        if self.mode == "bedside_demo":
+        if self.mode in ASSISTANCE_COMMANDS:
+            checks.update(observe_assistance(self))
+        elif self.mode == "bedside_demo":
             base = np.array([float(self.data.qpos[self.model.joint(name).qposadr[0]]) for name in ("base_x", "base_y", "base_yaw")])
             target = np.array(thresholds["base_goal_qpos"])
             measured.update(base_position_qpos=base.tolist(), base_goal_error_m=float(np.linalg.norm(base[:2]-target[:2])), base_yaw_error_rad=abs(float(base[2]-target[2])), base_home_error_m=float(np.linalg.norm(base[:2])))
@@ -370,13 +405,19 @@ class ReferenceSimulation:
                 mujoco.mj_forward(self.model, self.data)
                 self.mode, self.paused = "idle", False
                 self.reach_plan, self.stop_reason = None, None
+                self.visual_tracking_pause_reason = None
                 self.last_contacts = []
                 self.step_count, self._accumulator = 0, 0.
                 self.stages, self.pickup, self.lift_demo = [], None, None
                 self.stage_index, self.stage_started = 0, 0.
                 self.demo, self.demo_definition = None, None
+                self.intentional_contacts = set()
             elif action == "pause":
                 self.paused = not self.paused
+                self.visual_tracking_pause_reason = None
+            elif action == "pause_for_tracking":
+                self.paused = True
+                self.visual_tracking_pause_reason = "Visual tracking lost"
             elif action == "joint_demo":
                 self.demo, self.demo_definition = None, None
                 self.mode, self.paused = "joint_demo", False
@@ -390,6 +431,15 @@ class ReferenceSimulation:
                 if library["nq"] != self.model.nq or library["nu"] != self.model.nu or library["actuated_q_indices"] != self.actuated_q.tolist():
                     raise ValueError("Demo trajectory topology mismatch")
                 definition=library["commands"][action]
+                contacts={frozenset(pair) for pair in definition.get("intentional_contacts",[])}
+                allowed_contacts=set()
+                if action in {"deliver_phone_demo","deliver_meal_demo"}:
+                    object_name="phone" if action=="deliver_phone_demo" else "meal_box"
+                    allowed_contacts={frozenset((f"{object_name}_geom",f"left_finger_{finger}_geom")) for finger in (-1,1)}
+                elif action=="blinds_demo":
+                    allowed_contacts={frozenset(("blinds_handle_geom",name))for name in ("left_finger_-1_geom","left_finger_1_geom","left_hand_geom")}
+                if contacts!=allowed_contacts:
+                    raise ValueError("Invalid intentional contact allowance")
                 stages=[{**stage,"target_qpos":np.asarray(stage["target_qpos"],dtype=float)}for stage in definition["stages"]]
                 for stage in stages:
                     target=stage["target_qpos"]
@@ -397,7 +447,15 @@ class ReferenceSimulation:
                         raise ValueError("Invalid demo stage target or duration")
                     if np.any(target[self.actuated_q]<self.model.actuator_ctrlrange[:,0]) or np.any(target[self.actuated_q]>self.model.actuator_ctrlrange[:,1]):
                         raise ValueError("Demo stage exceeds actuator control limits")
-                count=self._start_stages(stages,allow_phone_grasp=action=="phone_return_demo")
+                if any(error["position_error_m"]>.003 or error["orientation_error_rad"]>.01 for error in definition.get("ik_errors",{}).values()):
+                    raise ValueError("Demo rejected by pose IK gate")
+                previous_contacts=self.intentional_contacts
+                self.intentional_contacts=contacts
+                try:
+                    count=self._start_stages(stages,allow_phone_grasp=action=="phone_return_demo" or action in ASSISTANCE_COMMANDS)
+                except Exception:
+                    self.intentional_contacts=previous_contacts
+                    raise
                 self.demo_definition=definition
                 self.demo={"command":action,"name":definition["name"],"stage":stages[0]["name"],"stage_index":0,"stage_count":len(stages),"elapsed_s":0.,"duration_s":definition["duration_s"],"status":"running","complete":False,"progress":0.,"measurements":{"settle_dwell_s":0.,"collision_samples":count},"checks":{}}
                 self.mode,self.paused=action,False
@@ -459,7 +517,7 @@ class ReferenceSimulation:
                     self.mode_started = float(self.data.time)
                     self.stop_reason = None
             else:
-                raise ValueError("Allowed commands: joint_demo, reach_demo, pickup_demo, release_phone, lift_demo, bedside_demo, greeting_demo, phone_return_demo, pause, reset")
+                raise ValueError("Allowed commands: joint_demo, reach_demo, pickup_demo, release_phone, lift_demo, bedside_demo, greeting_demo, phone_return_demo, deliver_phone_demo, deliver_meal_demo, blinds_demo, pause, pause_for_tracking, reset")
             self.last_clock = time.monotonic()
             return self._state()
 
@@ -510,9 +568,12 @@ class ReferenceSimulation:
 
     def _state(self):
         bodies = {name: {"position": self.data.xpos[self.model.body(name).id].tolist(), "quaternion": self.data.xquat[self.model.body(name).id].tolist()} for name in self.body_names}
-        joints = {self.model.joint(i).name: float(self.data.qpos[self.model.jnt_qposadr[i]]) for i in range(self.model.njnt) if self.model.jnt_type[i] != mujoco.mjtJoint.mjJNT_FREE}
+        actuated_joint_ids = set(self.model.actuator_trnid[:, 0].tolist())
+        joints = {self.model.joint(i).name: float(self.data.qpos[self.model.jnt_qposadr[i]]) for i in actuated_joint_ids}
+        object_joints = {self.model.joint(i).name: float(self.data.qpos[self.model.jnt_qposadr[i]]) for i in range(self.model.njnt) if i not in actuated_joint_ids and self.model.jnt_type[i] != mujoco.mjtJoint.mjJNT_FREE}
+        cameras = {self.model.camera(i).name: {"position": self.data.cam_xpos[i].tolist(), "rotation": self.data.cam_xmat[i].tolist(), "fovy": float(self.model.cam_fovy[i]), "fovy_deg": float(self.model.cam_fovy[i]), "convention": "mujoco_opengl"} for i in range(self.model.ncam) if self.model.camera(i).name != "overview"}
         end_effectors = {side: self.data.site_xpos[self.model.site(f"{side}_ee").id].tolist() for side in ("left", "right")}
-        metrics = {"physics_steps": self.step_count, "finite_dynamics": bool(np.isfinite(self.data.qpos).all()), "contacts": self.last_contacts, "stop_reason": self.stop_reason, "grasp_success": None, "object_attached": False}
+        metrics = {"physics_steps": self.step_count, "finite_dynamics": bool(np.isfinite(self.data.qpos).all()), "contacts": self.last_contacts, "stop_reason": self.stop_reason, "visual_tracking_pause_reason": self.visual_tracking_pause_reason, "grasp_success": None, "object_attached": False}
         if self.pickup:
             metrics["pickup"] = copy.deepcopy(self.pickup)
             metrics["grasp_success"] = self.pickup["success"]
@@ -523,7 +584,7 @@ class ReferenceSimulation:
         if self.reach_plan:
             distance = float(np.linalg.norm(np.array(end_effectors[self.reach_plan["side"]])-self.reach_plan["target"]))
             metrics["reach"] = {"target": self.reach_plan["target"], "ik_residual_m": self.reach_plan["residual_m"], "actual_endpoint_error_m": distance, "endpoint_reached": distance < .02, "sampled_collision_gate_passed": self.reach_plan["collision_free_samples"], "samples": self.reach_plan["sample_count"]}
-        return {"bodies": bodies, "joints": joints, "mode": self.mode, "paused": self.paused, "simulation_time": float(self.data.time), "end_effectors": end_effectors, "metrics": metrics, "model_hash": self.metadata["model_hash"], "hardware_model_verified": False, "authorizes_hardware": False, "source": "MuJoCo forward dynamics on reference-informed unverified surrogate", "target": {"position": self.data.mocap_pos[0].tolist()}}
+        return {"bodies": bodies, "joints": joints, "object_joints": object_joints, "cameras": cameras, "mode": self.mode, "paused": self.paused, "simulation_time": float(self.data.time), "end_effectors": end_effectors, "metrics": metrics, "model_hash": self.metadata["model_hash"], "hardware_model_verified": False, "authorizes_hardware": False, "source": "MuJoCo forward dynamics on reference-informed unverified surrogate", "target": {"position": self.data.mocap_pos[0].tolist()}}
 
     def state(self):
         with self.lock:

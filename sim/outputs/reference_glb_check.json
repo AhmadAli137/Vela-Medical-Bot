@@ -1,10 +1,10 @@
 {
   "file": "assets\\simulation\\robot.glb",
-  "model_hash": "d047a8c2c035da2879f8a7c89626534fca81f8737685d23519cc44f9f864eb60",
-  "body_count": 28,
-  "expected_body_count": 28,
-  "robot_body_count": 27,
-  "dynamic_body_count": 1,
+  "model_hash": "d22407cbce4f082eb3cd1b594c8337060707bad2f58835ad8ff8c92dd1eab58b",
+  "body_count": 46,
+  "expected_body_count": 46,
+  "robot_body_count": 44,
+  "dynamic_body_count": 2,
   "matched": true,
   "failures": [],
   "bodies": [
@@ -90,7 +90,7 @@
       "body": "left_hand",
       "position_error_m": 2.1971354384839092e-08,
       "quaternion_error": 3.012398818973767e-08,
-      "visual_children": 4
+      "visual_children": 5
     },
     {
       "body": "left_finger_-1",
@@ -156,7 +156,7 @@
       "body": "right_hand",
       "position_error_m": 3.535712896659415e-08,
       "quaternion_error": 3.012398818973767e-08,
-      "visual_children": 4
+      "visual_children": 5
     },
     {
       "body": "right_finger_-1",
@@ -171,17 +171,125 @@
       "visual_children": 2
     },
     {
+      "body": "blinds_handle",
+      "position_error_m": 1.1743778977921918e-07,
+      "quaternion_error": 0.0,
+      "visual_children": 3
+    },
+    {
+      "body": "blinds_slat_00",
+      "position_error_m": 6.781731102707866e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_01",
+      "position_error_m": 8.204154976301814e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_02",
+      "position_error_m": 7.089085493364578e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_03",
+      "position_error_m": 6.67613595491456e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_04",
+      "position_error_m": 7.089085493364578e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_05",
+      "position_error_m": 8.204154976301814e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_06",
+      "position_error_m": 8.204154976301814e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_07",
+      "position_error_m": 7.089085493364578e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_08",
+      "position_error_m": 6.67613595491456e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_09",
+      "position_error_m": 7.089085493364578e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_10",
+      "position_error_m": 8.204154976301814e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_11",
+      "position_error_m": 8.204154963396265e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_12",
+      "position_error_m": 1.1641316969663244e-07,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_13",
+      "position_error_m": 6.67613595491456e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_14",
+      "position_error_m": 1.1641317006043705e-07,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
+      "body": "blinds_slat_15",
+      "position_error_m": 8.204154963396265e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 2
+    },
+    {
       "body": "phone",
       "position_error_m": 3.0843661597777464e-08,
       "quaternion_error": 0.0,
       "visual_children": 5
+    },
+    {
+      "body": "meal_box",
+      "position_error_m": 1.571393689037855e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 3
     }
   ],
   "assets": [
     {
       "file": "assets\\simulation\\robot.glb",
-      "body_count": 27,
-      "expected_body_count": 27,
+      "body_count": 44,
+      "expected_body_count": 44,
       "bodies": [
         {
           "body": "robot_base",
@@ -265,7 +373,7 @@
           "body": "left_hand",
           "position_error_m": 2.1971354384839092e-08,
           "quaternion_error": 3.012398818973767e-08,
-          "visual_children": 4
+          "visual_children": 5
         },
         {
           "body": "left_finger_-1",
@@ -331,7 +439,7 @@
           "body": "right_hand",
           "position_error_m": 3.535712896659415e-08,
           "quaternion_error": 3.012398818973767e-08,
-          "visual_children": 4
+          "visual_children": 5
         },
         {
           "body": "right_finger_-1",
@@ -344,11 +452,113 @@
           "position_error_m": 2.9028617903897364e-08,
           "quaternion_error": 1.6830825493401497e-08,
           "visual_children": 2
+        },
+        {
+          "body": "blinds_handle",
+          "position_error_m": 1.1743778977921918e-07,
+          "quaternion_error": 0.0,
+          "visual_children": 3
+        },
+        {
+          "body": "blinds_slat_00",
+          "position_error_m": 6.781731102707866e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_01",
+          "position_error_m": 8.204154976301814e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_02",
+          "position_error_m": 7.089085493364578e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_03",
+          "position_error_m": 6.67613595491456e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_04",
+          "position_error_m": 7.089085493364578e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_05",
+          "position_error_m": 8.204154976301814e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_06",
+          "position_error_m": 8.204154976301814e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_07",
+          "position_error_m": 7.089085493364578e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_08",
+          "position_error_m": 6.67613595491456e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_09",
+          "position_error_m": 7.089085493364578e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_10",
+          "position_error_m": 8.204154976301814e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_11",
+          "position_error_m": 8.204154963396265e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_12",
+          "position_error_m": 1.1641316969663244e-07,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_13",
+          "position_error_m": 6.67613595491456e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_14",
+          "position_error_m": 1.1641317006043705e-07,
+          "quaternion_error": 0.0,
+          "visual_children": 2
+        },
+        {
+          "body": "blinds_slat_15",
+          "position_error_m": 8.204154963396265e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 2
         }
       ],
       "failures": [],
-      "sha256": "9a93aa4b29a47baebaf334ab423b38a92b09119a802e3f143f1238ffb3009488",
-      "node_count": 119,
+      "sha256": "73a21810cd3555931691972cd8a6c03bd923bc7b579ec2b67d50209de688b27a",
+      "node_count": 173,
       "matched": true
     },
     {
@@ -364,8 +574,25 @@
         }
       ],
       "failures": [],
-      "sha256": "7160f406d81200d5bac249b9e7912d70020cb26d51647e3ab69dcf8ac35a060c",
+      "sha256": "14cf62268ba700ef002b698fdcf327d1422325b8c99b23968dedadd3b0651e09",
       "node_count": 6,
+      "matched": true
+    },
+    {
+      "file": "assets\\simulation\\meal_box.glb",
+      "body_count": 1,
+      "expected_body_count": 1,
+      "bodies": [
+        {
+          "body": "meal_box",
+          "position_error_m": 1.571393689037855e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 3
+        }
+      ],
+      "failures": [],
+      "sha256": "b9c6e055ce8c5dc61c43c43c7a4813764e7c11bac17846f569eb28fcaf7c00dc",
+      "node_count": 4,
       "matched": true
     }
   ],
@@ -520,13 +747,34 @@
         ]
       },
       {
-        "mesh": 46,
+        "mesh": 49,
+        "primitive": 0,
+        "material": "Light natural oak",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 194,
+            "count": 305,
+            "min": [
+              1.3796758651733398,
+              -3.2953243255615234
+            ],
+            "max": [
+              2.87032413482666,
+              -0.38421785831451416
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 56,
         "primitive": 0,
         "material": "Patient eyes \u00b7 CC0 brown texture",
         "coordinates": [
           {
             "semantic": "TEXCOORD_0",
-            "accessor": 182,
+            "accessor": 221,
             "count": 1076,
             "min": [
               0.03620000183582306,
@@ -541,13 +789,13 @@
         ]
       },
       {
-        "mesh": 48,
+        "mesh": 58,
         "primitive": 0,
         "material": "Patient short hair \u00b7 CC0 alpha texture",
         "coordinates": [
           {
             "semantic": "TEXCOORD_0",
-            "accessor": 190,
+            "accessor": 229,
             "count": 3050,
             "min": [
               0.007400000002235174,
@@ -562,13 +810,13 @@
         ]
       },
       {
-        "mesh": 49,
+        "mesh": 59,
         "primitive": 0,
         "material": "Patient skin \u00b7 CC0 adult texture",
         "coordinates": [
           {
             "semantic": "TEXCOORD_0",
-            "accessor": 194,
+            "accessor": 233,
             "count": 55784,
             "min": [
               0.00920800119638443,
@@ -583,13 +831,13 @@
         ]
       },
       {
-        "mesh": 50,
+        "mesh": 60,
         "primitive": 0,
         "material": "Sage knitted blanket",
         "coordinates": [
           {
             "semantic": "TEXCOORD_0",
-            "accessor": 198,
+            "accessor": 237,
             "count": 25026,
             "min": [
               0.0,
@@ -605,9 +853,9 @@
       }
     ],
     "failures": [],
-    "sha256": "06012dbdc6d09017b62524dd1aed6ad22c4be3ed9a45b5b7ebfbc1da2fd15cd8",
+    "sha256": "9755e1825c282fd6ecf2d1e538c52cace343444a6c11116cb779ef2c1b363bc7",
     "dynamic_object_nodes_or_meshes": [],
-    "textured_primitive_count": 11,
+    "textured_primitive_count": 12,
     "matched": true
   },
   "hardware_model_verified": false,

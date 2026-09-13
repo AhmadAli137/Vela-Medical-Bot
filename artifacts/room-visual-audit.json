@@ -1,11 +1,14 @@
 {
-  "checked_at": "2026-09-13T05:17:02.050659+00:00",
+  "checked_at": "2026-09-13T15:26:40.000030+00:00",
   "passed": true,
   "method": "evaluated_mesh_bvh",
   "surface_contacts_verified": true,
   "tolerance_m": 0.0015,
+  "optional_assemblies_present": [
+    "patient_tray"
+  ],
   "soft_layer_contact_tolerance_m": 0.006,
-  "part_count": 195,
+  "part_count": 213,
   "assemblies": {
     "bedside_storage": {
       "part_count": 11,
@@ -1163,6 +1166,139 @@
         [
           "patient_contoured_blanket",
           "patient_hospital_gown"
+        ]
+      ],
+      "unsupported_components": 0
+    },
+    "patient_tray": {
+      "part_count": 18,
+      "grounded_parts": 18,
+      "floor_contacts": [
+        "Tray caster tire",
+        "Tray caster tire.001",
+        "Tray caster tire.002",
+        "Tray caster tire.003"
+      ],
+      "connection_edges": [
+        [
+          "Patient tray underside frame",
+          "Patient tray tabletop"
+        ],
+        [
+          "Tray telescoping support",
+          "Patient tray tabletop"
+        ],
+        [
+          "Tray telescoping support",
+          "Patient tray underside frame"
+        ],
+        [
+          "Tray telescoping support",
+          "Tray support outer column"
+        ],
+        [
+          "Tray adjustment latch",
+          "Tray support outer column"
+        ],
+        [
+          "Tray floor spine",
+          "Tray support outer column"
+        ],
+        [
+          "Tray floor outrigger",
+          "Tray floor spine"
+        ],
+        [
+          "Tray caster tire",
+          "Floor slab"
+        ],
+        [
+          "Tray caster tire",
+          "Tray floor spine"
+        ],
+        [
+          "Tray caster tire",
+          "Tray floor outrigger"
+        ],
+        [
+          "Tray caster stem",
+          "Tray floor spine"
+        ],
+        [
+          "Tray caster stem",
+          "Tray floor outrigger"
+        ],
+        [
+          "Tray caster stem",
+          "Tray caster tire"
+        ],
+        [
+          "Tray caster tire.001",
+          "Floor slab"
+        ],
+        [
+          "Tray caster tire.001",
+          "Tray floor outrigger"
+        ],
+        [
+          "Tray caster stem.001",
+          "Tray floor outrigger"
+        ],
+        [
+          "Tray caster stem.001",
+          "Tray caster tire.001"
+        ],
+        [
+          "Tray floor outrigger.001",
+          "Tray floor spine"
+        ],
+        [
+          "Tray caster tire.002",
+          "Floor slab"
+        ],
+        [
+          "Tray caster tire.002",
+          "Tray floor spine"
+        ],
+        [
+          "Tray caster tire.002",
+          "Tray floor outrigger.001"
+        ],
+        [
+          "Tray caster stem.002",
+          "Tray floor spine"
+        ],
+        [
+          "Tray caster stem.002",
+          "Tray floor outrigger.001"
+        ],
+        [
+          "Tray caster stem.002",
+          "Tray caster tire.002"
+        ],
+        [
+          "Tray caster tire.003",
+          "Floor slab"
+        ],
+        [
+          "Tray caster tire.003",
+          "Tray floor outrigger.001"
+        ],
+        [
+          "Tray caster stem.003",
+          "Tray floor outrigger.001"
+        ],
+        [
+          "Tray caster stem.003",
+          "Tray caster tire.003"
+        ],
+        [
+          "Tray object landing pad",
+          "Patient tray tabletop"
+        ],
+        [
+          "Tray object landing pad.001",
+          "Patient tray tabletop"
         ]
       ],
       "unsupported_components": 0

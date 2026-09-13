@@ -1,5 +1,17 @@
 # Actual validation results
 
+## Camera views and contact assistance: September 13, 2026
+
+The expanded model passes **41 native/API checks**, including phone and meal delivery, all 16 mechanically linked blind slats, blocked/missing-object cases, four optical camera poses, and idempotent visual-tracking pause. Phone and meal placement errors are 0.81 and 1.95 mm respectively. The blinds handle travels 18.02 cm under measured hand contact. [Native summary](../artifacts/assistance-native-summary.json), [assistance rollouts](../sim/outputs/reference_assistance.json).
+
+The final **27 WebAssembly regressions pass** in 94.039 seconds with zero failures or skipped cases. This includes the earlier demonstrations, camera calibration, passive blind topology, new contact tasks, loaded-gripper tracking pause and collision rejection. The full sweep exposed an unsupported legacy phone return; lowering its shared placement target by 1 mm established measured support before opening. The force gate was preserved. [WASM JUnit](../artifacts/browser-assistance-tests.xml), [measurements](../artifacts/browser-contact-physics.json), [native support verification](../sim/outputs/reference_phone_return_support.json).
+
+Actual Chrome completed the earlier approach plus all three assistance tasks with no JavaScript or HTTP errors. The independent negative camera test corrupted only RGB readback: lost visual tracking paused actual motion, recovered images did not resume it, and explicit Resume worked. [Browser task report](../artifacts/assistance-check.json), [pixel-loss control test](../artifacts/vision-guard-check.json).
+
+The new bedside tray joins the existing furniture in the evaluated Blender surface audit: **213 parts** pass, including all 18 tray parts and their paths to the floor. Three targeted regressions detect floating casters and missing support pieces. All **46 body poses** match the exported GLBs. [Furniture audit](../artifacts/room-visual-audit.json), [tray regressions](../artifacts/tray-audit-tests.xml), [body-pose audit](../sim/outputs/reference_glb_check.json).
+
+Visual localization is measured separately from physical task completion. Initial tests showed material drift and tracking loss during these routes; enabling the visual watchdog can pause a task that otherwise completes under its planned controller. Smaller final return errors do not demonstrate accurate localization throughout a route. [Full-route visual measurements and limits](VISUAL_SLAM.md), [320-pixel baseline summary](../artifacts/assistance-slam-summary.json).
+
 ## Three additional physics demos: September 13, 2026
 
 The bedside approach, arm greeting and controlled phone return have passing results for **29 native/API checks** and **19 actual MuJoCo WebAssembly tests**. The WASM suite finished in 27.861 seconds and includes the prior pickup, release and vertical-travel regressions. Fault tests cover lost phone contact, missing support, invalid trajectories, completion revocation and reset requirements. The native summary records the initial test-assertion correction and Windows temporary-directory setup errors alongside the passing rechecks. [Native/API results](../artifacts/more-demos-native-summary.json), [native measured rollouts](../sim/outputs/reference_more_demos.json), [WASM measurements](../artifacts/browser-contact-physics.json).

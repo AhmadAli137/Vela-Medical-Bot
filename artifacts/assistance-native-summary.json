@@ -1,0 +1,171 @@
+{
+  "passed": true,
+  "model_hash": "d22407cbce4f082eb3cd1b594c8337060707bad2f58835ad8ff8c92dd1eab58b",
+  "native_api_tests": 41,
+  "reports": [
+    {
+      "path": "artifacts/assistance-native-tests.xml",
+      "tests": 40,
+      "passed": 40
+    },
+    {
+      "path": "artifacts/assistance-patient-contact-test.xml",
+      "tests": 1,
+      "passed": 1
+    }
+  ],
+  "physics_report": "sim/outputs/reference_assistance.json",
+  "hardware_model_verified": false,
+  "authorizes_hardware": false,
+  "outcomes": {
+    "blinds_demo": {
+      "command": "blinds_demo",
+      "name": "Open window blinds",
+      "stage": "settle",
+      "stage_index": 12,
+      "stage_count": 13,
+      "elapsed_s": 50.00000000001514,
+      "duration_s": 50,
+      "status": "complete",
+      "complete": true,
+      "progress": 1.0,
+      "measurements": {
+        "settle_dwell_s": 1.8720000000000014,
+        "collision_samples": 300,
+        "rest_qpos_error": 1.372971816509749e-05,
+        "robot_speed": 0.00041110085360979533,
+        "handle_travel_m": 0.18017026848117287,
+        "minimum_slat_angle_rad": 1.4011677143861723,
+        "maximum_slat_angle_rad": 1.4011677143861723,
+        "control_contact_force_n": 0.0,
+        "maximum_control_contact_force_n": 3.2566860296950386,
+        "gate_blinds_open_passed": true
+      },
+      "checks": {
+        "returned_to_rest": true,
+        "robot_settled": true,
+        "handle_moved": true,
+        "slats_open": true,
+        "physical_control_contact": true
+      }
+    },
+    "deliver_meal_demo": {
+      "command": "deliver_meal_demo",
+      "name": "Deliver meal container",
+      "stage": "settle",
+      "stage_index": 18,
+      "stage_count": 19,
+      "elapsed_s": 58.50000000002553,
+      "duration_s": 58.5,
+      "status": "complete",
+      "complete": true,
+      "progress": 1.0,
+      "measurements": {
+        "settle_dwell_s": 1.9140000000000015,
+        "collision_samples": 1140,
+        "rest_qpos_error": 8.784124105593109e-05,
+        "robot_speed": 0.00025927473893998276,
+        "object_name": "meal_box",
+        "object_position": [
+          0.8499393810794488,
+          1.218048681368453,
+          1.0674777133362057
+        ],
+        "object_height_gain_m": 0.2394777133362057,
+        "object_xy_error_m": 0.0019522599866183545,
+        "object_z_error_m": 2.2286663794224282e-05,
+        "object_speed_m_s": 3.1909274389086745e-14,
+        "object_angular_speed_rad_s": 1.4530472553470587e-16,
+        "support_force_n": 1.1771998819210632,
+        "bilateral_contact": false,
+        "fingers_clear": true,
+        "hand_clearance_m": 2.0379488386897955,
+        "patient_hand_distance_m": 0.4606531210419307,
+        "grasp_hold_s": 0.0,
+        "ever_grasped": true,
+        "supported_on_tray": true,
+        "gate_assist_bilateral_passed": true,
+        "gate_assist_grasped_passed": true,
+        "confirmed_grasp_height_m": 0.3415565950282452,
+        "confirmed_grasp_hold_s": 4.00999999999978,
+        "gate_assist_supported_passed": true,
+        "supported_release_force_n": 2.3334266235495003,
+        "supported_release_position": [
+          0.8498751658371336,
+          1.2189634991774103,
+          1.0676038588603258
+        ],
+        "supported_release_bilateral": true,
+        "gate_assist_released_passed": true
+      },
+      "checks": {
+        "returned_to_rest": true,
+        "robot_settled": true,
+        "verified_grasp": true,
+        "placed_on_tray": true,
+        "fingers_clear": true,
+        "hand_retracted": true,
+        "within_modeled_patient_reach": true
+      }
+    },
+    "deliver_phone_demo": {
+      "command": "deliver_phone_demo",
+      "name": "Deliver phone to bedside",
+      "stage": "settle",
+      "stage_index": 18,
+      "stage_count": 19,
+      "elapsed_s": 58.50000000002553,
+      "duration_s": 58.5,
+      "status": "complete",
+      "complete": true,
+      "progress": 1.0,
+      "measurements": {
+        "settle_dwell_s": 1.9140000000000015,
+        "collision_samples": 1140,
+        "rest_qpos_error": 8.784122589496494e-05,
+        "robot_speed": 0.00025927535423163377,
+        "object_name": "phone",
+        "object_position": [
+          0.8499429714714704,
+          1.4791910093418668,
+          1.0534777108392273
+        ],
+        "object_height_gain_m": 0.2394777108392273,
+        "object_xy_error_m": 0.0008109982355178592,
+        "object_z_error_m": 2.228916077284815e-05,
+        "object_speed_m_s": 3.053792400987904e-14,
+        "object_angular_speed_rad_s": 2.8079866359003917e-16,
+        "support_force_n": 1.7657999611482214,
+        "bilateral_contact": false,
+        "fingers_clear": true,
+        "hand_clearance_m": 2.2679584502877486,
+        "patient_hand_distance_m": 0.3049911585291133,
+        "grasp_hold_s": 0.0,
+        "ever_grasped": true,
+        "supported_on_tray": true,
+        "gate_assist_bilateral_passed": true,
+        "gate_assist_grasped_passed": true,
+        "confirmed_grasp_height_m": 0.35791301646389095,
+        "confirmed_grasp_hold_s": 4.073999999999773,
+        "gate_assist_supported_passed": true,
+        "supported_release_force_n": 1.1659498718272192,
+        "supported_release_position": [
+          0.8497816105827434,
+          1.4792772308641113,
+          1.0535052593246963
+        ],
+        "supported_release_bilateral": true,
+        "gate_assist_released_passed": true
+      },
+      "checks": {
+        "returned_to_rest": true,
+        "robot_settled": true,
+        "verified_grasp": true,
+        "placed_on_tray": true,
+        "fingers_clear": true,
+        "hand_retracted": true,
+        "within_modeled_patient_reach": true
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "source": "artifacts/final-vision-check.json",
+  "source_sha256": "5bc48ae931941eaa761ce70605fe55f344a98872aec8a054b2bcbccd8ab24a4c",
+  "source_passed": true,
+  "source_started": "2026-09-13T15:35:41.330Z",
+  "source_finished": "2026-09-13T15:36:52.003Z",
+  "method": {
+    "partition": "One pre-demo sample excluded; subsequent samples align with each demo trace in order; frame counter reset verified.",
+    "availability": "Fraction of sampled post-origin observations with a current verified tracking/relocalized pose; not every sensor frame is logged.",
+    "error": "Euclidean translation difference from isolated evaluation ground truth, recomputed from pose; first reset-origin sample excluded.",
+    "p95": "Nearest rank: sorted values[ceil(0.95*n)-1].",
+    "loss_timing": "Consecutive sampled lost statuses bracketed by adjacent observations; simulation elapsed time, not exact frame-level onset/recovery.",
+    "orientation": "No ground-truth orientation is present in this trace; orientation accuracy is not evaluated."
+  },
+  "runs": [
+    {
+      "command": "deliver_phone_demo",
+      "source_vision_start_index": 1,
+      "sample_count": 72,
+      "origin_samples_excluded": 1,
+      "sensor_frame_counter_final": 292,
+      "sampled_status_counts": {
+        "tracking": 36,
+        "lost": 36
+      },
+      "verified_temporal_samples": 35,
+      "post_origin_samples": 71,
+      "sampled_temporal_availability": 0.49295774647887325,
+      "translation_error_m": {
+        "count": 35,
+        "median": 0.05201219771936688,
+        "p95": 0.1368316166438228,
+        "maximum": 0.14288368072623603
+      },
+      "camera_translating_error_m": {
+        "count": 12,
+        "median": 0.06007203549177024,
+        "p95": 0.14288368072623603,
+        "maximum": 0.14288368072623603
+      },
+      "camera_translating_definition": "Consecutive ground-truth translation / demo elapsed interval exceeds 0.01 m/s; evaluation subset only.",
+      "maximum_ground_truth_displacement_m": 2.423607899197208,
+      "maximum_map_size": 484,
+      "relocalizations": 2,
+      "sampled_lost_intervals": [
+        {
+          "first_sample_index": 27,
+          "last_sample_index": 62,
+          "sample_count": 36,
+          "first_observed_lost_s": 22.48199999999842,
+          "last_observed_lost_s": 51.73400000001726,
+          "observed_lost_span_s": 29.252000000018842,
+          "previous_observation_s": 21.69999999999885,
+          "next_observation_s": 52.530000000018234,
+          "relocalizations_during_lost_samples": 0
+        }
+      ],
+      "recovery_between_polls_without_sampled_loss": [
+        {
+          "between_samples": [
+            25,
+            26
+          ],
+          "between_elapsed_s": [
+            20.877999999999307,
+            21.69999999999885
+          ],
+          "recovery_count": 1
+        }
+      ],
+      "processing_ms": {
+        "count": 72,
+        "median": 13.799999999813735,
+        "p95": 21.199999999720603,
+        "maximum": 24.09999999962747
+      },
+      "worst_valid_pose_sample": {
+        "index": 26,
+        "elapsed_s": 21.69999999999885,
+        "metrics": {
+          "status": "tracking",
+          "confidence": 0.22563282046097297,
+          "pose": {
+            "position": [
+              -0.2822915913642153,
+              0.02715829154660167,
+              0.6988797740871306
+            ],
+            "orientation": [
+              0.009981443120360636,
+              -0.012228647233058214,
+              0.013004810346392464,
+              0.9997908310681484
+            ],
+            "timestampMs": 26311.69999999972
+          },
+          "mapSize": 248,
+          "detected": 44,
+          "stereoMatches": 42,
+          "mapMatches": 26,
+          "inliers": 19,
+          "reprojectionErrorPx": 1.3999098805605328,
+          "processingMs": 14,
+          "keyframes": 10,
+          "relocalizations": 1
+        },
+        "evaluation": {
+          "groundTruthPosition": [
+            -0.39673011451904816,
+            0,
+            0.7800092868200906
+          ],
+          "positionErrorM": 0.14288368072623603
+        },
+        "frames": 108
+      }
+    }
+  ]
+}

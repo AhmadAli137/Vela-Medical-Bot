@@ -1,0 +1,165 @@
+{
+  "input_contract": "RGBA stereo pixels, calibration and timestamp only; ground truth restricted to independent test renderer",
+  "cases": [
+    {
+      "name": "initialize",
+      "status": "tracking",
+      "metrics": {
+        "detected": 180,
+        "stereoMatches": 177,
+        "mapMatches": 0,
+        "inliers": 0,
+        "reprojectionErrorPx": null,
+        "processingMs": 47.84609999999998,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "landmarks": 177
+    },
+    {
+      "name": "combined_motion",
+      "status": "tracking",
+      "estimated": {
+        "position": [
+          0.11903113062042882,
+          -0.01672762342669755,
+          0.012585323392146304
+        ],
+        "orientation": [
+          -0.0005676891073224926,
+          0.02999164531975107,
+          0.00809089030401293,
+          0.9995172416892969
+        ],
+        "timestampMs": 801
+      },
+      "ground_truth": {
+        "position": [
+          0.12,
+          -0.016,
+          0.012
+        ],
+        "yaw": 0.06,
+        "roll": 0.016
+      },
+      "position_error_m": 0.0013456400704287075,
+      "rotation_error_rad": 0.0006822285483633007,
+      "metrics": {
+        "detected": 180,
+        "stereoMatches": 175,
+        "mapMatches": 104,
+        "inliers": 102,
+        "reprojectionErrorPx": 0.6131712051292262,
+        "processingMs": 39.289300000000026,
+        "keyframes": 2,
+        "relocalizations": 0
+      }
+    },
+    {
+      "name": "loss_and_relocalization",
+      "lost_status": "lost",
+      "recovered_status": "relocalized",
+      "metrics": {
+        "detected": 180,
+        "stereoMatches": 177,
+        "mapMatches": 177,
+        "inliers": 177,
+        "reprojectionErrorPx": 1.7515453914453436e-14,
+        "processingMs": 40.34069999999997,
+        "keyframes": 1,
+        "relocalizations": 1
+      },
+      "error_m": 1.61168507961618e-16
+    },
+    {
+      "name": "stationary_pixels_despite_elapsed_time",
+      "position_error_m": 1.61168507961618e-16,
+      "metrics": {
+        "detected": 180,
+        "stereoMatches": 177,
+        "mapMatches": 177,
+        "inliers": 177,
+        "reprojectionErrorPx": 1.7515453914453436e-14,
+        "processingMs": 40.20830000000001,
+        "keyframes": 1,
+        "relocalizations": 0
+      }
+    },
+    {
+      "name": "blank_and_stereo_occlusion",
+      "blank": "initializing",
+      "occluded": "initializing",
+      "occluded_metrics": {
+        "detected": 180,
+        "stereoMatches": 0,
+        "mapMatches": 0,
+        "inliers": 0,
+        "reprojectionErrorPx": null,
+        "processingMs": 25.28359999999998,
+        "keyframes": 0,
+        "relocalizations": 0
+      }
+    },
+    {
+      "name": "existing_map_with_missing_right_eye",
+      "status": "tracking",
+      "metrics": {
+        "detected": 180,
+        "stereoMatches": 0,
+        "mapMatches": 123,
+        "inliers": 123,
+        "reprojectionErrorPx": 0.5001699908156445,
+        "processingMs": 29.40610000000015,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "position_error_m": 0.004106705640667038,
+      "new_stereo_depth": false
+    },
+    {
+      "name": "contradictory_right_disparity",
+      "status": "lost",
+      "metrics": {
+        "detected": 180,
+        "stereoMatches": 173,
+        "mapMatches": 177,
+        "inliers": 4,
+        "reprojectionErrorPx": 0,
+        "processingMs": 43.343599999999924,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "corruption_shift_px": 8
+    },
+    {
+      "name": "reset_and_input_validation",
+      "passed": true
+    },
+    {
+      "name": "actual_hospital_pixels",
+      "fixture": "tests/fixtures/stereo-room; robot-lens self-view eliminated before capture",
+      "initial_landmarks": 42,
+      "tracking": {
+        "detected": 52,
+        "stereoMatches": 42,
+        "mapMatches": 42,
+        "inliers": 42,
+        "reprojectionErrorPx": 2.5640967557683886e-14,
+        "processingMs": 11.786799999999857,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "right_eye_occlusion": {
+        "status": "initializing",
+        "map_size": 0
+      }
+    },
+    {
+      "name": "real_pixel_loss_to_pause_guard",
+      "lost_status": "lost",
+      "recovered_status": "relocalized",
+      "pause_requested_after_ms": 1500,
+      "automatic_resume": false
+    }
+  ]
+}
