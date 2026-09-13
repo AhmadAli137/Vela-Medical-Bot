@@ -9,6 +9,10 @@ import {chromium, expect} from '@playwright/test';
 const webRoot=resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const repository=resolve(webRoot,'../..');
 const output=resolve(webRoot,'dist');
+const remote=process.env.VELA_PUBLIC_URL;
+const target=remote||'http://127.0.0.1:4173/';
+const screenshot=remote?'apps/web/artifacts/vercel-simulation.png':'apps/web/artifacts/public-simulation.png';
+const report=remote?'artifacts/vercel-browser-check.json':'artifacts/public-browser-check.json';
 const deployment=JSON.parse(await readFile(resolve(repository,'vercel.json'),'utf8'));
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.json':'application/json','.xml':'application/xml','.wasm':'application/wasm','.glb':'model/gltf-binary','.woff':'font/woff','.woff2':'font/woff2','.svg':'image/svg+xml'};
 const server=createServer(async(request,response)=>{
@@ -23,7 +27,7 @@ const server=createServer(async(request,response)=>{
     response.end(await readFile(filename));
   }catch{response.writeHead(404,{'Content-Type':'text/plain'}).end('Not found')}
 });
-await new Promise(resolveReady=>server.listen(4173,'127.0.0.1',resolveReady));
+if(!remote)await new Promise(resolveReady=>server.listen(4173,'127.0.0.1',resolveReady));
 const started=Date.now();
 const errors=[],failedRequests=[],apiRequests=[];
 let browser,page;
@@ -35,7 +39,11 @@ try{
   page.on('console',message=>{if(message.type()==='error')errors.push(message.text())});
   page.on('requestfailed',request=>failedRequests.push({url:request.url(),error:request.failure()?.errorText}));
   page.on('request',request=>{if(new URL(request.url()).pathname.startsWith('/api/'))apiRequests.push(request.url())});
-  await page.goto('http://127.0.0.1:4173/',{waitUntil:'networkidle'});
+  const navigation=await page.goto(target,{waitUntil:'networkidle'});
+  assert.equal(navigation.status(),200,'Public page was not accessible');
+  const contentSecurityPolicy=navigation.headers()['content-security-policy'];
+  assert(contentSecurityPolicy?.includes("'wasm-unsafe-eval'"),'Missing WASM policy');
+  assert(contentSecurityPolicy?.includes("'unsafe-eval'"),'Missing official MuJoCo embind policy');
   await expect.poll(async()=>{
     const alerts=await page.getByRole('alert').allTextContents();
     if(alerts.length)throw new Error(alerts.join('; '));
@@ -74,17 +82,17 @@ try{
   await expect(page.getByRole('heading',{name:'Patient room 417.'})).toBeVisible();
   await page.getByRole('button',{name:'Model & physics',exact:true}).click();
   await mkdir(resolve(webRoot,'artifacts'),{recursive:true});
-  await page.screenshot({path:resolve(webRoot,'artifacts/public-simulation.png')});
+  await page.screenshot({path:resolve(repository,screenshot)});
   assert.deepEqual(errors,[],'Browser errors');
   assert.deepEqual(failedRequests,[],'Failed network requests');
   assert.deepEqual(apiRequests,[],'Public demo called the local API');
-  const result={checked_at:new Date().toISOString(),elapsed_seconds:(Date.now()-started)/1000,origin:'http://127.0.0.1:4173',server:'Static files with Vercel response headers; no API proxy',engine:'MuJoCo WebAssembly',viewport:{width:1600,height:1000},synchronized_bodies:27,joint_positions:initial.length,moving_joints:movingJoints,moving_simulation_time_seconds:movingTime,paused_simulation_time_seconds:pausedTime,reach_endpoint_error_display:reachErrorText,physics_steps_display:physicsSteps,default_route_3d:true,legacy_hash_stays_in_public_demo:true,about_dialog_escape_and_focus_restoration:true,errors,failed_requests:failedRequests,api_requests:apiRequests,screenshot:'apps/web/artifacts/public-simulation.png'};
-  await writeFile(resolve(repository,'artifacts/public-browser-check.json'),JSON.stringify(result,null,2)+'\n');
+  const result={checked_at:new Date().toISOString(),elapsed_seconds:(Date.now()-started)/1000,origin:new URL(target).origin,server:remote?'Vercel production; anonymous Chrome context':'Static files with Vercel response headers; no API proxy',content_security_policy:contentSecurityPolicy,engine:'MuJoCo WebAssembly',viewport:{width:1600,height:1000},synchronized_bodies:27,joint_positions:initial.length,moving_joints:movingJoints,moving_simulation_time_seconds:movingTime,paused_simulation_time_seconds:pausedTime,reach_endpoint_error_display:reachErrorText,physics_steps_display:physicsSteps,default_route_3d:true,legacy_hash_stays_in_public_demo:true,about_dialog_escape_and_focus_restoration:true,errors,failed_requests:failedRequests,api_requests:apiRequests,screenshot};
+  await writeFile(resolve(repository,report),JSON.stringify(result,null,2)+'\n');
   console.log(JSON.stringify(result,null,2));
 }catch(error){
   console.error(JSON.stringify({errors,failedRequests,apiRequests,alerts:await page?.getByRole('alert').allTextContents()},null,2));
   throw error;
 }finally{
   await browser?.close();
-  await new Promise(resolveClosed=>server.close(resolveClosed));
+  if(!remote)await new Promise(resolveClosed=>server.close(resolveClosed));
 }

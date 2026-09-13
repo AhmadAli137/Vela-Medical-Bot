@@ -1,5 +1,16 @@
 # Actual validation results
 
+## Live Vercel browser validation
+
+Anonymous Chrome verification passed at **https://vela-medical-bot.vercel.app** in 24.42 seconds. All 25 joint values changed; 27 body meshes stayed synchronized; pause held simulation time stable; the reach settled with a displayed 0.1 cm endpoint error. There were zero browser errors, failed network requests, or calls to the local `/api` backend. Default routing, legacy hash isolation, and About-dialog Escape/focus restoration also passed. [Measured production result](../artifacts/vercel-browser-check.json), [production screenshot](../apps/web/artifacts/vercel-simulation.png).
+
+The equivalent standalone static-server test passed before deployment. Seven additional actual WebAssembly engine tests passed, including native/WASM pose and reach parity, all actuator DOFs, unreachable goals, contact stopping, pause/reset/disposal, and the bounded catch-up interval. Public and normal TypeScript/Vite production builds both passed.
+
+```powershell
+$env:VELA_PUBLIC_URL = 'https://vela-medical-bot.vercel.app'
+node apps/web/scripts/check-public-demo.mjs
+```
+
 ## Reference-based interactive room: September 12, 2026
 
 The rebuilt view at `http://127.0.0.1:8000/#simulation` passed a focused final run of **14 tests** (9 physics and 5 API tests), in 7.44 seconds with the same dependency deprecation warning. [JUnit evidence](../artifacts/reference-test-results.xml).

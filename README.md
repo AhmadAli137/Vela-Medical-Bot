@@ -1,5 +1,7 @@
 # Vela — patient environment agent
 
+**[Open the live 3D simulation](https://vela-medical-bot.vercel.app)** — the public demo runs real MuJoCo physics in your browser, including articulated joint movement and a collision-checked reach. The complete local Python workspace is included in this repository. See [deployment details](docs/DEPLOYMENT.md).
+
 A runnable research prototype for non-clinical patient requests and hospital room operations. Open **http://127.0.0.1:8000/#simulation** for the reference-based hospital-room demo: a detailed Blender-authored room with a Bracket Bot visual approximation, actual MuJoCo dynamics, and streamed body poses rendered in Three.js.
 
 The room uses architectural observations from inspected official Stanford/UCLA photographs and nine CC0 material maps. The robot uses the supplied handout and three inspected videos: **27 bodies and 25 synthetic actuators**, with inferred geometry and control parameters. This is not a vendor-verified robot model, surveyed digital twin, or demonstrated grasping system. See [reference sources and asset provenance](docs/REFERENCE_UPGRADE.md) and [actual actuation metrics](sim/outputs/reference_actuation.json).

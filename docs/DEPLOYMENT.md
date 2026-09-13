@@ -2,6 +2,8 @@
 
 ## Public 3D demo on Vercel
 
+Live production: **https://vela-medical-bot.vercel.app**. Source: **https://github.com/AhmadAli137/Vela-Medical-Bot** (private repository). The Vercel project is connected to GitHub; pushes to `main` trigger production builds. The initial production deployment reached `Ready` on September 12, 2026, and the public URL returned HTTP 200 without sign-in.
+
 The public build runs the reference robot's MuJoCo 3.13.0 physics inside the browser using the official `@mujoco/mujoco` WebAssembly package. It includes the detailed GLBs, estimated MJCF model, 27 synchronized bodies, joint demonstration, runtime Jacobian reach calculation and sampled collision checks. Each visitor has an independent, ephemeral simulation. No Python server, shared task database, paid model API, robot connection, or recorded-pose playback is required for this view.
 
 The full staff/patient/fleet/research workspace remains the separate local Python application described below. The public build opens the 3D view and explains this boundary instead of exposing disconnected operational controls.
