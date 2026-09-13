@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "url": "https://vela-medical-bot.vercel.app",
+  "source_commit": "db4a5b2",
+  "model_hash": "e43c21c39fa3fa71995cd91eb8d1d945c11a18fea415bedd06dd5146c400c658",
+  "scene_revision": "caefec75da1e75a6",
+  "mode": "public",
+  "xml_matches_local": true,
+  "visual_asset_hashes": {
+    "apps/web/dist/simulation/meal_box.glb": "b9c6e055ce8c5dc61c43c43c7a4813764e7c11bac17846f569eb28fcaf7c00dc",
+    "apps/web/dist/simulation/phone.glb": "14cf62268ba700ef002b698fdcf327d1422325b8c99b23968dedadd3b0651e09",
+    "apps/web/dist/simulation/robot.glb": "73a21810cd3555931691972cd8a6c03bd923bc7b579ec2b67d50209de688b27a",
+    "apps/web/dist/simulation/room.glb": "9755e1825c282fd6ecf2d1e538c52cace343444a6c11116cb779ef2c1b363bc7"
+  },
+  "descriptors_semantically_match_local": true,
+  "local_cache_revision": "98fa83ea432af9fe",
+  "cache_revision_note": "Git normalizes descriptor JSON from Windows CRLF to LF. The Git HEAD bytes reproduce the deployed caefec75da1e75a6 revision; parsed descriptors, XML and visual assets match."
+}

@@ -1,0 +1,3387 @@
+{
+  "started": "2026-09-13T17:18:51.022Z",
+  "target": "https://vela-medical-bot.vercel.app/#simulation",
+  "errors": [],
+  "requests": [],
+  "cameraStats": [
+    {
+      "name": "head_rgb",
+      "width": 320,
+      "height": 240,
+      "frames": 7,
+      "span": 222.66666666666666,
+      "mean": 211.18924045139048
+    },
+    {
+      "name": "head_stereo_right",
+      "width": 320,
+      "height": 240,
+      "frames": 7,
+      "span": 222.66666666666666,
+      "mean": 211.40990885416744
+    },
+    {
+      "name": "left_wrist",
+      "width": 320,
+      "height": 240,
+      "frames": 7,
+      "span": 217,
+      "mean": 186.8766970485334
+    },
+    {
+      "name": "right_wrist",
+      "width": 320,
+      "height": 240,
+      "frames": 7,
+      "span": 217,
+      "mean": 187.342986111035
+    }
+  ],
+  "vision": [
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.9999999999999939,
+        "pose": {
+          "position": [
+            -7.226820705084392e-17,
+            -4.6476577417461624e-17,
+            -1.818536752989569e-16
+          ],
+          "orientation": [
+            -4.379172614902058e-18,
+            4.0902141742999996e-17,
+            9.473607317464585e-18,
+            1
+          ],
+          "timestampMs": 9661.099999999627
+        },
+        "mapSize": 60,
+        "detected": 72,
+        "stereoMatches": 60,
+        "mapMatches": 60,
+        "inliers": 60,
+        "reprojectionErrorPx": 2.4592546852033084e-14,
+        "processingMs": 25.199999999720603,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          0,
+          2.077147343015895e-10,
+          1.3949921218170402e-9
+        ],
+        "positionErrorM": 1.4103719216767812e-9
+      },
+      "frames": 10
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6,
+        "pose": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "timestampMs": 10747.299999999814
+        },
+        "mapSize": 60,
+        "detected": 72,
+        "stereoMatches": 60,
+        "mapMatches": 0,
+        "inliers": 0,
+        "reprojectionErrorPx": null,
+        "processingMs": 18.199999999720603,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          0,
+          0,
+          0
+        ],
+        "positionErrorM": 0
+      },
+      "frames": 1
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6604731958133426,
+        "pose": {
+          "position": [
+            -0.0015596208391821201,
+            0.0002957848957820592,
+            -0.0009660618097381325
+          ],
+          "orientation": [
+            -0.00016631401480274465,
+            0.00048678465581162737,
+            -0.00010578243260779786,
+            0.9999998620952026
+          ],
+          "timestampMs": 11792.099999999627
+        },
+        "mapSize": 60,
+        "detected": 67,
+        "stereoMatches": 59,
+        "mapMatches": 38,
+        "inliers": 34,
+        "reprojectionErrorPx": 0.5262309424350149,
+        "processingMs": 26.800000000279397,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          0,
+          0.0002737796699729955,
+          -0.000040011610814794096
+        ],
+        "positionErrorM": 0.0018139653698182896
+      },
+      "frames": 6
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.7751236140435098,
+        "pose": {
+          "position": [
+            0.0001337864345523517,
+            -0.0016305465320803907,
+            -0.001146426434843362
+          ],
+          "orientation": [
+            -0.00022301021582767878,
+            0.0003244538067566242,
+            -0.000045049005309991415,
+            0.9999999214833759
+          ],
+          "timestampMs": 12616.599999999627
+        },
+        "mapSize": 60,
+        "detected": 71,
+        "stereoMatches": 60,
+        "mapMatches": 39,
+        "inliers": 37,
+        "reprojectionErrorPx": 0.4669310798893345,
+        "processingMs": 22.899999999906868,
+        "keyframes": 1,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          0,
+          0.00027316886149786335,
+          0.00004812933424314103
+        ],
+        "positionErrorM": 0.00225144278081298
+      },
+      "frames": 10
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.4964770910223694,
+        "pose": {
+          "position": [
+            -0.014550258519333012,
+            0.00029597112603743213,
+            0.0012647989384159477
+          ],
+          "orientation": [
+            -0.0004268355492127383,
+            -0.11762306912600343,
+            -0.0013446518065336206,
+            0.9930573112022854
+          ],
+          "timestampMs": 13651.899999999907
+        },
+        "mapSize": 125,
+        "detected": 94,
+        "stereoMatches": 89,
+        "mapMatches": 45,
+        "inliers": 35,
+        "reprojectionErrorPx": 1.081930567052196,
+        "processingMs": 32.5,
+        "keyframes": 2,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.015960992273021057,
+          0.00027357861737020706,
+          -0.008081179767340685
+        ],
+        "positionErrorM": 0.009451877544524982
+      },
+      "frames": 15
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6285285989406386,
+        "pose": {
+          "position": [
+            -0.018186776970676943,
+            -0.0046935263769517736,
+            0.00024018071465853872
+          ],
+          "orientation": [
+            -0.0020016498826286137,
+            -0.1732566369909786,
+            0.00048489317499973716,
+            0.984874558517445
+          ],
+          "timestampMs": 14468.5
+        },
+        "mapSize": 194,
+        "detected": 91,
+        "stereoMatches": 86,
+        "mapMatches": 54,
+        "inliers": 47,
+        "reprojectionErrorPx": 1.1114430346557884,
+        "processingMs": 29.700000000186265,
+        "keyframes": 3,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.022829840865059237,
+          0.0002735364595622958,
+          -0.01325168228376683
+        ],
+        "positionErrorM": 0.015108279939075634
+      },
+      "frames": 19
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.5871530573530604,
+        "pose": {
+          "position": [
+            -0.02505408348508243,
+            -0.0015524223626800797,
+            -0.004832144665261803
+          ],
+          "orientation": [
+            -0.0002632648194204531,
+            -0.1802394377841367,
+            -0.002115149863351589,
+            0.9836204562227997
+          ],
+          "timestampMs": 15524.899999999907
+        },
+        "mapSize": 194,
+        "detected": 88,
+        "stereoMatches": 81,
+        "mapMatches": 50,
+        "inliers": 43,
+        "reprojectionErrorPx": 1.2690555471950677,
+        "processingMs": 30.699999999720603,
+        "keyframes": 3,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.023699250256718374,
+          0.00027353542942787357,
+          -0.014000937539513814
+        ],
+        "positionErrorM": 0.009446505052461125
+      },
+      "frames": 24
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6672395666798313,
+        "pose": {
+          "position": [
+            -0.01405124818702401,
+            -0.007878795339481125,
+            0.0005961889627690261
+          ],
+          "orientation": [
+            -0.0020056179601571212,
+            -0.18208862054956013,
+            -0.0007352163594988482,
+            0.9832798031180446
+          ],
+          "timestampMs": 16359.299999999814
+        },
+        "mapSize": 194,
+        "detected": 93,
+        "stereoMatches": 89,
+        "mapMatches": 52,
+        "inliers": 48,
+        "reprojectionErrorPx": 1.1086285443873976,
+        "processingMs": 31.600000000093132,
+        "keyframes": 3,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.02374894459467103,
+          0.00027353543653685364,
+          -0.01404447881438875
+        ],
+        "positionErrorM": 0.019361171598268678
+      },
+      "frames": 28
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6325784027147698,
+        "pose": {
+          "position": [
+            -0.061231258950088616,
+            0.00962569968921857,
+            0.09914872228451384
+          ],
+          "orientation": [
+            0.0013902604333432004,
+            -0.18034278314838806,
+            0.0007039637597187004,
+            0.983602588537284
+          ],
+          "timestampMs": 17186.5
+        },
+        "mapSize": 243,
+        "detected": 106,
+        "stereoMatches": 100,
+        "mapMatches": 58,
+        "inliers": 53,
+        "reprojectionErrorPx": 1.2309775579278002,
+        "processingMs": 43.60000000009313,
+        "keyframes": 4,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.06525818843640252,
+          0.0002735292848941029,
+          0.09562074134383619
+        ],
+        "positionErrorM": 0.010776172877095633
+      },
+      "frames": 32
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.44716794851015745,
+        "pose": {
+          "position": [
+            -0.14744107300840714,
+            0.014376440847737128,
+            0.29230127757430285
+          ],
+          "orientation": [
+            0.0032716390967186468,
+            -0.18019878475001397,
+            -0.0012717449374409552,
+            0.9836239510184027
+          ],
+          "timestampMs": 18218.19999999972
+        },
+        "mapSize": 298,
+        "detected": 89,
+        "stereoMatches": 87,
+        "mapMatches": 45,
+        "inliers": 35,
+        "reprojectionErrorPx": 1.3717475679402995,
+        "processingMs": 30.100000000093132,
+        "keyframes": 5,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.13749860538002567,
+          0.0002735354466665285,
+          0.286486192525061
+        ],
+        "positionErrorM": 0.018208784073157538
+      },
+      "frames": 37
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.5244052921533867,
+        "pose": {
+          "position": [
+            -0.22611320941319735,
+            0.019710464980948576,
+            0.45865972429299434
+          ],
+          "orientation": [
+            0.003683363039732503,
+            -0.17409127574577846,
+            0.0016957438635374772,
+            0.9847211711945033
+          ],
+          "timestampMs": 19232
+        },
+        "mapSize": 414,
+        "detected": 100,
+        "stereoMatches": 92,
+        "mapMatches": 50,
+        "inliers": 43,
+        "reprojectionErrorPx": 1.5609056178912246,
+        "processingMs": 37.799999999813735,
+        "keyframes": 7,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.20990835072779407,
+          0.0002735354370688725,
+          0.4778212374628513
+        ],
+        "positionErrorM": 0.031742010995937806
+      },
+      "frames": 42
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.43905494895338354,
+        "pose": {
+          "position": [
+            -0.26994506857599393,
+            0.02000714339530906,
+            0.5873237223112419
+          ],
+          "orientation": [
+            0.0064695820015434604,
+            -0.17362288860815273,
+            0.002589566604682593,
+            0.9847875563820282
+          ],
+          "timestampMs": 20048.899999999907
+        },
+        "mapSize": 480,
+        "detected": 95,
+        "stereoMatches": 90,
+        "mapMatches": 56,
+        "inliers": 42,
+        "reprojectionErrorPx": 1.6583736055819545,
+        "processingMs": 45.200000000186265,
+        "keyframes": 8,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.26667106511993716,
+          0.00027353247759753785,
+          0.6278327450652025
+        ],
+        "positionErrorM": 0.04517870541486104
+      },
+      "frames": 46
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.5312345447727728,
+        "pose": {
+          "position": [
+            -0.30782861475846207,
+            0.013598523367727199,
+            0.6713705390642906
+          ],
+          "orientation": [
+            0.004046051807684662,
+            -0.1733151608349794,
+            0.0016653972377725082,
+            0.9848566956372665
+          ],
+          "timestampMs": 21075.399999999907
+        },
+        "mapSize": 544,
+        "detected": 105,
+        "stereoMatches": 99,
+        "mapMatches": 57,
+        "inliers": 46,
+        "reprojectionErrorPx": 1.3669244302566916,
+        "processingMs": 34.799999999813735,
+        "keyframes": 9,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.29460783095748794,
+          0.0002735354872389628,
+          0.7016705371784249
+        ],
+        "positionErrorM": 0.03564315238645147
+      },
+      "frames": 51
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.49479809878208747,
+        "pose": {
+          "position": [
+            -0.31844417864943664,
+            0.02251484553395073,
+            0.6845168041447307
+          ],
+          "orientation": [
+            0.006018083698152492,
+            -0.17224515669661364,
+            0.002400814496235422,
+            0.9850328038968631
+          ],
+          "timestampMs": 22109.799999999814
+        },
+        "mapSize": 544,
+        "detected": 97,
+        "stereoMatches": 91,
+        "mapMatches": 47,
+        "inliers": 38,
+        "reprojectionErrorPx": 1.4232121171459156,
+        "processingMs": 31.100000000093132,
+        "keyframes": 9,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.3016176033060004,
+          0.0002735354544340929,
+          0.7201954742140938
+        ],
+        "positionErrorM": 0.04528550551512051
+      },
+      "frames": 56
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.48834217922477263,
+        "pose": {
+          "position": [
+            -0.304048714929786,
+            0.014788274001911121,
+            0.6982880845805242
+          ],
+          "orientation": [
+            0.005210451646566061,
+            -0.17675026797018123,
+            0.002044118658304882,
+            0.9842398160738157
+          ],
+          "timestampMs": 22945.399999999907
+        },
+        "mapSize": 544,
+        "detected": 105,
+        "stereoMatches": 99,
+        "mapMatches": 45,
+        "inliers": 37,
+        "reprojectionErrorPx": 1.4316554489274194,
+        "processingMs": 32.299999999813735,
+        "keyframes": 9,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.30306361565832496,
+          0.0002735354421921077,
+          0.7240168724751107
+        ],
+        "positionErrorM": 0.029557039475499744
+      },
+      "frames": 60
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.5159179656791028,
+        "pose": {
+          "position": [
+            -0.3205276028564439,
+            0.020809147688083483,
+            0.6947593249352001
+          ],
+          "orientation": [
+            0.005288886294615307,
+            -0.17397673719221027,
+            0.002087003124073207,
+            0.9847333481789248
+          ],
+          "timestampMs": 23967.19999999972
+        },
+        "mapSize": 544,
+        "detected": 101,
+        "stereoMatches": 96,
+        "mapMatches": 48,
+        "inliers": 39,
+        "reprojectionErrorPx": 1.3949704297070946,
+        "processingMs": 37.40000000037253,
+        "keyframes": 9,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.3035708578517866,
+          0.00027353543798014357,
+          0.725357387995256
+        ],
+        "positionErrorM": 0.04056456624526778
+      },
+      "frames": 65
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.5430987859214406,
+        "pose": {
+          "position": [
+            -0.3220302564640599,
+            0.02497524963700767,
+            0.6967753509110035
+          ],
+          "orientation": [
+            0.005999891817344502,
+            -0.17345134497190992,
+            0.002953215764034867,
+            0.9848197351506857
+          ],
+          "timestampMs": 24996.69999999972
+        },
+        "mapSize": 544,
+        "detected": 103,
+        "stereoMatches": 96,
+        "mapMatches": 48,
+        "inliers": 41,
+        "reprojectionErrorPx": 1.456708124465449,
+        "processingMs": 33.5,
+        "keyframes": 9,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.3036958365297573,
+          0.00027353543694319526,
+          0.7256876786070146
+        ],
+        "positionErrorM": 0.04221668309508159
+      },
+      "frames": 70
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.442550489433146,
+        "pose": {
+          "position": [
+            -0.32541564828749253,
+            0.029404033749173053,
+            0.7031265505774269
+          ],
+          "orientation": [
+            0.0066286378498905275,
+            -0.15811612047433335,
+            0.002427251380678022,
+            0.9873952916928135
+          ],
+          "timestampMs": 25836.799999999814
+        },
+        "mapSize": 544,
+        "detected": 86,
+        "stereoMatches": 81,
+        "mapMatches": 42,
+        "inliers": 35,
+        "reprojectionErrorPx": 1.5722944579667422,
+        "processingMs": 29.5,
+        "keyframes": 9,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.3017750258176114,
+          0.00027353521229223077,
+          0.7274110932610477
+        ],
+        "positionErrorM": 0.04469008826488559
+      },
+      "frames": 74
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.39734564314547344,
+        "pose": {
+          "position": [
+            -0.3036781921918963,
+            0.0068737739629498055,
+            0.6838722452425258
+          ],
+          "orientation": [
+            0.0035345206551645274,
+            -0.11914454296110055,
+            0.0009145777454778078,
+            0.9928702073251447
+          ],
+          "timestampMs": 26880.899999999907
+        },
+        "mapSize": 597,
+        "detected": 80,
+        "stereoMatches": 72,
+        "mapMatches": 41,
+        "inliers": 33,
+        "reprojectionErrorPx": 1.6064394682880572,
+        "processingMs": 26.800000000279397,
+        "keyframes": 10,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.2972274597882713,
+          0.0002735354375338339,
+          0.7308791751147864
+        ],
+        "positionErrorM": 0.047904347956643674
+      },
+      "frames": 79
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.5672721927693045,
+        "pose": {
+          "position": [
+            -0.29510932950014535,
+            -0.005585312195114652,
+            0.6915057300272655
+          ],
+          "orientation": [
+            0.0015282234618119923,
+            -0.1206490350365372,
+            -0.0001076318027908907,
+            0.9926940431438068
+          ],
+          "timestampMs": 27716.599999999627
+        },
+        "mapSize": 597,
+        "detected": 94,
+        "stereoMatches": 88,
+        "mapMatches": 49,
+        "inliers": 43,
+        "reprojectionErrorPx": 1.4142941910980535,
+        "processingMs": 31.5,
+        "keyframes": 10,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.2969924966283794,
+          0.00027353543659325297,
+          0.7310436387737005
+        ],
+        "positionErrorM": 0.04001398058236464
+      },
+      "frames": 83
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.5328096329010304,
+        "pose": {
+          "position": [
+            -0.30277717502290935,
+            0.006543641301900355,
+            0.6921073898010318
+          ],
+          "orientation": [
+            0.0019722660386812195,
+            -0.11741138804148749,
+            0.0027299269085283946,
+            0.993077652363559
+          ],
+          "timestampMs": 28776.69999999972
+        },
+        "mapSize": 597,
+        "detected": 77,
+        "stereoMatches": 70,
+        "mapMatches": 41,
+        "inliers": 35,
+        "reprojectionErrorPx": 1.1467500474850942,
+        "processingMs": 28.600000000093132,
+        "keyframes": 10,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.2969703641968981,
+          0.00027353543513264356,
+          0.7310735221688055
+        ],
+        "positionErrorM": 0.03989226430340118
+      },
+      "frames": 88
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.5036588013491201,
+        "pose": {
+          "position": [
+            -0.2986320475386478,
+            -0.003498599348225516,
+            0.6916863951719981
+          ],
+          "orientation": [
+            0.0007323096598270914,
+            -0.11864311697727925,
+            0.001364860479933226,
+            0.9929357540507583
+          ],
+          "timestampMs": 29614.899999999907
+        },
+        "mapSize": 597,
+        "detected": 77,
+        "stereoMatches": 71,
+        "mapMatches": 36,
+        "inliers": 33,
+        "reprojectionErrorPx": 1.336019563112092,
+        "processingMs": 34.5,
+        "keyframes": 10,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.29697054840818937,
+          0.00027353543663588553,
+          0.7310806751208088
+        ],
+        "positionErrorM": 0.03960932810438644
+      },
+      "frames": 92
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6068418739186174,
+        "pose": {
+          "position": [
+            -0.2974474938093735,
+            0.0032802784379596106,
+            0.6873295109793849
+          ],
+          "orientation": [
+            0.002178667316200659,
+            -0.11855105193369861,
+            0.0022543389968279945,
+            0.9929430091650912
+          ],
+          "timestampMs": 30656.399999999907
+        },
+        "mapSize": 597,
+        "detected": 74,
+        "stereoMatches": 66,
+        "mapMatches": 39,
+        "inliers": 37,
+        "reprojectionErrorPx": 1.233971297843555,
+        "processingMs": 26.100000000093132,
+        "keyframes": 10,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.2969707640053994,
+          0.00027353543663855007,
+          0.7310822183392625
+        ],
+        "positionErrorM": 0.04385849035364847
+      },
+      "frames": 97
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.5961057852210637,
+        "pose": {
+          "position": [
+            -0.2978241283297694,
+            0.0035643295318799157,
+            0.6875182735416706
+          ],
+          "orientation": [
+            0.002199677280465399,
+            -0.11836891150693506,
+            0.002529371270928693,
+            0.9929640298064674
+          ],
+          "timestampMs": 31683.599999999627
+        },
+        "mapSize": 597,
+        "detected": 75,
+        "stereoMatches": 67,
+        "mapMatches": 38,
+        "inliers": 36,
+        "reprojectionErrorPx": 1.2034543409382195,
+        "processingMs": 25.200000000186265,
+        "keyframes": 10,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.2969708228968845,
+          0.0002735354365746012,
+          0.7310825025283794
+        ],
+        "positionErrorM": 0.04369667611095702
+      },
+      "frames": 102
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.5467332730253773,
+        "pose": {
+          "position": [
+            -0.31731604164580535,
+            0.011577707839057063,
+            0.6874808913972817
+          ],
+          "orientation": [
+            0.004015767101975288,
+            -0.16134138898623812,
+            0.0016517166256413028,
+            0.9868891030134858
+          ],
+          "timestampMs": 32517.799999999814
+        },
+        "mapSize": 597,
+        "detected": 96,
+        "stereoMatches": 89,
+        "mapMatches": 53,
+        "inliers": 45,
+        "reprojectionErrorPx": 1.424278802636,
+        "processingMs": 33.10000000009313,
+        "keyframes": 10,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.30249579904243296,
+          0.0002735353370630911,
+          0.726864360999897
+        ],
+        "positionErrorM": 0.04357156853634918
+      },
+      "frames": 106
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6477121110642421,
+        "pose": {
+          "position": [
+            -0.30947065845456206,
+            0.009101444378312206,
+            0.6845621432730615
+          ],
+          "orientation": [
+            0.003538355983455502,
+            -0.17162468590562324,
+            0.002490994798318408,
+            0.9851529029392571
+          ],
+          "timestampMs": 33567.19999999972
+        },
+        "mapSize": 648,
+        "detected": 96,
+        "stereoMatches": 93,
+        "mapMatches": 56,
+        "inliers": 51,
+        "reprojectionErrorPx": 1.1551468063060737,
+        "processingMs": 31.800000000279397,
+        "keyframes": 11,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.30365489147403124,
+          0.000273535436369432,
+          0.7258714993695554
+        ],
+        "positionErrorM": 0.04264056780773449
+      },
+      "frames": 111
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6513385410409994,
+        "pose": {
+          "position": [
+            -0.31640465610099144,
+            0.017463706212900595,
+            0.6901548895208438
+          ],
+          "orientation": [
+            0.004996447997999955,
+            -0.1728847294832376,
+            0.0018676334799400062,
+            0.9849276205712253
+          ],
+          "timestampMs": 34586.299999999814
+        },
+        "mapSize": 648,
+        "detected": 98,
+        "stereoMatches": 93,
+        "mapMatches": 65,
+        "inliers": 59,
+        "reprojectionErrorPx": 1.1296945649040704,
+        "processingMs": 56.6999999997206,
+        "keyframes": 11,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.3035563071540427,
+          0.00027354868551743294,
+          0.7253488254570417
+        ],
+        "positionErrorM": 0.04122128956206986
+      },
+      "frames": 116
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6708857470934269,
+        "pose": {
+          "position": [
+            -0.25713554071537564,
+            0.020348742744523866,
+            0.5539123841558609
+          ],
+          "orientation": [
+            0.00556098212370351,
+            -0.17517900633588493,
+            0.00216666568165268,
+            0.9845185101240178
+          ],
+          "timestampMs": 35421.39999999991
+        },
+        "mapSize": 688,
+        "detected": 110,
+        "stereoMatches": 101,
+        "mapMatches": 60,
+        "inliers": 56,
+        "reprojectionErrorPx": 1.1247753695995997,
+        "processingMs": 41.5,
+        "keyframes": 12,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.24990841606915004,
+          0.0002735360795611541,
+          0.5835384068634379
+        ],
+        "positionErrorM": 0.036509539503572455
+      },
+      "frames": 120
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6744286700418143,
+        "pose": {
+          "position": [
+            -0.15529181880325166,
+            0.006754662763044338,
+            0.286980477319846
+          ],
+          "orientation": [
+            0.0012448361082381839,
+            -0.17541676953527346,
+            0.00029002835746446564,
+            0.9844934348345978
+          ],
+          "timestampMs": 36866
+        },
+        "mapSize": 801,
+        "detected": 87,
+        "stereoMatches": 79,
+        "mapMatches": 46,
+        "inliers": 45,
+        "reprojectionErrorPx": 1.2423361047179153,
+        "processingMs": 31.700000000186265,
+        "keyframes": 14,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.14404250662213758,
+          0.0002735354387564115,
+          0.30374621777944155
+        ],
+        "positionErrorM": 0.021204765716704176
+      },
+      "frames": 127
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6979148136103153,
+        "pose": {
+          "position": [
+            -0.09567240783589791,
+            -0.0017185501578759086,
+            0.12340840263143633
+          ],
+          "orientation": [
+            0.0003941714242991012,
+            -0.17554179892675445,
+            -0.0024587996806495777,
+            0.984468829248838
+          ],
+          "timestampMs": 37693.59999999963
+        },
+        "mapSize": 898,
+        "detected": 97,
+        "stereoMatches": 92,
+        "mapMatches": 48,
+        "inliers": 47,
+        "reprojectionErrorPx": 1.148943740145095,
+        "processingMs": 35.5,
+        "keyframes": 16,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.08221331268164811,
+          0.00027353543665142865,
+          0.14034057015357632
+        ],
+        "positionErrorM": 0.02172127860842648
+      },
+      "frames": 131
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.683402398421287,
+        "pose": {
+          "position": [
+            -0.04034201196164063,
+            -0.002102352582504074,
+            0.02724611104242716
+          ],
+          "orientation": [
+            -0.0008576843150438401,
+            -0.17978697438932473,
+            -0.0008647419604836771,
+            0.9837048136706915
+          ],
+          "timestampMs": 38737.09999999963
+        },
+        "mapSize": 943,
+        "detected": 94,
+        "stereoMatches": 87,
+        "mapMatches": 58,
+        "inliers": 54,
+        "reprojectionErrorPx": 1.063900806782619,
+        "processingMs": 33.09999999962747,
+        "keyframes": 17,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.03779824135376153,
+          0.00027353530938123427,
+          0.02295806902901376
+        ],
+        "positionErrorM": 0.005522944548799604
+      },
+      "frames": 136
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6725297935231954,
+        "pose": {
+          "position": [
+            -0.03187311546716682,
+            -0.00418609139814441,
+            0.002052119959213898
+          ],
+          "orientation": [
+            -0.000955658305728235,
+            -0.1799862482997793,
+            -0.0014578354918715797,
+            0.9836675819888807
+          ],
+          "timestampMs": 39577.299999999814
+        },
+        "mapSize": 943,
+        "detected": 95,
+        "stereoMatches": 89,
+        "mapMatches": 56,
+        "inliers": 53,
+        "reprojectionErrorPx": 1.1576099292604567,
+        "processingMs": 39,
+        "keyframes": 17,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.02816841494042699,
+          0.00027353540102570406,
+          -0.002492176275284197
+        ],
+        "positionErrorM": 0.007366390258978696
+      },
+      "frames": 140
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.718450445340175,
+        "pose": {
+          "position": [
+            -0.02398957263666807,
+            -0.006667555356325648,
+            0.0018983775738196354
+          ],
+          "orientation": [
+            -0.0023135873714666536,
+            -0.18056906502027997,
+            -0.0010203668756449038,
+            0.9835590571605832
+          ],
+          "timestampMs": 40607.39999999991
+        },
+        "mapSize": 943,
+        "detected": 97,
+        "stereoMatches": 90,
+        "mapMatches": 54,
+        "inliers": 53,
+        "reprojectionErrorPx": 1.071975543519287,
+        "processingMs": 35.39999999990687,
+        "keyframes": 17,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.024862103066895624,
+          0.00027353542729380287,
+          -0.01123029182972457
+        ],
+        "positionErrorM": 0.0148762230060482
+      },
+      "frames": 145
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6927629272800098,
+        "pose": {
+          "position": [
+            -0.023058765781561866,
+            -0.004368765387291315,
+            -0.0002553705779959166
+          ],
+          "orientation": [
+            -0.0019768011709448297,
+            -0.18058677470805798,
+            -0.0009044151755874,
+            0.9835566537271058
+          ],
+          "timestampMs": 41460.799999999814
+        },
+        "mapSize": 943,
+        "detected": 96,
+        "stereoMatches": 89,
+        "mapMatches": 57,
+        "inliers": 54,
+        "reprojectionErrorPx": 1.0750009737066253,
+        "processingMs": 29.800000000279397,
+        "keyframes": 17,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.02409624855596937,
+          0.00027353543362229615,
+          -0.013254337676478434
+        ],
+        "positionErrorM": 0.013841982265791213
+      },
+      "frames": 149
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6670430129692678,
+        "pose": {
+          "position": [
+            -0.02251721596411123,
+            -0.006069995320990381,
+            -0.0009692838226778192
+          ],
+          "orientation": [
+            -0.0023942291176758026,
+            -0.18063112202700746,
+            -0.0005875242254812304,
+            0.983547823055636
+          ],
+          "timestampMs": 42508.299999999814
+        },
+        "mapSize": 943,
+        "detected": 90,
+        "stereoMatches": 85,
+        "mapMatches": 55,
+        "inliers": 50,
+        "reprojectionErrorPx": 1.0650107429352214,
+        "processingMs": 35.40000000037253,
+        "keyframes": 17,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.023822396883832253,
+          0.00027353543589381246,
+          -0.013978089163495633
+        ],
+        "positionErrorM": 0.01453178915660524
+      },
+      "frames": 154
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6994102621057557,
+        "pose": {
+          "position": [
+            -0.025109769774079773,
+            -0.007406286384509912,
+            0.000043461828588862714
+          ],
+          "orientation": [
+            -0.002979881075100231,
+            -0.18041327347206904,
+            -0.00019128565065810833,
+            0.983586363505346
+          ],
+          "timestampMs": 43543.39999999991
+        },
+        "mapSize": 943,
+        "detected": 92,
+        "stereoMatches": 86,
+        "mapMatches": 54,
+        "inliers": 52,
+        "reprojectionErrorPx": 1.094757372791476,
+        "processingMs": 38.200000000186265,
+        "keyframes": 17,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.023755648177510857,
+          0.0002735354364475917,
+          -0.014154496610867207
+        ],
+        "positionErrorM": 0.016198621310113747
+      },
+      "frames": 159
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6742059802960914,
+        "pose": {
+          "position": [
+            -0.0023924224681253956,
+            0.006355154752578316,
+            0.0025986939243955887
+          ],
+          "orientation": [
+            0.0005800923139781441,
+            -0.05350253016577286,
+            0.0006214104285809907,
+            0.9985673520638692
+          ],
+          "timestampMs": 44566.59999999963
+        },
+        "mapSize": 1010,
+        "detected": 88,
+        "stereoMatches": 78,
+        "mapMatches": 56,
+        "inliers": 50,
+        "reprojectionErrorPx": 0.9795572082735113,
+        "processingMs": 28.300000000279397,
+        "keyframes": 19,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.007448154675994245,
+          0.00027353609740998763,
+          -0.0030795935299046118
+        ],
+        "positionErrorM": 0.009735987984700727
+      },
+      "frames": 164
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.6121361341599825,
+        "pose": {
+          "position": [
+            0.010758540472451984,
+            0.006390520534982779,
+            -0.0009010292494707313
+          ],
+          "orientation": [
+            0.0018301180827697305,
+            -0.007455456277886361,
+            0.0003119392266745917,
+            0.9999704843311179
+          ],
+          "timestampMs": 45417.89999999991
+        },
+        "mapSize": 1010,
+        "detected": 69,
+        "stereoMatches": 57,
+        "mapMatches": 36,
+        "inliers": 34,
+        "reprojectionErrorPx": 0.9499099197564882,
+        "processingMs": 27.300000000279397,
+        "keyframes": 19,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.0007564310107560646,
+          0.0002735354274407964,
+          -0.00010568831169621706
+        ],
+        "positionErrorM": 0.013063102321894483
+      },
+      "frames": 168
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.7305524503001439,
+        "pose": {
+          "position": [
+            0.005221341159921301,
+            0.0003776459203560993,
+            -0.0024816551188838873
+          ],
+          "orientation": [
+            0.0006530882425948982,
+            -0.0013737602027746368,
+            -0.0002621290725011299,
+            0.9999988087727915
+          ],
+          "timestampMs": 46467.89999999991
+        },
+        "mapSize": 1037,
+        "detected": 72,
+        "stereoMatches": 62,
+        "mapMatches": 48,
+        "inliers": 45,
+        "reprojectionErrorPx": 0.8829762120527193,
+        "processingMs": 28,
+        "keyframes": 20,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.00007833689925507148,
+          0.000273535436588368,
+          0.00015247096641779478
+        ],
+        "positionErrorM": 0.005919125506104137
+      },
+      "frames": 173
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.827992986957458,
+        "pose": {
+          "position": [
+            -0.00006019238820493194,
+            -0.008182878214714563,
+            -0.0006705200854790451
+          ],
+          "orientation": [
+            -0.001597859124352972,
+            0.0004406495250617001,
+            -0.0005188167630626693,
+            0.999998491750553
+          ],
+          "timestampMs": 47293.799999999814
+        },
+        "mapSize": 1037,
+        "detected": 74,
+        "stereoMatches": 67,
+        "mapMatches": 57,
+        "inliers": 56,
+        "reprojectionErrorPx": 0.6288856959589206,
+        "processingMs": 28.300000000279397,
+        "keyframes": 20,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.00004433617812327206,
+          0.00027353538592134186,
+          0.0001432134234078397
+        ],
+        "positionErrorM": 0.008495489663810052
+      },
+      "frames": 177
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.8338322765576873,
+        "pose": {
+          "position": [
+            0.002083597636741383,
+            -0.005272114978186263,
+            -0.0014056644285329457
+          ],
+          "orientation": [
+            -0.0009065740074208151,
+            0.00013664196427882788,
+            -0.00013093790155219525,
+            0.9999995711538124
+          ],
+          "timestampMs": 48318.09999999963
+        },
+        "mapSize": 1037,
+        "detected": 65,
+        "stereoMatches": 56,
+        "mapMatches": 46,
+        "inliers": 46,
+        "reprojectionErrorPx": 0.6646708937692507,
+        "processingMs": 28.200000000186265,
+        "keyframes": 20,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.00004019442671776563,
+          0.0002735354367910947,
+          0.00002173220504375628
+        ],
+        "positionErrorM": 0.0061075520794747805
+      },
+      "frames": 182
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.8028788336097925,
+        "pose": {
+          "position": [
+            -0.00028233640489459474,
+            -0.006571498868061854,
+            -0.0009092573095653933
+          ],
+          "orientation": [
+            -0.0013250149690544148,
+            0.0005296648318041317,
+            -0.0004778768458838863,
+            0.999998867711468
+          ],
+          "timestampMs": 49131.299999999814
+        },
+        "mapSize": 1037,
+        "detected": 68,
+        "stereoMatches": 58,
+        "mapMatches": 46,
+        "inliers": 45,
+        "reprojectionErrorPx": 0.7171176581288484,
+        "processingMs": 29.799999999813735,
+        "keyframes": 20,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.00003996048594667734,
+          0.0002731657700023593,
+          0.000026621219844868982
+        ],
+        "positionErrorM": 0.006912600720095416
+      },
+      "frames": 186
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.8327155538293959,
+        "pose": {
+          "position": [
+            0.00040915184635685663,
+            -0.00517817409738203,
+            -0.0016938050715470485
+          ],
+          "orientation": [
+            -0.0009727715749869978,
+            0.0003338110851069577,
+            -0.0005018785900947139,
+            0.9999993452015372
+          ],
+          "timestampMs": 50158.89999999991
+        },
+        "mapSize": 1037,
+        "detected": 68,
+        "stereoMatches": 57,
+        "mapMatches": 40,
+        "inliers": 40,
+        "reprojectionErrorPx": 0.6691377846824164,
+        "processingMs": 23.09999999962747,
+        "keyframes": 20,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.00003993244446465205,
+          0.0002739009109653523,
+          0.000041658244949838164
+        ],
+        "positionErrorM": 0.005739218720332511
+      },
+      "frames": 191
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.849940643127479,
+        "pose": {
+          "position": [
+            -0.00008544504992519547,
+            -0.006476032351609496,
+            -0.0012442462014865356
+          ],
+          "orientation": [
+            -0.0012699283300614207,
+            0.00037554322808048385,
+            -0.0006234412137379408,
+            0.9999989287846129
+          ],
+          "timestampMs": 51182.5
+        },
+        "mapSize": 1037,
+        "detected": 67,
+        "stereoMatches": 57,
+        "mapMatches": 46,
+        "inliers": 46,
+        "reprojectionErrorPx": 0.600237427490084,
+        "processingMs": 27.700000000186265,
+        "keyframes": 20,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.00003993075863639728,
+          0.00027349518821062624,
+          -0.00003952024906539453
+        ],
+        "positionErrorM": 0.0068563516670266285
+      },
+      "frames": 196
+    },
+    {
+      "metrics": {
+        "status": "tracking",
+        "confidence": 0.830956650175647,
+        "pose": {
+          "position": [
+            -0.0003721684066173939,
+            -0.00259752685873416,
+            -0.0029333119052430312
+          ],
+          "orientation": [
+            -0.000049832802651676853,
+            0.0004296955540366079,
+            -0.00036830752433082703,
+            0.9999998386139819
+          ],
+          "timestampMs": 52000.09999999963
+        },
+        "mapSize": 1037,
+        "detected": 68,
+        "stereoMatches": 58,
+        "mapMatches": 44,
+        "inliers": 44,
+        "reprojectionErrorPx": 0.676173399297412,
+        "processingMs": 27.899999999906868,
+        "keyframes": 20,
+        "relocalizations": 0
+      },
+      "evaluation": {
+        "groundTruthPosition": [
+          -0.00003993066042606852,
+          0.0002735348874949306,
+          -0.000009121115482124686
+        ],
+        "positionErrorM": 0.004111480176965084
+      },
+      "frames": 200
+    }
+  ],
+  "demos": [
+    {
+      "command": "bedside_demo",
+      "final": {
+        "command": "bedside_demo",
+        "name": "Bedside approach",
+        "stage": "settle",
+        "stage_index": 11,
+        "stage_count": 12,
+        "progress": 1,
+        "elapsed_s": 34.52399999999623,
+        "duration_s": 34.29700190456798,
+        "status": "complete",
+        "complete": true,
+        "measurements": {
+          "collision_samples": 720,
+          "settle_dwell_s": 1.1960000000000008,
+          "rest_qpos_error": 4.7619153132378885e-7,
+          "robot_speed": 0.00013594014344794116,
+          "base_home_error_m": 0.000040764706893779526,
+          "base_home_yaw_error_rad": 1.4694384959585723e-10,
+          "base_position_qpos": [
+            -0.000008203942575582013,
+            0.000039930648058256065,
+            1.4694384959585723e-10
+          ],
+          "base_goal_error_m": 0.7911951607118567,
+          "base_yaw_error_rad": 0.24999999985305615,
+          "max_base_excursion_m": 0.7912172491147457,
+          "visited_bedside": true
+        },
+        "checks": {
+          "returned_to_rest": true,
+          "robot_settled": true,
+          "base_returned_home": true,
+          "visited_bedside": true,
+          "base_travel_observed": true
+        }
+      },
+      "trace": [
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "clear_arms",
+          "stage_index": 0,
+          "stage_count": 12,
+          "progress": 0.0014578533756135865,
+          "elapsed_s": 0.05000000000000003,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.00013996901776494236,
+            "robot_speed": 0.0040084952557095915,
+            "base_home_error_m": 0.0000013270863556827976,
+            "base_home_yaw_error_rad": 9.33796596465877e-22,
+            "base_position_qpos": [
+              -0.0000013270863556827976,
+              3.481972352815853e-23,
+              -9.33796596465877e-22
+            ],
+            "base_goal_error_m": 0.7912028589998695,
+            "base_yaw_error_rad": 0.25,
+            "max_base_excursion_m": 0.0000013270863556827976,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": true,
+            "base_returned_home": true,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "clear_arms",
+          "stage_index": 0,
+          "stage_count": 12,
+          "progress": 0.022392627849424692,
+          "elapsed_s": 0.7680000000000006,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.10124301745066372,
+            "robot_speed": 0.2603158628220308,
+            "base_home_error_m": 0.000056611311629395246,
+            "base_home_yaw_error_rad": 1.7084976189764875e-19,
+            "base_position_qpos": [
+              -0.000056611311629395246,
+              -1.8729757329802748e-22,
+              -1.7084976189764875e-19
+            ],
+            "base_goal_error_m": 0.7912545658295136,
+            "base_yaw_error_rad": 0.25,
+            "max_base_excursion_m": 0.00007059007081174088,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": true,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "clear_arms",
+          "stage_index": 0,
+          "stage_count": 12,
+          "progress": 0.042336062027818554,
+          "elapsed_s": 1.452000000000001,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.29618357953454294,
+            "robot_speed": 0.26291967594868626,
+            "base_home_error_m": 0.00003970492318213044,
+            "base_home_yaw_error_rad": 1.8380180313094525e-19,
+            "base_position_qpos": [
+              0.00003970492318213044,
+              -7.767561986569193e-22,
+              1.8380180313094525e-19
+            ],
+            "base_goal_error_m": 0.7911644824498705,
+            "base_yaw_error_rad": 0.25,
+            "max_base_excursion_m": 0.00007059007081174088,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": true,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_turn",
+          "stage_index": 1,
+          "stage_count": 12,
+          "progress": 0.07038516097462262,
+          "elapsed_s": 2.4139999999999557,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.399947940667355,
+            "robot_speed": 0.7674003364956768,
+            "base_home_error_m": 0.000129031490174482,
+            "base_home_yaw_error_rad": 0.20830902621317757,
+            "base_position_qpos": [
+              0.0001289987733714771,
+              -0.0000029054991484659798,
+              0.20830902621317757
+            ],
+            "base_goal_error_m": 0.7910819967260403,
+            "base_yaw_error_rad": 0.04169097378682243,
+            "max_base_excursion_m": 0.000129031490174482,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_turn",
+          "stage_index": 1,
+          "stage_count": 12,
+          "progress": 0.09038690928803882,
+          "elapsed_s": 3.09999999999988,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40002831627636554,
+            "robot_speed": 0.08775082633519747,
+            "base_home_error_m": 0.00016631592162240515,
+            "base_home_yaw_error_rad": 0.34407017452886873,
+            "base_position_qpos": [
+              0.00016512468655025607,
+              0.00001987017052744367,
+              0.34407017452886873
+            ],
+            "base_goal_error_m": 0.7910401480515361,
+            "base_yaw_error_rad": 0.09407017452886873,
+            "max_base_excursion_m": 0.00016631592162240515,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_turn",
+          "stage_index": 1,
+          "stage_count": 12,
+          "progress": 0.11137999789687213,
+          "elapsed_s": 3.819999999999801,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000029134422763,
+            "robot_speed": 0.009090931555482034,
+            "base_home_error_m": 0.00016645101769464284,
+            "base_home_yaw_error_rad": 0.35989920046497353,
+            "base_position_qpos": [
+              0.00016505459348215105,
+              0.000021515632968243588,
+              0.35989920046497353
+            ],
+            "base_goal_error_m": 0.791039631215229,
+            "base_yaw_error_rad": 0.10989920046497353,
+            "max_base_excursion_m": 0.00016649535769854053,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_turn",
+          "stage_index": 1,
+          "stage_count": 12,
+          "progress": 0.13989560992387073,
+          "elapsed_s": 4.797999999999694,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000001337327898,
+            "robot_speed": 0.00041813892323862403,
+            "base_home_error_m": 0.0001664166948368734,
+            "base_home_yaw_error_rad": 0.36164506608739183,
+            "base_position_qpos": [
+              0.00016499851680388058,
+              0.00002167961653140085,
+              0.36164506608739183
+            ],
+            "base_goal_error_m": 0.7910396256221234,
+            "base_yaw_error_rad": 0.11164506608739182,
+            "max_base_excursion_m": 0.00016649535769854053,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_drive",
+          "stage_index": 2,
+          "stage_count": 12,
+          "progress": 0.1595474734271397,
+          "elapsed_s": 5.471999999999619,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.39998131579498947,
+            "robot_speed": 1.9166569439004197,
+            "base_home_error_m": 0.12986861382067633,
+            "base_home_yaw_error_rad": 0.36180203987100307,
+            "base_position_qpos": [
+              0.1214769904837564,
+              0.045926001771472776,
+              0.36180203987100307
+            ],
+            "base_goal_error_m": 0.661333009873029,
+            "base_yaw_error_rad": 0.11180203987100307,
+            "max_base_excursion_m": 0.12986861382067633,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_drive",
+          "stage_index": 2,
+          "stage_count": 12,
+          "progress": 0.17896608039031053,
+          "elapsed_s": 6.137999999999546,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3999999830272128,
+            "robot_speed": 1.9164940096066654,
+            "base_home_error_m": 0.29562114256027316,
+            "base_home_yaw_error_rad": 0.3618216086742213,
+            "base_position_qpos": [
+              0.276497811773875,
+              0.10459837481003288,
+              0.36182160867422136
+            ],
+            "base_goal_error_m": 0.49558047642102276,
+            "base_yaw_error_rad": 0.11182160867422138,
+            "max_base_excursion_m": 0.29562114256027316,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_drive",
+          "stage_index": 2,
+          "stage_count": 12,
+          "progress": 0.20007579726919292,
+          "elapsed_s": 6.861999999999466,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000000014813991,
+            "robot_speed": 1.9165487997532338,
+            "base_home_error_m": 0.47580835323373555,
+            "base_home_yaw_error_rad": 0.36179072998133976,
+            "base_position_qpos": [
+              0.44501937235674355,
+              0.1683785830627202,
+              0.36179072998133976
+            ],
+            "base_goal_error_m": 0.31539326467744294,
+            "base_yaw_error_rad": 0.11179072998133976,
+            "max_base_excursion_m": 0.47580835323373555,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_drive",
+          "stage_index": 2,
+          "stage_count": 12,
+          "progress": 0.2257340166799892,
+          "elapsed_s": 7.741999999999369,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4001945849995339,
+            "robot_speed": 1.3653072326649314,
+            "base_home_error_m": 0.6864719564674905,
+            "base_home_yaw_error_rad": 0.36173436385169105,
+            "base_position_qpos": [
+              0.6420474810303892,
+              0.24293780915871466,
+              0.36173436385169105
+            ],
+            "base_goal_error_m": 0.10472966133072241,
+            "base_yaw_error_rad": 0.11173436385169105,
+            "max_base_excursion_m": 0.6864719564674905,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_drive",
+          "stage_index": 2,
+          "stage_count": 12,
+          "progress": 0.24672710528882852,
+          "elapsed_s": 8.461999999999495,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40007644822643146,
+            "robot_speed": 0.4094403681348273,
+            "base_home_error_m": 0.7597918387856429,
+            "base_home_yaw_error_rad": 0.361716880406297,
+            "base_position_qpos": [
+              0.7106227358214838,
+              0.2688846697356658,
+              0.361716880406297
+            ],
+            "base_goal_error_m": 0.0314097790106768,
+            "base_yaw_error_rad": 0.11171688040629701,
+            "max_base_excursion_m": 0.7597918387856429,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_drive",
+          "stage_index": 2,
+          "stage_count": 12,
+          "progress": 0.2742513770204222,
+          "elapsed_s": 9.40599999999981,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40001578530252785,
+            "robot_speed": 0.08442927186261216,
+            "base_home_error_m": 0.7847249439659525,
+            "base_home_yaw_error_rad": 0.3617245127981333,
+            "base_position_qpos": [
+              0.7339424060934105,
+              0.2777080881432564,
+              0.3617245127981333
+            ],
+            "base_goal_error_m": 0.006476673829693097,
+            "base_yaw_error_rad": 0.1117245127981333,
+            "max_base_excursion_m": 0.7847249439659525,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_drive",
+          "stage_index": 2,
+          "stage_count": 12,
+          "progress": 0.29477795254906836,
+          "elapsed_s": 10.110000000000046,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40000486271234464,
+            "robot_speed": 0.026007969229181305,
+            "base_home_error_m": 0.7892064796909494,
+            "base_home_yaw_error_rad": 0.3617258900815775,
+            "base_position_qpos": [
+              0.7381339312302982,
+              0.2792940514094171,
+              0.3617258900815775
+            ],
+            "base_goal_error_m": 0.0019951381069495434,
+            "base_yaw_error_rad": 0.11172589008157752,
+            "max_base_excursion_m": 0.7892064796909494,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_drive",
+          "stage_index": 2,
+          "stage_count": 12,
+          "progress": 0.315362842212739,
+          "elapsed_s": 10.816000000000281,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000014929424513,
+            "robot_speed": 0.007984906105655715,
+            "base_home_error_m": 0.7905890683947778,
+            "base_home_yaw_error_rad": 0.36172620978400344,
+            "base_position_qpos": [
+              0.7394270489986473,
+              0.2797833345188286,
+              0.3617262097840034
+            ],
+            "base_goal_error_m": 0.0006125494108088712,
+            "base_yaw_error_rad": 0.1117262097840034,
+            "max_base_excursion_m": 0.7905890683947778,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_drive",
+          "stage_index": 2,
+          "stage_count": 12,
+          "progress": 0.3419540877839397,
+          "elapsed_s": 11.728000000000586,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000003247668998,
+            "robot_speed": 0.0017369965024043844,
+            "base_home_error_m": 0.7910683660854406,
+            "base_home_yaw_error_rad": 0.3617263000189971,
+            "base_position_qpos": [
+              0.7398753300467129,
+              0.279952952849861,
+              0.3617263000189971
+            ],
+            "base_goal_error_m": 0.00013325176017151927,
+            "base_yaw_error_rad": 0.11172630001899708,
+            "max_base_excursion_m": 0.7910683660854406,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_face",
+          "stage_index": 3,
+          "stage_count": 12,
+          "progress": 0.3624806633125859,
+          "elapsed_s": 12.432000000000821,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000599639392895,
+            "robot_speed": 0.1049050054616745,
+            "base_home_error_m": 0.7911605849653347,
+            "base_home_yaw_error_rad": 0.3606294244580268,
+            "base_position_qpos": [
+              0.7399608065527424,
+              0.2799876353850386,
+              0.3606294244580268
+            ],
+            "base_goal_error_m": 0.000041097566972688894,
+            "base_yaw_error_rad": 0.1106294244580268,
+            "max_base_excursion_m": 0.7911605849653347,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": false,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_face",
+          "stage_index": 3,
+          "stage_count": 12,
+          "progress": 0.39169604495989185,
+          "elapsed_s": 13.434000000001156,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40000803132571533,
+            "robot_speed": 0.025060647617004612,
+            "base_home_error_m": 0.79118058389417,
+            "base_home_yaw_error_rad": 0.2550443548527205,
+            "base_position_qpos": [
+              0.7399803772116608,
+              0.27999242431324484,
+              0.2550443548527205
+            ],
+            "base_goal_error_m": 0.00002103437310733921,
+            "base_yaw_error_rad": 0.0050443548527204785,
+            "max_base_excursion_m": 0.79118058389417,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside_face",
+          "stage_index": 3,
+          "stage_count": 12,
+          "progress": 0.41338890318902927,
+          "elapsed_s": 14.178000000001404,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40000077098169823,
+            "robot_speed": 0.0024078177702777765,
+            "base_home_error_m": 0.7911805754154978,
+            "base_home_yaw_error_rad": 0.25048471389420063,
+            "base_position_qpos": [
+              0.7399805299653532,
+              0.2799919966481065,
+              0.25048471389420063
+            ],
+            "base_goal_error_m": 0.00002105079311279421,
+            "base_yaw_error_rad": 0.00048471389420062794,
+            "max_base_excursion_m": 0.7911805888434865,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "approach_bedside",
+          "stage_index": 4,
+          "stage_count": 12,
+          "progress": 0.4334489656374789,
+          "elapsed_s": 14.866000000001634,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40000007038749213,
+            "robot_speed": 0.0005098566767886033,
+            "base_home_error_m": 0.7911872542181074,
+            "base_home_yaw_error_rad": 0.2500555576459001,
+            "base_position_qpos": [
+              0.73998705671418,
+              0.2799936198070829,
+              0.2500555576459001
+            ],
+            "base_goal_error_m": 0.000014430367614103967,
+            "base_yaw_error_rad": 0.00005555764590009504,
+            "max_base_excursion_m": 0.7911872542181074,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "pause_beside_bed",
+          "stage_index": 5,
+          "stage_count": 12,
+          "progress": 0.461847949394441,
+          "elapsed_s": 15.84000000000196,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40000001159592163,
+            "robot_speed": 0.000042554604197715025,
+            "base_home_error_m": 0.7911995035406352,
+            "base_home_yaw_error_rad": 0.2500025878454394,
+            "base_position_qpos": [
+              0.7399990014549176,
+              0.2799966647099076,
+              0.2500025878454394
+            ],
+            "base_goal_error_m": 0.0000034815588868108087,
+            "base_yaw_error_rad": 0.000002587845439383507,
+            "max_base_excursion_m": 0.7911995035406352,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "pause_beside_bed",
+          "stage_index": 5,
+          "stage_count": 12,
+          "progress": 0.48301598040834265,
+          "elapsed_s": 16.566000000001697,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000000020271212,
+            "robot_speed": 0.000007685188808095062,
+            "base_home_error_m": 0.791200902434864,
+            "base_home_yaw_error_rad": 0.2500002631703861,
+            "base_position_qpos": [
+              0.7400003654461117,
+              0.2799970127579296,
+              0.2500002631703861
+            ],
+            "base_goal_error_m": 0.0000030095125930791705,
+            "base_yaw_error_rad": 2.6317038609446897e-7,
+            "max_base_excursion_m": 0.791200902434864,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "pause_beside_bed",
+          "stage_index": 5,
+          "stage_count": 12,
+          "progress": 0.5034842418019461,
+          "elapsed_s": 17.268000000001308,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000000006108891,
+            "robot_speed": 0.0000016478385492940419,
+            "base_home_error_m": 0.7912012199258451,
+            "base_home_yaw_error_rad": 0.2500000326168584,
+            "base_position_qpos": [
+              0.7400006751863841,
+              0.2799970912988942,
+              0.2500000326168584
+            ],
+            "base_goal_error_m": 0.0000029860373032251936,
+            "base_yaw_error_rad": 3.261685838085171e-8,
+            "max_base_excursion_m": 0.7912012199258451,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_turn",
+          "stage_index": 6,
+          "stage_count": 12,
+          "progress": 0.5314750266137114,
+          "elapsed_s": 18.228000000000776,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40003068304657,
+            "robot_speed": 0.10546160690368743,
+            "base_home_error_m": 0.7912164858365007,
+            "base_home_yaw_error_rad": 0.3405231896996977,
+            "base_position_qpos": [
+              0.7400160644383716,
+              0.2799995568435876,
+              0.3405231896996977
+            ],
+            "base_goal_error_m": 0.000016070549704429528,
+            "base_yaw_error_rad": 0.09052318969969768,
+            "max_base_excursion_m": 0.7912164858365007,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_turn",
+          "stage_index": 6,
+          "stage_count": 12,
+          "progress": 0.5511852042519961,
+          "elapsed_s": 18.9040000000004,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000040298451562,
+            "robot_speed": 0.012535757307914275,
+            "base_home_error_m": 0.7912172384895328,
+            "base_home_yaw_error_rad": 0.3592057929814207,
+            "base_position_qpos": [
+              0.7400161195172521,
+              0.28000153809868705,
+              0.3592057929814207
+            ],
+            "base_goal_error_m": 0.000016192732444283152,
+            "base_yaw_error_rad": 0.10920579298142069,
+            "max_base_excursion_m": 0.7912172384895328,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_turn",
+          "stage_index": 6,
+          "stage_count": 12,
+          "progress": 0.5777764498231732,
+          "elapsed_s": 19.815999999999896,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40000022694834675,
+            "robot_speed": 0.0007097392428024347,
+            "base_home_error_m": 0.7912172491005134,
+            "base_home_yaw_error_rad": 0.3615863642426442,
+            "base_position_qpos": [
+              0.740016045863981,
+              0.28000176274091976,
+              0.3615863642426442
+            ],
+            "base_goal_error_m": 0.00001614239779108544,
+            "base_yaw_error_rad": 0.11158636424264416,
+            "max_base_excursion_m": 0.7912172491005134,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_drive",
+          "stage_index": 7,
+          "stage_count": 12,
+          "progress": 0.5981863970817521,
+          "elapsed_s": 20.515999999999508,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40003097976962937,
+            "robot_speed": 1.9165303859274194,
+            "base_home_error_m": 0.6749501378828937,
+            "base_home_yaw_error_rad": 0.36171830504801783,
+            "base_position_qpos": [
+              0.6312719424020693,
+              0.23885858444706506,
+              0.36171830504801783
+            ],
+            "base_goal_error_m": 0.11625147991624972,
+            "base_yaw_error_rad": 0.11171830504801783,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_drive",
+          "stage_index": 7,
+          "stage_count": 12,
+          "progress": 0.6324751084761646,
+          "elapsed_s": 21.691999999998856,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000000024229679,
+            "robot_speed": 1.9164654218783785,
+            "base_home_error_m": 0.3822700181836643,
+            "base_home_yaw_error_rad": 0.3617289844062744,
+            "base_position_qpos": [
+              0.3575318660276812,
+              0.13528241414501474,
+              0.3617289844062744
+            ],
+            "base_goal_error_m": 0.4089315996104515,
+            "base_yaw_error_rad": 0.11172898440627438,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_drive",
+          "stage_index": 7,
+          "stage_count": 12,
+          "progress": 0.6593579247224642,
+          "elapsed_s": 22.613999999998345,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3999962638360484,
+            "robot_speed": 1.9115364991340513,
+            "base_home_error_m": 0.15280998209505836,
+            "base_home_yaw_error_rad": 0.36172965609653024,
+            "base_position_qpos": [
+              0.1429210674288564,
+              0.05407826839765058,
+              0.3617296560965303
+            ],
+            "base_goal_error_m": 0.6383916356990434,
+            "base_yaw_error_rad": 0.1117296560965303,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_drive",
+          "stage_index": 7,
+          "stage_count": 12,
+          "progress": 0.6795346154409451,
+          "elapsed_s": 23.30599999999796,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3998838568685989,
+            "robot_speed": 0.6269004702455314,
+            "base_home_error_m": 0.04809349352999959,
+            "base_home_yaw_error_rad": 0.36172927626597046,
+            "base_position_qpos": [
+              0.04498118520841612,
+              0.01701990297170579,
+              0.3617292762659705
+            ],
+            "base_goal_error_m": 0.7431081242641,
+            "base_yaw_error_rad": 0.11172927626597051,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_drive",
+          "stage_index": 7,
+          "stage_count": 12,
+          "progress": 0.6994780496193279,
+          "elapsed_s": 23.989999999997583,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3999626668322373,
+            "robot_speed": 0.19968530381567207,
+            "base_home_error_m": 0.0153191602499694,
+            "base_home_yaw_error_rad": 0.36172915720857707,
+            "base_position_qpos": [
+              0.014327801257492776,
+              0.005421326580278199,
+              0.36172915720857707
+            ],
+            "base_goal_error_m": 0.7758824575441303,
+            "base_yaw_error_rad": 0.11172915720857707,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_drive",
+          "stage_index": 7,
+          "stage_count": 12,
+          "progress": 0.7258943527854314,
+          "elapsed_s": 24.89599999999708,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3999917961454312,
+            "robot_speed": 0.04387694183110578,
+            "base_home_error_m": 0.003366084169758729,
+            "base_home_yaw_error_rad": 0.361729174799001,
+            "base_position_qpos": [
+              0.0031482531318147737,
+              0.0011912282971449186,
+              0.361729174799001
+            ],
+            "base_goal_error_m": 0.7878355336243414,
+            "base_yaw_error_rad": 0.11172917479900102,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_drive",
+          "stage_index": 7,
+          "stage_count": 12,
+          "progress": 0.7465958707191328,
+          "elapsed_s": 25.605999999996687,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3999974980630627,
+            "robot_speed": 0.013381320359742944,
+            "base_home_error_m": 0.0010265676260000141,
+            "base_home_yaw_error_rad": 0.3617291821897303,
+            "base_position_qpos": [
+              0.000960135406901554,
+              0.0003632920191323952,
+              0.3617291821897303
+            ],
+            "base_goal_error_m": 0.7901750501681019,
+            "base_yaw_error_rad": 0.11172918218973034,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_drive",
+          "stage_index": 7,
+          "stage_count": 12,
+          "progress": 0.7662477342223931,
+          "elapsed_s": 26.279999999996313,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3999991896215697,
+            "robot_speed": 0.004334226695193055,
+            "base_home_error_m": 0.0003325065635888067,
+            "base_home_yaw_error_rad": 0.3617291844490443,
+            "base_position_qpos": [
+              0.00031098961904285047,
+              0.00011766933193156093,
+              0.3617291844490443
+            ],
+            "base_goal_error_m": 0.7908691112305182,
+            "base_yaw_error_rad": 0.11172918444904428,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_drive",
+          "stage_index": 7,
+          "stage_count": 12,
+          "progress": 0.7920808960382515,
+          "elapsed_s": 27.165999999995822,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3999998158781651,
+            "robot_speed": 0.000984757830755368,
+            "base_home_error_m": 0.00007554714379781818,
+            "base_home_yaw_error_rad": 0.36172918526852377,
+            "base_position_qpos": [
+              0.00007065899979585346,
+              0.000026733437561559444,
+              0.36172918526852377
+            ],
+            "base_goal_error_m": 0.7911260706503348,
+            "base_yaw_error_rad": 0.11172918526852377,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_face",
+          "stage_index": 8,
+          "stage_count": 12,
+          "progress": 0.8118493878115608,
+          "elapsed_s": 27.843999999995447,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40007375800901196,
+            "robot_speed": 0.9407600272722235,
+            "base_home_error_m": 0.00011233532569956197,
+            "base_home_yaw_error_rad": 0.19132439877491084,
+            "base_position_qpos": [
+              0.00010093831864312736,
+              0.000049301939409369644,
+              0.19132439877491084
+            ],
+            "base_goal_error_m": 0.7910897640733094,
+            "base_yaw_error_rad": 0.05867560122508916,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_face",
+          "stage_index": 8,
+          "stage_count": 12,
+          "progress": 0.8382073768426398,
+          "elapsed_s": 28.747999999994946,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.40001802894470856,
+            "robot_speed": 0.05505710100832317,
+            "base_home_error_m": 0.0001716354293799258,
+            "base_home_yaw_error_rad": 0.011081329644166964,
+            "base_position_qpos": [
+              0.00016665820737962267,
+              0.000041033675578019754,
+              0.011081329644166964
+            ],
+            "base_goal_error_m": 0.7910312234377825,
+            "base_yaw_error_rad": 0.23891867035583303,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base_face",
+          "stage_index": 8,
+          "stage_count": 12,
+          "progress": 0.8600751774768315,
+          "elapsed_s": 29.49799999999453,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000016646004982,
+            "robot_speed": 0.005190536935692104,
+            "base_home_error_m": 0.00017159847772098893,
+            "base_home_yaw_error_rad": 0.0010448893662132989,
+            "base_position_qpos": [
+              0.00016686184112695623,
+              0.00004003952462109347,
+              0.0010448893662132986
+            ],
+            "base_goal_error_m": 0.7910313848308308,
+            "base_yaw_error_rad": 0.2489551106337867,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base",
+          "stage_index": 9,
+          "stage_count": 12,
+          "progress": 0.8878327057484987,
+          "elapsed_s": 30.449999999994002,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.4000006311733652,
+            "robot_speed": 0.0024030777732966424,
+            "base_home_error_m": 0.00013649446126565206,
+            "base_home_yaw_error_rad": 0.000052160926612180555,
+            "base_position_qpos": [
+              0.00013052066546091341,
+              0.00003993862596335671,
+              0.000052160926612180555
+            ],
+            "base_goal_error_m": 0.7910654096946196,
+            "base_yaw_error_rad": 0.24994783907338783,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "return_base",
+          "stage_index": 9,
+          "stage_count": 12,
+          "progress": 0.9081260247370286,
+          "elapsed_s": 31.145999999993617,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3999998872310198,
+            "robot_speed": 0.0005238594595289415,
+            "base_home_error_m": 0.000049868272981458264,
+            "base_home_yaw_error_rad": 0.000005829895118724033,
+            "base_position_qpos": [
+              0.000029872023896309666,
+              0.0000399312764445559,
+              0.000005829895118724033
+            ],
+            "base_goal_error_m": 0.7911595479905865,
+            "base_yaw_error_rad": 0.24999417010488126,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "base_returned_home": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "rest_arms",
+          "stage_index": 10,
+          "stage_count": 12,
+          "progress": 0.9288275426707301,
+          "elapsed_s": 31.855999999993223,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.34917168388975245,
+            "robot_speed": 0.20139500828252588,
+            "base_home_error_m": 0.00004394928242516184,
+            "base_home_yaw_error_rad": 6.233234965551491e-7,
+            "base_position_qpos": [
+              0.000018359699728895097,
+              0.00003993070061433243,
+              6.233234965551491e-7
+            ],
+            "base_goal_error_m": 0.7911703156612973,
+            "base_yaw_error_rad": 0.24999937667650343,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "rest_arms",
+          "stage_index": 10,
+          "stage_count": 12,
+          "progress": 0.9578096677779561,
+          "elapsed_s": 32.84999999999418,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.08014211602287147,
+            "robot_speed": 0.24150080069361526,
+            "base_home_error_m": 0.000060342693896824934,
+            "base_home_yaw_error_rad": 2.7358686445316534e-8,
+            "base_position_qpos": [
+              0.000045241394249328634,
+              0.00003993065179912203,
+              2.7358686445316534e-8
+            ],
+            "base_goal_error_m": 0.7911451732853738,
+            "base_yaw_error_rad": 0.24999997264131354,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "base_returned_home": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "settle",
+          "stage_index": 11,
+          "stage_count": 12,
+          "progress": 0.9785694998467189,
+          "elapsed_s": 33.56199999999505,
+          "duration_s": 34.29700190456798,
+          "status": "running",
+          "complete": false,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 0.23400000000000018,
+            "rest_qpos_error": 0.0005301335595745416,
+            "robot_speed": 0.005045049904396942,
+            "base_home_error_m": 0.00006943709484434735,
+            "base_home_yaw_error_rad": 2.9545840927008185e-9,
+            "base_position_qpos": [
+              -0.00005680716039818542,
+              0.00003993064822811826,
+              2.9545840927008185e-9
+            ],
+            "base_goal_error_m": 0.7912406196953563,
+            "base_yaw_error_rad": 0.2499999970454159,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": true,
+            "base_returned_home": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "command": "bedside_demo",
+          "name": "Bedside approach",
+          "stage": "settle",
+          "stage_index": 11,
+          "stage_count": 12,
+          "progress": 1,
+          "elapsed_s": 34.52399999999623,
+          "duration_s": 34.29700190456798,
+          "status": "complete",
+          "complete": true,
+          "measurements": {
+            "collision_samples": 720,
+            "settle_dwell_s": 1.1960000000000008,
+            "rest_qpos_error": 4.7619153132378885e-7,
+            "robot_speed": 0.00013594014344794116,
+            "base_home_error_m": 0.000040764706893779526,
+            "base_home_yaw_error_rad": 1.4694384959585723e-10,
+            "base_position_qpos": [
+              -0.000008203942575582013,
+              0.000039930648058256065,
+              1.4694384959585723e-10
+            ],
+            "base_goal_error_m": 0.7911951607118567,
+            "base_yaw_error_rad": 0.24999999985305615,
+            "max_base_excursion_m": 0.7912172491147457,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": true,
+            "base_returned_home": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\apps\\web\\artifacts\\wheel-vercel-camera-views.png",
+    "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\apps\\web\\artifacts\\wheel-vercel-bedside_demo-action.png",
+    "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\apps\\web\\artifacts\\wheel-vercel-bedside_demo-complete.png",
+    "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\apps\\web\\artifacts\\wheel-vercel-visual-map.png"
+  ],
+  "passed": true,
+  "finished": "2026-09-13T17:19:45.027Z"
+}
