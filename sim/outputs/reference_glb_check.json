@@ -1,8 +1,10 @@
 {
-  "file": "assets/simulation/robot.glb",
-  "body_count": 27,
-  "expected_body_count": 27,
-  "node_count": 114,
+  "file": "assets\\simulation\\robot.glb",
+  "model_hash": "59e7fcdc866ae25325074e841b8011040d770f8709d47cff806079a59314bec8",
+  "body_count": 28,
+  "expected_body_count": 28,
+  "robot_body_count": 27,
+  "dynamic_body_count": 1,
   "matched": true,
   "failures": [],
   "bodies": [
@@ -28,7 +30,7 @@
       "body": "mast",
       "position_error_m": 1.6858739341553915e-08,
       "quaternion_error": 0.0,
-      "visual_children": 4
+      "visual_children": 5
     },
     {
       "body": "head",
@@ -40,7 +42,7 @@
       "body": "left_shoulder",
       "position_error_m": 3.792279641516147e-08,
       "quaternion_error": 0.0,
-      "visual_children": 2
+      "visual_children": 4
     },
     {
       "body": "left_link_1",
@@ -106,7 +108,7 @@
       "body": "right_shoulder",
       "position_error_m": 4.6963013566017746e-08,
       "quaternion_error": 0.0,
-      "visual_children": 2
+      "visual_children": 4
     },
     {
       "body": "right_link_1",
@@ -167,7 +169,304 @@
       "position_error_m": 2.9028617903897364e-08,
       "quaternion_error": 1.6830825493401497e-08,
       "visual_children": 2
+    },
+    {
+      "body": "phone",
+      "position_error_m": 3.0843661597777464e-08,
+      "quaternion_error": 0.0,
+      "visual_children": 5
     }
   ],
-  "hardware_model_verified": false
+  "assets": [
+    {
+      "file": "assets\\simulation\\robot.glb",
+      "body_count": 27,
+      "expected_body_count": 27,
+      "bodies": [
+        {
+          "body": "robot_base",
+          "position_error_m": 2.7079145173856117e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 3
+        },
+        {
+          "body": "left_wheel",
+          "position_error_m": 2.4314019767482837e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 4
+        },
+        {
+          "body": "right_wheel",
+          "position_error_m": 3.4052984327756966e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 4
+        },
+        {
+          "body": "mast",
+          "position_error_m": 1.6858739341553915e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 5
+        },
+        {
+          "body": "head",
+          "position_error_m": 5.293751547064771e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 6
+        },
+        {
+          "body": "left_shoulder",
+          "position_error_m": 3.792279641516147e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 4
+        },
+        {
+          "body": "left_link_1",
+          "position_error_m": 3.792279641516147e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 3
+        },
+        {
+          "body": "left_link_2",
+          "position_error_m": 5.805871818396737e-08,
+          "quaternion_error": 5.5094132822738265e-09,
+          "visual_children": 4
+        },
+        {
+          "body": "left_link_3",
+          "position_error_m": 3.189293463063462e-08,
+          "quaternion_error": 5.5094132822738265e-09,
+          "visual_children": 3
+        },
+        {
+          "body": "left_link_4",
+          "position_error_m": 1.8842296432178447e-08,
+          "quaternion_error": 2.259367981424842e-08,
+          "visual_children": 4
+        },
+        {
+          "body": "left_link_5",
+          "position_error_m": 8.699948760936722e-09,
+          "quaternion_error": 2.259367981424842e-08,
+          "visual_children": 3
+        },
+        {
+          "body": "left_link_6",
+          "position_error_m": 2.04244922740093e-08,
+          "quaternion_error": 3.012398818973767e-08,
+          "visual_children": 3
+        },
+        {
+          "body": "left_link_7",
+          "position_error_m": 2.9470351903134865e-08,
+          "quaternion_error": 3.012398818973767e-08,
+          "visual_children": 3
+        },
+        {
+          "body": "left_hand",
+          "position_error_m": 2.1971354384839092e-08,
+          "quaternion_error": 3.012398818973767e-08,
+          "visual_children": 4
+        },
+        {
+          "body": "left_finger_-1",
+          "position_error_m": 4.012538862947814e-08,
+          "quaternion_error": 1.6830825493401497e-08,
+          "visual_children": 2
+        },
+        {
+          "body": "left_finger_1",
+          "position_error_m": 3.156165212168176e-08,
+          "quaternion_error": 1.6830825493401497e-08,
+          "visual_children": 2
+        },
+        {
+          "body": "right_shoulder",
+          "position_error_m": 4.6963013566017746e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 4
+        },
+        {
+          "body": "right_link_1",
+          "position_error_m": 4.6963013566017746e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 3
+        },
+        {
+          "body": "right_link_2",
+          "position_error_m": 6.432884976759281e-08,
+          "quaternion_error": 5.5094132822738265e-09,
+          "visual_children": 4
+        },
+        {
+          "body": "right_link_3",
+          "position_error_m": 4.2243880439776316e-08,
+          "quaternion_error": 5.5094132822738265e-09,
+          "visual_children": 3
+        },
+        {
+          "body": "right_link_4",
+          "position_error_m": 3.3502511698293127e-08,
+          "quaternion_error": 2.259367981424842e-08,
+          "visual_children": 4
+        },
+        {
+          "body": "right_link_5",
+          "position_error_m": 2.9035758362734513e-08,
+          "quaternion_error": 2.259367981424842e-08,
+          "visual_children": 3
+        },
+        {
+          "body": "right_link_6",
+          "position_error_m": 3.4417234634805406e-08,
+          "quaternion_error": 3.012398818973767e-08,
+          "visual_children": 3
+        },
+        {
+          "body": "right_link_7",
+          "position_error_m": 4.0446109782657565e-08,
+          "quaternion_error": 3.012398818973767e-08,
+          "visual_children": 3
+        },
+        {
+          "body": "right_hand",
+          "position_error_m": 3.535712896659415e-08,
+          "quaternion_error": 3.012398818973767e-08,
+          "visual_children": 4
+        },
+        {
+          "body": "right_finger_-1",
+          "position_error_m": 2.9706077659177057e-08,
+          "quaternion_error": 1.6830825493401497e-08,
+          "visual_children": 2
+        },
+        {
+          "body": "right_finger_1",
+          "position_error_m": 2.9028617903897364e-08,
+          "quaternion_error": 1.6830825493401497e-08,
+          "visual_children": 2
+        }
+      ],
+      "failures": [],
+      "sha256": "ee10caac058fc38e9584c65c611b22ae75bc2f3aa46b6c046c4c958488e1de19",
+      "node_count": 119,
+      "matched": true
+    },
+    {
+      "file": "assets\\simulation\\phone.glb",
+      "body_count": 1,
+      "expected_body_count": 1,
+      "bodies": [
+        {
+          "body": "phone",
+          "position_error_m": 3.0843661597777464e-08,
+          "quaternion_error": 0.0,
+          "visual_children": 5
+        }
+      ],
+      "failures": [],
+      "sha256": "642fb200c75011214ead0146f2eaf9e1f7ee40397157ccf52f829a8300379f31",
+      "node_count": 6,
+      "matched": true
+    }
+  ],
+  "room": {
+    "file": "assets\\simulation\\room.glb",
+    "textured_primitives": [
+      {
+        "mesh": 0,
+        "primitive": 0,
+        "material": "Continuous resilient floor",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 2,
+            "count": 300,
+            "min": [
+              -6.292790412902832,
+              -4.392790794372559
+            ],
+            "max": [
+              6.292790412902832,
+              6.392790794372559
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 8,
+        "primitive": 0,
+        "material": "Sheer window curtain",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 34,
+            "count": 3782,
+            "min": [
+              -4.769999980926514,
+              -6.890000343322754
+            ],
+            "max": [
+              4.920000076293945,
+              -1.6399998664855957
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 10,
+        "primitive": 0,
+        "material": "Light natural oak",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 42,
+            "count": 3097,
+            "min": [
+              -7.60998010635376,
+              -6.450648307800293
+            ],
+            "max": [
+              7.1774702072143555,
+              8.609979629516602
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "mesh": 16,
+        "primitive": 0,
+        "material": "Sage knitted blanket",
+        "coordinates": [
+          {
+            "semantic": "TEXCOORD_0",
+            "accessor": 67,
+            "count": 56260,
+            "min": [
+              2.5500001907348633,
+              -4.7900004386901855
+            ],
+            "max": [
+              5.850001335144043,
+              -0.25999999046325684
+            ],
+            "finite": true
+          }
+        ]
+      }
+    ],
+    "failures": [],
+    "sha256": "b3c7650d45f966b43b7b3ea8b6963a4073140ccffa5e58ddc3cf3f2d6aac9e30",
+    "dynamic_object_nodes_or_meshes": [],
+    "textured_primitive_count": 4,
+    "matched": true
+  },
+  "hardware_model_verified": false,
+  "authorizes_hardware": false,
+  "limitations": [
+    "Node-name checks cannot identify unnamed duplicate geometry",
+    "Visual pose and UV checks do not establish contact, grasp or weld behavior"
+  ]
 }

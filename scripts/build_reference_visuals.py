@@ -19,6 +19,7 @@ bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete(use_global=False)
 room_objects=[]
 robot_objects=[]
+phone_objects=[]
 current_objects=room_objects
 
 
@@ -56,7 +57,7 @@ M={
     "blanket":material("Sage knitted blanket","8BABA0",.98),
     "wood":material("Light natural oak","B9A07D",.57),
     "wooddark":material("Oak endgrain trim","947B5E",.5),
-    "floor":material("Warm resilient vinyl","ACA79A",.48),
+    "floor":material("Continuous resilient floor","ACA79A",.78),
     "seam":material("Floor board seams","938E83",.7),
     "upholstery":material("Visitor chair woven teal","527B78",.94),
     "steel":material("Hospital frame steel","A8B3B5",.3,.85),
@@ -104,6 +105,19 @@ def finish(obj,name,mat,parent=None,smooth=False):
     return obj
 
 
+def metric_uv(obj,scale=2.,grain_vertical=False):
+    """Face-projected metre UVs, avoiding the default cube texture atlas."""
+    layer=obj.data.uv_layers.active or obj.data.uv_layers.new(name="MaterialUV")
+    for face in obj.data.polygons:
+        dominant=max(range(3),key=lambda axis:abs(face.normal[axis]))
+        axes=(1,2) if dominant==0 else ((0,2) if dominant==1 else (0,1))
+        for loop_index in face.loop_indices:
+            point=obj.data.vertices[obj.data.loops[loop_index].vertex_index].co+obj.location
+            u,v=point[axes[0]]*scale,point[axes[1]]*scale
+            # The source veneer grain runs horizontally; turn it upright.
+            layer.data[loop_index].uv=(v,u) if grain_vertical and dominant!=2 else (u,v)
+
+
 def box(name,loc,size,mat,bevel=.01,parent=None):
     bpy.ops.mesh.primitive_cube_add(size=1,location=loc)
     obj=bpy.context.object
@@ -114,6 +128,7 @@ def box(name,loc,size,mat,bevel=.01,parent=None):
         bpy.ops.object.modifier_apply(modifier=mod.name)
         normal=obj.modifiers.new("Weighted face normals","WEIGHTED_NORMAL")
         bpy.ops.object.modifier_apply(modifier=normal.name)
+    metric_uv(obj,scale=2.5 if mat in (M["wood"],M["wooddark"]) else 1.8,grain_vertical=mat in (M["wood"],M["wooddark"]))
     return finish(obj,name,mat,parent)
 
 
@@ -138,6 +153,7 @@ def tube(name,points,radius,mat,parent=None):
     spline=curve.splines.new("BEZIER");spline.bezier_points.add(len(points)-1)
     for p,co in zip(spline.bezier_points,points):p.co=co;p.handle_left_type="AUTO";p.handle_right_type="AUTO"
     obj=bpy.data.objects.new(name,curve);bpy.context.collection.objects.link(obj)
+    bpy.ops.object.select_all(action="DESELECT")
     bpy.context.view_layer.objects.active=obj;obj.select_set(True)
     bpy.ops.object.convert(target="MESH");obj=bpy.context.object
     return finish(obj,name,mat,parent,True)
@@ -158,27 +174,26 @@ def cloth(name,xrange,yrange,z,mat,drop=.14):
             u=i/nx;x=xrange[0]+u*(xrange[1]-xrange[0])
             edge=max(0,(abs(u-.5)-.40)/.1)
             sag=drop*edge**1.5
-            wrinkles=.005*math.sin(u*83+v*17)+.004*math.cos(v*67+u*15)+.008*math.sin(v*23)*edge
+            wrinkles=.0015*math.sin(u*34+v*8)+.002*math.cos(v*26+u*4)+.005*math.sin(v*18)*edge
             vertices.append((x,y,z-sag+wrinkles))
     for j in range(ny):
         for i in range(nx):
             a=j*(nx+1)+i;faces.append((a,a+1,a+nx+2,a+nx+1))
     mesh=bpy.data.meshes.new(name);mesh.from_pydata(vertices,[],faces);mesh.update()
     obj=bpy.data.objects.new(name,mesh);bpy.context.collection.objects.link(obj)
-    solid=obj.modifiers.new("Fabric thickness","SOLIDIFY");solid.thickness=.006
+    uv=mesh.uv_layers.new(name="MaterialUV")
+    for polygon in mesh.polygons:
+        for loop_index in polygon.loop_indices:
+            point=mesh.vertices[mesh.loops[loop_index].vertex_index].co
+            uv.data[loop_index].uv=(point.x*3.,point.y*3.)
+    sub=obj.modifiers.new("Soft fabric folds","SUBSURF");sub.levels=1
+    solid=obj.modifiers.new("Fabric thickness","SOLIDIFY");solid.thickness=.003
     return finish(obj,name,mat,smooth=True)
 
 
 def room():
     box("Floor slab",(0,0,-.08),(7,6,.16),M["floor"],.008)
-    # Individual seams, offset rows and subtly varying plank colour.
-    for row in range(20):
-        y=-2.85+row*.30
-        for col in range(6):
-            x=-3.5+col*1.35+(row%3)*.45
-            low=max(-3.5,x);high=min(3.5,x+1.345)
-            if high<=low:continue
-            box(f"Vinyl plank {row} {col}",((low+high)/2,y,.001),(high-low,.297,.008),M["floor"],.001)
+    # One continuous floor surface: no overlapping plank/slab faces or seam shadows.
     box("Back wall",(0,3.04,1.5),(7,.10,3),M["wall"],.006)
     box("Left sill wall",(-3.55,0,.40),(.10,6,.8),M["wall"],.006)
     box("Left window header",(-3.55,0,2.85),(.10,6,.3),M["wall"],.006)
@@ -209,6 +224,11 @@ def room():
         for j in range(30):
             for i in range(60):a=j*61+i;faces.append((a,a+1,a+62,a+61))
         mesh=bpy.data.meshes.new("Draped sheer curtain");mesh.from_pydata(verts,[],faces)
+        uv=mesh.uv_layers.new(name="MaterialUV")
+        for polygon in mesh.polygons:
+            for loop_index in polygon.loop_indices:
+                point=mesh.vertices[mesh.loops[loop_index].vertex_index].co
+                uv.data[loop_index].uv=(point.y*3.,point.z*3.)
         obj=bpy.data.objects.new("Draped sheer curtain",mesh);bpy.context.collection.objects.link(obj);finish(obj,obj.name,M["curtain"],smooth=True)
     cylinder("Curtain track",(-3.20,.05,2.7),.012,3.1,M["steel"],axis=(0,1,0))
     # Built-in cabinetry and layered headwall.
@@ -230,10 +250,20 @@ def room():
     for x in (.98,1.82):
         box("Bed lower longitudinal beam",(x,1.43,.26),(.085,1.8,.085),M["bedframe"],.018)
         for y in (.60,2.25):
-            cylinder("Caster fork",(x,y,.18),.036,.18,M["steel"])
-            cylinder("Bed caster tire",(x,y,.105),.085,.06,M["rubber"],axis=(1,0,0))
-            cylinder("Bed caster hub",(x+.031,y,.105),.041,.008,M["steel"],axis=(1,0,0))
-    for y in (.85,2.02):box("Bed lift support",(1.4,y,.48),(.36,.28,.40),M["bedframe"],.035)
+            cylinder("Caster swivel stem",(x,y,.235),.024,.09,M["steel"])
+            box("Caster fork crosshead",(x,y,.20),(.12,.07,.026),M["bedframe"],.008)
+            for offset in (-.047,.047):box("Caster fork cheek",(x+offset,y,.146),(.014,.075,.11),M["bedframe"],.008)
+            cylinder("Bed caster tire",(x,y,.09),.09,.06,M["rubber"],axis=(1,0,0))
+            cylinder("Bed caster axle",(x,y,.09),.013,.12,M["steel"],axis=(1,0,0))
+            cylinder("Bed caster hub",(x+.031,y,.09),.041,.008,M["steel"],axis=(1,0,0))
+    for y in (.85,2.02):
+        box("Bed chassis transverse crossmember",(1.4,y,.26),(.96,.14,.10),M["bedframe"],.018)
+        box("Bed lift base shoe",(1.4,y,.32),(.46,.34,.065),M["darkmetal"],.015)
+        box("Bed lift support",(1.4,y,.48),(.36,.28,.40),M["bedframe"],.035)
+        box("Bed lift telescoping inner",(1.4,y,.61),(.28,.21,.16),M["steel"],.02)
+    for x in (.98,1.82):
+        for y in (.60,2.25):
+            box("Caster brake pedal",(x,y-.05,.115),(.07,.065,.02),M["darkmetal"],.009)
     box("Bed support deck",(1.4,1.43,.67),(1.05,2.16,.15),M["bedframe"],.065)
     box("Mattress core",(1.4,1.43,.81),(.99,2.08,.15),M["white"],.070)
     cloth("Fitted cotton sheet",(.88,1.92),(.38,2.48),.89,M["linen"],.09)
@@ -246,6 +276,7 @@ def room():
         box("Bed end board recessed panel",(1.4,y-.051,.86),(.8,.018,.27),M["panel"],.035)
     for x in (.82,1.98):
         for y in (.75,2.0):
+            box("Rail deck mounting bracket",(x+(.04 if x<1.4 else -.04),y,.735),(.13,.18,.12),M["bedframe"],.02)
             tube("Safety rail",[(x,y-.25,.81),(x,y-.25,1.08),(x,y+.25,1.08),(x,y+.25,.81)],.022,M["bedframe"])
             for dy in (-.16,0,.16):cylinder("Rail crossbar",(x,y+dy,.955),.012,.22,M["bedframe"])
     box("Rail interface",(2.003,1.98,.985),(.035,.19,.11),M["white"],.015)
@@ -253,10 +284,12 @@ def room():
     # Bedside work table, cupboard and visitor chair.
     box("Bedside tabletop",(.75,-.70,.75),(.80,.80,.045),M["wood"],.025)
     for x in (.43,1.07):
-        for y in (-1.02,-.38):cylinder("Table aluminium leg",(x,y,.36),.022,.71,M["steel"])
-    box("Phone",(.63,-.72,.785),(.082,.158,.012),M["black"],.007)
-    box("Phone display",(.63,-.72,.792),(.073,.142,.002),M["glass"],.004)
-    sphere("Phone camera",(.65,-.781,.794),(.003,.003,.001),M["lens"])
+        for y in (-1.02,-.38):
+            cylinder("Table aluminium leg",(x,y,.38),.022,.74,M["steel"])
+            cylinder("Table rubber foot",(x,y,.01),.024,.02,M["rubber"])
+        box("Table support apron",(x,-.70,.706),(.035,.68,.065),M["steel"],.008)
+    for y in (-1.02,-.38):box("Table transverse apron",(.75,y,.706),(.67,.035,.065),M["steel"],.008)
+    box("Raised phone pickup rest",(.63,-.72,.790),(.050,.120,.035),M["panel"],.008)
     box("Soft glasses case",(.91,-.53,.79),(.16,.067,.04),M["upholstery"],.02)
     box("Bedside storage",(2.62,2.30,.39),(.52,.52,.75),M["wood"],.018)
     box("Bedside storage top",(2.62,2.30,.79),(.58,.58,.05),M["white"],.02)
@@ -265,6 +298,8 @@ def room():
         cylinder("Drawer pull",(2.62,2.001,z+.04),.008,.16,M["steel"],axis=(1,0,0))
     for x in (-1.93,-1.27):
         for y in (1.00,1.60):cylinder("Visitor chair leg",(x,y,.22),.022,.44,M["wooddark"])
+        box("Visitor chair seat rail",(x,1.30,.39),(.065,.70,.075),M["wooddark"],.015)
+        box("Visitor chair arm front post",(x+(-.065 if x< -1.6 else .065),1.02,.59),(.060,.060,.29),M["wooddark"],.017)
     box("Visitor chair seat",(-1.60,1.30,.49),(.77,.73,.18),M["upholstery"],.08)
     back=box("Visitor chair upholstered back",(-1.60,1.64,.84),(.77,.18,.66),M["upholstery"],.075);back.rotation_euler[0]=-.10
     for x in (-2.0,-1.2):box("Visitor chair padded arm",(x,1.30,.71),(.13,.70,.16),M["upholstery"],.055)
@@ -273,11 +308,11 @@ def room():
     cylinder("Visitor table stem",(-2.55,1.55,.32),.03,.60,M["steel"])
     cylinder("Visitor table foot",(-2.55,1.55,.025),.20,.025,M["steel"])
     cylinder("Water cup",(-2.55,1.55,.72),.038,.16,M["white"])
-    cylinder("Plant pot",(-2.88,-1.18,.28),.14,.32,M["white"])
-    cylinder("Plant soil",(-2.88,-1.18,.445),.126,.008,M["soil"])
+    cylinder("Plant pot",(-2.88,-1.18,.16),.14,.32,M["white"])
+    cylinder("Plant soil",(-2.88,-1.18,.31),.126,.008,M["soil"])
     for i in range(12):
-        angle=i*2.4;tip=(-2.88+math.cos(angle)*.22,-1.18+math.sin(angle)*.22,.65+random.random()*.23)
-        tube("Plant stem",[(-2.88,-1.18,.43),(-2.88,-1.18,.58),tip],.0025,M["leaf"])
+        angle=i*2.4;tip=(-2.88+math.cos(angle)*.22,-1.18+math.sin(angle)*.22,.53+random.random()*.23)
+        tube("Plant stem",[(-2.88,-1.18,.31),(-2.88,-1.18,.46),tip],.0025,M["leaf"])
         leaf=sphere("Long plant leaf",tip,(.038,.12,.016),M["leaf"] if i%2 else M["leaf2"]);leaf.rotation_euler=(.6,angle,angle)
     # Framed artwork and room controls: generic artwork, no patient information.
     box("Artwork oak frame",(-.75,2.94,1.94),(.85,.06,.62),M["wooddark"],.008)
@@ -294,6 +329,7 @@ def robot(descriptors):
     if isinstance(bodies,dict):bodies=[{"name":k,**v} for k,v in bodies.items()]
     for desc in bodies:
         name=desc.get("name",desc.get("id"))
+        if name=="phone":continue
         empty=bpy.data.objects.new(name,None);bpy.context.collection.objects.link(empty);parents[name]=empty;robot_objects.append(empty)
         position=desc.get("world_position",desc.get("position",(0,0,0)))
         quat=desc.get("world_quaternion",desc.get("quaternion",(1,0,0,0)))
@@ -324,6 +360,9 @@ def robot(descriptors):
         box("Rear mast spine",(-.045,0,0),(.022,.055,1.31),M["metal"],.008,p)
         box("Exposed linear rack",(.044,-.044,0),(.023,.012,1.29),M["black"],.003,p)
         for i in range(108):box("Lift rack tooth",(.053,-.044,-.638+i*.012),(.012,.017,.004),M["darkmetal"],.0008,p)
+        for sign in (-1,1):
+            box("Fixed shoulder linear guide",(-.061,sign*.048,0),(.026,.018,1.28),M["steel"],.006,p)
+            for z in (-.61,.61):box("Linear guide end stop",(-.061,sign*.048,z),(.037,.031,.042),M["black"],.008,p)
     p=parent("head")
     if p:
         box("Stereo rounded optical housing",(0,0,0),(.095,.185,.094),M["shell"],.041,p)
@@ -337,10 +376,16 @@ def robot(descriptors):
     lengths=[.085,.19,.080,.18,.065,.065,.035]
     radii=[.041,.041,.032,.036,.030,.026,.023]
     for side in ("left","right"):
+        side_sign=1 if side=="left" else -1
         p=parent(side+"_shoulder")
         if p:
             box("Shoulder sliding carriage",(0,0,0),(.09,.08,.23),M["shell"],.03,p)
             box("Shoulder carriage backing",(-.052,0,0),(.025,.075,.21),M["metal"],.01,p)
+            # A rigid bridge joins the independently moving stage to its mast guide.
+            box("Shoulder carriage bridge",(-.075,-side_sign*.050,0),(.055,.16,.09),M["metal"],.014,p)
+            for z in (-.075,.075):
+                box("Linear bearing runner",(-.086,-side_sign*.097,z),(.042,.040,.045),M["darkmetal"],.008,p)
+                cylinder("Carriage roller",(-.102,-side_sign*.097,z),.015,.012,M["rubber"],axis=(1,0,0),parent=p,vertices=24)
         for i,(length,r) in enumerate(zip(lengths,radii),1):
             p=parent(f"{side}_link_{i}")
             if not p:continue
@@ -368,6 +413,20 @@ def robot(descriptors):
             if p:
                 box("Pincher finger body",(0,0,-.030),(.026,.019,.067),M["darkmetal"],.008,p)
                 box("Pincher rubber contact pad",(0,-sign*.011,-.046),(.022,.006,.039),M["rubber"],.003,p)
+
+
+def phone(descriptors):
+    global current_objects
+    current_objects=phone_objects
+    pose=descriptors.get("initial_world_poses",{}).get("phone",{"position":[.63,-.72,.814],"quaternion":[1,0,0,0]})
+    parent=bpy.data.objects.new("phone",None);bpy.context.collection.objects.link(parent)
+    parent.location=pose["position"];parent.rotation_mode="QUATERNION";parent.rotation_quaternion=Quaternion(pose["quaternion"])
+    phone_objects.append(parent)
+    box("Phone rounded body",(0,0,0),(.082,.158,.012),M["darkmetal"],.0055,parent)
+    box("Phone glass screen",(0,0,.0058),(.074,.147,.0007),M["glass"],.003,parent)
+    cylinder("Phone front camera",(0,-.063,.0064),.0017,.0006,M["lens"],parent=parent,vertices=20)
+    box("Phone earpiece",(0,-.069,.0064),(.015,.001,.0003),M["black"],.0003,parent)
+    box("Phone side key",(.041,-.032,0),(.001,.019,.002),M["steel"],.0005,parent)
 
 
 def export_selected(objects,name):
@@ -431,9 +490,13 @@ add_texture(M["curtain"],"rough_linen")
 export_selected(room_objects,"room.glb")
 descriptor_path=ROOT/"sim"/"reference_body_descriptors.json"
 if descriptor_path.exists():
-    robot(json.loads(descriptor_path.read_text(encoding="utf-8")))
+    descriptors=json.loads(descriptor_path.read_text(encoding="utf-8"))
+    robot(descriptors)
     export_selected(robot_objects,"robot.glb")
+    phone(descriptors)
+    export_selected(phone_objects,"phone.glb")
 setup_render()
+bpy.ops.file.pack_all()
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/"reference-scene.blend"))
 if "--render" in sys.argv:
     bpy.ops.render.render(write_still=True)

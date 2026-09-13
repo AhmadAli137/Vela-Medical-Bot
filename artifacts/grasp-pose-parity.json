@@ -1,0 +1,13 @@
+{
+  "engine": "MuJoCo 3.13.0 WebAssembly",
+  "check": "Orientation-constrained grasp pose parity with native MuJoCo",
+  "maximum_joint_difference": 1.887379141862766e-15,
+  "native": {
+    "position_error_m": 0.00007335937193998227,
+    "orientation_error_rad": 0.00016831209373275064
+  },
+  "wasm": {
+    "position_error_m": 0.00007335937194030047,
+    "orientation_error_rad": 0.00016831209373249022
+  }
+}

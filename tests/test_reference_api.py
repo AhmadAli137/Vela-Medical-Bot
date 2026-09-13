@@ -27,6 +27,8 @@ def test_reference_state_and_pause_use_actual_mujoco(tmp_path):
     assert initial["hardware_model_verified"] is False
     assert "robot_base" in initial["bodies"]
     assert len(initial["bodies"]) >= 20
+    assert "phone" in initial["bodies"]
+    assert "phone_free" not in initial["joints"]
     paused = client.post("/api/sim/reference/control",json={"command":"pause"}).json()
     assert paused["paused"] is True
     later = client.get("/api/sim/reference/state").json()
@@ -49,14 +51,32 @@ def test_reference_assets_are_exact_allowlist_with_binary_response(tmp_path,monk
     directory = tmp_path/"assets"/"simulation"
     directory.mkdir(parents=True)
     sentinel = b"endpoint transport test, not a model"
-    (directory/"room.glb").write_bytes(sentinel)
-    result = client.get("/api/sim/assets/room.glb")
-    assert result.status_code == 200
-    assert result.headers["content-type"] == "model/gltf-binary"
-    assert result.content == sentinel
+    for asset in ("room.glb", "phone.glb"):
+        (directory/asset).write_bytes(sentinel)
+        result = client.get(f"/api/sim/assets/{asset}?v=current-scene")
+        assert result.status_code == 200
+        assert result.headers["content-type"] == "model/gltf-binary"
+        assert result.content == sentinel
     assert client.get("/api/sim/assets/secrets.json").status_code == 404
     assert client.get("/api/sim/assets/robot.glb").status_code == 404
     assert "connect-src 'self' blob:" in result.headers["content-security-policy"]
+    assert "'unsafe-eval'" not in result.headers["content-security-policy"]
+
+
+def test_reference_fixture_commands_report_actual_plan_and_reject_early_release(tmp_path):
+    client = client_for(tmp_path)
+    premature = client.post("/api/sim/reference/control", json={"command": "release_phone"})
+    assert premature.status_code == 409
+    for command in ("lift_demo", "pickup_demo"):
+        client.post("/api/sim/reference/control", json={"command": "reset"})
+        result = client.post("/api/sim/reference/control", json={"command": command})
+        assert result.status_code == 200, result.text
+        state = result.json()
+        assert state["mode"] == command
+        assert state["metrics"]["object_attached"] is False
+        assert state["authorizes_hardware"] is False
+    assert state["metrics"]["pickup"]["sampled_collision_gate_passed"] is True
+    assert state["metrics"]["grasp_success"] is False
 
 
 def test_reference_local_demo_boundary_applies_with_valid_production_role(tmp_path,monkeypatch):

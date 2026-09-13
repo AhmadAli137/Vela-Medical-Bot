@@ -1,0 +1,185 @@
+{
+  "engine": "MuJoCo 3.13.0 WebAssembly",
+  "model_hash": "59e7fcdc866ae25325074e841b8011040d770f8709d47cff806079a59314bec8",
+  "reach": {
+    "target": [
+      0.22,
+      -0.53,
+      0.96
+    ],
+    "ik_residual_m": 0.000700600518685042,
+    "actual_endpoint_error_m": 0.00031753621456212544,
+    "endpoint_reached": true,
+    "sampled_collision_gate_passed": true,
+    "samples": 60
+  },
+  "pickup_held": {
+    "stage": "hold",
+    "status": "holding",
+    "success": true,
+    "ever_succeeded": true,
+    "released": false,
+    "initial_phone_height_m": 0.814,
+    "phone_height_m": 1.041888610872693,
+    "height_gain_m": 0.22788861087269308,
+    "bilateral_contact": true,
+    "finger_contacts": [
+      "left_finger_-1",
+      "left_finger_1"
+    ],
+    "normal_forces_n": {
+      "left_finger_-1": 7.719109625680943,
+      "left_finger_1": 7.680237534869525
+    },
+    "bilateral_hold_s": 15.918000000001985,
+    "ik_errors": {
+      "hover": {
+        "position_error_m": 0.00007335937194013162,
+        "orientation_error_rad": 0.00016831209373229696
+      },
+      "grasp": {
+        "position_error_m": 0.00011971986806094715,
+        "orientation_error_rad": 0.00028081081207930933
+      },
+      "lift": {
+        "position_error_m": 0.0002699166054372864,
+        "orientation_error_rad": 0.0005442446530821728
+      }
+    },
+    "collision_samples": 240,
+    "sampled_collision_gate_passed": true,
+    "attachment_constraints": 0
+  },
+  "released": {
+    "stage": "release",
+    "status": "released",
+    "success": false,
+    "ever_succeeded": true,
+    "released": true,
+    "initial_phone_height_m": 0.814,
+    "phone_height_m": 0.8134619473049478,
+    "height_gain_m": -0.000538052695052138,
+    "bilateral_contact": false,
+    "finger_contacts": [],
+    "normal_forces_n": {
+      "left_finger_-1": 0,
+      "left_finger_1": 0
+    },
+    "bilateral_hold_s": 0,
+    "ik_errors": {
+      "hover": {
+        "position_error_m": 0.00007335937194013162,
+        "orientation_error_rad": 0.00016831209373229696
+      },
+      "grasp": {
+        "position_error_m": 0.00011971986806094715,
+        "orientation_error_rad": 0.00028081081207930933
+      },
+      "lift": {
+        "position_error_m": 0.0002699166054372864,
+        "orientation_error_rad": 0.0005442446530821728
+      }
+    },
+    "collision_samples": 240,
+    "sampled_collision_gate_passed": true,
+    "attachment_constraints": 0
+  },
+  "vertical_travel": {
+    "stage": "return_stages",
+    "complete": true,
+    "positions_m": {
+      "left": -3.0069430716357906e-8,
+      "right": -3.006943072483939e-8
+    },
+    "min_positions_m": {
+      "left": -0.6605216231863662,
+      "right": -0.6606040594814956
+    },
+    "max_positions_m": {
+      "left": 0.18094843518700635,
+      "right": 0.18094843516536874
+    },
+    "travel_m": {
+      "left": 0.8414700583733725,
+      "right": 0.8415524946468643
+    },
+    "hand_height_m": {
+      "left": 0.9380571816692623,
+      "right": 0.9380571816692621
+    },
+    "min_hand_height_m": {
+      "left": 0.13253566670651012,
+      "right": 0.13249605872790332
+    },
+    "max_hand_height_m": {
+      "left": 1.7239287016284037,
+      "right": 1.7239287018292768
+    },
+    "estimated_range_m": [
+      -0.72,
+      0.2
+    ]
+  },
+  "contact_stop": {
+    "physics_steps": 10001,
+    "finite_dynamics": true,
+    "contacts": [
+      {
+        "geoms": [
+          "right_link_4_geom",
+          "mast_geom"
+        ],
+        "distance_m": -0.0031329950884644645,
+        "self_collision": true
+      },
+      {
+        "geoms": [
+          "right_link_4_geom",
+          "mast_geom"
+        ],
+        "distance_m": -0.0031329950884644645,
+        "self_collision": true
+      }
+    ],
+    "stop_reason": "Synthetic contact stop",
+    "grasp_success": false,
+    "object_attached": false,
+    "pickup": {
+      "stage": "hold",
+      "status": "stopped",
+      "success": false,
+      "ever_succeeded": true,
+      "released": false,
+      "initial_phone_height_m": 0.814,
+      "phone_height_m": 1.0418885560831952,
+      "height_gain_m": 0.22788855608319525,
+      "bilateral_contact": true,
+      "finger_contacts": [
+        "left_finger_-1",
+        "left_finger_1"
+      ],
+      "normal_forces_n": {
+        "left_finger_-1": 7.807695689240539,
+        "left_finger_1": 7.600271537143072
+      },
+      "bilateral_hold_s": 0,
+      "ik_errors": {
+        "hover": {
+          "position_error_m": 0.00007335937194013162,
+          "orientation_error_rad": 0.00016831209373229696
+        },
+        "grasp": {
+          "position_error_m": 0.00011971986806094715,
+          "orientation_error_rad": 0.00028081081207930933
+        },
+        "lift": {
+          "position_error_m": 0.0002699166054372864,
+          "orientation_error_rad": 0.0005442446530821728
+        }
+      },
+      "collision_samples": 240,
+      "sampled_collision_gate_passed": true,
+      "attachment_constraints": 0
+    }
+  }
+}

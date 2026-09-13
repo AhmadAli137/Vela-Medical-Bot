@@ -4,7 +4,7 @@
 
 Live production: **https://vela-medical-bot.vercel.app**. Source: **https://github.com/AhmadAli137/Vela-Medical-Bot** (private repository). The Vercel project is connected to GitHub; pushes to `main` trigger production builds. The initial production deployment reached `Ready` on September 12, 2026, and the public URL returned HTTP 200 without sign-in.
 
-The public build runs the reference robot's MuJoCo 3.13.0 physics inside the browser using the official `@mujoco/mujoco` WebAssembly package. It includes the detailed GLBs, estimated MJCF model, 27 synchronized bodies, joint demonstration, runtime Jacobian reach calculation and sampled collision checks. Each visitor has an independent, ephemeral simulation. No Python server, shared task database, paid model API, robot connection, or recorded-pose playback is required for this view.
+The public build runs the reference robot's MuJoCo 3.13.0 physics inside the browser using the official `@mujoco/mujoco` WebAssembly package. It includes three GLBs, the estimated MJCF model, 28 synchronized bodies (27 robot plus one free phone), joint and vertical-travel demonstrations, runtime Jacobian IK and contact-driven pickup/release. The phone starts on a visible 35 mm rest; there is no weld or kinematic object attachment. Each visitor has an independent, ephemeral simulation. No Python server, shared task database, paid model API, robot connection, or recorded-pose playback is required for this view.
 
 The full staff/patient/fleet/research workspace remains the separate local Python application described below. The public build opens the 3D view and explains this boundary instead of exposing disconnected operational controls.
 
@@ -18,9 +18,11 @@ npm --prefix apps/web run preview -- --port 4173
 
 The public build replaces `apps/web/dist`. Run `npm --prefix apps/web run build` afterward to restore the local dashboard bundle served by FastAPI. Vercel builds its own deployment independently. Do not serve the public WASM bundle through an older local CSP that lacks `wasm-unsafe-eval`.
 
+Vite computes one revision hash from all three GLBs and both physics metadata files. Their fetch URLs share that revision, so an ordinary page reload after deployment cannot mix a cached old room or robot with the new physics topology.
+
 `.vercelignore` restricts CLI uploads to the frontend build inputs and authored GLBs. `.gitignore` excludes provider credentials, `.env.local`, `.vercel`, local databases, raw source media and copyrighted reference photographs. The source repository retains the full implementation and the separately licensed CC0 material provenance.
 
-Browser-engine regressions: `node --test --test-isolation=none tests/browser-physics-wasm.mjs` from `apps/web` (Node 24). Seven tests passed, including native/WASM endpoint parity, all 25 actuator DOFs, contact stopping and lifetime/pause controls. Hardware geometry, inertias and controls remain unverified estimates.
+Browser-engine regressions: `node --test --test-isolation=none tests/browser-physics-wasm.mjs` from `apps/web` (Node 24). See [current validation](TESTING.md) for native/WASM parity, contact pickup/release, independent lift motion and browser checks. Hardware geometry, inertias and controls remain unverified estimates.
 
 ## Full local workspace
 

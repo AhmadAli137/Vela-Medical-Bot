@@ -1,0 +1,39 @@
+{
+  "model_hash": "59e7fcdc866ae25325074e841b8011040d770f8709d47cff806079a59314bec8",
+  "mujoco_version": "3.13.0",
+  "result": "passed",
+  "tests_passed": 13,
+  "tests_failed": 0,
+  "evidence_kind": "Summary of observed pytest stdout from the two completed runs; tests were not rerun solely to produce this artifact",
+  "runs": [
+    {
+      "command": ".venv/Scripts/python.exe -m pytest tests/test_reference_sim.py -q -p no:cacheprovider",
+      "observed_result": "9 passed in 9.78s",
+      "passed": 9,
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/Scripts/python.exe -m pytest tests/test_reference_pickup.py -q -p no:cacheprovider",
+      "observed_result": "4 passed in 11.16s",
+      "passed": 4,
+      "exit_code": 0
+    }
+  ],
+  "subsequent_validation": {
+    "command": ".venv/Scripts/python.exe -m sim.reference_contact_report",
+    "passed": true,
+    "artifact": "sim/outputs/reference_contact_manipulation.json",
+    "note": "Run after adding metric-history deep copies; verifies pickup, sustained hold, gravity release and carriage/high reach dynamics on the final runtime"
+  },
+  "coverage": [
+    "Actual MuJoCo topology: 25 actuators, 32 position and 31 velocity coordinates, 28 exported bodies",
+    "All actuated joints move; contact-free 16 second joint motion; actual position IK tracking",
+    "Bounded stepping, pause/reset, unreachable goal and unexpected contact stop",
+    "Freejoint phone with gravity and zero equality constraints; bilateral force and >20 cm lift",
+    "Sustained hold, mode-switch guard and physical gravity release",
+    "Independent 84 cm carriage travel and measured hand heights approximately 13 cm to 172 cm",
+    "Displaced-scene rejection without teleporting and phone-palm collision detection"
+  ],
+  "hardware_model_verified": false,
+  "authorizes_hardware": false
+}

@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "case": "missing-uv",
+      "rejected": true,
+      "failures": [
+        "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\.cache\\glb-audit-cases\\missing-uv.glb: mesh 0 primitive 0 (Continuous resilient floor): Missing TEXCOORD_0"
+      ]
+    },
+    {
+      "case": "non-finite-uv",
+      "rejected": true,
+      "failures": [
+        "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\.cache\\glb-audit-cases\\non-finite-uv.glb: mesh 0 primitive 0 (Continuous resilient floor): Accessor 2 contains non-finite values"
+      ]
+    },
+    {
+      "case": "uv-out-of-bounds",
+      "rejected": true,
+      "failures": [
+        "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\.cache\\glb-audit-cases\\uv-out-of-bounds.glb: mesh 0 primitive 0 (Continuous resilient floor): Accessor 2 exceeds its binary buffer bounds"
+      ]
+    },
+    {
+      "case": "uv-vertex-count-mismatch",
+      "rejected": true,
+      "failures": [
+        "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\.cache\\glb-audit-cases\\uv-vertex-count-mismatch.glb: mesh 0 primitive 0 (Continuous resilient floor): TEXCOORD_0 count does not match POSITION"
+      ]
+    },
+    {
+      "case": "duplicate-static-phone",
+      "rejected": true,
+      "failures": [
+        "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\.cache\\glb-audit-cases\\duplicate-static-phone.glb: Dynamic object names remain in static room nodes/meshes: Phone duplicate in static room"
+      ]
+    },
+    {
+      "case": "phone-pose-mismatch",
+      "rejected": true,
+      "failures": [
+        "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\.cache\\glb-audit-cases\\phone-pose-mismatch.glb: Pose mismatch against current physics: phone"
+      ]
+    },
+    {
+      "case": "phone-non-finite-quaternion",
+      "rejected": true,
+      "failures": [
+        "C:\\Users\\Ahmad\\OneDrive\\Desktop\\Vela-Medical-Bot\\.cache\\glb-audit-cases\\phone-non-finite-quaternion.glb: Body phone has invalid/non-finite pose components"
+      ]
+    }
+  ],
+  "passed": 7,
+  "source_model_hash": "59e7fcdc866ae25325074e841b8011040d770f8709d47cff806079a59314bec8"
+}

@@ -11,8 +11,11 @@ from sim.reference_runtime import ReferenceSimulation
 
 def test_reference_topology_geometry_and_artifact_provenance():
     model, data, metadata = load_reference_model()
-    assert model.njnt == model.nu == 25
-    assert len(body_descriptors()) == 27
+    assert model.njnt == 26 and model.nu == 25
+    assert model.nq == 32 and model.nv == 31
+    assert len(body_descriptors()) == 28
+    assert model.joint("phone_free").type[0] == mujoco.mjtJoint.mjJNT_FREE
+    assert model.neq == 0, "Grasp must not use a weld or attachment constraint"
     assert metadata["hardware_model_verified"] is False
     assert "handout-page-1.png" in metadata["reference_files"][0]
     for side in ("left", "right"):
@@ -41,7 +44,7 @@ def test_joint_demonstration_actuates_every_synthetic_dof():
     initial = sim.initial_q.copy()
     sim.command("joint_demo")
     state = sim.advance(2.)
-    changed = np.abs(sim.data.qpos-initial)
+    changed = np.abs(sim.data.qpos[sim.actuated_q]-initial[sim.actuated_q])
     assert np.all(changed > .0001), dict(zip(state["joints"], changed.tolist()))
     assert state["simulation_time"] == pytest.approx(2.)
     assert state["metrics"]["physics_steps"] == 1000

@@ -76,7 +76,7 @@ class ObjectPolicyInput(StrictModel):
 
 
 class ReferenceControlInput(StrictModel):
-    command: Literal["joint_demo", "reach_demo", "pause", "reset"]
+    command: Literal["joint_demo", "reach_demo", "pickup_demo", "release_phone", "lift_demo", "pause", "reset"]
 
 
 def create_app(db_path=None, demo=None):
@@ -584,7 +584,7 @@ def create_app(db_path=None, demo=None):
     def reference_asset(filename: str,user=Depends(role("staff","operator","researcher","admin"))):
         if not demo:
             raise HTTPException(403,"Reference assets are available in local demo mode only")
-        if filename not in {"room.glb","robot.glb"}:
+        if filename not in {"room.glb","robot.glb","phone.glb"}:
             raise HTTPException(404,"Unknown simulation asset")
         directory = (ROOT/"assets"/"simulation").resolve()
         path = (directory/filename).resolve()

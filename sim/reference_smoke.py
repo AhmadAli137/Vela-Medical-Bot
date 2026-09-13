@@ -14,7 +14,7 @@ def run_report():
     original = simulation.initial_q.copy()
     simulation.command("joint_demo")
     samples = [simulation.advance(2.) for _ in range(8)]
-    actual_delta = np.abs(simulation.data.qpos-original)
+    actual_delta = np.abs(simulation.data.qpos[simulation.actuated_q]-original[simulation.actuated_q])
     joint_result = {"duration_s": samples[-1]["simulation_time"], "physics_steps": samples[-1]["metrics"]["physics_steps"], "joint_displacements": dict(zip(samples[-1]["joints"], actual_delta.tolist())), "all_dofs_actuated": bool(np.all(actual_delta > .0001)), "contacts": samples[-1]["metrics"]["contacts"], "stopped": samples[-1]["paused"], "finite_dynamics": samples[-1]["metrics"]["finite_dynamics"]}
     simulation.command("reset")
     planned = simulation.command("reach_demo")

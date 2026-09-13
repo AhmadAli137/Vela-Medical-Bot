@@ -1,30 +1,34 @@
 # Actual validation results
 
-## Live Vercel browser validation
+## Corrected geometry and physical manipulation
 
-Anonymous Chrome verification passed at **https://vela-medical-bot.vercel.app** in 24.42 seconds. All 25 joint values changed; 27 body meshes stayed synchronized; pause held simulation time stable; the reach settled with a displayed 0.1 cm endpoint error. There were zero browser errors, failed network requests, or calls to the local `/api` backend. Default routing, legacy hash isolation, and About-dialog Escape/focus restoration also passed. [Measured production result](../artifacts/vercel-browser-check.json), [production screenshot](../apps/web/artifacts/vercel-simulation.png).
+The revised model passed **20 focused tests** (14 native physics and 6 API) in 17.46 seconds, with one dependency deprecation warning. The phone is a 0.18 kg free body: it rises 22.8 cm, sustains contact with both fingers, and drops under gravity after release. There are no equality constraints or runtime object-pose writes in the pickup. Independent shoulder stages travel 84 cm; the end-effector sites span 13.2–172.4 cm above the floor with no unexpected robot contacts in the tested 26-second sequence. Release clears current grasp success immediately; a collision fault invalidates success and requires reset. [Final focused JUnit result](../artifacts/reference-corrections-test-results.xml), [contact and lift measurements](../sim/outputs/reference_contact_manipulation.json).
 
-The equivalent standalone static-server test passed before deployment. Seven additional actual WebAssembly engine tests passed, including native/WASM pose and reach parity, all actuator DOFs, unreachable goals, contact stopping, pause/reset/disposal, and the bounded catch-up interval. Public and normal TypeScript/Vite production builds both passed.
+The pickup uses a visible 35 mm raised rest and tuned synthetic contact parameters. This evidence covers one fixed fixture; it does not establish pickup from a flat table, robustness to other objects, wheel-driven balance or calibrated hardware dynamics.
 
 ```powershell
+.\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider tests/test_reference_sim.py tests/test_reference_pickup.py tests/test_reference_api.py --basetemp=.cache/reference-check
+.\.venv\Scripts\python.exe -m sim.reference_contact_report
+.\.venv\Scripts\python.exe -m sim.reference_glb_check
+```
+
+The GLB audit validates **28 body poses**: 27 robot bodies and the separate dynamic phone. All four textured room primitives have finite, bounded UV accessors and matching vertex counts; the static room contains no phone mesh. Seven deliberately malformed assets were rejected. [Pose/UV report](../sim/outputs/reference_glb_check.json), [negative-case audit](../artifacts/reference-glb-audit-regressions.json). This verifies the coordinate and asset contracts, not vendor geometry.
+
+## Browser verification
+
+All **11 actual MuJoCo WebAssembly tests passed** in 11.693 seconds. The browser controller lifts the phone 22.7889 cm, sustains bilateral contact for 15.918 seconds in the measured run, and releases it under gravity. It also passes the forced collision-stop regression and native pose/reach parity checks. [WASM contact measurements](../artifacts/browser-contact-physics.json).
+
+The full Chrome check on the static build passed in **72.646 seconds**, with zero browser errors, failed requests or local API calls. It exercised all 25 joints, pause, reach, low/high travel, pickup, sustained hold and gravity release. All five scene requests used the same asset revision. [Browser report](../artifacts/public-browser-check.json), [pickup screenshot](../apps/web/artifacts/public-pickup.png), [recorded demonstration](../apps/web/artifacts/contact-pickup-demo.mp4).
+
+```powershell
+npm --prefix apps/web run build:public
 $env:VELA_PUBLIC_URL = 'https://vela-medical-bot.vercel.app'
 node apps/web/scripts/check-public-demo.mjs
 ```
 
-## Reference-based interactive room: September 12, 2026
+The corrected renderer has been inspected in actual Chrome: the floor artifacts are gone, furniture connections are visible and 28 bodies synchronize without independent link interpolation. [Browser image](../apps/web/artifacts/render-revision-simulation.png), [render check](../artifacts/render-revision-browser-check.json). The separate [Blender Cycles preview](../assets/simulation/reference-room-preview.png) is an offline render, not a browser screenshot.
 
-The rebuilt view at `http://127.0.0.1:8000/#simulation` passed a focused final run of **14 tests** (9 physics and 5 API tests), in 7.44 seconds with the same dependency deprecation warning. [JUnit evidence](../artifacts/reference-test-results.xml).
-
-```powershell
-.\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider tests/test_reference_sim.py tests/test_reference_api.py --basetemp=.cache/reference-final-local
-.\.venv\Scripts\python.exe -m sim.reference_glb_check
-```
-
-The final Blender-exported robot GLB contains 114 nodes, including all **27 expected physics bodies**, whose exported transforms match the MuJoCo initial world poses. [Transform check](../sim/outputs/reference_glb_check.json). This verifies the visual/physics coordinate contract, not calibrated hardware geometry.
-
-The final Chrome session loaded both GLBs and recorded joint motion followed by a reach, with no reported JavaScript exceptions or console errors. Its two sampled joint states differed on 24 of 25 coordinates; the separate deterministic motion test exercises all 25 over a full cycle. The recorded reach had zero reported contacts and approximately 0.55 mm synthetic endpoint error. No object attachment or grasp was simulated. The original full-cycle physics report is [reference_actuation.json](../sim/outputs/reference_actuation.json).
-
-View the [recorded MP4](../apps/web/artifacts/immersive-motion.mp4), [bedside screenshot](../apps/web/artifacts/immersive-final-bedside.png), and [joint-motion screenshot](../apps/web/artifacts/immersive-final-joints.png). The browser renders a detailed authored scene; the separate [Blender Cycles preview](../assets/simulation/reference-room-preview.png) uses offline lighting and is not a browser screenshot. Final TypeScript/Vite build passed. The one-click launcher was checked against the existing local server; its cold-start branch was not separately exercised.
+The original production browser check, before this correction, passed in 24.42 seconds with 27 bodies and a reach demonstration. That older build did **not** grasp a phone. The old [recording](../apps/web/artifacts/immersive-motion.mp4) is historical evidence for that earlier model. The [joint/reach report](../sim/outputs/reference_actuation.json) has been regenerated for the corrected model; contact pickup has its own report above.
 
 Validation used Python 3.12.10, MuJoCo 3.13.0, Node 24.14.1 and local Chrome. Exact installed Python packages are in `requirements.lock`; frontend dependencies are locked in `apps/web/package-lock.json`. No test result from the supplied old status file was reused.
 

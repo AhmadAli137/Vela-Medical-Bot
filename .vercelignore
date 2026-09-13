@@ -8,6 +8,7 @@
 !assets/simulation/
 !assets/simulation/room.glb
 !assets/simulation/robot.glb
+!assets/simulation/phone.glb
 !sim/
 !sim/reference_body_descriptors.json
 !sim/reference_body_descriptors.xml

@@ -2,7 +2,7 @@ $ErrorActionPreference = 'Stop'
 $velaRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $velaRoot
 $velaPython = Join-Path $velaRoot '.venv\Scripts\python.exe'
-foreach ($velaRequired in @($velaPython, 'apps\web\dist\index.html', 'assets\simulation\room.glb', 'assets\simulation\robot.glb')) {
+foreach ($velaRequired in @($velaPython, 'apps\web\dist\index.html', 'assets\simulation\room.glb', 'assets\simulation\robot.glb', 'assets\simulation\phone.glb')) {
     if (-not (Test-Path -LiteralPath $velaRequired)) {
         throw "Missing demo file: $velaRequired. See README.md for setup and visual asset generation."
     }
