@@ -76,7 +76,7 @@ class ObjectPolicyInput(StrictModel):
 
 
 class ReferenceControlInput(StrictModel):
-    command: Literal["joint_demo", "reach_demo", "pickup_demo", "release_phone", "lift_demo", "pause", "reset"]
+    command: Literal["joint_demo", "reach_demo", "pickup_demo", "release_phone", "lift_demo", "bedside_demo", "greeting_demo", "phone_return_demo", "pause", "reset"]
 
 
 def create_app(db_path=None, demo=None):

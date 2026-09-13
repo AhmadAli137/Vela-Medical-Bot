@@ -15,6 +15,7 @@ import numpy as np
 
 from sim.reference_model import INITIAL_ARM_Q, load_reference_model
 from sim.reference_pickup import lift_stages, pickup_stages
+from sim.reference_demos import DEMO_COMMANDS, load_trajectories
 
 
 class ReferenceSimulation:
@@ -42,11 +43,13 @@ class ReferenceSimulation:
         self.stage_start_ctrl = self.data.ctrl.copy()
         self.pickup = None
         self.lift_demo = None
+        self.demo = None
+        self.demo_definition = None
 
     def _contacts(self, data=None, allow_phone_grasp=None):
         data = self.data if data is None else data
         if allow_phone_grasp is None:
-            allow_phone_grasp = self.mode in {"pickup_demo", "release_phone"}
+            allow_phone_grasp = self.mode in {"pickup_demo", "release_phone", "phone_return_demo"}
         result = []
         for contact in data.contact[:data.ncon]:
             a, b = int(contact.geom1), int(contact.geom2)
@@ -186,6 +189,21 @@ class ReferenceSimulation:
         stage = self.stages[self.stage_index]
         elapsed = float(self.data.time)-self.stage_started
         if elapsed+1e-9 >= stage["duration_s"] and self.stage_index+1 < len(self.stages):
+            if self.demo and stage.get("gate_after"):
+                gate=stage["gate_after"]
+                if not self._demo_gate(gate):
+                    self._stop_demo(f"Demo stopped: {gate} gate failed after {stage['name']}")
+                    return
+                measured=self.demo["measurements"]
+                measured[f"gate_{gate}_passed"]=True
+                if gate=="grasp_confirmed":
+                    measured["confirmed_grasp_height_m"]=self.pickup["height_gain_m"]
+                    measured["confirmed_grasp_hold_s"]=self.pickup["bilateral_hold_s"]
+                elif gate=="phone_supported":
+                    observation=self._phone_observation()
+                    measured["supported_release_height_m"]=observation["phone_position"][2]
+                    measured["supported_release_force_n"]=observation["riser_support_force_n"]
+                    measured["supported_release_bilateral"]=len(self._finger_contacts()[0])==2
             if stage["name"] == "close" and len(self._finger_contacts()[0]) != 2:
                 self.stop_reason = "Pickup stopped: bilateral finger contact not established"
                 self.paused = True
@@ -208,7 +226,7 @@ class ReferenceSimulation:
             phone_z = float(self.data.xpos[self.model.body("phone").id, 2])
             touching, forces = self._finger_contacts()
             self.pickup.update(stage=self.stages[self.stage_index]["name"], phone_height_m=phone_z, height_gain_m=phone_z-self.pickup["initial_phone_height_m"], finger_contacts=touching, normal_forces_n=forces, bilateral_contact=len(touching) == 2)
-            if self.mode == "pickup_demo":
+            if self.mode in {"pickup_demo", "phone_return_demo"}:
                 if self.pickup["height_gain_m"] > .15 and len(touching) == 2:
                     self.pickup["bilateral_hold_s"] += self.model.opt.timestep
                     if self.pickup["bilateral_hold_s"] >= 2.:
@@ -224,6 +242,13 @@ class ReferenceSimulation:
                 self.pickup["success"] = False
                 self.pickup["released"] = not touching and self.pickup["height_gain_m"] < .03
                 self.pickup["status"] = "released" if self.pickup["released"] else "releasing"
+            if self.mode == "phone_return_demo":
+                stage = self.stages[self.stage_index]["name"]
+                if stage in {"lower_phone", "open_fingers", "retreat_hand", "clear_return", "return_base", "rest_arms", "settle"}:
+                    self.pickup["success"] = False
+                    self.pickup["status"] = "lowering" if stage == "lower_phone" else "returning"
+                if stage in {"lift", "hold", "lower_phone"} and len(touching) != 2 and self.pickup["height_gain_m"] > .02:
+                    self._stop_demo("Demo stopped: phone contact lost during supported manipulation")
         if self.lift_demo and self.mode == "lift_demo":
             self.lift_demo["stage"] = self.stages[self.stage_index]["name"]
             self.lift_demo["complete"] = self.stage_index == len(self.stages)-1 and self.data.time-self.stage_started >= self.stages[-1]["duration_s"]+.5
@@ -238,13 +263,105 @@ class ReferenceSimulation:
                 self.lift_demo["min_hand_height_m"][side] = min(height, self.lift_demo["min_hand_height_m"][side])
                 self.lift_demo["max_hand_height_m"][side] = max(height, self.lift_demo["max_hand_height_m"][side])
 
+    def _phone_observation(self):
+        phone = self.data.xpos[self.model.body("phone").id].copy()
+        address = self.model.joint("phone_free").dofadr[0]
+        support_force = 0.
+        for index, contact in enumerate(self.data.contact[:self.data.ncon]):
+            names = {self.model.geom(int(contact.geom1)).name, self.model.geom(int(contact.geom2)).name}
+            if names == {"phone_geom", "phone_riser"}:
+                wrench = np.zeros(6)
+                mujoco.mj_contactForce(self.model, self.data, index, wrench)
+                support_force += max(0., float(wrench[0]))
+        target = np.array(self.demo_definition["outcomes"]["phone_target"])
+        return {"phone_position": phone.tolist(), "phone_xy_error_m": float(np.linalg.norm(phone[:2]-target[:2])), "phone_z_error_m": abs(float(phone[2]-target[2])), "phone_speed_m_s": float(np.linalg.norm(self.data.qvel[address:address+3])), "phone_angular_speed_rad_s": float(np.linalg.norm(self.data.qvel[address+3:address+6])), "riser_support_force_n": support_force, "hand_clearance_m": float(np.linalg.norm(self.data.site_xpos[self.model.site("left_grasp_center").id]-phone))}
+
+    def _phone_settled(self, observation):
+        thresholds = self.demo_definition["outcomes"]
+        return (observation["phone_xy_error_m"] <= thresholds["phone_xy_tolerance_m"] and observation["phone_z_error_m"] <= thresholds["phone_z_tolerance_m"] and observation["phone_speed_m_s"] <= thresholds["phone_speed_tolerance_m_s"] and observation["phone_angular_speed_rad_s"] <= thresholds["phone_angular_speed_tolerance_rad_s"] and observation["riser_support_force_n"] > thresholds["support_force_minimum_n"])
+
+    def _demo_gate(self, gate):
+        touching, _ = self._finger_contacts()
+        if gate == "bilateral_contact":
+            return len(touching) == 2
+        if gate == "grasp_confirmed":
+            return bool(self.pickup and self.pickup["success"] and self.pickup["ever_succeeded"])
+        if gate == "phone_supported":
+            return len(touching) == 2 and self._phone_settled(self._phone_observation())
+        if gate == "phone_settled":
+            return not touching and self._phone_settled(self._phone_observation())
+        raise ValueError(f"Unknown demo gate: {gate}")
+
+    def _stop_demo(self, reason):
+        self.stop_reason = reason
+        self.paused = True
+        if self.demo:
+            self.demo.update(complete=False, status="stopped")
+            self.demo["measurements"]["settle_dwell_s"] = 0.
+        if self.pickup:
+            self.pickup.update(success=False, status="stopped", bilateral_hold_s=0.)
+        self._hold()
+
+    def _measure_demo(self):
+        if not self.demo:
+            return
+        demo, thresholds = self.demo, self.demo_definition["outcomes"]
+        measured = demo["measurements"]
+        elapsed = max(0., float(self.data.time)-self.mode_started)
+        demo.update(stage=self.stages[self.stage_index]["name"], stage_index=self.stage_index, elapsed_s=elapsed, progress=min(1., elapsed/demo["duration_s"]))
+        measured["rest_qpos_error"] = float(np.max(np.abs(self.data.qpos[self.actuated_q]-self.initial_q[self.actuated_q])))
+        measured["robot_speed"] = float(np.max(np.abs(self.data.qvel[self.actuated_dofs])))
+        checks = {"returned_to_rest": measured["rest_qpos_error"] <= thresholds["rest_qpos_tolerance"], "robot_settled": measured["robot_speed"] <= thresholds["robot_speed_tolerance"]}
+        if self.mode == "bedside_demo":
+            base = np.array([float(self.data.qpos[self.model.joint(name).qposadr[0]]) for name in ("base_x", "base_y", "base_yaw")])
+            target = np.array(thresholds["base_goal_qpos"])
+            measured.update(base_position_qpos=base.tolist(), base_goal_error_m=float(np.linalg.norm(base[:2]-target[:2])), base_yaw_error_rad=abs(float(base[2]-target[2])), base_home_error_m=float(np.linalg.norm(base[:2])))
+            measured["max_base_excursion_m"] = max(measured.get("max_base_excursion_m",0.), measured["base_home_error_m"])
+            measured["visited_bedside"] = bool(measured.get("visited_bedside", False) or measured["base_goal_error_m"] <= thresholds["base_goal_tolerance_m"] and measured["base_yaw_error_rad"] <= thresholds["yaw_tolerance_rad"])
+            checks.update(visited_bedside=measured["visited_bedside"], base_travel_observed=measured["max_base_excursion_m"] >= thresholds["minimum_base_excursion_m"])
+        elif self.mode == "greeting_demo":
+            height = float(self.data.site_xpos[self.model.site("left_ee").id,2])
+            measured["hand_height_m"] = height
+            measured["max_hand_height_m"] = max(measured.get("max_hand_height_m",height),height)
+            if demo["stage"].startswith("wave_"):
+                wave = float(self.data.qpos[self.model.joint("left_joint_6").qposadr[0]])
+                measured["wave_min_rad"] = min(measured.get("wave_min_rad",wave),wave)
+                measured["wave_max_rad"] = max(measured.get("wave_max_rad",wave),wave)
+            measured["wave_range_rad"] = measured.get("wave_max_rad",0.)-measured.get("wave_min_rad",0.)
+            checks.update(hand_raised=measured["max_hand_height_m"] >= thresholds["minimum_hand_height_m"], wrist_waved=measured["wave_range_rad"] >= thresholds["minimum_wave_range_rad"])
+        elif self.mode == "phone_return_demo":
+            observation = self._phone_observation()
+            measured.update(observation)
+            touching, _ = self._finger_contacts()
+            checks.update(confirmed_grasp=bool(self.pickup and self.pickup["ever_succeeded"]), phone_on_riser=self._phone_settled(observation), fingers_clear=not touching, hand_retracted=observation["hand_clearance_m"] >= thresholds["hand_clearance_m"])
+            if self.pickup and demo["stage"] in {"retreat_hand", "clear_return", "return_base", "rest_arms", "settle"}:
+                self.pickup["released"] = checks["phone_on_riser"] and checks["fingers_clear"]
+                self.pickup["status"] = "returned" if self.pickup["released"] else "returning"
+        demo["checks"] = checks
+        all_checked = all(checks.values())
+        if self.paused and self.stop_reason:
+            demo.update(complete=False,status="stopped")
+            return
+        if self.stage_index == len(self.stages)-1 and all_checked:
+            measured["settle_dwell_s"] = measured.get("settle_dwell_s",0.)+self.model.opt.timestep
+        else:
+            measured["settle_dwell_s"] = 0.
+        if demo["complete"] and not all_checked:
+            self._stop_demo("Demo stopped: a completed outcome no longer holds")
+        elif elapsed+1e-9 >= demo["duration_s"] and all_checked and measured["settle_dwell_s"] >= thresholds["settle_dwell_s"]:
+            demo.update(complete=True,status="complete")
+        elif elapsed > demo["duration_s"]+3. and not demo["complete"]:
+            self._stop_demo("Demo stopped: measured outcome checks did not settle within the bounded grace period")
+
     def command(self, action):
         if isinstance(action, dict):
             action = action.get("command", action.get("action"))
         with self.lock:
             if self.stop_reason and action != "reset":
                 raise ValueError("Reset the scene after a simulation stop")
-            if action in {"joint_demo", "reach_demo", "lift_demo", "pickup_demo"} and self.mode in {"pickup_demo", "release_phone"}:
+            if action in {"joint_demo", "reach_demo", "lift_demo", "pickup_demo"} | DEMO_COMMANDS and self.mode in DEMO_COMMANDS:
+                raise ValueError("Reset the scene before another demonstration")
+            if action in {"joint_demo", "reach_demo", "lift_demo", "pickup_demo"} | DEMO_COMMANDS and self.mode in {"pickup_demo", "release_phone", "phone_return_demo"}:
                 raise ValueError("Release the phone and reset the scene before another demonstration")
             if action == "reset":
                 mujoco.mj_resetData(self.model, self.data)
@@ -257,16 +374,43 @@ class ReferenceSimulation:
                 self.step_count, self._accumulator = 0, 0.
                 self.stages, self.pickup, self.lift_demo = [], None, None
                 self.stage_index, self.stage_started = 0, 0.
+                self.demo, self.demo_definition = None, None
             elif action == "pause":
                 self.paused = not self.paused
             elif action == "joint_demo":
+                self.demo, self.demo_definition = None, None
                 self.mode, self.paused = "joint_demo", False
                 self.mode_started = float(self.data.time)
                 self.stop_reason = None
                 self.reach_plan = None
                 self.stages, self.lift_demo = [], None
+            elif action in DEMO_COMMANDS:
+                self._require_fixture_start()
+                library=load_trajectories(self.metadata["model_hash"])
+                if library["nq"] != self.model.nq or library["nu"] != self.model.nu or library["actuated_q_indices"] != self.actuated_q.tolist():
+                    raise ValueError("Demo trajectory topology mismatch")
+                definition=library["commands"][action]
+                stages=[{**stage,"target_qpos":np.asarray(stage["target_qpos"],dtype=float)}for stage in definition["stages"]]
+                for stage in stages:
+                    target=stage["target_qpos"]
+                    if target.shape!=(self.model.nq,) or not np.isfinite(target).all() or not math.isfinite(stage["duration_s"]) or stage["duration_s"]<=0:
+                        raise ValueError("Invalid demo stage target or duration")
+                    if np.any(target[self.actuated_q]<self.model.actuator_ctrlrange[:,0]) or np.any(target[self.actuated_q]>self.model.actuator_ctrlrange[:,1]):
+                        raise ValueError("Demo stage exceeds actuator control limits")
+                count=self._start_stages(stages,allow_phone_grasp=action=="phone_return_demo")
+                self.demo_definition=definition
+                self.demo={"command":action,"name":definition["name"],"stage":stages[0]["name"],"stage_index":0,"stage_count":len(stages),"elapsed_s":0.,"duration_s":definition["duration_s"],"status":"running","complete":False,"progress":0.,"measurements":{"settle_dwell_s":0.,"collision_samples":count},"checks":{}}
+                self.mode,self.paused=action,False
+                self.mode_started=float(self.data.time)
+                self.reach_plan,self.stop_reason,self.lift_demo=None,None,None
+                self.pickup=None
+                if action=="phone_return_demo":
+                    height=float(self.data.xpos[self.model.body("phone").id,2])
+                    self.pickup={"stage":"park","status":"running","success":False,"ever_succeeded":False,"released":False,"initial_phone_height_m":height,"phone_height_m":height,"height_gain_m":0.,"bilateral_contact":False,"finger_contacts":[],"normal_forces_n":{},"bilateral_hold_s":0.,"ik_errors":definition["ik_errors"],"collision_samples":count,"sampled_collision_gate_passed":True,"attachment_constraints":0}
+                self._measure_demo()
             elif action in {"pickup_demo", "lift_demo"}:
                 self._require_fixture_start()
+                self.demo, self.demo_definition = None, None
                 if action == "pickup_demo":
                     stages, errors = pickup_stages(self.model, self.initial_q)
                     if any(error["position_error_m"] > .002 or error["orientation_error_rad"] > .01 for error in errors.values()):
@@ -299,6 +443,7 @@ class ReferenceSimulation:
                 self.pickup["success"] = False
                 self.pickup["bilateral_hold_s"] = 0.
             elif action == "reach_demo":
+                self.demo, self.demo_definition = None, None
                 # Target is a visible point near the tabletop edge. No object
                 # is attached or moved, and no grasp success is fabricated.
                 target = [.22, -.53, .96]
@@ -314,7 +459,7 @@ class ReferenceSimulation:
                     self.mode_started = float(self.data.time)
                     self.stop_reason = None
             else:
-                raise ValueError("Allowed commands: joint_demo, reach_demo, pickup_demo, release_phone, lift_demo, pause, reset")
+                raise ValueError("Allowed commands: joint_demo, reach_demo, pickup_demo, release_phone, lift_demo, bedside_demo, greeting_demo, phone_return_demo, pause, reset")
             self.last_clock = time.monotonic()
             return self._state()
 
@@ -332,7 +477,7 @@ class ReferenceSimulation:
                 elapsed = float(self.data.time)-self.mode_started
                 if self.mode == "joint_demo":
                     self._joint_demo(elapsed)
-                elif self.mode in {"pickup_demo", "release_phone", "lift_demo"}:
+                elif self.mode in {"pickup_demo", "release_phone", "lift_demo"} | DEMO_COMMANDS:
                     self._staged_control()
                     if self.paused:
                         break
@@ -346,12 +491,17 @@ class ReferenceSimulation:
                 mujoco.mj_step(self.model, self.data)
                 self.step_count += 1
                 self._measure_fixture()
+                self._measure_demo()
+                if self.paused:
+                    break
                 contacts = self._contacts()
                 if contacts or not np.isfinite(self.data.qpos).all():
                     self.last_contacts = contacts
                     self.stop_reason = "Synthetic contact stop" if contacts else "Nonfinite physics state"
                     if self.pickup:
                         self.pickup.update(success=False, status="stopped", bilateral_hold_s=0.)
+                    if self.demo:
+                        self.demo.update(complete=False,status="stopped")
                     self._hold()
                     self.paused = True
                     break
@@ -368,6 +518,8 @@ class ReferenceSimulation:
             metrics["grasp_success"] = self.pickup["success"]
         if self.lift_demo:
             metrics["lift"] = copy.deepcopy(self.lift_demo)
+        if self.demo:
+            metrics["demo"] = copy.deepcopy(self.demo)
         if self.reach_plan:
             distance = float(np.linalg.norm(np.array(end_effectors[self.reach_plan["side"]])-self.reach_plan["target"]))
             metrics["reach"] = {"target": self.reach_plan["target"], "ik_residual_m": self.reach_plan["residual_m"], "actual_endpoint_error_m": distance, "endpoint_reached": distance < .02, "sampled_collision_gate_passed": self.reach_plan["collision_free_samples"], "samples": self.reach_plan["sample_count"]}

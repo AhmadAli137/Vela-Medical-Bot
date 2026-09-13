@@ -1,0 +1,1850 @@
+{
+  "checked_at": "2026-09-13T05:47:55.232Z",
+  "passed": true,
+  "elapsed_seconds": 85.602,
+  "origin": "http://127.0.0.1:4175",
+  "engine": "MuJoCo WebAssembly",
+  "viewport": {
+    "width": 1600,
+    "height": 1000
+  },
+  "server": "Static production files with Vercel headers; no API proxy",
+  "scene_revision": "29709227503dcc6f",
+  "content_security_policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' blob:; worker-src 'self' blob:; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+  "gallery_keyboard_verified": true,
+  "reset_clears_completion": true,
+  "demos": [
+    {
+      "command": "bedside_demo",
+      "initial_simulation_time_s": 0.03,
+      "completed_simulation_time_s": 15.06,
+      "pause_resume_verified": true,
+      "paused_simulation_time_s": 0.71,
+      "completion": {
+        "command": "bedside_demo",
+        "name": "Bedside approach",
+        "stage": "settle",
+        "stage_index": 5,
+        "stage_count": 6,
+        "progress": 1,
+        "elapsed_s": 15.056000000001697,
+        "duration_s": 15,
+        "status": "complete",
+        "complete": true,
+        "measurements": {
+          "collision_samples": 360,
+          "settle_dwell_s": 1.0320000000000007,
+          "rest_qpos_error": 0.0006831327445354035,
+          "robot_speed": 0.0002243092397176525,
+          "base_position_qpos": [
+            0.0006831327445354035,
+            0.00018683491245780772,
+            0.0000046065620430760506
+          ],
+          "base_goal_error_m": 0.7904965765673767,
+          "base_yaw_error_rad": 0.24999539343795693,
+          "base_home_error_m": 0.0007082214563041631,
+          "max_base_excursion_m": 0.8070335733745673,
+          "visited_bedside": true
+        },
+        "checks": {
+          "returned_to_rest": true,
+          "robot_settled": true,
+          "visited_bedside": true,
+          "base_travel_observed": true
+        }
+      },
+      "outcome_thresholds": {
+        "rest_qpos_tolerance": 0.05,
+        "robot_speed_tolerance": 0.05,
+        "settle_dwell_s": 0.5,
+        "base_goal_qpos": [
+          0.74,
+          0.28,
+          0.25
+        ],
+        "base_goal_tolerance_m": 0.025,
+        "yaw_tolerance_rad": 0.03,
+        "minimum_base_excursion_m": 0.7
+      },
+      "observed_stages": [
+        {
+          "stage": "clear_arms",
+          "status": "running",
+          "complete": false,
+          "progress": 0.001733333333333334,
+          "simulation_time_s": 0.03,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.000008146646649664913,
+            "robot_speed": 0.0009427174375968154,
+            "base_position_qpos": [
+              -1.7727374273904503e-7,
+              9.616427501695249e-23,
+              2.733532499067344e-21
+            ],
+            "base_goal_error_m": 0.7912017835957972,
+            "base_yaw_error_rad": 0.25,
+            "base_home_error_m": 1.7727374273904503e-7,
+            "max_base_excursion_m": 1.7727374273904503e-7,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": true,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "stage": "clear_arms",
+          "status": "running",
+          "complete": false,
+          "progress": 0.018800000000000015,
+          "simulation_time_s": 0.54,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.010261362123935247,
+            "robot_speed": 0.09254058230659194,
+            "base_position_qpos": [
+              -0.00017285396957220293,
+              4.795416713083064e-21,
+              -1.6706398540199102e-20
+            ],
+            "base_goal_error_m": 0.7913632881006433,
+            "base_yaw_error_rad": 0.25,
+            "base_home_error_m": 0.00017285396957220293,
+            "max_base_excursion_m": 0.00017285396957220293,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "stage": "clear_arms",
+          "status": "running",
+          "complete": false,
+          "progress": 0.0502666666666667,
+          "simulation_time_s": 0.75,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.09760660905745827,
+            "robot_speed": 0.25733861982159645,
+            "base_position_qpos": [
+              -0.0006090208817220764,
+              1.2437751202780223e-19,
+              2.248318605532191e-19
+            ],
+            "base_goal_error_m": 0.7917712559896218,
+            "base_yaw_error_rad": 0.25,
+            "base_home_error_m": 0.0006090208817220764,
+            "max_base_excursion_m": 0.0006190196261457881,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "stage": "approach_bedside",
+          "status": "running",
+          "complete": false,
+          "progress": 0.13773333333333293,
+          "simulation_time_s": 2.07,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3964825314568751,
+            "robot_speed": 0.03429335205996195,
+            "base_position_qpos": [
+              0.0003248652962628751,
+              9.505013652332895e-7,
+              0.000016291433935012364
+            ],
+            "base_goal_error_m": 0.7908974475993272,
+            "base_yaw_error_rad": 0.249983708566065,
+            "base_home_error_m": 0.00032486668676367993,
+            "max_base_excursion_m": 0.0006498759473964868,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "stage": "approach_bedside",
+          "status": "running",
+          "complete": false,
+          "progress": 0.15559999999999763,
+          "simulation_time_s": 2.33,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.39966306727541673,
+            "robot_speed": 0.475985612362359,
+            "base_position_qpos": [
+              0.0015504805525494388,
+              0.0005550680647615729,
+              0.0019180905373249472
+            ],
+            "base_goal_error_m": 0.7895550409923685,
+            "base_yaw_error_rad": 0.24808190946267505,
+            "base_home_error_m": 0.001646842585176911,
+            "max_base_excursion_m": 0.001646842585176911,
+            "visited_bedside": false
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "visited_bedside": false,
+            "base_travel_observed": false
+          }
+        },
+        {
+          "stage": "approach_bedside",
+          "status": "running",
+          "complete": false,
+          "progress": 0.3874666666666388,
+          "simulation_time_s": 5.81,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.9647506303023485,
+            "robot_speed": 0.6341793539793458,
+            "base_position_qpos": [
+              0.7337582674403277,
+              0.2777895331074559,
+              0.24301735361912222
+            ],
+            "base_goal_error_m": 0.0066215850994687875,
+            "base_yaw_error_rad": 0.006982646380877783,
+            "base_home_error_m": 0.7845815570997636,
+            "max_base_excursion_m": 0.7845815570997636,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "stage": "pause_beside_bed",
+          "status": "running",
+          "complete": false,
+          "progress": 0.42333333333330153,
+          "simulation_time_s": 6.35,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 6.075537679911624,
+            "robot_speed": 0.019487458176356057,
+            "base_position_qpos": [
+              0.7535264547373379,
+              0.2852734559867655,
+              0.24971211745181585
+            ],
+            "base_goal_error_m": 0.014518068597633937,
+            "base_yaw_error_rad": 0.00028788254818415404,
+            "base_home_error_m": 0.8057189725206019,
+            "max_base_excursion_m": 0.8070335733745673,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "stage": "return_base",
+          "status": "running",
+          "complete": false,
+          "progress": 0.547333333333294,
+          "simulation_time_s": 8.21,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 6.057152519436235,
+            "robot_speed": 0.24541226765428034,
+            "base_position_qpos": [
+              0.741048066658685,
+              0.280424566582773,
+              0.2494638232979054
+            ],
+            "base_goal_error_m": 0.0011307964026537004,
+            "base_yaw_error_rad": 0.000536176702094604,
+            "base_home_error_m": 0.7923321113281419,
+            "max_base_excursion_m": 0.8070335733745673,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "stage": "rest_arms",
+          "status": "running",
+          "complete": false,
+          "progress": 0.8102666666667152,
+          "simulation_time_s": 12.15,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.3977905504161385,
+            "robot_speed": 0.06611776805705456,
+            "base_position_qpos": [
+              -0.014126735806109009,
+              -0.00551739177848981,
+              0.0008878862029148505
+            ],
+            "base_goal_error_m": 0.8063667370778439,
+            "base_yaw_error_rad": 0.24911211379708514,
+            "base_home_error_m": 0.015165957819173483,
+            "max_base_excursion_m": 0.8070335733745673,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "stage": "rest_arms",
+          "status": "running",
+          "complete": false,
+          "progress": 0.9170666666667509,
+          "simulation_time_s": 14.01,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.036072488323945495,
+            "robot_speed": 0.17439277714988835,
+            "base_position_qpos": [
+              -0.00043501158840492256,
+              -0.00019393172248420394,
+              -0.000004710333381120131
+            ],
+            "base_goal_error_m": 0.7916771095339472,
+            "base_yaw_error_rad": 0.2500047103333811,
+            "base_home_error_m": 0.00047628205407328135,
+            "max_base_excursion_m": 0.8070335733745673,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": false,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "stage": "settle",
+          "status": "running",
+          "complete": false,
+          "progress": 0.9518666666667625,
+          "simulation_time_s": 14.28,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 0.25400000000000017,
+            "rest_qpos_error": 0.001888366607647771,
+            "robot_speed": 0.004041104728883607,
+            "base_position_qpos": [
+              -0.001888366607647771,
+              -0.00044115541379383523,
+              -0.000010909246261980417
+            ],
+            "base_goal_error_m": 0.7931239437550649,
+            "base_yaw_error_rad": 0.25001090924626196,
+            "base_home_error_m": 0.001939212867118708,
+            "max_base_excursion_m": 0.8070335733745673,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        },
+        {
+          "stage": "settle",
+          "status": "complete",
+          "complete": true,
+          "progress": 1,
+          "simulation_time_s": 15.06,
+          "measurements": {
+            "collision_samples": 360,
+            "settle_dwell_s": 1.0320000000000007,
+            "rest_qpos_error": 0.0006831327445354035,
+            "robot_speed": 0.0002243092397176525,
+            "base_position_qpos": [
+              0.0006831327445354035,
+              0.00018683491245780772,
+              0.0000046065620430760506
+            ],
+            "base_goal_error_m": 0.7904965765673767,
+            "base_yaw_error_rad": 0.24999539343795693,
+            "base_home_error_m": 0.0007082214563041631,
+            "max_base_excursion_m": 0.8070335733745673,
+            "visited_bedside": true
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": true,
+            "visited_bedside": true,
+            "base_travel_observed": true
+          }
+        }
+      ],
+      "screenshot": "apps/web/artifacts/more-demos-bedside_demo.png"
+    },
+    {
+      "command": "greeting_demo",
+      "initial_simulation_time_s": 0,
+      "completed_simulation_time_s": 16.42,
+      "pause_resume_verified": true,
+      "paused_simulation_time_s": 0.66,
+      "completion": {
+        "command": "greeting_demo",
+        "name": "Arm greeting",
+        "stage": "settle",
+        "stage_index": 9,
+        "stage_count": 10,
+        "progress": 1,
+        "elapsed_s": 16.41800000000178,
+        "duration_s": 16,
+        "status": "complete",
+        "complete": true,
+        "measurements": {
+          "collision_samples": 600,
+          "settle_dwell_s": 1.290000000000001,
+          "rest_qpos_error": 0.0001706720735753536,
+          "robot_speed": 0.0005619486152928959,
+          "hand_height_m": 0.9380596377654836,
+          "max_hand_height_m": 1.6931344949415328,
+          "wave_range_rad": 0.7105709595093997,
+          "wave_min_rad": -0.5349604440333113,
+          "wave_max_rad": 0.17561051547608839
+        },
+        "checks": {
+          "returned_to_rest": true,
+          "robot_settled": true,
+          "hand_raised": true,
+          "wrist_waved": true
+        }
+      },
+      "outcome_thresholds": {
+        "rest_qpos_tolerance": 0.05,
+        "robot_speed_tolerance": 0.05,
+        "settle_dwell_s": 0.5,
+        "minimum_hand_height_m": 1.5,
+        "minimum_wave_range_rad": 0.5
+      },
+      "observed_stages": [
+        {
+          "stage": "clear_greeting",
+          "status": "running",
+          "complete": false,
+          "progress": 0,
+          "simulation_time_s": 0,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0
+          },
+          "checks": {}
+        },
+        {
+          "stage": "clear_greeting",
+          "status": "running",
+          "complete": false,
+          "progress": 0.031125000000000024,
+          "simulation_time_s": 0.5,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.10208534502141209,
+            "robot_speed": 0.45562474089132293,
+            "hand_height_m": 0.9214322417643002,
+            "max_hand_height_m": 0.9380580190926371,
+            "wave_range_rad": 0
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "hand_raised": false,
+            "wrist_waved": false
+          }
+        },
+        {
+          "stage": "raise_greeting",
+          "status": "running",
+          "complete": false,
+          "progress": 0.1402499999999984,
+          "simulation_time_s": 2.5,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.9999589503946873,
+            "robot_speed": 0.11970564134832473,
+            "hand_height_m": 0.7991662267887653,
+            "max_hand_height_m": 0.9380580190926371,
+            "wave_range_rad": 0
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "hand_raised": false,
+            "wrist_waved": false
+          }
+        },
+        {
+          "stage": "raise_greeting",
+          "status": "running",
+          "complete": false,
+          "progress": 0.2729999999999838,
+          "simulation_time_s": 4.37,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 1.5960212270131613,
+            "robot_speed": 0.4842780850021293,
+            "hand_height_m": 1.5460033696977065,
+            "max_hand_height_m": 1.5460033696977065,
+            "wave_range_rad": 0
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "hand_raised": true,
+            "wrist_waved": false
+          }
+        },
+        {
+          "stage": "wave_1",
+          "status": "running",
+          "complete": false,
+          "progress": 0.33724999999997674,
+          "simulation_time_s": 5.4,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 1.799587133229598,
+            "robot_speed": 0.5197813607059769,
+            "hand_height_m": 1.6726410915849126,
+            "max_hand_height_m": 1.6726410915849126,
+            "wave_range_rad": 0.08471884040226693,
+            "wave_min_rad": -0.23484511862679228,
+            "wave_max_rad": -0.15012627822452534
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "hand_raised": true,
+            "wrist_waved": false
+          }
+        },
+        {
+          "stage": "wave_2",
+          "status": "running",
+          "complete": false,
+          "progress": 0.40349999999996944,
+          "simulation_time_s": 6.46,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 1.8003878863255005,
+            "robot_speed": 1.1481861474866482,
+            "hand_height_m": 1.6820496907239277,
+            "max_hand_height_m": 1.6931344949415328,
+            "wave_range_rad": 0.384834165808786,
+            "wave_min_rad": -0.5349604440333113,
+            "wave_max_rad": -0.15012627822452534
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "hand_raised": true,
+            "wrist_waved": false
+          }
+        },
+        {
+          "stage": "wave_3",
+          "status": "running",
+          "complete": false,
+          "progress": 0.45237499999996406,
+          "simulation_time_s": 7.24,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 1.7993475875418123,
+            "robot_speed": 0.5398935216486347,
+            "hand_height_m": 1.6260253828572608,
+            "max_hand_height_m": 1.6931344949415328,
+            "wave_range_rad": 0.7105709595093997,
+            "wave_min_rad": -0.5349604440333113,
+            "wave_max_rad": 0.17561051547608839
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "hand_raised": true,
+            "wrist_waved": true
+          }
+        },
+        {
+          "stage": "wave_4",
+          "status": "running",
+          "complete": false,
+          "progress": 0.5022499999999596,
+          "simulation_time_s": 8.04,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 1.8004479533059106,
+            "robot_speed": 0.33006160330154205,
+            "hand_height_m": 1.6925182991288747,
+            "max_hand_height_m": 1.6931344949415328,
+            "wave_range_rad": 0.7105709595093997,
+            "wave_min_rad": -0.5349604440333113,
+            "wave_max_rad": 0.17561051547608839
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "hand_raised": true,
+            "wrist_waved": true
+          }
+        },
+        {
+          "stage": "center_wrist",
+          "status": "running",
+          "complete": false,
+          "progress": 0.5802499999999856,
+          "simulation_time_s": 9.28,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 1.7995909801887817,
+            "robot_speed": 0.3312864103162169,
+            "hand_height_m": 1.6240647030437751,
+            "max_hand_height_m": 1.6931344949415328,
+            "wave_range_rad": 0.7105709595093997,
+            "wave_min_rad": -0.5349604440333113,
+            "wave_max_rad": 0.17561051547608839
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "hand_raised": true,
+            "wrist_waved": true
+          }
+        },
+        {
+          "stage": "lower_greeting",
+          "status": "running",
+          "complete": false,
+          "progress": 0.6451250000000073,
+          "simulation_time_s": 10.32,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 1.7791676639052227,
+            "robot_speed": 0.16641875647567358,
+            "hand_height_m": 1.6542036932393362,
+            "max_hand_height_m": 1.6931344949415328,
+            "wave_range_rad": 0.7105709595093997,
+            "wave_min_rad": -0.5349604440333113,
+            "wave_max_rad": 0.17561051547608839
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "hand_raised": true,
+            "wrist_waved": true
+          }
+        },
+        {
+          "stage": "rest_arms",
+          "status": "running",
+          "complete": false,
+          "progress": 0.8286250000000686,
+          "simulation_time_s": 13.26,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.9790437866568709,
+            "robot_speed": 0.2112853438187148,
+            "hand_height_m": 0.795723655878772,
+            "max_hand_height_m": 1.6931344949415328,
+            "wave_range_rad": 0.7105709595093997,
+            "wave_min_rad": -0.5349604440333113,
+            "wave_max_rad": 0.17561051547608839
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "hand_raised": true,
+            "wrist_waved": true
+          }
+        },
+        {
+          "stage": "settle",
+          "status": "running",
+          "complete": false,
+          "progress": 0.9598750000001124,
+          "simulation_time_s": 15.36,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 0.23000000000000018,
+            "rest_qpos_error": 0.0007601981586358164,
+            "robot_speed": 0.0066932565063590665,
+            "hand_height_m": 0.9379370534021746,
+            "max_hand_height_m": 1.6931344949415328,
+            "wave_range_rad": 0.7105709595093997,
+            "wave_min_rad": -0.5349604440333113,
+            "wave_max_rad": 0.17561051547608839
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": true,
+            "hand_raised": true,
+            "wrist_waved": true
+          }
+        },
+        {
+          "stage": "settle",
+          "status": "complete",
+          "complete": true,
+          "progress": 1,
+          "simulation_time_s": 16.42,
+          "measurements": {
+            "collision_samples": 600,
+            "settle_dwell_s": 1.290000000000001,
+            "rest_qpos_error": 0.0001706720735753536,
+            "robot_speed": 0.0005619486152928959,
+            "hand_height_m": 0.9380596377654836,
+            "max_hand_height_m": 1.6931344949415328,
+            "wave_range_rad": 0.7105709595093997,
+            "wave_min_rad": -0.5349604440333113,
+            "wave_max_rad": 0.17561051547608839
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": true,
+            "hand_raised": true,
+            "wrist_waved": true
+          }
+        }
+      ],
+      "screenshot": "apps/web/artifacts/more-demos-greeting_demo.png"
+    },
+    {
+      "command": "phone_return_demo",
+      "initial_simulation_time_s": 0.14,
+      "completed_simulation_time_s": 38.27,
+      "pause_resume_verified": true,
+      "paused_simulation_time_s": 0.96,
+      "completion": {
+        "command": "phone_return_demo",
+        "name": "Pick up and put back",
+        "stage": "settle",
+        "stage_index": 13,
+        "stage_count": 14,
+        "progress": 1,
+        "elapsed_s": 38.270000000000806,
+        "duration_s": 38,
+        "status": "complete",
+        "complete": true,
+        "measurements": {
+          "collision_samples": 240,
+          "settle_dwell_s": 2.183999999999981,
+          "rest_qpos_error": 0.00006503718907370829,
+          "robot_speed": 0.0003559004267518704,
+          "phone_position": [
+            0.629434226867507,
+            -0.7211219404877324,
+            0.8134777172869082
+          ],
+          "phone_xy_error_m": 0.001256522859109256,
+          "phone_z_error_m": 0.000022282713091792417,
+          "phone_speed_m_s": 1.8619393847695416e-14,
+          "phone_angular_speed_rad_s": 5.600926289846124e-17,
+          "riser_support_force_n": 1.7657998658579404,
+          "hand_clearance_m": 0.7987564324976849,
+          "gate_bilateral_contact_passed": true,
+          "gate_grasp_confirmed_passed": true,
+          "confirmed_grasp_height_m": 0.22788854415469617,
+          "confirmed_grasp_hold_s": 3.417999999999845,
+          "gate_phone_supported_passed": true,
+          "supported_release_height_m": 0.8135499555946167,
+          "supported_release_force_n": 2.1067778715234695,
+          "supported_release_bilateral": true,
+          "gate_phone_settled_passed": true
+        },
+        "checks": {
+          "returned_to_rest": true,
+          "robot_settled": true,
+          "confirmed_grasp": true,
+          "phone_on_riser": true,
+          "fingers_clear": true,
+          "hand_retracted": true
+        }
+      },
+      "outcome_thresholds": {
+        "rest_qpos_tolerance": 0.05,
+        "robot_speed_tolerance": 0.05,
+        "settle_dwell_s": 0.5,
+        "phone_target": [
+          0.63,
+          -0.72,
+          0.8135
+        ],
+        "phone_xy_tolerance_m": 0.02,
+        "phone_z_tolerance_m": 0.006,
+        "phone_speed_tolerance_m_s": 0.03,
+        "phone_angular_speed_tolerance_rad_s": 0.4,
+        "hand_clearance_m": 0.1,
+        "support_force_minimum_n": 0.05,
+        "minimum_grasp_height_m": 0.15,
+        "minimum_bilateral_hold_s": 2
+      },
+      "pickup_evidence": {
+        "confirmed_hold_observed": true,
+        "max_height_gain_m": 0.22788853760815042,
+        "max_bilateral_hold_s": 4.911999999999681
+      },
+      "observed_stages": [
+        {
+          "stage": "park",
+          "status": "running",
+          "complete": false,
+          "progress": 0.003684210526315792,
+          "simulation_time_s": 0.14,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.005494367283537166,
+            "robot_speed": 0.09687764736115044,
+            "phone_position": [
+              0.63,
+              -0.72,
+              0.8134774261715315
+            ],
+            "phone_xy_error_m": 0,
+            "phone_z_error_m": 0.000022573828468486212,
+            "phone_speed_m_s": 0.000016576992184927688,
+            "phone_angular_speed_rad_s": 0,
+            "riser_support_force_n": 1.76560670996851,
+            "hand_clearance_m": 0.7990142393631544
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": false,
+            "confirmed_grasp": false,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "park",
+          "status": "running",
+          "complete": false,
+          "progress": 0.017578947368421066,
+          "simulation_time_s": 0.67,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.17055903021766183,
+            "robot_speed": 0.47793188088737326,
+            "phone_position": [
+              0.63,
+              -0.72,
+              0.8134777152371854
+            ],
+            "phone_xy_error_m": 0,
+            "phone_z_error_m": 0.000022284762814628323,
+            "phone_speed_m_s": 5.48092496056754e-12,
+            "phone_angular_speed_rad_s": 0,
+            "riser_support_force_n": 1.7657999991457436,
+            "hand_clearance_m": 0.7991327371038099
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": false,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "approach_base",
+          "status": "running",
+          "complete": false,
+          "progress": 0.0555263157894734,
+          "simulation_time_s": 2.11,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.7496739460843537,
+            "robot_speed": 0.08432221459481597,
+            "phone_position": [
+              0.63,
+              -0.72,
+              0.813477715237066
+            ],
+            "phone_xy_error_m": 0,
+            "phone_z_error_m": 0.000022284762933977298,
+            "phone_speed_m_s": 2.6702400180112667e-11,
+            "phone_angular_speed_rad_s": 0,
+            "riser_support_force_n": 1.7658000037811146,
+            "hand_clearance_m": 0.7991647707395971
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": false,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "hover",
+          "status": "running",
+          "complete": false,
+          "progress": 0.16663157894735592,
+          "simulation_time_s": 6.33,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.998401336044065,
+            "robot_speed": 0.24905763435025038,
+            "phone_position": [
+              0.63,
+              -0.72,
+              0.8134777152371867
+            ],
+            "phone_xy_error_m": 0,
+            "phone_z_error_m": 0.000022284762813296055,
+            "phone_speed_m_s": 7.162276315007494e-12,
+            "phone_angular_speed_rad_s": 0,
+            "riser_support_force_n": 1.7657999992370352,
+            "hand_clearance_m": 0.2029828523794016
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": false,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "descend",
+          "status": "running",
+          "complete": false,
+          "progress": 0.24210526315788794,
+          "simulation_time_s": 9.2,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.024247763505864096,
+            "phone_position": [
+              0.63,
+              -0.72,
+              0.8134777152371889
+            ],
+            "phone_xy_error_m": 0,
+            "phone_z_error_m": 0.00002228476281107561,
+            "phone_speed_m_s": 1.3129757145477472e-11,
+            "phone_angular_speed_rad_s": 0,
+            "riser_support_force_n": 1.7657999995674747,
+            "hand_clearance_m": 0.14606054295910964
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "confirmed_grasp": false,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "descend",
+          "status": "running",
+          "complete": false,
+          "progress": 0.24894736842104812,
+          "simulation_time_s": 9.46,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.0567438243059033,
+            "phone_position": [
+              0.63,
+              -0.72,
+              0.8134777152371333
+            ],
+            "phone_xy_error_m": 0,
+            "phone_z_error_m": 0.000022284762866697783,
+            "phone_speed_m_s": 1.2009411354030024e-11,
+            "phone_angular_speed_rad_s": 0,
+            "riser_support_force_n": 1.7657999996468425,
+            "hand_clearance_m": 0.1410790258373668
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": false,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "descend",
+          "status": "running",
+          "complete": false,
+          "progress": 0.27673684210526794,
+          "simulation_time_s": 10.52,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.14558827569109686,
+            "phone_position": [
+              0.63,
+              -0.72,
+              0.8134777152370869
+            ],
+            "phone_xy_error_m": 0,
+            "phone_z_error_m": 0.000022284762913105105,
+            "phone_speed_m_s": 3.236798423140138e-11,
+            "phone_angular_speed_rad_s": 0,
+            "riser_support_force_n": 1.7658000043400675,
+            "hand_clearance_m": 0.08126508198994319
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": false,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "close",
+          "status": "running",
+          "complete": false,
+          "progress": 0.3181578947368607,
+          "simulation_time_s": 12.09,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.10118602883554037,
+            "phone_position": [
+              0.63,
+              -0.72,
+              0.8134777152371385
+            ],
+            "phone_xy_error_m": 0,
+            "phone_z_error_m": 0.000022284762861479734,
+            "phone_speed_m_s": 1.2088385722183603e-12,
+            "phone_angular_speed_rad_s": 0,
+            "riser_support_force_n": 1.7657999990251194,
+            "hand_clearance_m": 0.0003110199065651187
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": false,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "close",
+          "status": "running",
+          "complete": false,
+          "progress": 0.33873684210528865,
+          "simulation_time_s": 12.87,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.006352978848092935,
+            "phone_position": [
+              0.629874846958953,
+              -0.7200030387077467,
+              0.8134955898763596
+            ],
+            "phone_xy_error_m": 0.000125189925425648,
+            "phone_z_error_m": 0.0000044101236403859545,
+            "phone_speed_m_s": 0.0012492839495451226,
+            "phone_angular_speed_rad_s": 0.007261985502069759,
+            "riser_support_force_n": 2.6632409973199644,
+            "hand_clearance_m": 0.0001359074579904811
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "confirmed_grasp": false,
+            "phone_on_riser": true,
+            "fingers_clear": false,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "lift",
+          "status": "running",
+          "complete": false,
+          "progress": 0.35957894736845347,
+          "simulation_time_s": 13.66,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.010748215246371946,
+            "phone_position": [
+              0.6295719806533898,
+              -0.7199695053778762,
+              0.813519002785253
+            ],
+            "phone_xy_error_m": 0.00042910427992631794,
+            "phone_z_error_m": 0.00001900278525301946,
+            "phone_speed_m_s": 0.00039212746896178307,
+            "phone_angular_speed_rad_s": 0.007544555836167036,
+            "riser_support_force_n": 0.7976177786039939,
+            "hand_clearance_m": 0.0001452153796612696,
+            "gate_bilateral_contact_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "confirmed_grasp": false,
+            "phone_on_riser": true,
+            "fingers_clear": false,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "lift",
+          "status": "running",
+          "complete": false,
+          "progress": 0.37294736842108955,
+          "simulation_time_s": 14.17,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.08066828806801687,
+            "phone_position": [
+              0.6305268464957595,
+              -0.7210042166267461,
+              0.8170227618215649
+            ],
+            "phone_xy_error_m": 0.0011340274527221108,
+            "phone_z_error_m": 0.003522761821564857,
+            "phone_speed_m_s": 0.03817697657367285,
+            "phone_angular_speed_rad_s": 0.013291529884782372,
+            "riser_support_force_n": 0,
+            "hand_clearance_m": 0.00016420828364164885,
+            "gate_bilateral_contact_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": false,
+            "phone_on_riser": false,
+            "fingers_clear": false,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "lift",
+          "status": "running",
+          "complete": false,
+          "progress": 0.4558947368421389,
+          "simulation_time_s": 17.32,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.04794126368824588,
+            "phone_position": [
+              0.6304877458418119,
+              -0.7207041382708037,
+              1.0381501809814673
+            ],
+            "phone_xy_error_m": 0.0008565668162001452,
+            "phone_z_error_m": 0.22465018098146727,
+            "phone_speed_m_s": 0.024411816236062634,
+            "phone_angular_speed_rad_s": 0.006720453706215125,
+            "riser_support_force_n": 0,
+            "hand_clearance_m": 0.00021879102658954244,
+            "gate_bilateral_contact_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "confirmed_grasp": false,
+            "phone_on_riser": false,
+            "fingers_clear": false,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "hold",
+          "status": "running",
+          "complete": false,
+          "progress": 0.46300000000002967,
+          "simulation_time_s": 17.59,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.008198308717959985,
+            "phone_position": [
+              0.6297444178718337,
+              -0.7201561133283843,
+              1.0417437342142715
+            ],
+            "phone_xy_error_m": 0.0002994888905072343,
+            "phone_z_error_m": 0.22824373421427147,
+            "phone_speed_m_s": 0.0037338367275843885,
+            "phone_angular_speed_rad_s": 0.0014893651640832727,
+            "riser_support_force_n": 0,
+            "hand_clearance_m": 0.00021678640766409194,
+            "gate_bilateral_contact_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "confirmed_grasp": false,
+            "phone_on_riser": false,
+            "fingers_clear": false,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "hold",
+          "status": "running",
+          "complete": false,
+          "progress": 0.47705263157896927,
+          "simulation_time_s": 18.13,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.0004961659028261897,
+            "phone_position": [
+              0.6296762363177845,
+              -0.7201352563021386,
+              1.0418736283903314
+            ],
+            "phone_xy_error_m": 0.0003508805910704923,
+            "phone_z_error_m": 0.22837362839033137,
+            "phone_speed_m_s": 0.00026062160168285,
+            "phone_angular_speed_rad_s": 0.00037466576232806644,
+            "riser_support_force_n": 0,
+            "hand_clearance_m": 0.00021103110877792369,
+            "gate_bilateral_contact_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "confirmed_grasp": true,
+            "phone_on_riser": false,
+            "fingers_clear": false,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "lower_phone",
+          "status": "running",
+          "complete": false,
+          "progress": 0.5250526315789427,
+          "simulation_time_s": 19.95,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.05450040304159938,
+            "phone_position": [
+              0.6306476867184082,
+              -0.7208720802101991,
+              1.0371755044510986
+            ],
+            "phone_xy_error_m": 0.0010862881653701977,
+            "phone_z_error_m": 0.22367550445109863,
+            "phone_speed_m_s": 0.02773133397360186,
+            "phone_angular_speed_rad_s": 0.00787871753614591,
+            "riser_support_force_n": 0,
+            "hand_clearance_m": 0.00020759613830241672,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": true,
+            "phone_on_riser": false,
+            "fingers_clear": false,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "lower_phone",
+          "status": "running",
+          "complete": false,
+          "progress": 0.6147368421052087,
+          "simulation_time_s": 23.36,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.0380285600889254,
+            "phone_position": [
+              0.6299941958476708,
+              -0.7209503117022169,
+              0.8135867259337598
+            ],
+            "phone_xy_error_m": 0.0009503294268592891,
+            "phone_z_error_m": 0.00008672593375980142,
+            "phone_speed_m_s": 0.0019328545529312987,
+            "phone_angular_speed_rad_s": 0.01670164324287619,
+            "riser_support_force_n": 0.6186937408993138,
+            "hand_clearance_m": 0.0002291610489144689,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": false,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "open_fingers",
+          "status": "running",
+          "complete": false,
+          "progress": 0.6282105263157276,
+          "simulation_time_s": 23.87,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.0009042053384901728,
+            "phone_position": [
+              0.6296555877565464,
+              -0.7210500447415042,
+              0.813521085657003
+            ],
+            "phone_xy_error_m": 0.001105085405116512,
+            "phone_z_error_m": 0.000021085657002983815,
+            "phone_speed_m_s": 0.0008927605104568352,
+            "phone_angular_speed_rad_s": 0.0020544846651693095,
+            "riser_support_force_n": 2.2824127541490546,
+            "hand_clearance_m": 0.00021094839943001093,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": false,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "open_fingers",
+          "status": "running",
+          "complete": false,
+          "progress": 0.6489473684209792,
+          "simulation_time_s": 24.66,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.6338800139610385,
+            "phone_position": [
+              0.6294342268674665,
+              -0.7211219404877129,
+              0.8134777171708262
+            ],
+            "phone_xy_error_m": 0.0012565228591101545,
+            "phone_z_error_m": 0.00002228282917382529,
+            "phone_speed_m_s": 6.657581818874517e-9,
+            "phone_angular_speed_rad_s": 7.630854405544531e-17,
+            "riser_support_force_n": 1.7657997882242416,
+            "hand_clearance_m": 0.000758775894998616,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "retreat_hand",
+          "status": "running",
+          "complete": false,
+          "progress": 0.6625263157893928,
+          "simulation_time_s": 25.18,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.015921554688575746,
+            "phone_position": [
+              0.629434226867507,
+              -0.7211219404877324,
+              0.8134777172869082
+            ],
+            "phone_xy_error_m": 0.001256522859109256,
+            "phone_z_error_m": 0.000022282713091792417,
+            "phone_speed_m_s": 1.870821168442973e-14,
+            "phone_angular_speed_rad_s": 6.296662549074333e-17,
+            "riser_support_force_n": 1.76579986585794,
+            "hand_clearance_m": 0.0013915302257510905,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true,
+            "gate_phone_settled_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": true,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "retreat_hand",
+          "status": "running",
+          "complete": false,
+          "progress": 0.676210526315701,
+          "simulation_time_s": 25.7,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.09085865915073804,
+            "phone_position": [
+              0.629434226867507,
+              -0.7211219404877324,
+              0.8134777172869082
+            ],
+            "phone_xy_error_m": 0.001256522859109256,
+            "phone_z_error_m": 0.000022282713091792417,
+            "phone_speed_m_s": 1.8710678617129125e-14,
+            "phone_angular_speed_rad_s": 1.3058510705112351e-16,
+            "riser_support_force_n": 1.7657998658579397,
+            "hand_clearance_m": 0.01465134661574443,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true,
+            "gate_phone_settled_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": false
+          }
+        },
+        {
+          "stage": "retreat_hand",
+          "status": "running",
+          "complete": false,
+          "progress": 0.7114210526314709,
+          "simulation_time_s": 27.03,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.13487792321526054,
+            "phone_position": [
+              0.629434226867507,
+              -0.7211219404877324,
+              0.8134777172869082
+            ],
+            "phone_xy_error_m": 0.001256522859109256,
+            "phone_z_error_m": 0.000022282713091792417,
+            "phone_speed_m_s": 1.8718080396890184e-14,
+            "phone_angular_speed_rad_s": 7.46013529800471e-17,
+            "riser_support_force_n": 1.76579986585794,
+            "hand_clearance_m": 0.10343470765591903,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true,
+            "gate_phone_settled_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "clear_return",
+          "status": "running",
+          "complete": false,
+          "progress": 0.7392631578946134,
+          "simulation_time_s": 28.09,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.999999999999975,
+            "robot_speed": 0.06501962513303329,
+            "phone_position": [
+              0.629434226867507,
+              -0.7211219404877324,
+              0.8134777172869082
+            ],
+            "phone_xy_error_m": 0.001256522859109256,
+            "phone_z_error_m": 0.000022282713091792417,
+            "phone_speed_m_s": 1.8723014391836048e-14,
+            "phone_angular_speed_rad_s": 1.389483868394044e-16,
+            "riser_support_force_n": 1.76579986585794,
+            "hand_clearance_m": 0.1460820927147866,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true,
+            "gate_phone_settled_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "return_base",
+          "status": "running",
+          "complete": false,
+          "progress": 0.7941052631577409,
+          "simulation_time_s": 30.18,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 5.98777874759429,
+            "robot_speed": 0.18416863596681823,
+            "phone_position": [
+              0.629434226867507,
+              -0.7211219404877324,
+              0.8134777172869082
+            ],
+            "phone_xy_error_m": 0.001256522859109256,
+            "phone_z_error_m": 0.000022282713091792417,
+            "phone_speed_m_s": 1.85848537258738e-14,
+            "phone_angular_speed_rad_s": 1.0193626455966622e-16,
+            "riser_support_force_n": 1.7657998658579404,
+            "hand_clearance_m": 0.19914797334152284,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true,
+            "gate_phone_settled_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "rest_arms",
+          "status": "running",
+          "complete": false,
+          "progress": 0.9040526315788426,
+          "simulation_time_s": 34.35,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.70261591528823,
+            "robot_speed": 0.28687958350075704,
+            "phone_position": [
+              0.629434226867507,
+              -0.7211219404877324,
+              0.8134777172869082
+            ],
+            "phone_xy_error_m": 0.001256522859109256,
+            "phone_z_error_m": 0.000022282713091792417,
+            "phone_speed_m_s": 1.8597189323160873e-14,
+            "phone_angular_speed_rad_s": 9.644580171240526e-17,
+            "riser_support_force_n": 1.7657998658579401,
+            "hand_clearance_m": 0.8125964074693406,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true,
+            "gate_phone_settled_passed": true
+          },
+          "checks": {
+            "returned_to_rest": false,
+            "robot_settled": false,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "rest_arms",
+          "status": "running",
+          "complete": false,
+          "progress": 0.945210526315735,
+          "simulation_time_s": 35.92,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0,
+            "rest_qpos_error": 0.023805918027296688,
+            "robot_speed": 0.1817287510822127,
+            "phone_position": [
+              0.629434226867507,
+              -0.7211219404877324,
+              0.8134777172869082
+            ],
+            "phone_xy_error_m": 0.001256522859109256,
+            "phone_z_error_m": 0.000022282713091792417,
+            "phone_speed_m_s": 1.8604590888049708e-14,
+            "phone_angular_speed_rad_s": 9.463256308410828e-17,
+            "riser_support_force_n": 1.76579986585794,
+            "hand_clearance_m": 0.7999112628405052,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true,
+            "gate_phone_settled_passed": true
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": false,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "settle",
+          "status": "running",
+          "complete": false,
+          "progress": 0.9521578947367961,
+          "simulation_time_s": 36.18,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 0.09600000000000007,
+            "rest_qpos_error": 0.0022360876902894717,
+            "robot_speed": 0.020813126582643,
+            "phone_position": [
+              0.629434226867507,
+              -0.7211219404877324,
+              0.8134777172869082
+            ],
+            "phone_xy_error_m": 0.001256522859109256,
+            "phone_z_error_m": 0.000022282713091792417,
+            "phone_speed_m_s": 1.8611992512735768e-14,
+            "phone_angular_speed_rad_s": 5.581227132220939e-17,
+            "riser_support_force_n": 1.76579986585794,
+            "hand_clearance_m": 0.8002467237259637,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true,
+            "gate_phone_settled_passed": true
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": true,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        },
+        {
+          "stage": "settle",
+          "status": "complete",
+          "complete": true,
+          "progress": 1,
+          "simulation_time_s": 38.27,
+          "measurements": {
+            "collision_samples": 240,
+            "settle_dwell_s": 2.183999999999981,
+            "rest_qpos_error": 0.00006503718907370829,
+            "robot_speed": 0.0003559004267518704,
+            "phone_position": [
+              0.629434226867507,
+              -0.7211219404877324,
+              0.8134777172869082
+            ],
+            "phone_xy_error_m": 0.001256522859109256,
+            "phone_z_error_m": 0.000022282713091792417,
+            "phone_speed_m_s": 1.8619393847695416e-14,
+            "phone_angular_speed_rad_s": 5.600926289846124e-17,
+            "riser_support_force_n": 1.7657998658579404,
+            "hand_clearance_m": 0.7987564324976849,
+            "gate_bilateral_contact_passed": true,
+            "gate_grasp_confirmed_passed": true,
+            "confirmed_grasp_height_m": 0.22788854415469617,
+            "confirmed_grasp_hold_s": 3.417999999999845,
+            "gate_phone_supported_passed": true,
+            "supported_release_height_m": 0.8135499555946167,
+            "supported_release_force_n": 2.1067778715234695,
+            "supported_release_bilateral": true,
+            "gate_phone_settled_passed": true
+          },
+          "checks": {
+            "returned_to_rest": true,
+            "robot_settled": true,
+            "confirmed_grasp": true,
+            "phone_on_riser": true,
+            "fingers_clear": true,
+            "hand_retracted": true
+          }
+        }
+      ],
+      "screenshot": "apps/web/artifacts/more-demos-phone_return_demo.png"
+    }
+  ],
+  "screenshots": [
+    {
+      "view": "gallery",
+      "file": "apps/web/artifacts/more-demos-gallery.png"
+    },
+    {
+      "view": "bedside_demo-action",
+      "file": "apps/web/artifacts/more-demos-bedside_demo-action.png"
+    },
+    {
+      "view": "bedside_demo",
+      "file": "apps/web/artifacts/more-demos-bedside_demo.png"
+    },
+    {
+      "view": "greeting_demo-action",
+      "file": "apps/web/artifacts/more-demos-greeting_demo-action.png"
+    },
+    {
+      "view": "greeting_demo",
+      "file": "apps/web/artifacts/more-demos-greeting_demo.png"
+    },
+    {
+      "view": "phone_return_demo-action",
+      "file": "apps/web/artifacts/more-demos-phone_return_demo-action.png"
+    },
+    {
+      "view": "phone_return_demo",
+      "file": "apps/web/artifacts/more-demos-phone_return_demo.png"
+    }
+  ],
+  "errors": [],
+  "failed_requests": [],
+  "http_failures": [],
+  "api_requests": []
+}

@@ -1,0 +1,151 @@
+{
+  "passed": true,
+  "unique_tests": 29,
+  "latest_passes": 29,
+  "runs": [
+    {
+      "report": "artifacts/more-demos-native-tests.xml",
+      "passed": 20,
+      "failed": 1,
+      "error": 6,
+      "skipped": 0
+    },
+    {
+      "report": "artifacts/more-demos-api-tests.xml",
+      "passed": 6,
+      "failed": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    {
+      "report": "artifacts/more-demos-targeted-tests.xml",
+      "passed": 3,
+      "failed": 0,
+      "error": 0,
+      "skipped": 0
+    }
+  ],
+  "notes": [
+    "Initial displaced-phone test expected a later grasp gate but the simulator safely stopped on an earlier real unexpected contact. The assertion now checks the actual collision stop, false completion, no achieved grasp, displaced object position, and latched pause rejection.",
+    "Initial six API setup errors were Windows sandbox temporary-directory ACL failures. All six passed with a fresh workspace temporary directory outside the sandbox.",
+    "Only affected checks were rerun; the measured three-demo positive rollout artifact remains from the original passing physical executions."
+  ],
+  "tests": {
+    "tests.test_reference_demos::test_bedside_visits_goal_and_returns_under_real_actuation": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_demos::test_greeting_measures_high_hand_and_wrist_motion_before_rest": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_demos::test_phone_returns_with_support_before_opening_and_no_attachment": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_demos::test_displaced_phone_cannot_count_as_grasp_or_be_teleported_back": {
+      "status": "passed",
+      "report": "artifacts/more-demos-targeted-tests.xml"
+    },
+    "tests.test_reference_demos::test_pause_reset_and_completion_revocation_on_state_fault": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_demos::test_shared_library_is_model_bound_and_commands_require_baseline": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_sim::test_reference_topology_geometry_and_artifact_provenance": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_sim::test_body_playback_contract_is_actual_mujoco_world_state": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_sim::test_joint_demonstration_actuates_every_synthetic_dof": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_sim::test_demo_remains_contact_free_across_a_full_motion_cycle": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_sim::test_reach_uses_ik_servo_dynamics_and_reports_measured_error": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_sim::test_unreachable_cartesian_goal_is_not_represented_as_reached": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_sim::test_collision_gate_detects_robot_environment_overlap_and_stops": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_sim::test_resting_patient_occupancy_participates_in_robot_contact_stop": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_sim::test_pause_toggle_reset_and_bounded_input": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_sim::test_state_catches_up_by_at_most_fifty_milliseconds": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_pickup::test_free_phone_is_lifted_held_and_released_by_friction_only": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_pickup::test_carriages_and_arm_reach_cover_measured_low_to_high_workspace": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_pickup::test_fixture_guards_do_not_reset_or_teleport_a_displaced_scene": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_pickup::test_intended_finger_allowance_does_not_mask_phone_palm_collision": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_pickup::test_collision_invalidates_pickup_success_and_requires_reset": {
+      "status": "passed",
+      "report": "artifacts/more-demos-native-tests.xml"
+    },
+    "tests.test_reference_api::test_reference_requires_session_and_excludes_patient": {
+      "status": "passed",
+      "report": "artifacts/more-demos-api-tests.xml"
+    },
+    "tests.test_reference_api::test_reference_state_and_pause_use_actual_mujoco": {
+      "status": "passed",
+      "report": "artifacts/more-demos-api-tests.xml"
+    },
+    "tests.test_reference_api::test_reference_control_rejects_arbitrary_commands_and_fields": {
+      "status": "passed",
+      "report": "artifacts/more-demos-api-tests.xml"
+    },
+    "tests.test_reference_api::test_reference_assets_are_exact_allowlist_with_binary_response": {
+      "status": "passed",
+      "report": "artifacts/more-demos-api-tests.xml"
+    },
+    "tests.test_reference_api::test_reference_fixture_commands_report_actual_plan_and_reject_early_release": {
+      "status": "passed",
+      "report": "artifacts/more-demos-api-tests.xml"
+    },
+    "tests.test_reference_api::test_reference_local_demo_boundary_applies_with_valid_production_role": {
+      "status": "passed",
+      "report": "artifacts/more-demos-api-tests.xml"
+    },
+    "tests.test_reference_demos::test_shared_demo_requires_explicit_reset_before_switching": {
+      "status": "passed",
+      "report": "artifacts/more-demos-targeted-tests.xml"
+    },
+    "tests.test_reference_demos::test_demo_commands_expose_complete_metrics_through_local_api": {
+      "status": "passed",
+      "report": "artifacts/more-demos-targeted-tests.xml"
+    }
+  }
+}

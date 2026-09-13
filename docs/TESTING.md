@@ -1,5 +1,11 @@
 # Actual validation results
 
+## Three additional physics demos: September 13, 2026
+
+The bedside approach, arm greeting and controlled phone return have passing results for **29 native/API checks** and **19 actual MuJoCo WebAssembly tests**. The WASM suite finished in 27.861 seconds and includes the prior pickup, release and vertical-travel regressions. Fault tests cover lost phone contact, missing support, invalid trajectories, completion revocation and reset requirements. The native summary records the initial test-assertion correction and Windows temporary-directory setup errors alongside the passing rechecks. [Native/API results](../artifacts/more-demos-native-summary.json), [native measured rollouts](../sim/outputs/reference_more_demos.json), [WASM measurements](../artifacts/browser-contact-physics.json).
+
+All three passed the production-build Chrome check in **85.602 seconds**, including measured outcomes, pause/resume, switching, reset and gallery keyboard behavior. No browser errors, failed requests or API calls occurred. The gallery was also checked at 390 × 844 pixels: all three start controls were reachable without horizontal overflow, and Escape restored focus. [Chrome report](../artifacts/more-demos-check.json), [demo menu](../apps/web/artifacts/more-demos-gallery.png), [mobile menu](../apps/web/artifacts/more-demos-mobile-menu.png). See [demo behavior and limits](MORE_DEMOS.md).
+
 ## Furnished patient room: September 13, 2026
 
 The evaluated Blender mesh audit passes **195 furniture and support parts** across all seven furniture assemblies. Required casters, legs, rail sockets and bars, handle mounts, cabinet bases, cup and planter parts are present. All included parts have surface-connected paths to the floor; pillow and patient blanket support checks also pass. The audit distinguishes cloth spanning between legs from direct support over the body. [Mesh/contact audit](../artifacts/room-visual-audit.json), [bedding regression fixtures](../artifacts/bedding-audit-regressions.json), [missing/displaced-part regressions](../artifacts/room-audit-regressions.json).
@@ -30,7 +36,7 @@ The GLB audit validates **28 body poses**: 27 robot bodies and the separate dyna
 
 The corrected **live Vercel deployment passed anonymous Chrome verification** on September 13, 2026 in **70.601 seconds**. All 25 joints moved, 28 bodies synchronized, hand heights reached 0.1325–1.7239 m, and the phone rose 22.84 cm with bilateral contact before falling on release. There were zero browser errors, failed requests or local API calls. [Production report](../artifacts/vercel-browser-check.json), [live pickup screenshot](../apps/web/artifacts/vercel-pickup.png).
 
-All **11 actual MuJoCo WebAssembly tests passed**, most recently in 13.001 seconds with the furnished patient room. The browser controller lifts the phone 22.7889 cm, sustains bilateral contact for 15.918 seconds in the measured run, and releases it under gravity. It also passes the forced collision-stop regression and native pose/reach parity checks. [WASM contact measurements](../artifacts/browser-contact-physics.json).
+The earlier **11-test MuJoCo WebAssembly suite passed** in 13.001 seconds with the furnished patient room; the expanded 19-test suite is recorded above. The browser controller lifts the phone 22.7889 cm, sustains bilateral contact for 15.918 seconds in the measured run, and releases it under gravity. It also passes the forced collision-stop regression and native pose/reach parity checks. [WASM contact measurements](../artifacts/browser-contact-physics.json).
 
 The full Chrome check on the static build passed in **72.646 seconds**, with zero browser errors, failed requests or local API calls. It exercised all 25 joints, pause, reach, low/high travel, pickup, sustained hold and gravity release. All five scene requests used the same asset revision. [Browser report](../artifacts/public-browser-check.json), [pickup screenshot](../apps/web/artifacts/public-pickup.png), [recorded demonstration](../apps/web/artifacts/contact-pickup-demo.mp4).
 

@@ -13,7 +13,8 @@ const {BrowserPhysics}=await import(`data:text/javascript;base64,${Buffer.from(c
 const engine=await loadMujoco();
 const xml=readFileSync(new URL('../public/simulation/reference.xml',import.meta.url),'utf8');
 const descriptors=JSON.parse(readFileSync(new URL('../public/simulation/reference-descriptors.json',import.meta.url),'utf8'));
-const create=()=>new BrowserPhysics(engine,xml,descriptors);
+const trajectories=JSON.parse(readFileSync(new URL('../../../sim/reference_demo_trajectories.json',import.meta.url),'utf8'));
+const create=(library=trajectories)=>new BrowserPhysics(engine,xml,descriptors,library);
 const evidence={engine:'MuJoCo 3.13.0 WebAssembly',model_hash:descriptors.model_hash};
 after(()=>writeFileSync(new URL('../../../artifacts/browser-contact-physics.json',import.meta.url),JSON.stringify(evidence,null,2)+'\n'));
 
@@ -153,5 +154,94 @@ test('an actual collision during a held pickup clears success and latches the st
     assert.throws(()=>sim.command('pause'),/Reset the scene/);
     const reset=sim.command('reset');assert.equal(reset.metrics.stop_reason,null);assert.equal(reset.paused,false);
     evidence.contact_stop=stopped.metrics;
+  }finally{sim.dispose()}
+});
+
+for(const [command,seconds]of [['bedside_demo',16],['greeting_demo',16],['phone_return_demo',38]]){
+  test(`${command} completes from actual WASM motion and measured outcomes`,()=>{
+    const sim=create();
+    try{
+      const start=sim.command(command);assert.equal(start.mode,command);assert.equal(start.metrics.demo.complete,false);
+      assert.equal(start.metrics.demo.stage_count,trajectories.commands[command].stages.length);
+      assert.equal(start.metrics.demo.duration_s,trajectories.commands[command].duration_s);
+      for(let i=0;i<seconds/2;i++){const step=sim.advance(2);assert.equal(step.paused,false,`${step.metrics.stop_reason}: ${JSON.stringify(step.metrics.demo)}`);assert.deepEqual(step.metrics.contacts,[])}
+      const state=sim.advance(0),demo=state.metrics.demo,measured=demo.measurements;
+      assert.equal(demo.complete,true,JSON.stringify(demo));assert.equal(demo.status,'complete');assert.equal(demo.progress,1);
+      assert.equal(demo.stage_index,demo.stage_count-1);assert.ok(Object.values(demo.checks).every(Boolean));assert.ok(measured.settle_dwell_s>=.5);
+      assert.ok(measured.rest_qpos_error<.01);assert.ok(measured.robot_speed<.01);
+      assert.equal(state.metrics.physics_steps,seconds*500);assert.equal(state.metrics.object_attached,false);
+      if(command==='bedside_demo'){assert.ok(measured.max_base_excursion_m>.75);assert.equal(measured.visited_bedside,true);assert.ok(measured.base_home_error_m<.01)}
+      if(command==='greeting_demo'){assert.ok(measured.max_hand_height_m>1.65);assert.ok(measured.wave_range_rad>.65)}
+      if(command==='phone_return_demo'){
+        assert.equal(sim.model.neq,0);assert.equal(state.metrics.pickup.ever_succeeded,true);assert.equal(state.metrics.pickup.success,false);assert.equal(state.metrics.pickup.released,true);
+        assert.equal(measured.gate_bilateral_contact_passed,true);assert.equal(measured.gate_grasp_confirmed_passed,true);assert.equal(measured.gate_phone_supported_passed,true);assert.equal(measured.gate_phone_settled_passed,true);
+        assert.ok(measured.confirmed_grasp_height_m>.20);assert.ok(measured.confirmed_grasp_hold_s>=2);
+        assert.ok(measured.supported_release_force_n>.05);assert.equal(measured.supported_release_bilateral,true);assert.ok(Math.abs(measured.supported_release_height_m-.8135)<.006);
+        assert.ok(measured.phone_xy_error_m<.002);assert.ok(measured.phone_z_error_m<.0001);assert.ok(measured.phone_speed_m_s<.001);assert.ok(measured.hand_clearance_m>.7);
+        assert.deepEqual(state.metrics.pickup.finger_contacts,[]);assert.equal(state.metrics.grasp_success,false);
+      }
+      evidence.more_demos??={};evidence.more_demos[command]=demo;
+    }finally{sim.dispose()}
+  });
+}
+
+test('incompatible or malformed demo libraries are rejected before live control mutation',()=>{
+  const invalid=[
+    library=>{library.model_hash='0'.repeat(64)},
+    library=>{library.nq=31},
+    library=>{library.actuated_q_indices.reverse()},
+    library=>{library.commands.bedside_demo.stages[2].target_qpos[0]=NaN},
+    library=>{library.commands.bedside_demo.stages[2].target_qpos[library.actuated_q_indices[0]]=999},
+    library=>{library.commands.bedside_demo.stages[2].duration_s=0},
+  ];
+  for(const mutate of invalid){
+    const library=structuredClone(trajectories);mutate(library);const sim=create(library);
+    try{const before=sim.advance(0),ctrl=Array.from(sim.data.ctrl);assert.throws(()=>sim.command('bedside_demo'),/match|Invalid|limits/);assert.deepEqual(sim.advance(0),before);assert.deepEqual(Array.from(sim.data.ctrl),ctrl)}finally{sim.dispose()}
+  }
+});
+
+test('new demos require the baseline fixture and pause freezes progress and physics',()=>{
+  const sim=create();
+  try{
+    sim.command('joint_demo');sim.advance(1);const moved=sim.advance(0);
+    for(const command of ['bedside_demo','greeting_demo','phone_return_demo'])assert.throws(()=>sim.command(command),/Reset the scene/);
+    assert.deepEqual(sim.advance(0),moved);sim.command('reset');sim.command('bedside_demo');sim.advance(2);
+    const paused=sim.command('pause');assert.deepEqual(sim.advance(2),paused);assert.throws(()=>sim.command('greeting_demo'),/Reset the scene/);
+    sim.command('pause');for(let i=0;i<7;i++)sim.advance(2);assert.equal(sim.advance(0).metrics.demo.complete,true);
+    const reset=sim.command('reset');assert.equal(reset.metrics.demo,undefined);assert.equal(reset.mode,'idle');assert.equal(reset.simulation_time,0);
+  }finally{sim.dispose()}
+});
+
+test('a lost physical grasp stops the return sequence before it can claim placement',()=>{
+  const sim=create();
+  try{
+    sim.command('phone_return_demo');for(let i=0;i<9;i++)sim.advance(2);
+    const lifted=sim.advance(0);assert.equal(lifted.metrics.pickup.bilateral_contact,true);assert.ok(lifted.metrics.pickup.height_gain_m>.20);
+    // Regression fault injection opens the fingers; production never edits qpos.
+    for(const sign of [-1,1])sim.data.qpos[sim.qindex(`left_gripper_${sign}`)]=sign*.60;
+    engine.mj_forward(sim.model,sim.data);const stopped=sim.advance(.002);
+    assert.equal(stopped.paused,true);assert.match(stopped.metrics.stop_reason,/contact lost/);
+    assert.equal(stopped.metrics.demo.complete,false);assert.equal(stopped.metrics.demo.status,'stopped');assert.equal(stopped.metrics.pickup.success,false);
+    assert.throws(()=>sim.command('pause'),/Reset the scene/);assert.equal(stopped.metrics.demo.measurements.gate_phone_supported_passed,undefined);
+  }finally{sim.dispose()}
+});
+
+test('elapsed trajectory time cannot fake an unmet measured greeting outcome',()=>{
+  const library=structuredClone(trajectories);library.commands.greeting_demo.outcomes.minimum_wave_range_rad=2;
+  const sim=create(library);
+  try{
+    sim.command('greeting_demo');for(let i=0;i<8;i++)sim.advance(2);
+    const elapsed=sim.advance(0);assert.equal(elapsed.metrics.demo.progress,1);assert.equal(elapsed.metrics.demo.complete,false);assert.equal(elapsed.metrics.demo.checks.wrist_waved,false);
+    sim.advance(2);const stopped=sim.advance(2);assert.equal(stopped.paused,true);assert.equal(stopped.metrics.demo.status,'stopped');assert.match(stopped.metrics.stop_reason,/grace period/);
+  }finally{sim.dispose()}
+});
+
+test('a changed physical pose revokes a previously completed demo and latches reset',()=>{
+  const sim=create();
+  try{
+    sim.command('bedside_demo');for(let i=0;i<8;i++)sim.advance(2);assert.equal(sim.advance(0).metrics.demo.complete,true);
+    sim.data.qpos[sim.qindex('right_joint_1')]=-2;sim.data.qpos[sim.qindex('right_joint_2')]=1/3;engine.mj_forward(sim.model,sim.data);
+    const stopped=sim.advance(.002);assert.equal(stopped.paused,true);assert.equal(stopped.metrics.demo.complete,false);assert.equal(stopped.metrics.demo.status,'stopped');
+    assert.ok(stopped.metrics.stop_reason);assert.throws(()=>sim.command('pause'),/Reset the scene/);const reset=sim.command('reset');assert.equal(reset.metrics.demo,undefined);assert.equal(reset.metrics.stop_reason,null);
   }finally{sim.dispose()}
 });

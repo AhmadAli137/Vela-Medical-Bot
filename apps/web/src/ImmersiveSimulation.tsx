@@ -11,6 +11,8 @@ import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import { human } from './api';
 import { PUBLIC_DEMO, REPOSITORY_URL, simulationAsset } from './deployment';
 import { createSimulationTransport, type ReferenceState, type SimulationCommand, type SimulationTransport } from './simulationTransport';
+import SimulationDemoGallery, { EXTRA_DEMOS, type ExtraDemoCommand } from './SimulationDemoGallery';
+import SimulationDemoMetrics from './SimulationDemoMetrics';
 import './immersive.css';
 
 type ViewName='overview'|'bedside'|'robot'|'pickup'|'patient'|'patient_face'|'bed_foot'|'bed_rear'|'chair'|'storage'|'wardrobe';
@@ -46,6 +48,7 @@ export default function ImmersiveSimulation(){
   const [showDetails,setShowDetails]=useState(false);
   const [showHelp,setShowHelp]=useState(false);
   const [showAbout,setShowAbout]=useState(false);
+  const [showDemos,setShowDemos]=useState(false);
   const aboutDialog=useRef<HTMLElement>(null);
   const [fps,setFps]=useState<number>();
   const [bodyCount,setBodyCount]=useState(0);
@@ -230,18 +233,30 @@ export default function ImmersiveSimulation(){
     return()=>{dialog.removeEventListener('keydown',onKey);previous?.focus()};
   },[showAbout]);
   const chooseView=(name:ViewName)=>{setView(name);viewer.current?.setView(name)};
+  const startExtraDemo=async(value:ExtraDemoCommand)=>{
+    if(busy||!transport.current)return;
+    setBusy(true);setError('');setNotice('');setShowDemos(false);setShowDetails(false);
+    try{
+      await transport.current.command('reset');
+      const result=await transport.current.command(value);
+      latest.current=result;setState(result);
+      const selected=EXTRA_DEMOS.find(demo=>demo.command===value)!;
+      chooseView(selected.view);setNotice(`${selected.title} started.`);
+    }catch(error){setError((error as Error).message)}finally{setBusy(false)}
+  };
   const paused=state?.paused??(state?.running===false);
   const joints=Array.isArray(state?.joints)?state.joints.map(item=>[item.name,item.position] as const):Object.entries(state?.joints??{});
   const loaded=assets.room&&assets.robot&&assets.phone;
-  const pickup=state?.metrics?.pickup,lift=state?.metrics?.lift;
+  const pickup=state?.metrics?.pickup,lift=state?.metrics?.lift,demo=state?.metrics?.demo;
   const demoActive=state?.mode!==undefined&&state.mode!=='idle';
-  const runningLabel=!connected?'Connecting':state?.metrics?.stop_reason?'Contact stop':paused?'Paused':state?.mode==='idle'?'Ready':human(state?.mode??'Live physics');
+  const runningLabel=!connected?'Connecting':state?.metrics?.stop_reason?'Contact stop':paused?'Paused':state?.mode==='idle'?'Ready':demo?(demo.complete?'Complete':demo.name):human(state?.mode??'Live physics');
   return <div className="immersive-shell">
     <header className="immersive-header">{PUBLIC_DEMO?<button className="immersive-back" aria-label="About this demo" onClick={()=>setShowAbout(true)}><CircleHelp size={17}/></button>:<a href="#research" className="immersive-back" aria-label="Back to workspace"><ArrowLeft size={17}/></a>}<a href={PUBLIC_DEMO?"#simulation":"#staff"} className="immersive-brand">vela<span>.</span></a><span className="immersive-header-divider"/><div className="immersive-page-title"><strong>Simulation studio</strong><span>Hospital room · Reference environment</span></div><div className="immersive-header-right"><span className={`physics-status ${connected?'connected':''}`}><i/>{connected?(PUBLIC_DEMO?'MuJoCo · in browser':'MuJoCo connected'):'Loading MuJoCo'}</span><button className="immersive-icon-button" title="Viewer controls" aria-label="Viewer controls" onClick={()=>setShowHelp(!showHelp)}><CircleHelp size={19}/></button><button className="immersive-icon-button" aria-label="Toggle full screen" onClick={()=>document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}><Expand size={18}/></button></div></header>
     <div className="immersive-stage"><div ref={mount} className="immersive-canvas"/>
       <div className="scene-topline"><span><i/>INTERACTIVE 3D ENVIRONMENT</span><span>REAL-TIME PHYSICS · REFERENCE GEOMETRY</span></div>
-      <aside className="immersive-scene-card"><div className="immersive-kicker"><Layers3 size={13}/> SCENE 01</div><h1>Patient room<br/>417.</h1><p>Explore the room, move the carriages, and try a contact-based pickup.</p><div className="immersive-room-meta"><span><Box size={14}/>Hospital room</span>{hasPatient&&<span className="immersive-synthetic-patient"><UserRound size={14}/>Synthetic patient model</span>}<span>7 × 6 m<span className="estimated-label">scene estimate</span></span></div>
-      {pickup&&<div className="immersive-action-metrics" data-testid="pickup-metrics" data-success={pickup.success} data-released={pickup.released} data-height-gain={pickup.height_gain_m} data-bilateral-contact={pickup.bilateral_contact} data-hold-seconds={pickup.bilateral_hold_s}>
+      <aside className="immersive-scene-card"><div className="immersive-kicker"><Layers3 size={13}/> SCENE 01</div><h1>Patient room<br/>417.</h1><p>Explore the room and try a bedside approach, greeting, or contact-based phone task.</p><div className="immersive-room-meta"><span><Box size={14}/>Hospital room</span>{hasPatient&&<span className="immersive-synthetic-patient"><UserRound size={14}/>Synthetic patient model</span>}<span>7 × 6 m<span className="estimated-label">scene estimate</span></span></div>
+      {demo&&<SimulationDemoMetrics demo={demo} pickup={pickup} paused={!!paused} onBrowse={()=>setShowDemos(true)}/>}
+      {pickup&&!demo&&<div className="immersive-action-metrics" data-testid="pickup-metrics" data-success={pickup.success} data-released={pickup.released} data-height-gain={pickup.height_gain_m} data-bilateral-contact={pickup.bilateral_contact} data-hold-seconds={pickup.bilateral_hold_s}>
         <strong>{pickup.success?'Pickup confirmed':pickup.released?'Phone released':pickup.status==='failed'?'Pickup stopped':'Contact pickup'}</strong>
         <dl><div><dt>Stage</dt><dd>{human(pickup.stage)}</dd></div><div><dt>Phone lifted</dt><dd>{(pickup.height_gain_m*100).toFixed(1)} cm</dd></div><div><dt>Finger contacts</dt><dd>{pickup.finger_contacts.length} / 2</dd></div><div><dt>Verified hold</dt><dd>{pickup.bilateral_hold_s.toFixed(1)} s</dd></div></dl>
         <p>MuJoCo contact and friction hold the free phone. Success requires a 15 cm lift and two seconds of contact from both fingers.</p>
@@ -265,6 +280,7 @@ export default function ImmersiveSimulation(){
       {error&&<div className="immersive-toast immersive-error" role="alert"><span>{error}</span><button onClick={()=>setError('')} aria-label="Dismiss simulation error"><X size={16}/></button></div>}
     </div>
     {showAbout&&<div className="public-demo-about-backdrop" onClick={event=>{if(event.target===event.currentTarget)setShowAbout(false)}}><section ref={aboutDialog} role="dialog" aria-modal="true" aria-labelledby="public-demo-about-title" className="public-demo-about"><button className="immersive-icon-button" aria-label="Close demo information" onClick={()=>setShowAbout(false)}><X size={18}/></button><span className="immersive-kicker">VELA · PUBLIC SIMULATION</span><h2 id="public-demo-about-title">Explore the room. See the physics.</h2><p>This demo runs the reference robot in your browser using MuJoCo WebAssembly. Drag to explore, then try joint movement or a table reach.</p><p>The geometry and mechanics are estimates for research. No physical robot or hospital is connected.</p><h3>The complete local workspace</h3><p>The repository also includes patient assistance, staff operations, safety-gated task workflows, evidence tools, and learning pipelines. Those services run locally with the Python backend.</p>{REPOSITORY_URL&&<a className="button primary" href={REPOSITORY_URL} target="_blank" rel="noreferrer">View the project<ArrowUpRight size={15}/></a>}<button className="button secondary" onClick={()=>setShowAbout(false)}>Back to the simulation</button></section></div>}
-    <footer className="immersive-transport"><div className="immersive-playback"><button aria-label={paused?'Resume simulation':'Pause simulation'} disabled={!connected||busy} onClick={()=>command('pause')} className="immersive-play-button">{paused?<Play size={20} fill="currentColor"/>:<Pause size={19} fill="currentColor"/>}</button><button className={demoActive?'immersive-icon-button immersive-reset-label':'immersive-icon-button'} aria-label="Reset simulation" disabled={!connected||busy} onClick={()=>command('reset')}><RotateCcw size={19}/>{demoActive&&<span>Reset to switch</span>}</button><div className="immersive-clock"><span>SIMULATION TIME</span><strong>{Number(state?.simulation_time??0).toFixed(2)}<small>s</small></strong></div><div className="immersive-playback-state"><i className={connected&&!paused?'live':''}/>{runningLabel}</div></div><div className="immersive-demo-controls"><button disabled={!connected||busy||!loaded||demoActive} onClick={()=>{chooseView('robot');command('joint_demo')}}><Move3D size={16}/>Joint movement<ArrowUpRight size={14}/></button><button disabled={!connected||busy||!loaded||demoActive} onClick={()=>{chooseView('bedside');command('reach_demo')}}><Play size={14}/>Table reach demo<ArrowUpRight size={14}/></button><button disabled={!connected||busy||!loaded||demoActive} onClick={()=>{chooseView('robot');command('lift_demo')}}><MoveVertical size={16}/>Vertical travel<ArrowUpRight size={14}/></button><button className="immersive-pickup-button" disabled={!connected||busy||!loaded||demoActive} onClick={()=>{chooseView('pickup');command('pickup_demo')}}><Smartphone size={16}/>Pick up phone<ArrowUpRight size={14}/></button></div><div className="immersive-transport-note">{PUBLIC_DEMO?"Physics runs on your device.":"Visual reference + simulated motion."}<br/>No physical robot connected.</div></footer>
+    {showDemos&&<SimulationDemoGallery ready={connected&&loaded&&!busy} onClose={()=>setShowDemos(false)} onStart={startExtraDemo}/>}
+    <footer className="immersive-transport"><div className="immersive-playback"><button aria-label={paused?'Resume simulation':'Pause simulation'} disabled={!connected||busy} onClick={()=>command('pause')} className="immersive-play-button">{paused?<Play size={20} fill="currentColor"/>:<Pause size={19} fill="currentColor"/>}</button><button className={demoActive?'immersive-icon-button immersive-reset-label':'immersive-icon-button'} aria-label="Reset simulation" disabled={!connected||busy} onClick={()=>command('reset')}><RotateCcw size={19}/>{demoActive&&<span>Reset to switch</span>}</button><div className="immersive-clock"><span>SIMULATION TIME</span><strong>{Number(state?.simulation_time??0).toFixed(2)}<small>s</small></strong></div><div className="immersive-playback-state"><i className={connected&&!paused?'live':''}/>{runningLabel}</div></div><div className="immersive-demo-controls"><button disabled={!connected||busy||!loaded||demoActive} onClick={()=>{chooseView('robot');command('joint_demo')}}><Move3D size={16}/>Joint movement<ArrowUpRight size={14}/></button><button disabled={!connected||busy||!loaded||demoActive} onClick={()=>{chooseView('bedside');command('reach_demo')}}><Play size={14}/>Table reach demo<ArrowUpRight size={14}/></button><button disabled={!connected||busy||!loaded||demoActive} onClick={()=>{chooseView('robot');command('lift_demo')}}><MoveVertical size={16}/>Vertical travel<ArrowUpRight size={14}/></button><button className="immersive-pickup-button" disabled={!connected||busy||!loaded||demoActive} onClick={()=>{chooseView('pickup');command('pickup_demo')}}><Smartphone size={16}/>Pick up phone<ArrowUpRight size={14}/></button><button className="immersive-more-demos-button" onClick={()=>setShowDemos(true)}><Layers3 size={16}/>More demos</button></div><div className="immersive-transport-note">{PUBLIC_DEMO?"Physics runs on your device.":"Visual reference + simulated motion."}<br/>No physical robot connected.</div></footer>
   </div>;
 }

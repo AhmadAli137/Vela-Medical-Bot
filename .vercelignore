@@ -12,6 +12,7 @@
 !sim/
 !sim/reference_body_descriptors.json
 !sim/reference_body_descriptors.xml
+!sim/reference_demo_trajectories.json
 apps/web/node_modules/
 apps/web/dist/
 apps/web/artifacts/
