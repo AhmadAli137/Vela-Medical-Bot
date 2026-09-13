@@ -1,0 +1,236 @@
+{
+  "checked_at": "2026-09-13T05:27:51.165Z",
+  "elapsed_seconds": 34.09,
+  "origin": "https://vela-medical-bot.vercel.app",
+  "viewport": {
+    "width": 1600,
+    "height": 1000
+  },
+  "scene_revision": "e910282b948201f7",
+  "content_security_policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' blob:; worker-src 'self' blob:; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
+  "assemblies": {
+    "patient": {
+      "mesh_count": 5,
+      "triangle_count": 189446,
+      "bounds": {
+        "min": [
+          0.8365380167961121,
+          0.4047509431838989,
+          0.7350848913192749
+        ],
+        "max": [
+          1.963462233543396,
+          2.2152204513549805,
+          1.2977278232574463
+        ]
+      }
+    },
+    "hospital_bed": {
+      "mesh_count": 7,
+      "triangle_count": 124376,
+      "bounds": {
+        "min": [
+          0.7664999961853027,
+          0.25999999418854713,
+          0
+        ],
+        "max": [
+          2.033500015735626,
+          2.6250001262905447,
+          1.1270000338554382
+        ]
+      }
+    },
+    "visitor_chair": {
+      "mesh_count": 2,
+      "triangle_count": 5312,
+      "bounds": {
+        "min": [
+          -2.064999997615814,
+          0.934999942779541,
+          0
+        ],
+        "max": [
+          -1.1350000500679016,
+          1.7550078928470612,
+          1.1698488593101501
+        ]
+      }
+    },
+    "bedside_table": {
+      "mesh_count": 5,
+      "triangle_count": 7428,
+      "bounds": {
+        "min": [
+          0.3499999940395355,
+          -1.0999999940395355,
+          0
+        ],
+        "max": [
+          1.1500000059604645,
+          -0.29999998211860657,
+          0.8100000210106373
+        ]
+      }
+    },
+    "bedside_storage": {
+      "mesh_count": 4,
+      "triangle_count": 5524,
+      "bounds": {
+        "min": [
+          2.3299998939037323,
+          1.9929999271407723,
+          0
+        ],
+        "max": [
+          2.9099998772144318,
+          2.589999943971634,
+          0.8150000218302011
+        ]
+      }
+    },
+    "wardrobe": {
+      "mesh_count": 3,
+      "triangle_count": 5712,
+      "bounds": {
+        "min": [
+          -3.0624999403953552,
+          2.1710000671446323,
+          0
+        ],
+        "max": [
+          -1.8074999451637268,
+          2.9774999022483826,
+          2.2674999237060547
+        ]
+      }
+    },
+    "visitor_table": {
+      "mesh_count": 4,
+      "triangle_count": 6120,
+      "bounds": {
+        "min": [
+          -2.829999953508377,
+          1.2699999511241913,
+          0
+        ],
+        "max": [
+          -2.2699999511241913,
+          1.829999953508377,
+          0.793099969625473
+        ]
+      }
+    },
+    "room_plant": {
+      "mesh_count": 4,
+      "triangle_count": 20856,
+      "bounds": {
+        "min": [
+          -3.1527602672576904,
+          -1.4777766881717809,
+          -9.313225746154785e-10
+        ],
+        "max": [
+          -2.6220000982284546,
+          -0.8783326148986816,
+          0.8152469396591187
+        ]
+      }
+    }
+  },
+  "manifest_comparison": {
+    "units": "metres",
+    "assemblies": {
+      "patient": {
+        "method": "bounds_agreement",
+        "source_object_count": 5,
+        "max_bounds_difference_m": 0
+      },
+      "hospital_bed": {
+        "method": "bounds_agreement",
+        "source_object_count": 126,
+        "max_bounds_difference_m": 1.262905446886009e-7
+      },
+      "visitor_chair": {
+        "method": "bounds_agreement",
+        "source_object_count": 16,
+        "max_bounds_difference_m": 0.007487505674362183
+      },
+      "bedside_table": {
+        "method": "bounds_agreement",
+        "source_object_count": 15,
+        "max_bounds_difference_m": 2.9802322387695312e-8
+      },
+      "bedside_storage": {
+        "method": "bounds_agreement",
+        "source_object_count": 11,
+        "max_bounds_difference_m": 2.9802322387695312e-8
+      },
+      "wardrobe": {
+        "method": "bounds_agreement",
+        "source_object_count": 12,
+        "max_bounds_difference_m": 6.332993507385254e-8
+      },
+      "visitor_table": {
+        "method": "bounds_agreement",
+        "source_object_count": 8,
+        "max_bounds_difference_m": 2.9802322387695312e-8
+      },
+      "room_plant": {
+        "method": "source_envelope_containment",
+        "source_object_count": 28,
+        "max_bounds_difference_m": 0.028561770915985107,
+        "contained": true,
+        "relative_extent": [
+          0.9505461167639486,
+          0.9369077262328422,
+          0.9661513686375718
+        ]
+      }
+    }
+  },
+  "patient_within_bed_footprint": true,
+  "synthetic_patient_label": true,
+  "physics_controls_available": true,
+  "screenshots": [
+    {
+      "view": "bedside",
+      "file": "apps/web/artifacts/vercel-room-bedside.png"
+    },
+    {
+      "view": "overview",
+      "file": "apps/web/artifacts/vercel-room-overview.png"
+    },
+    {
+      "view": "patient",
+      "file": "apps/web/artifacts/vercel-room-patient.png"
+    },
+    {
+      "view": "patient_face",
+      "file": "apps/web/artifacts/vercel-room-patient_face.png"
+    },
+    {
+      "view": "bed_foot",
+      "file": "apps/web/artifacts/vercel-room-bed_foot.png"
+    },
+    {
+      "view": "bed_rear",
+      "file": "apps/web/artifacts/vercel-room-bed_rear.png"
+    },
+    {
+      "view": "chair",
+      "file": "apps/web/artifacts/vercel-room-chair.png"
+    },
+    {
+      "view": "storage",
+      "file": "apps/web/artifacts/vercel-room-storage.png"
+    },
+    {
+      "view": "wardrobe",
+      "file": "apps/web/artifacts/vercel-room-wardrobe.png"
+    }
+  ],
+  "errors": [],
+  "failed_requests": [],
+  "api_requests": []
+}
